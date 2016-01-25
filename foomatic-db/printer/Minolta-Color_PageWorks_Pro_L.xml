@@ -1,0 +1,40 @@
+<printer id="printer/Minolta-Color_PageWorks_Pro_L">
+    <make>Minolta</make>
+    <model>Color PageWorks/Pro L</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>2400</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4</top>
+		<bottom>4</bottom>
+		<left>4</left>
+		<right>4</right>
+	    </general>
+	</margins>
+    </mechanism>
+    <url>http://www.minolta-qms.com/support/current_printers/color_pwpro_L_sup.htm</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <functionality>B</functionality>
+    <driver>foo2zjs</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Minolta Color PageWorks/Pro L is a color laser printer which
+	uses the Zenographics ZjStream printer language.
+
+	This printer is supported by the foo2zjs free software printer
+	driver.
+
+    </en> </comments>
+</printer>

@@ -1,0 +1,30 @@
+<driver id="driver/foo2hbpl2">
+    <name>foo2hbpl2</name>
+    <url>http://foo2hbpl.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2hbpl2-wrapper %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the Dell 1355 MFP (printer only),
+	Dell C1765 MFP (printer only), Epson AcuLaser M1400,
+	Fuji Xerox Docuprint CM205 (printer only),
+	Fuji Xerox Docuprint CM215 (printer only), Fuji Xerox DocuPrint P205,
+	Fuji Xerox DocuPrint M215 (printer only), Xerox WorkCentre 3045 and the
+	Xerox WorkCentre 6015 MFP (printer only).
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/Dell-1355</id></printer>
+	<printer><id>printer/Dell-C1765</id></printer>
+	<printer><id>printer/Epson-AcuLaser_M1400</id></printer>
+	<printer><id>printer/Epson-AcuLaser_CX17NF</id></printer>
+	<printer><id>printer/Xerox-WorkCentre_3045</id></printer>
+	<printer><id>printer/Xerox-WorkCentre_6015</id></printer>
+	<printer><id>printer/Fuji_Xerox-DocuPrint_CM205</id></printer>
+	<printer><id>printer/Fuji_Xerox-DocuPrint_CM215</id></printer>
+	<printer><id>printer/Fuji_Xerox-DocuPrint_M215</id></printer>
+	<printer><id>printer/Fuji_Xerox-DocuPrint_P205</id></printer>
+    </printers>
+</driver>

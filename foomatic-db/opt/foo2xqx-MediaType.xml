@@ -1,0 +1,122 @@
+<option type="enum" id="opt/foo2xqx-MediaType">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Media Type</en> </arg_longname>
+    <arg_shortname> <en>MediaType</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>150</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>-m%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	<driver>foo2xqx</driver>
+	<arg_defval>ev/foo2xqx-MediaType-1</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2xqx-MediaType-0">
+	    <ev_longname> <en>Unspecified Paper</en> </ev_longname>
+	    <ev_shortname> <en>Unspecified</en> </ev_shortname>
+	    <ev_driverval>0</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-1">
+	    <ev_longname> <en>Plain Paper</en> </ev_longname>
+	    <ev_shortname> <en>Plain</en> </ev_shortname>
+	    <ev_driverval>1</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-301">
+	    <ev_longname> <en>HP Multipurpose Paper</en> </ev_longname>
+	    <ev_shortname> <en>Multipurpose</en> </ev_shortname>
+	    <ev_driverval>301</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-300">
+	    <ev_longname> <en>HP Office Paper</en> </ev_longname>
+	    <ev_shortname> <en>Office</en> </ev_shortname>
+	    <ev_driverval>300</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-303">
+	    <ev_longname> <en>HP All-in-one Printing Paper</en> </ev_longname>
+	    <ev_shortname> <en>All-in-one</en> </ev_shortname>
+	    <ev_driverval>303</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-302">
+	    <ev_longname> <en>HP LaserJet Paper</en> </ev_longname>
+	    <ev_shortname> <en>LaserJet</en> </ev_shortname>
+	    <ev_driverval>302</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-304">
+	    <ev_longname> <en>HP Premium Choice LaserJet Paper</en> </ev_longname>
+	    <ev_shortname> <en>PremiumLaserJet</en> </ev_shortname>
+	    <ev_driverval>302</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-514">
+	    <ev_longname> <en>Preprinted Paper</en> </ev_longname>
+	    <ev_shortname> <en>Preprinted</en> </ev_shortname>
+	    <ev_driverval>514</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-513">
+	    <ev_longname> <en>Letterhead</en> </ev_longname>
+	    <ev_shortname> <en>Letterhead</en> </ev_shortname>
+	    <ev_driverval>513</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-2">
+	    <ev_longname> <en>Transparency</en> </ev_longname>
+	    <ev_shortname> <en>Transparency</en> </ev_shortname>
+	    <ev_driverval>2</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-515">
+	    <ev_longname> <en>Prepunched Paper</en> </ev_longname>
+	    <ev_shortname> <en>Prepunched</en> </ev_shortname>
+	    <ev_driverval>515</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-265">
+	    <ev_longname> <en>Labels</en> </ev_longname>
+	    <ev_shortname> <en>Labels</en> </ev_shortname>
+	    <ev_driverval>265</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-260">
+	    <ev_longname> <en>Bond</en> </ev_longname>
+	    <ev_shortname> <en>Bond</en> </ev_shortname>
+	    <ev_driverval>260</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-516">
+	    <ev_longname> <en>Recycled Paper</en> </ev_longname>
+	    <ev_shortname> <en>Recycled</en> </ev_shortname>
+	    <ev_driverval>516</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-512">
+	    <ev_longname> <en>Color</en> </ev_longname>
+	    <ev_shortname> <en>Color</en> </ev_shortname>
+	    <ev_driverval>512</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-258">
+	    <ev_longname> <en>Light</en> </ev_longname>
+	    <ev_shortname> <en>Light</en> </ev_shortname>
+	    <ev_driverval>258</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-262">
+	    <ev_longname> <en>Heavy</en> </ev_longname>
+	    <ev_shortname> <en>Heavy</en> </ev_shortname>
+	    <ev_driverval>262</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-261">
+	    <ev_longname> <en>Cardstock</en> </ev_longname>
+	    <ev_shortname> <en>Cardstock</en> </ev_shortname>
+	    <ev_driverval>261</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-267">
+	    <ev_longname> <en>Envelope</en> </ev_longname>
+	    <ev_shortname> <en>Envelope</en> </ev_shortname>
+	    <ev_driverval>267</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xqx-MediaType-263">
+	    <ev_longname> <en>Rough</en> </ev_longname>
+	    <ev_shortname> <en>Rough</en> </ev_shortname>
+	    <ev_driverval>263</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

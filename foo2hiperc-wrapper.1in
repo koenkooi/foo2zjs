@@ -1,0 +1,217 @@
+'\" t
+.TH foo2hiperc-wrapper 1 "${MODpage}" "foo2hiperc-wrapper ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2hiperc-wrapper \- Convert Postscript into a HIPERC printer stream
+.SH SYNOPSIS
+.B foo2hiperc-wrapper
+.RI [ options "] [" ps-file ]
+.SH DESCRIPTION
+.B foo2hiperc-wrapper
+is a Foomatic compatible printer wrapper for the
+\fBfoo2hiperc\fP printer driver.
+This script reads a Postscript \fIps-file\fP or standard input
+and converts it to the Oki HIPERC printer format
+for driving the
+Oki C310dn, C3100, C3200, C3300n, C3400n, C5100n, C5500n, C5600n and the C5800n
+HIPERC printers.
+.P
+This script can be used in a standalone fashion, but is intended to
+be called from a printer spooler system which uses the Foomatic
+printer database.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-c
+Print in color (else monochrome).
+.TP
+.BI \-C\0 colormode
+Color correction mode [0].
+.TS
+n l .
+10	ICM color profile (using -G *.icm file)
+.TE
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-m\0 media
+Media code to send to printer [0].
+.TS
+l l l
+l n n.
+_
+Media	HIPERC
+_
+plain	0
+labels	1
+transparency	2
+.TE
+.TP
+.BI \-p\0 paper
+Paper size code to send to printer [2].
+.TS
+box;
+| n l | n l.
+1	A4	2	letter
+3	legal	-	-	
+5	A5	6	B5jis
+7	A6	8	env Monarch
+9	env DL	10	env C5
+11	env #10	12	executive
+13	env #9	14	legal 13.5"
+15	A3	16	tabloid/ledger
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [600x600].
+.TP
+.BI \-s\0 source
+Source (Input Slot) code to send to printer [0].
+.TS
+| n l | n l.
+0	auto select		
+1	tray1	2	tray2
+3	multi	4	manual
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI "\-2 \-3 \-4 \-5 \-6 \-8 \-9 \-10 \-12 \-14 \-15 \-16 \-18"
+Print in N-up.  Requires the \fBpsutils\fP package.
+.TP
+.BI \-o\0 orient
+Orientation used for N-up.
+.TS
+l l l.
+Portrait	-op	(normal)
+Landscape	-ol	(rotated 90 degrees anticlockwise)
+Seascape	-os	(rotated 90 degrees clockwise)
+.TE
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2hiperc\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [varies with paper size].
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [varies with paper size].
+.TP
+.BI \-L\0 mask
+Send the logical clipping values from -u/-l in the HIPERC stream.
+\fBfoo2hiperc-wrapper\fP always runs Ghostscript with the ideal page dimensions,
+so that the scale of the image is correct,
+regardless whether or not the printer has unprintable regions.
+This option is used to move the position of the clipped image
+back to where it belongs on the page.  The default is to send
+the amount which was clipped by -u and -l, and should be
+good in most cases.
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-z\0 model
+Model is 0 for non-A3 sized printers,
+and 1 for A3/Tabloid/Ledger sized printers (i.e. C810, etc.).
+The default is 0.
+.TP
+.BI \-Z\0 compressed
+Use uncompressed (0) or compressed (1) JBIG data.
+.SS Color Tweaking Options
+These are the options used to control the quality of color output.
+Color correction is currently a WORK IN PROGRESS.
+.TP
+.BI \-g\0 gsopts
+Additional options to pass to Ghostscript, such as -g\(lq-dDITHERPPI=nnn\(rq,
+etc.  This option may appear more than once.
+.TP
+.BI \-G\0 profile.icm
+Convert \fIprofile.icm\fP to a Postscript color rendering
+dictionary (CRD) using \fBfoo2zjs-icc2ps\fP and
+adjust the printer colors by using the Postscript \fBsetcolorrendering\fP
+operator.  (WORK IN PROGRESS).
+.TP
+.BI \-G\0 gamma-file.ps
+Prepend \fIgamma-file.ps\fP to the Postscript input to perform
+color correction using the \fBsetcolortransfer\fP Postscript operator.
+For example, the file might contain:
+.br
+{0.333 exp} {0.333 exp} {0.333 exp} {0.333 exp} setcolortransfer
+.TP
+.BI \-I\0 intent
+Select profile intent from the ICM file.
+0=Perceptual, 1=Colorimetric, 2=Saturation, 3=Absolute.
+Default is 0 (perceptual).
+.SS Debugging Options
+These options are used for debugging \fBfoo2hiperc\fP and its wrapper.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a monochrome HIPERC stream from a Postscript document,
+examine it, and then print it using nc(1) or netcat(1):
+
+.RS
+.nf
+foo2hiperc-wrapper testpage.ps > testpage.hc
+hipercdecode < testpage.hc
+nc 192.168.1.NNN 9100 < testpage.hc
+.fi
+.RE
+.P
+Create a color HIPERC stream from a Postscript document:
+
+.RS
+.nf
+foo2hiperc-wrapper -c testpage.ps > testpage.hc
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2hiperc-wrapper
+.SH SEE ALSO
+.BR foo2hiperc (1),
+.BR hipercdecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLHC}/
+'\"
+'\"
+'\"
+.em pdf_outline

@@ -1,0 +1,78 @@
+<option type="enum" id="opt/foo2lava-ColorMode">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Color Mode</en> </arg_longname>
+    <arg_shortname> <en>ColorMode</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>120</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	<driver>foo2lava</driver>
+	<arg_defval>ev/foo2lava-ColorMode-mono</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2lava-ColorMode-mono">
+	    <ev_longname> <en>Monochrome</en> </ev_longname>
+	    <comments><en>
+		Prints in monochrome only
+	    </en></comments>
+	    <ev_shortname> <en>Monochrome</en> </ev_shortname>
+	    <ev_driverval></ev_driverval>
+	</enum_val>
+<!--
+	<enum_val id="ev/foo2lava-ColorMode-color">
+	    <ev_longname> <en>Color - Best Compromise</en> </ev_longname>
+	    <comments><en>
+		Prints in color using the best compromise setting.
+	    </en></comments>
+	    <ev_shortname> <en>Color</en> </ev_shortname>
+	    <ev_driverval>-c -C2</ev_driverval>
+	</enum_val>
+        <enum_val id="ev/foo2lava-ColorMode-PhotoOnly">
+            <ev_longname> <en>Color - Photo Only</en> </ev_longname>
+            <comments><en>
+                Prints with full usage of color.
+                Black will be mixed with color toner.
+                Not useful for text or large black areas.
+            </en></comments>
+            <ev_shortname> <en>PhotoOnly</en> </ev_shortname>
+            <ev_driverval>-c -C1</ev_driverval>
+	</enum_val>
+        <enum_val id="ev/foo2lava-ColorMode-PhotoAndText">
+            <ev_longname> <en>Color - Photos and Text</en> </ev_longname>
+            <comments><en>
+                Prints without adding color to black.
+                Makes sharp text and colorful photos.
+            </en></comments>
+            <ev_shortname> <en>PhotosAndText</en> </ev_shortname>
+            <ev_driverval>-c -C2</ev_driverval>
+	</enum_val>
+        <enum_val id="ev/foo2lava-ColorMode-GraphicAndText">
+            <ev_longname> <en>Color - Graphics and Text</en> </ev_longname>
+            <comments><en>
+                Best mode for everyday printing.
+                Also usable for photos, but reduces color under black pixels.
+                Very dark areas will printed with black only.
+                Produces nice Gray without Color shining.
+            </en></comments>
+            <ev_shortname> <en>GraphicsAndText</en> </ev_shortname>
+            <ev_driverval>-c -C3</ev_driverval>
+	</enum_val>
+-->
+        <enum_val id="ev/foo2lava-ColorMode-ICM">
+            <ev_longname> <en>Color - use ICM color profile</en> </ev_longname>
+            <comments><en>
+                Uses the selected ICM color profile file and intent.
+            </en></comments>
+            <ev_shortname> <en>ICM</en> </ev_shortname>
+            <ev_driverval>-c -C10</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

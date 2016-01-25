@@ -1,0 +1,230 @@
+    ---------------------------------------------------------------------
+    Please read the "INSTALL" file to see how to install this software.
+    Please read the "INSTALL" file to see how to install this software.
+    Please read the "INSTALL" file to see how to install this software.
+
+    Mac OS X users: also read the "INSTALL-osx.txt" file.
+    ---------------------------------------------------------------------
+
+GENERAL
+    FOO2ZJS
+    -------
+    foo2zjs converts pbm (B/W) images and 1-bit-per-pixel cmyk images
+    (both produced by ghostscript) to Zenographics ZJ-stream format. There
+    is some information about the ZJS format at http://ddk.zeno.com.
+
+    With foo2zjs, you can print to some HP and Minolta/QMS ZjStream
+    printers, such as these:
+
+	- Konica Minolta magicolor 2430 DL	B/W and color
+	- Minolta/QMS 2300 DL			B/W and color
+	- Minolta/QMS 2200 DL			B/W and color
+	- HP LaserJet P2035			B/W
+	- HP LaserJet M1319 MFP			B/W
+	- HP LaserJet Pro P1606dn		B/W
+	- HP LaserJet Pro P1566			B/W
+	- HP LaserJet Pro P1102			B/W
+	- HP LaserJet Pro CP1025nw		B/W and color
+	- HP LaserJet 1022			B/W
+	- HP LaserJet 1020			B/W
+	- HP LaserJet 1018			B/W
+	- HP LaserJet 1005			B/W
+	- HP LaserJet 1000			B/W
+
+    FOO2HP
+    ------
+    foo2hp converts pbm (B/W) images and N-bit-per-pixel cmyk images
+    (both produced by ghostscript) to Zenographics ZJ-stream format. There
+    is some information about the ZJS format at http://ddk.zeno.com.
+
+    With foo2hp, you can print to some HP ZjStream printers, such as these:
+
+	- HP Color LaserJet CP1215		B/W and color
+	- HP Color LaserJet 1600		B/W and color
+	- HP Color LaserJet 2600n		B/W and color
+
+    FOO2LAVA
+    --------
+    foo2lava converts Ghostscript pbmraw, bitcmyk, or pksmraw  output  for-
+    mats  to  monochrome  or color LAVAFLOW or OPL streams, for driving the
+    Konica Minolta magicolor 2530 DL network color laser printer, the  Kon-
+    ica Minolta magicolor 2480/2480 MF AIO printer, and other Zenographics-
+    based LAVAFLOW printers.
+
+	- Konica Minolta magicolor 2530 DL	B/W and color
+	- Konica Minolta magicolor 2490 MF	B/W and color
+	- Xerox Phaser 6115MFP			B/W and color
+	- Konica Minolta magicolor 2480 MF	B/W and color
+	- Konica Minolta magicolor 1690MF	B/W and color
+	- Konica Minolta magicolor 1680MF	B/W and color
+	- Konica Minolta magicolor 1600W	B/W and color
+
+    FOO2OAK
+    -------
+    foo2oak converts pbm (B/W) images and 1-bit-per-pixel cmyk images
+    (both produced by ghostscript) to Oak Technology (now Zoran) OAKT
+    format.
+
+    With foo2oak, you can print to the HP LaserJet 1500 and possibly other
+    OAKT protocol printers, such as these:
+
+	- HP LaserJet 1500	B/W and color, but only 1-bit per pixel
+	- Kyocera KM-2035	B/W
+	- Kyocera KM-1635	B/W
+
+    FOO2QPDL
+    --------
+    foo2qpdl converts Ghostscript pbmraw, bitcmyk, or pksmraw output formats
+    to monochrome or color QPDL streams, for driving the Samsung CLP-300,
+    CLX-2160, CLP-600, CLX-3160, CLP-610 and the Xerox Phaser 6110
+    QPDL printers.
+
+	- Samsung CLP-300	B/W and color
+	- Samsung CLP-315	B/W and color
+	- Samsung CLP-325	B/W and color
+	- Samsung CLP-365	B/W and color
+	- Samsung CLP-600	B/W and color
+	- Samsung CLP-610	B/W and color
+	- Samsung CLP-2160	B/W and color
+	- Samsung CLP-3160	B/W and color
+	- Samsung CLP-3175	B/W and color
+	- Xerox Phaser 6110	B/W and color
+	- Xerox Phaser 6110MFP	B/W and color
+
+    FOO2SLX
+    -------
+    foo2slx converts Ghostscript pbmraw, bitcmyk, or pksmraw output formats
+    to monochrome or color SLX streams, for driving the Lexmark C500 net-
+    work color laser printer and other SLZ-based printers.  The SLX  stream
+    is a variant of ZjStream produced by Software Imaging K.K
+
+	- Lexmark C500n		B/W and color
+
+    FOO2XQX
+    -------
+    foo2xqx  converts  Ghostscript  pbmraw  to  monochrome XQX streams, for
+    driving the HP LaserJet M1005 MFP and other XQX-based printers
+
+	- HP LaserJet M1005 MFP
+	- HP LaserJet M1120 MFP
+	- HP LaserJet P1005
+	- HP LaserJet P1006
+	- HP LaserJet P1007
+	- HP LaserJet P1008
+	- HP LaserJet P1505/P1505n
+	- HP LaserJet P2014/P2014n
+	- HP LaserJet Pro M1212nf MFP
+
+    FOO2HIPERC
+    ----------
+    foo2hiperc converts Ghostscript pbmraw, bitcmyk, or pksmraw output for-
+    mats  to monochrome or color HIPERC streams, for driving the Oki C3200,
+    C3300n, C3400n, C5100n, and the C5500n HIPERC printers.
+
+	- Oki C301dn
+	- Oki C310dn
+	- Oki C511dn
+	- Oki C810dn
+	- Oki C3100n/C3200n
+	- Oki C3300n/C3400n
+	- Oki C3530n MFP
+	- Oki C5100n/C5150n/C5200n
+	- Oki C5500n/C5600n/C5800n
+
+    FOO2HBPL2
+    ---------
+    foo2hbpl2 converts Ghostscript pbmraw, bitcmyk, or pksmraw output  for‐
+    mats  to  monochrome  or  color HBPL version 2 streams.
+
+	- Dell 1355 Multifunction Color Printer
+	- Dell C1765 Multifunction Color Printer 
+	- Epson AcuLaser CX17NF
+	- Epson AcuLaser M1400
+	- Fuji Xerox DocuPrint CM205 Multifunction Color Printer
+	- Fuji Xerox DocuPrint CM215 Multifunction Color Printer
+	- Fuji Xerox DocuPrint M215 
+	- Fuji Xerox DocuPrint P205 
+	- Xerox WorkCentre 3045 Multifunction Monochrome Printer 
+	- Xerox WorkCentre 6015 Multifunction Color Printer 
+
+Please read the manual pages for more details on the program operation.
+
+    $ acroread manual.pdf
+
+BUGS AND DEFICIENCIES
+    - Need to tune the manufacturer-supplied ICM color profiles to match the
+      characteristics of Ghostscript.
+
+    - Need to figure out how to get near-invisible dithering out of Ghostscript
+      without affecting the colors.  With GS 7.05, if you set -dDITHERING=150,
+      for example, the dithering becomes less visible but you get areas of
+      color blotches.  No way to win.
+
+    - Ghostscript 8.0 has worse color dithering compared to 7.05.  The symptom
+      is slanted bands separated by 0.5 to 2mm, at a 30 degree angle.
+
+    - Need to support a better input color file format which includes
+      explicit page boundary indications.  The current use of the Ghostscript
+      "bitcmyk" format precludes having pages of different sizes within a
+      Postscript stream.
+
+    - It is not entirely clear whether the JBIG-KIT compression library
+      produces compressed data compatible with all implementations of JBIG
+      in ZjStream printers.  It is possible that bugs or subtle
+      implementation differences might result in incorrect printer behavior.
+
+AUTHORS
+    The foo2zjs engine program began life as Robert Szalai's 'pbmtozjs'
+    program.  It also uses Markus Kuhn's JBIG-KIT compression library
+    (included, but available at http://www.cl.cam.ac.uk/~mgk25/jbigkit/),
+    and Marti Maria's icc2ps program (included, but also available at
+    http://www.littlecms.com).
+
+    The foo2zjs engine was overhauled by Rick Richardson to add color
+    support for the Minolta/QMS 2300DL, add command line options, limit
+    data chunk size to 65536 bytes, and other miscellaneous features.
+    Rick also contributed the zjsdecode program and the foomatic database
+    entries for the Minolta/QMS magicolor 2300 DL.
+
+    The foo2* engine was written entirely from scratch by Rick Richardson.
+
+    The latest version of foo2zjs can be found at:
+
+	${URLZJS}
+	wget ${URLZJS}/foo2zjs.tar.gz
+
+You can contact the current author at mailto://rick.richardson@comcast.net
+I do not read or reply to HTML email or messages sent under an alias.
+
+LICENSE
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+If you want to use this program under different license conditions,
+then contact the author for an arrangement.
+
+PATENTS
+It is possible that certain products which can be built using the jbig
+software module might form inventions protected by patent rights in
+some countries (e.g., by patents about arithmetic coding algorithms
+owned by IBM and AT&T in the USA). Provision of this software by the
+author does NOT include any licences for any patents. In those
+countries where a patent licence is required for certain applications
+of this software module, you will have to obtain such a licence
+yourself.
+
+"So, as far as I understand currently (IANAPL), JBIG1 will be free of
+known patents in the United States from 2012-04-04 onwards, at the
+very latest, and outside the United States, JBIG1 will be patent free
+already from 2011-02-25." - Markus Kuhn

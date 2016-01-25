@@ -1,0 +1,25 @@
+<driver id="driver/foo2oak">
+    <name>foo2oak</name>
+    <url>http://foo2oak.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2oak-wrapper %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the HP Color LaserJet 1500 laser printer.
+	
+	It is possible that this driver will also work for other Oak
+	Technologies OAKT-based printers, but the author cannot test this.
+
+	The driver supports 1-bit or 2-bit per pixel monochrome and
+	color output, but none of these have been tuned for grayscale
+	or color correction.
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/HP-Color_LaserJet_1500</id></printer>
+	<printer><id>printer/Generic-OAKT_Printer</id></printer>
+	<printer><id>printer/Generic-GDI_Printer</id></printer>
+    </printers>
+</driver>

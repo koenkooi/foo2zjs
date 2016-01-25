@@ -1,0 +1,63 @@
+<printer id="printer/Samsung-CLP-365">
+    <make>Samsung</make>
+    <model>CLP-365</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (1500 prints) - $54
+		Toner Yellow (1000 prints) - $45
+		Toner Magenta (1000 prints) - $45
+		Toner Cyan (1000 prints) - $45
+		Waste Toner (7000/1750 prints) - $10
+		Imaging Unit (16000/4000 prints) - $96
+	    </en> </comments>
+	    <partno>CLT-K406S</partno>
+	    <partno>CLT-Y406S</partno>
+	    <partno>CLT-M406S</partno>
+	    <partno>CLT-C406S</partno>
+	    <partno>CLT-W406</partno>
+	    <partno>CLT-R406</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.samsung.com/us/computer/printers/CLP-365W/XAC</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+        <parallel>
+            <ieee1284>MFG:Samsung;CMD:SPLC;MDL:CLP-360 Series;CLS:PRINTER;</ieee1284>
+            <manufacturer>Samsung</manufacturer>
+            <model>CLP-360 Series</model>
+            <commandset>SPLC</commandset>
+        </parallel>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2qpdl</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Samsung CLP-360 (USB) and Samsung CLP-365W (Net) are
+	color laser printers with a 2012 street price of $230 USD.
+
+	This printer is supported by the foo2qpdl open software printer driver.
+
+    </en> </comments>
+</printer>

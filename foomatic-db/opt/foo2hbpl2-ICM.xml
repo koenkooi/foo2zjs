@@ -1,0 +1,100 @@
+<option type="enum" id="opt/foo2hbpl2-ICM">
+    <comments>
+	<en>
+	This option controls which .ICM file to use for color correction.
+	ICM files are stored in directory /usr/share/foo2hbpl/icm/.
+	</en>
+    </comments>
+    <arg_longname> <en>ICM Color Profile</en> </arg_longname>
+    <arg_shortname> <en>ICM</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>Adjustment</arg_group>
+	<arg_order>300</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2hbpl2-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Xerox</make>
+	    <model>WorkCenter 6015</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2hbpl2-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Dell</make>
+	    <model>1355</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Dell</make>
+	    <model>C1765</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Epson</make>
+	    <model>AcuLaser CX17NF</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2hbpl2-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Fuji Xerox</make>
+	    <model>DocuPrint_CM205</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Fuji Xerox</make>
+	    <model>DocuPrint_CM215</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="false">
+	    <make>Epson</make> <model>AcuLaser M1400</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>Fuji Xerox</make> <model>DocuPrint M215</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>Fuji Xerox</make> <model>DocuPrint P205</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>Xerox</make> <model>WorkCentre 3045</model>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2hbpl2-ICM-none">
+	    <ev_longname> <en>No ICM color correction</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>none</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gnone.icm</ev_driverval>
+	</enum_val>
+
+        <enum_val id="ev/foo2hbpl2-ICM-testing">
+            <ev_longname> <en>File testing.icm</en> </ev_longname>
+            <ev_shortname> <en>testing</en> </ev_shortname>
+            <ev_driverval>-C10 -Gtesting.icm</ev_driverval>
+        </enum_val>
+
+        <enum_val id="ev/foo2hbpl2-ICM-testing2">
+            <ev_longname> <en>File testing2.icm</en> </ev_longname>
+            <ev_shortname> <en>testing2</en> </ev_shortname>
+            <ev_driverval>-C10 -Gtesting2.icm</ev_driverval>
+        </enum_val>
+
+        <enum_val id="ev/foo2hbpl2-ICM-testing3">
+            <ev_longname> <en>File testing3.icm</en> </ev_longname>
+            <ev_shortname> <en>testing3</en> </ev_shortname>
+            <ev_driverval>-C10 -Gtesting3.icm</ev_driverval>
+        </enum_val>
+
+    </enum_vals>
+</option>

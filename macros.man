@@ -1,0 +1,172 @@
+'\"==========================================================================
+'\"	STRINGS and MACROS
+'\"==========================================================================
+'\"
+'\"	Define strings for special characters that nroff doesn't have
+'\"
+'\"	N.B. using .if cua to test for special characters did not work.
+'\"
+.if !'\*[.T]'ps' .ds ua up
+.if  '\*[.T]'ps' .ds ua \(ua
+.if !'\*[.T]'ps' .ds da down
+.if  '\*[.T]'ps' .ds da \(da
+.if !'\*[.T]'ps' .ds <- left
+.if  '\*[.T]'ps' .ds <- \(<-
+.if !'\*[.T]'ps' .ds -> right
+.if  '\*[.T]'ps' .ds -> \(->
+'\"
+'\"     bx - box a Courier string for making keycaps
+'\"
+'\"	N.B. this mess is to make the line drawing come out only
+'\"	if we are really generating postscript
+'\"
+.de bx
+.ie !'\*[.T]'ps' \{\
+.	RB [ \\$1 ]\\$2
+.\}
+.el \{\
+.	ie !r ps4html \{\
+'\" \(br\|\s-1\f(CB\\$1\fP\s+1\|\(br\l'|0\(rn'\l'|0\(ul'
+.		ft CW
+.		nr par*bxw \w'\\$1'+.4m 
+\Z'\v'.25m'\D'l 0 -1m'\D'l \\n[par*bxw]u 0'\D'l 0 1m'\D'l -\\n[par*bxw]u 0''\
+\Z'\h'.2m'\s-1\\$1\s+1'\
+\h'\\n[par*bxw]u'\\$2
+.		ft P
+.	\}
+.	el \{\
+.		RB [ \\$1 ]\\$2
+.	\}
+.\}
+..
+'\"
+'\" strings to set current color (null with old groff)
+'\"
+.if mred .ds red \m[red]
+.if mgreen .ds green \m[green]
+.if mblue .ds blue \m[blue]
+.if mblack .ds black \m[black]
+.if mblack .ds mP \mP
+'\"
+'\" fix for grotty + xterm. We call for orange, grotty outputs yellow,
+'\" but xterm displays yellow as orange.  The cycle is complete.
+'\"
+.if n .defcolor orange rgb #ffff00
+'\"
+'\" color <color> - set the current color (ignores request with old groff)
+'\"
+.de color
+.if mred \m[\\$1]\c
+..
+'\"
+'\" colorword <color> <word> - colorize a word (ignored by old groff)
+'\"
+.de colorword
+.ie m\\$1 \m[\\$1]\\$2\mP\c
+.el \\$2\c
+..
+'\"
+'\" colbox <fg> <bg> <word> - colorize a word in a filled box
+'\"
+.de colbox
+.ie mred \M[\\$2]\
+\v'+.167v'\
+\D'P 0 -0.9v  \w'\\$3'u 0  0 +0.9v   -\w'\\$3'u 0'\
+\v'-.167v'\
+\m[\\$1]\\$3\mP\MP
+.el \\$3\c
+..
+'\"
+'\"	Macros for doing pdfmarks
+'\"
+.de specialps
+.if  '\*[.T]'ps' \\k_\X'ps: \\$*'\h'|\\n_u'\c
+..
+'\"
+'\" pdfmark PDFMARKCODE
+'\"
+.ds pdfmarks
+.if d pdfmarks \{\
+.de pdfmark
+.	specialps exec [\\$1 pdfmark
+..
+'\"
+'\" pdfdest LINKNAME
+'\"
+.de pdfdest
+.pdfmark "/Dest /\\$1 /View [/XYZ -5 PL null] /DEST"
+..
+'\"
+'\" pdfbookmark COUNT LINKNAME STRING
+'\"
+.de pdfbookmark
+.   pdfmark "/View [/XYZ 44 730 1.0] /Count \\$1 /Dest /\\$2 /Title (\\$3) /OUT"
+..
+'\"
+'\"	Define the SH and SS macros to save pdfmark information
+'\"	in "arrays" of numbers and strings.
+'\"
+.if !r rr_n \{\
+.nr rr_n 0 1
+.am SH
+.	nr rr_levels!\\n+[rr_n] 2
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.am SS
+.	nr rr_levels!\\n+[rr_n] 3
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.\}
+'\"
+'\"	Called at the end of the document to generate the pdfmark outline
+'\"
+.de pdf_outline
+.nr rr_levels!\\n+[rr_n] 1
+.nr rr_i 0 1
+.while \\n+[rr_i]<\\n[rr_n] \{\
+.   nr rr_ip1 \\n[rr_i]+1
+.   nr rr_count 0
+.   if \\n[rr_levels!\\n[rr_ip1]]>\\n[rr_levels!\\n[rr_i]] \{\
+.       nr rr_j \\n[rr_i] 1
+.       while \\n+[rr_j]<\\n[rr_n] \{\
+.           if \\n[rr_levels!\\n[rr_j]]<=\\n[rr_levels!\\n[rr_i]] \{\
+.               break
+.           \}
+.           if \\n[rr_levels!\\n[rr_j]]==(\\n[rr_levels!\\n[rr_i]]+1) \{\
+.               nr rr_count \\n[rr_count]+1
+.           \}
+.       \}
+.   \}
+.   ds hhh \\*[rr_labels!\\n[rr_i]]
+.   pdfbookmark -\\n[rr_count] Link\\n[rr_i] "\\*[hhh]"
+.\}
+..
+'\"
+'\" Some postscript to make pdfmarks harmless on old interpreters...
+'\"
+.specialps "def /pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse"
+'\"
+'\" Force display of Bookmarks in Acrobat when document is viewed.
+'\"
+.pdfmark "[/PageMode /UseOutlines /Page 1 /View [/XYZ null null null] /DOCVIEW"
+'\"
+'\" Output the document info in pdfmarks
+'\"
+.pdfmark "\
+	/Title (\*[an-title](\*[an-section])) \
+	/Subject (\*[an-title] Manual Page) \
+	/Author (Rick Richardson) \
+	/Keywords (printing) \
+	/Creator (groff \n(.x.\n(.y.\n(.Y -man) \
+	/CreationDate (\*[an-extra1]) \
+	/ModDate (\*[an-extra1]) \
+	/DOCINFO"
+\}
+'\"
+'\" The manual page name is only 1st level mark
+'\"
+.nr rr_levels!\n+[rr_n] 1
+.ds rr_labels!\n[rr_n] \*[an-title](\*[an-section])
+.pdfdest Link\n[rr_n]

@@ -1,0 +1,54 @@
+<printer id="printer/Samsung-CLP-600">
+    <make>Samsung</make>
+    <model>CLP-600</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (4000 prints) - $80
+		Toner Yellow (4000 prints) - $110
+		Toner Magenta (4000 prints) - $110
+		Toner Cyan (4000 prints) - $110
+		Transfer Belt (35000 prints) - $47
+	    </en> </comments>
+	    <partno>CLP-K600A</partno>
+	    <partno>CLP-Y600A</partno>
+	    <partno>CLP-M600A</partno>
+	    <partno>CLP-C600A</partno>
+	    <partno>CLP-T600A</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.samsung.com/Products/PrinterandMultifunction/ColorLaserPrinters/CLP_600NXAA.asp</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2qpdl</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Samsung CLP-600 is a networked color laser printer with a
+	2007 street price of $450 USD.  This printer is supported
+	by the foo2qpdl open software printer driver.
+
+    </en> </comments>
+</printer>

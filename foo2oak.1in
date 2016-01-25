@@ -1,0 +1,200 @@
+'\" t
+.TH foo2oak 1 "${MODpage}" "foo2oak ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2oak \- Convert Ghostscript pbmraw, pgmraw or bitcmyk format into an
+OAKT printer stream
+.SH SYNOPSIS
+.B foo2oak
+.RI [ options "] <" pbmraw-file " >" OAKT-file
+.sp 1
+.B foo2oak
+.RI [ options "] <" pgmraw-file " >" OAKT-file
+.sp 1
+.B foo2oak
+.RI [ options "] <" bitcmyk-file " >" OAKT-file
+.SH DESCRIPTION
+.B foo2oak
+converts Ghostscript pbmraw or bitcmyk output formats to monochrome
+or color OAKT streams,
+for driving the HP Color LaserJet 1500 laser printer,
+Kyocera KM-1636/KM-2035 copiers,
+and other OAKT-based printers.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-c
+Force color mode if autodetect doesn't work.
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-g\0 xpix x ypix
+Set page dimensions in pixels [10200x6600].
+.TP
+.BI \-m\0 media
+Media code to send to printer [1].
+.TS
+l l
+l n.
+_
+Media	Code
+_
+autoselect	0
+plain	1
+preprinted	2
+letterhead	3
+transparency	4
+prepunched	5
+labels	6
+bond	7
+recycled	8
+color	9
+cardstock	10
+envelope	11
+light	13
+tough	14
+vellum	15
+rough	16
+thick	19
+highqual	20
+.TE
+.TP
+.BI \-p\0 paper
+Paper code to send to printer [1].
+.TS
+box;
+| n l | n l.
+1	letter	3	ledger
+5	legal	6	statement
+7	executive	8	A3
+9	A4	11	A5
+12	B4	13	B5jis
+14	folio	19	env9
+20	env10	27	envDL
+28	envC5	30	envC4
+37	envMonarch	257	A6
+258	B6	259	B5iso
+260	env6
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [600x600].
+.TP
+.BI \-s\0 source
+Source (InputSlot) code to send to printer [7].
+.TS
+| n l | n l.
+1	tray1	2	tray2
+4	manual	7	auto
+.TE
+.TP
+.BI \-J\0 filename
+Filename string to send to printer.
+.TP
+.BI \-U\0 username
+Username string to send to printer.
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2oak\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [0x0].
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [0x0].
+.TP
+.BI \-L\0 mask
+Send logical clipping amounts implied by -u/-l in the OAKT stream [3].
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-A
+AllIsBlack: convert C=1,M=1,Y=1 to just K=1.  Works with bitcmyk input only.
+.TP
+.BI \-B
+BlackClears: K=1 forces C,M,Y to 0.  Works with bitcmyk input only.
+.TP
+.BI \-M\0 mirror
+Mirror bytes. Mirror is 0 for Kyocera KM-1635/KM-2035 and 1 for the
+HP Color LaserJet 1500. The default is 1.
+.TP
+.BI \-z\0 model
+Model is 0 for the HP Color LaserJet 1500,
+and 1 for the Kyocera KM-1635/KM-2035 copiers.
+The default is 0.
+.SS Debugging Options
+These options are used for debugging \fBfoo2oak\fP.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a black and white OAKT stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -r600x600 -sDEVICE=pbmraw \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2oak -r600x600 -g5100x6600 -p1 >testpage.oak
+.fi
+.RE
+.P
+Create a color OAKT stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -g5100x6600 -r600x600 -sDEVICE=bitcmyk \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2oak -r600x600 -g5100x6600 -p1 >testpage.oak
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2oak
+.SH SEE ALSO
+.BR foo2oak-wrapper (1),
+.BR oakdecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLOAK}/
+'\"
+'\"
+'\"
+.em pdf_outline

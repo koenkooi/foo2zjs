@@ -1,0 +1,520 @@
+#!/bin/sh
+
+#
+# (c) Copyright Rick Richardson 2008
+#
+
+#
+# PLEASE don't remove the copyright statements.  They should 
+# be displayed to the human that is running this.
+#
+
+VERSION='$Id: getweb.in,v 1.114 2015/02/12 00:22:02 rick Exp $'
+
+WGETOPTS="--passive-ftp -q"
+
+usage() {
+cat <<EOF
+
+Usage:
+    ./getweb something
+
+    Convenience script to get extra somethings from the web,
+    such as ICC color profiles, firmware, PPD files, etc.
+
+    $ ./getweb 1025     # Get HP LaserJet Pro CP1025nw .ICM files
+    $ ./getweb 1215	# Get HP Color LaserJet CP1215 .ICM files
+    $ ./getweb 1500	# Get HP Color LaserJet 1500 .ICM files
+    $ ./getweb 1600	# Get HP Color LaserJet 1600 .ICM files
+    $ ./getweb 2600n	# Get HP Color LaserJet 2600n .ICM files
+
+    $ ./getweb 1600w	# Get Konica Minolta 1600W .ICM files
+    $ ./getweb 1680	# Get Konica Minolta 1680MF .ICM files
+    $ ./getweb 1690	# Get Konica Minolta 1690MF .ICM files
+    $ ./getweb 2480	# Get Konica Minolta 2480 MF .ICM files
+    $ ./getweb 2490	# Get Konica Minolta 2490 MF .ICM files
+    $ ./getweb 2530	# Get Konica Minolta 2530 DL .ICM files
+    $ ./getweb 4690	# Get Konica Minolta 4690MF .ICM files
+    $ ./getweb 6115	# Get Xerox Phaser 6115MFP .ICM files
+    $ ./getweb 110	# Get Oki C110 .ICM files
+    $ ./getweb 6121	# Get Xerox Phaser 6121MFP .ICM files
+
+    $ ./getweb 2200	# Get Minolta 2200 DL .ICM files
+    $ ./getweb 2300	# Get Minolta 2300 DL .ICM files
+    $ ./getweb 2430	# Get Konica Minolta 2430 DL .ICM files
+    $ ./getweb cpwl	# Get Minolta Color PageWorks/Pro L .ICM files
+
+    $ ./getweb 300	# Get Samsung CLP-300 .ICM files
+    $ ./getweb 310	# Get Samsung CLP-310 .ICM files
+    $ ./getweb 315	# Get Samsung CLP-315 .ICM files
+    $ ./getweb 325	# Get Samsung CLP-325 .ICM files
+    $ ./getweb 360	# Get Samsung CLP-360 .ICM files
+    $ ./getweb 365	# Get Samsung CLP-365 .ICM files
+    $ ./getweb 600	# Get Samsung CLP-600 .ICM files
+    $ ./getweb 610	# Get Samsung CLP-610 .ICM files
+    $ ./getweb 2160	# Get Samsung CLX-2160 .ICM files
+    $ ./getweb 3160	# Get Samsung CLX-3160 .ICM files
+    $ ./getweb 3175	# Get Samsung CLX-3175 .ICM files
+    $ ./getweb 3185	# Get Samsung CLX-3185 .ICM files
+    $ ./getweb 6110	# Get Xerox Phaser 6110 and 6110MFP .ICM files
+
+    $ ./getweb 500	# Get Lexmark C500 .ICM files
+
+    $ ./getweb 301	# Get Oki C301dn .ICM files
+    $ ./getweb c310	# Get Oki C310dn .ICM files
+    $ ./getweb c511	# Get Oki C511dn .ICM files
+    $ ./getweb c810	# Get Oki C810 .ICM files
+    $ ./getweb 3100	# Get Oki C3100 .ICM files
+    $ ./getweb 3200	# Get Oki C3200 .ICM files
+    $ ./getweb 3300	# Get Oki C3300 .ICM files
+    $ ./getweb 3400	# Get Oki C3400 .ICM files
+    $ ./getweb 3530	# Get Oki C3530 MFP .ICM files
+    $ ./getweb 5100	# Get Oki C5100 / C5150n .ICM files
+    $ ./getweb 5200	# Get Oki C5200 .ICM files
+    $ ./getweb 5500	# Get Oki C5500 .ICM files
+    $ ./getweb 5600	# Get Oki C5600 .ICM files
+    $ ./getweb 5800	# Get Oki C5800 .ICM files
+
+    $ ./getweb 160	# Get Olivetti d-Color P160W .ICM files
+
+    $ ./getweb 1000	# Get HP LJ 1000 firmware file
+    $ ./getweb 1005	# Get HP LJ 1005 firmware file
+    $ ./getweb 1018	# Get HP LJ 1005 firmware file
+    $ ./getweb 1020	# Get HP LJ 1020 firmware file
+
+    $ ./getweb p1005	# Get HP LJ P1005 firmware file
+    $ ./getweb p1006	# Get HP LJ P1006 firmware file
+    $ ./getweb p1007	# Get HP LJ P1007 firmware file
+    $ ./getweb p1008	# Get HP LJ P1008 firmware file
+    $ ./getweb p1505	# Get HP LJ P1505 firmware file
+
+    $ ./getweb all	# Get everything above
+
+    $ ./getweb 2300dl_fw # Get Minolta 2300DL v2.55 firmware (experts only)
+
+    $ ./getweb update	# Get latest version of this software.
+EOF
+    exit 1
+}
+
+#
+#       Report an error and exit
+#
+PROGNAME=$0
+error() {
+	echo "`basename $PROGNAME`: $1" >&2
+	exit 1
+}
+
+SYSTEM=`uname -s`
+WGET=`type wget 2>/dev/null`
+if [ "$SYSTEM" = Darwin -a "$WGET" = "" ]
+then
+    WGETOPTS=
+    wget() {
+	shift
+	curl -o $*
+    }
+fi
+
+#
+#	Download a .EXE file from the web, unzip it, and extract the
+#	files we want
+getexe() {
+    url="$1"
+    exefile="$2"
+    shift; shift
+    
+    wget $WGETOPTS -O $exefile "$url/$exefile" ||
+	error "Couldn't download $url/$exefile"
+    unzip -oj $exefile "$@"
+    rm $exefile
+}
+
+#
+#	Download a .tar.gz file from the web, untar it, and extract the
+#	files we want
+gettgz() {
+    url="$1"
+    file="$2"
+    what="$3"
+    
+    wget $WGETOPTS -O $file "$url/$file" ||
+	error "Couldn't download $url/$file"
+    gunzip <$file | tar xvf - $what
+    rm $file
+}
+
+copyright() {
+    echo
+    echo "$1"
+    echo
+}
+
+getone() {
+    case "$1" in
+    lj1000|1000)
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihp1000.tar.gz \
+	    ""
+	#echo "provided"
+	#getexe \
+	    #ftp://ftp.hp.com/pub/softlib/software1/lj1488/lj-1145-2 \
+	    #lj1488en.exe \
+	    #sihp1000.img
+	copyright "(c) Copyright Hewlett-Packard 2001"
+	;;
+    lj1005|1005)
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihp1005.tar.gz \
+	    ""
+	#echo "provided"
+	#getexe \
+	    #ftp://ftp.hp.com/pub/softlib/software2/COL2222/lj-10067-2 \
+	    #lj1005hostbased-en.exe \
+	    #sihp1005.img
+	copyright "(c) Copyright Hewlett-Packard 2002"
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihpP1005.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2009"
+	;;
+    lj1018|1018)
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihp1018.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2005"
+	;;
+    lj1020|1020)
+	# http://ftp.hp.com/pub/softlib/software8/COL14041/lj-39322-2/hp_LJ_1020-1022_Full_Solution.exe
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihp1020.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2005"
+	;;
+    [pP]100[57])
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihpP1005.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2009"
+	;;
+    [pP]100[68])
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihpP1006.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2009"
+	;;
+    [pP]1505)
+	gettgz \
+	    http://foo2zjs.rkkda.com/firmware sihpP1505.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2009"
+	;;
+    2200dl|2200)
+	if true; then
+	    gettgz \
+		http://foo2zjs.rkkda.com/icm dl2300.tar.gz \
+		""
+	else
+	    getexe \
+		http://printer.konicaminolta.net/drivers/win2000 m22dlicc.exe \
+		"*.icm"
+	fi
+	copyright "(c) Copyright Minolta-QMS 1999"
+	;;
+    2300dl|2300)
+	if true; then
+	    gettgz \
+		http://foo2zjs.rkkda.com/icm dl2300.tar.gz \
+		""
+	else
+	    getexe \
+		http://printer.konicaminolta.net/drivers/other m23dlicc.exe \
+		"*.icm"
+	fi
+	gettgz \
+	    http://foo2zjs.rkkda.com/icm km2430.tar.gz \
+	    ""
+	copyright "(c) Copyright Minolta-QMS 2001"
+	;;
+    2300dl_fw)
+	# 2300DL firmware upgrade to v2.55
+	BASE="http://crm01.minoltaeurope.com"
+	BASE="$BASE/openmind/technic/swfw/mswprtdl.nsf/logdwl"
+	FILE="MC2300DL_v255.zip"
+	URL="$BASE?openagent&4CE486C20839C75AC1256D9E001EBD1F/\$File/$FILE"
+	wget $WGETOPTS "$URL" || error "Couldn't download $URL"
+	echo "*** Now use a windows box to unzip and install $FILE ***"
+	;;
+    cpwl|pageworks)
+	if true; then
+	    gettgz \
+		http://foo2zjs.rkkda.com/icm dl2300.tar.gz \
+		""
+	else
+	    getexe \
+		ftp://ftp.minolta-qms.com/pub/crc/out_going/windows cpplxp.exe \
+		"*.IC_"
+	    for i in C*.IC_
+	    do
+		base=`basename $i .IC_`
+		mv $base.IC_ $base.ic_
+		./msexpand $base.ic_
+		rm -f $base.ic_
+	    done
+	fi
+	copyright "(c) Copyright Minolta-QMS 1998"
+	;;
+    2430)
+	gettgz \
+	    http://foo2zjs.rkkda.com/icm km2430.tar.gz \
+	    ""
+	copyright "(c) Copyright Konica Minolta 2003"
+	;;
+    2530|2490|6115|2480|1600w|1680|1690|4690|110|6121)
+	gettgz \
+	    http://foo2lava.rkkda.com/icm km2530.tar.gz \
+	    ""
+	copyright "(c) Copyright Konica Minolta 2005"
+	copyright "(c) Copyright Rick Richardson 2007.  All Rights Reserved"
+	gettgz \
+	    http://foo2lava.rkkda.com/icm km-1600.tar.gz \
+	    ""
+	copyright "(c) Copyright Rick Richardson 2009.  All Rights Reserved"
+	;;
+    1500)
+	gettgz \
+	    http://foo2hp.rkkda.com/icm hpclj2500.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2002"
+	gettgz \
+	    http://foo2hp.rkkda.com/icm hpclj2600n.tar.gz \
+	    ""
+	copyright "(c) Copyright Hewlett-Packard 2003"
+	copyright "(c) Copyright Rick Richardson 2006.  All Rights Reserved"
+	;;
+    1025)
+	gettgz \
+	    http://foo2zjs.rkkda.com/icm hp-cp1025.tar.gz \
+	    ""
+	copyright "(c) Copyright Rick Richardson 2010.  All Rights Reserved"
+	;;
+    1215|1600|2600*)
+	gettgz \
+	    http://foo2hp.rkkda.com/icm hpclj2600n.tar.gz \
+	    ""
+	gettgz \
+	    http://foo2zjs.rkkda.com/icm km2430.tar.gz \
+	    "km2430_2.icm"
+	copyright "(c) Copyright Hewlett-Packard 2003"
+	copyright "(c) Copyright Rick Richardson 2006.  All Rights Reserved"
+	gettgz \
+	    http://foo2hp.rkkda.com/icm hp1215.tar.gz \
+	    ""
+	copyright "(c) Copyright Rick Richardson 2008.  All Rights Reserved"
+	;;
+    300|310|315|325|360|365|2160|3160|3175|3185|6110)
+	gettgz \
+	    http://foo2qpdl.rkkda.com/icm samclp300.tar.gz \
+	    ""
+	copyright "(c) Copyright Rick Richardson 2007.  All Rights Reserved"
+	gettgz \
+	    http://foo2qpdl.rkkda.com/icm samclp315.tar.gz \
+	    ""
+	copyright "(c) Copyright Rick Richardson 2008.  All Rights Reserved"
+	;;
+    600|610)
+	;;
+
+    500)
+	gettgz \
+	    http://foo2slx.rkkda.com/icm lexc500.tar.gz \
+	    ""
+	copyright "(c) Copyright Lexmark 2006"
+	;;
+
+    oki)
+	echo "Please wait, ~20MB is being downloaded from a slow site..."
+	getexe \
+	    http://www.okiprintingsolutions.at/binaryData/16516/ \
+	    ICCProfiles.zip \
+	    "*OK3200*ICM" "*OK5600*ICM" "*rom732*7.zip"
+	unzip -oj *rom732*7.zip "*C3400*ICM"
+	rm -f *rom732*7.zip
+	for i in OK*ICM C3400*ICM; do
+	    base=`basename $i .ICM`
+	    mv "$base.ICM" "$base.icm"
+	done
+	copyright "(c) Copyright Okidata 2005, 2006"
+	;;
+    301)
+	gettgz \
+	    http://foo2hiperc.rkkda.com/icm okic301.tar.gz \
+	    ""
+	copyright "(c) Copyright Okidata 2012"
+	;;
+    c310)
+	gettgz \
+	    http://foo2hiperc.rkkda.com/icm okic310.tar.gz \
+	    ""
+	copyright "(c) Copyright Okidata 2010"
+	;;
+    c511)
+	gettgz \
+	    http://foo2hiperc.rkkda.com/icm okic511.tar.gz \
+	    ""
+	copyright "(c) Copyright Okidata 2012"
+	;;
+    c810)
+	gettgz \
+	    http://foo2hiperc.rkkda.com/icm okic810.tar.gz \
+	    ""
+	copyright "(c) Copyright Okidata 2012"
+	;;
+    3100|3200|5100|5150|5200|5250)
+	gettgz \
+	    http://foo2hiperc.rkkda.com/icm okic3200.tar.gz \
+	    ""
+	copyright "(c) Copyright Okidata 2005"
+	;;
+    3300|3400|3530)
+	gettgz \
+	    http://foo2hiperc.rkkda.com/icm okic3400.tar.gz \
+	    ""
+	copyright "(c) Copyright Okidata 2006"
+	;;
+    5500|5600|5800|160)
+	gettgz \
+	    http://foo2hiperc.rkkda.com/icm okic5600.tar.gz \
+	    ""
+	copyright "(c) Copyright Okidata 2006"
+	;;
+
+    xPPD)
+	# Snarf PPD files from linuxprinting
+	[ -d PPD ] || mkdir PPD
+	for i in foomatic-db/printer/*.xml
+	do
+	    case "$i" in
+	    */Gen*)	continue;;
+	    esac
+	    printer=`basename $i .xml`
+	    echo $printer
+	    case "$printer" in
+	    *1500*|*oak*)	driver=foo2oak;;
+	    *)			driver=foo2zjs;;
+	    esac
+	    URL="http://www.linuxprinting.org/ppd-o-matic.cgi"
+	    URL="$URL?driver=$driver&printer=$printer"
+	    URL="$URL&.submit=Generate+PPD+file"
+	    URL="$URL&show=1&.cgifields=shortgui&.cgifields=show"
+	    wget $WGETOPTS -O PPD/$printer.ppd "$URL" ||
+		error "Couldn't dowload $URL"
+	done
+	;;
+    ppd)
+	# Generate PPD files using local tools
+	[ -d PPD ] || mkdir PPD
+	for i in foomatic-db/printer/*.xml
+	do
+	    printer=`basename $i .xml`
+	    echo $printer
+	    case "$printer" in
+	    *M1005*|*M1120*)	driver=foo2xqx;;
+	    *P1[05]0[56]*)	driver=foo2xqx;;
+	    *P2014*)		driver=foo2xqx;;
+	    *M1212*)		driver=foo2xqx;;
+	    *1500*|*OAKT*)	driver=foo2oak;;
+	    *1600*|*2600*)	driver=foo2hp;;
+	    *1215*)		driver=foo2hp;;
+	    *2530*|*24[89]0*)	driver=foo2lava;;
+	    *6115*)		driver=foo2lava;;
+	    *C110*)		driver=foo2lava;;
+	    *C500*)		driver=foo2slx;;
+	    *C3[234]00*)	driver=foo2hiperc;;
+	    *C5[12568]00*)	driver=foo2hiperc;;
+	    *CLP*|*CLX*|*6110*)	driver=foo2qpdl;;
+	    *)			driver=foo2zjs;;
+	    esac
+	    ENGINE=../foomatic/foomatic-db-engine
+	    PERL5LIB=$ENGINE/lib $ENGINE/foomatic-ppdfile \
+		-d $driver -p $printer \
+		> PPD/$printer.ppd
+		# | sed -e 's/\(^\*NickName.*\)"/\1 (foo2zjs recommended)"/'
+	done
+	;;
+    update)
+	url=${URLZJS}
+	file=foo2zjs.tar.gz
+	wget $WGETOPTS -O $file $url/$file ||
+		error "Couldn't download $url/$exefile"
+	mv getweb getweb.old
+	HERE=`pwd`
+	cd .. 
+	tar zxf $HERE/$file
+	cd $HERE
+	echo "The tarball is extracted and the current directory is up to date."
+	echo -e "Remove the tarball (y/n)? \c"
+	read ans
+	if [ "$ans" = y ]; then
+	    rm -f $file
+	fi
+	;;
+    "")
+	usage
+	;;
+    *)
+	error "Don't know how to get extra stuff for printer $1"
+	;;
+    esac
+}
+
+if [ $# = 0 ]; then
+    echo "$VERSION"
+    usage
+fi
+
+for i in $*
+do
+    case "$1" in
+    all)
+	getone 1000
+	getone 1005
+	getone 1018
+	getone 1020
+
+	getone p1005
+	getone p1006
+	getone p1505
+
+	getone 2200
+	getone 2300
+	# getone 2430 already done
+	# getone cpwl # file doesn't exist 1/28/08
+
+	getone 1500
+	getone 2600n
+	# getone 1215 # already done
+	getone 1025
+
+	getone 2530
+
+	getone 300
+	# getone 6110 already done
+	getone 600
+
+	getone 500
+
+	getone 301
+	getone c310
+	getone c511
+	getone c810
+	getone 3200
+	getone 3400
+	getone 5600
+	;;
+    *)	
+	getone $i
+	;;
+    esac
+done

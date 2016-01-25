@@ -1,0 +1,24 @@
+<driver id="driver/foo2hp">
+    <name>foo2hp</name>
+    <url>http://foo2hp.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2hp2600-wrapper %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the HP Color LaserJet 2600n printer.
+	
+	The driver supports 1-bit or 2-bit per pixel monochrome and
+	color output, but none of these have been tuned for grayscale
+	or color correction.
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/HP-Color_LaserJet_2600n</id></printer>
+	<printer><id>printer/HP-Color_LaserJet_1600</id></printer>
+	<printer><id>printer/HP-Color_LaserJet_CP1215</id></printer>
+	<printer><id>printer/Generic-ZJS</id></printer>
+	<printer><id>printer/Generic-GDI_Printer</id></printer>
+    </printers>
+</driver>

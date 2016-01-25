@@ -1,0 +1,149 @@
+<option type="enum" id="opt/foo2lava-ICM">
+    <comments>
+	<en>
+	This option controls which .ICM file to use for color correction.
+	ICM files are stored in directory /usr/share/foo2lava/icm/.
+	</en>
+    </comments>
+    <arg_longname> <en>ICM Color Profile</en> </arg_longname>
+    <arg_shortname> <en>ICM</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>Adjustment</arg_group>
+	<arg_order>300</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2lava-ICM-default-z0</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>KONICA MINOLTA</make>
+	    <model>magicolor 1600W</model>
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2lava-ICM-default-z2</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>KONICA MINOLTA</make>
+	    <model>magicolor 1680MF</model>
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2lava-ICM-default-z2</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>KONICA MINOLTA</make>
+	    <model>magicolor 1690MF</model>
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2lava-ICM-default-z2</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>KONICA MINOLTA</make>
+	    <model>magicolor 4690MF</model>
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2lava-ICM-default-z2</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Oki</make>
+	    <model>C110</model>
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2lava-ICM-default-z2-oki-c110</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Xerox</make>
+	    <model>Phaser 6121MFP</model>
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2lava-ICM-default-z2-xerox-6121</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2lava-ICM-none">
+	    <ev_longname> <en>No ICM color correction</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>none</en> </ev_shortname>
+	    <ev_driverval>-Gnone.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-default-z0">
+	    <ev_longname> <en>km2530 (default)</en> </ev_longname>
+	    <ev_shortname> <en>km2530-default</en> </ev_shortname>
+	    <ev_driverval>-Gkm2530-jconner-d50.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-default-z2">
+	    <ev_longname> <en>km-16* (default)</en> </ev_longname>
+	    <ev_shortname> <en>km1600-default</en> </ev_shortname>
+	    <ev_driverval>-Gkm-1600-rgb-392-bpp1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-default-z2-oki-c110">
+	    <ev_longname> <en>Oki C110 (default)</en> </ev_longname>
+	    <ev_shortname> <en>oki-c110-default</en> </ev_shortname>
+	    <ev_driverval>-Gkm-1600-rgb-392-bpp1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-default-z2-xerox-6121">
+	    <ev_longname> <en>Xerox Phaser 6121 (default)</en> </ev_longname>
+	    <ev_shortname> <en>xerox-6121-default</en> </ev_shortname>
+	    <ev_driverval>-Gkm-1600-rgb-392-bpp1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-0">
+	    <ev_longname> <en>km2530_0.icm - Resolution 600</en> </ev_longname>
+	    <ev_shortname> <en>km2530_0</en> </ev_shortname>
+	    <ev_driverval>-Gkm2530_0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-1">
+	    <ev_longname> <en>km2530_1.icm - Resolution 1200</en> </ev_longname>
+	    <ev_shortname> <en>km2530_1</en> </ev_shortname>
+	    <ev_driverval>-Gkm2530_1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-2">
+	    <ev_longname> <en>km2530_2.icm - Resolution 2400</en> </ev_longname>
+	    <ev_shortname> <en>km2530_2</en> </ev_shortname>
+	    <ev_driverval>-Gkm2530_2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-conner">
+	    <ev_longname> <en>km2530-jconner-d50.icm</en> </ev_longname>
+	    <ev_shortname> <en>km2530-jc</en> </ev_shortname>
+	    <ev_driverval>-Gkm2530-jconner-d50.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2lava-ICM-km-1600">
+	    <ev_longname> <en>km-1600-rgb-392-bpp1.icm</en> </ev_longname>
+	    <ev_shortname> <en>km1600</en> </ev_shortname>
+	    <ev_driverval>-Gkm-1600-rgb-392-bpp1.icm</ev_driverval>
+	</enum_val>
+
+        <enum_val id="ev/foo2lava-ICM-testing">
+            <ev_longname> <en>File testing.icm</en> </ev_longname>
+            <ev_shortname> <en>testing</en> </ev_shortname>
+            <ev_driverval>-Gtesting.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2lava-ICM-user1">
+            <ev_longname> <en>File user1.icm</en> </ev_longname>
+            <ev_shortname> <en>user1</en> </ev_shortname>
+            <ev_driverval>-Guser1.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2lava-ICM-user2">
+            <ev_longname> <en>File user2.icm</en> </ev_longname>
+            <ev_shortname> <en>user2</en> </ev_shortname>
+            <ev_driverval>-Guser2.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2lava-ICM-user3">
+            <ev_longname> <en>File user3.icm</en> </ev_longname>
+            <ev_shortname> <en>user3</en> </ev_shortname>
+            <ev_driverval>-Guser3.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2lava-ICM-user4">
+            <ev_longname> <en>File user4.icm</en> </ev_longname>
+            <ev_shortname> <en>user4</en> </ev_shortname>
+            <ev_driverval>-Guser4.icm</ev_driverval>
+        </enum_val>
+    </enum_vals>
+</option>

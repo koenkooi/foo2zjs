@@ -1,0 +1,131 @@
+#!/bin/sh
+
+PROGNAME="$0"
+
+usage() {
+	cat <<EOF
+NAME
+    `basename $PROGNAME` - CPP replacement
+
+SYNOPSIS
+    `basename $PROGNAME` [options] file
+
+DESCRIPTION
+    CPP replacement.
+
+    Handles:
+	#include "file"
+	#ifdef symbol
+	#ifndef symbol
+	#endif
+
+OPTIONS
+    -v DEFn=symbol	Symbol is defined, n = 1, ... 9.
+			i.e. -v DEF1=groff is equivalent to:
+			#define groff 1
+    -D lvl		Debug level
+EOF
+
+	exit 1
+}
+
+#
+#       Report an error and exit
+#
+error() {
+	echo "`basename $PROGNAME`: $1" >&2
+	exit 1
+}
+
+debug() {
+	if [ $DEBUG -ge $1 ]; then
+	    echo "`basename $PROGNAME`: $2" >&2
+	fi
+}
+
+#
+#       Process the options
+#
+DEBUG=0
+VARS=""
+while getopts "v:D:h?" opt
+do
+	case $opt in
+	v)	VARS="$VARS -v $OPTARG";;
+	D)	DEBUG="$OPTARG";;
+	h|\?)	usage;;
+	esac
+done
+shift `expr $OPTIND - 1`
+
+#
+#	Main Program
+#
+if [ -x /opt/sfw/bin/gawk ]; then
+    AWK=/opt/sfw/bin/gawk
+else
+    AWK=awk
+fi
+
+$AWK $VARS '
+function do1(file,	i) {
+    if (nfiles++ == 0)
+    {
+	print comment " t"
+	print comment
+	print comment "	DO NOT EDIT! This file is generated from " file
+	print comment
+    }
+    while ((getline < file) > 0)
+    {
+	split($0, a)
+	if (a[1] == "#include")
+	{
+	    gsub(/"/, "", a[2])
+	    print comment
+	    do1(a[2])
+	}
+	else if (a[1] == "#define")
+	{
+	    def[a[2]] = 1
+	    print comment
+	}
+	else if (a[1] == "#ifdef")
+	{
+	    if (!def[a[2]])
+		skip = 1
+	    print comment 
+	}
+	else if (a[1] == "#ifndef")
+	{
+	    if (def[a[2]])
+		skip = 1
+	    print comment 
+	}
+	else if (a[1] == "#endif")
+	{
+	    skip = 0
+	    print comment 
+	}
+	else if (skip)
+	    print comment 
+	else
+	    print $0
+    }
+}
+BEGIN {
+    comment = "'"'"'\\\""
+    if (DEF1) def[DEF1] = 1;
+    if (DEF2) def[DEF2] = 1;
+    if (DEF3) def[DEF3] = 1;
+    if (DEF4) def[DEF4] = 1;
+    if (DEF5) def[DEF5] = 1;
+    if (DEF6) def[DEF6] = 1;
+    if (DEF7) def[DEF7] = 1;
+    if (DEF8) def[DEF8] = 1;
+    if (DEF9) def[DEF9] = 1;
+    #for (i in def)
+	#print i, def[i]
+    do1(ARGV[1])
+    exit
+}' $*

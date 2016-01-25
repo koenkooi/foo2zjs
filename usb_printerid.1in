@@ -1,0 +1,50 @@
+.TH usb_printerid 1 "${MODpage}" "usb_printerid ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+usb_printerid \- prints the ID of the printer on a USB port
+.SH SYNOPSIS
+.B usb_printerid
+.RI [ options "] /dev/usb/lpNNN"
+.SH DESCRIPTION
+.B usb_printerid
+prints the identification of the printer on a USB port using
+the ioctl control
+\fBLPIOC_GET_DEVICE_ID\fP.
+
+.SH EXAMPLES
+Print the USB info before and after downloading the firmware.
+
+.nf
+.ft CW
+# usb_printerid /dev/usb/lp0
+GET_DEVICE_ID string:
+MFG:Hewlett-Packard;MDL:HP LaserJet 1020;CMD:ACL;CLS:PRINTER;\e
+DES:HP LaserJet 1020;
+
+# cp /usr/share/foo2zjs/firmware/sihp1020.dl /dev/usb/lp0
+
+# usb_printerid /dev/usb/lp0
+GET_DEVICE_ID string:
+MFG:Hewlett-Packard;MDL:HP LaserJet 1020;CMD:ACL;CLS:PRINTER;\e
+DES:HP LaserJet 1020;FWVER:20050309;
+.ft P
+.fi
+
+.SH FILES
+.BR /usr/bin/usb_printerid,
+.BR /usr/share/foo2*/firmware/*
+.SH SEE ALSO
+.BR arm2hpdl (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLZJS}/
+'\"
+'\"
+'\"
+.em pdf_outline

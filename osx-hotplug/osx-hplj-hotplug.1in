@@ -1,0 +1,37 @@
+.TH osx-hplj-hotplug 1 "Sun Jun 20 04:33:46 2010" "osx-hplj-hotplug 0.0"
+#ifndef OLDGROFF
+#include "../macros.man"
+#endif
+.SH NAME
+osx-hplj-hotplug - Daemon for downloading firmware files for Mac OS X
+.SH SYNOPSIS
+.B osx-hplj-hotplug
+.RI [ options ]
+.SH DESCRIPTION
+.B osx-hplj-hotplug
+is a daemon for Mac OS X which watches for
+Hewlett-Packard LaserJet 1000, 1005, 1018,
+1020, P1005, P1006, P1007, P1008, and P1505 being plugged in.
+If so, then the firmware is downloaded to it.
+.P
+NOTE: this is not needed by Linux, which has a proper hotplug mechanism.
+.P
+Here is a \fB/etc/rc.local\fP start:
+
+.nf
+# BEGIN osx-hplj-hotplug from foo2zjs
+    killall osx-hplj-hotplug
+    osx-hplj-hotplug >/tmp/osx-hplj-hotplug 2>&1 &
+# END osx-hplj-hotplug from foo2zjs
+.fi
+.SH COMMAND LINE OPTIONS
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+.SH FILES
+.BR /usr/share/foo2*/firmware/*
+.SH SEE ALSO
+.BR /etc/rc.local,
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br

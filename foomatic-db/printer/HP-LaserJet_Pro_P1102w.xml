@@ -1,0 +1,55 @@
+<printer id="printer/HP-LaserJet_Pro_P1102w">
+  <make>HP</make>
+  <model>LaserJet Pro P1102w</model>
+  <mechanism>
+    <laser/><!--not "color"-->
+    <resolution>
+      <dpi>
+        <x>600</x>
+        <y>600</y>
+      </dpi>
+    </resolution>
+    <margins>
+	<general>
+	    <unit>mm</unit>
+	    <top>4</top>
+	    <bottom>4</bottom>
+	    <left>4</left>
+	    <right>4</right>
+	</general>
+    </margins>
+    <consumables>
+      <comments> <en>
+	Print cartridge (1600 prints) - $68
+      </en></comments>
+      <partno>CE285A</partno>
+    </consumables>
+  </mechanism>
+  <url>http://h10010.www1.hp.com/wwpc/my/en/sm/WF06b/18972-18972-3328059-3328066-3328066-4110394-4110395.html</url>
+  <lang>
+    <proprietary/>
+    <!--no pjl--><!--No "text"?-->
+  </lang>
+  <autodetect>
+	<parallel>
+	    <ieee1284>MFG:Hewlett-Packard;MDL:HP LaserJet Professional P1102w;CMD:ZJS,PJL,ACL,HTTP;CLS:PRINTER;DES:HP LaserJet Professional P1102w;FWVER:20091029;</ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>HP LaserJet Professional P1102w</model>
+	    <commandset>ZJS,PJL,ACL,HTTP</commandset>
+	</parallel>
+  </autodetect>
+  <functionality>B</functionality>
+  <driver>foo2zjs-z2</driver>
+  <!--no "contrib_url"-->
+  <comments>
+    <en>
+
+    This printer is supported by the foo2zjs free software printer driver.
+    &lt;p&gt;
+
+    The printer is faster than the LaserJet 1000 and has a USB and a wireless
+    connection.&lt;p&gt;
+
+    </en>
+  </comments>
+</printer>

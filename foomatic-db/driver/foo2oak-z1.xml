@@ -1,0 +1,20 @@
+<driver id="driver/foo2oak-z1">
+    <name>foo2oak-z1</name>
+    <url>http://foo2oak.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2oak-wrapper -z1 %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the Kyocera KM-1635/2035 copier.
+	
+	It is possible that this driver will also work for other Oak
+	Technologies OAKT-based printers, but the author cannot test this.
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/Kyocera-KM-1635</id></printer>
+	<printer><id>printer/Kyocera-KM-2035</id></printer>
+    </printers>
+</driver>

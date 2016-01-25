@@ -1,0 +1,97 @@
+<option type="enum" id="opt/foo2lava-PageSize">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Page Size</en> </arg_longname>
+    <arg_shortname> <en>PageSize</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>135</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>-p%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	<driver>foo2lava</driver>
+	<arg_defval>ev/foo2lava-PageSize-2</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2lava-PageSize-1">
+	    <ev_longname> <en>Executive</en> </ev_longname>
+	    <ev_shortname> <en>Executive</en> </ev_shortname>
+	    <ev_driverval>1</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-2">
+	    <ev_longname> <en>Letter</en> </ev_longname>
+	    <ev_shortname> <en>Letter</en> </ev_shortname>
+	    <ev_driverval>2</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-3">
+	    <ev_longname> <en>Legal</en> </ev_longname>
+	    <ev_shortname> <en>Legal</en> </ev_shortname>
+	    <ev_driverval>3</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-25">
+	    <ev_longname> <en>A5</en> </ev_longname>
+	    <ev_shortname> <en>A5</en> </ev_shortname>
+	    <ev_driverval>25</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-26">
+	    <ev_longname> <en>A4</en> </ev_longname>
+	    <ev_shortname> <en>A4</en> </ev_shortname>
+	    <ev_driverval>26</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-45">
+	    <ev_longname> <en>B5 (JIS)</en> </ev_longname>
+	    <ev_shortname> <en>B5jis</en> </ev_shortname>
+	    <ev_driverval>45</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-65">
+	    <ev_longname> <en>B5 (ISO)</en> </ev_longname>
+	    <ev_shortname> <en>B5iso</en> </ev_shortname>
+	    <ev_driverval>65</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-80">
+	    <ev_longname> <en>Env Monarch</en> </ev_longname>
+	    <ev_shortname> <en>EnvMonarch</en> </ev_shortname>
+	    <ev_driverval>80</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-81">
+	    <ev_longname> <en>Env #10</en> </ev_longname>
+	    <ev_shortname> <en>Env10</en> </ev_shortname>
+	    <ev_driverval>81</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-90">
+	    <ev_longname> <en>Env DL</en> </ev_longname>
+	    <ev_shortname> <en>EnvDL</en> </ev_shortname>
+	    <ev_driverval>90</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-91">
+	    <ev_longname> <en>Env C5</en> </ev_longname>
+	    <ev_shortname> <en>EnvC5</en> </ev_shortname>
+	    <ev_driverval>91</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-92">
+	    <ev_longname> <en>Env C6</en> </ev_longname>
+	    <ev_shortname> <en>EnvC6</en> </ev_shortname>
+	    <ev_driverval>92</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-835">
+	    <ev_longname> <en>Photo Size 4x6 in</en> </ev_longname>
+	    <ev_shortname> <en>Photo4x6</en> </ev_shortname>
+	    <ev_driverval>835</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-837">
+	    <ev_longname> <en>Photo Size 10x15 cm</en> </ev_longname>
+	    <ev_shortname> <en>Photo10x15</en> </ev_shortname>
+	    <ev_driverval>837</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2lava-PageSize-Custom">
+	    <ev_longname> <en>Custom</en> </ev_longname>
+	    <ev_shortname> <en>Custom</en> </ev_shortname>
+	    <ev_driverval>Custom.%0x%1</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

@@ -1,0 +1,109 @@
+.TH slxdecode 1 "${MODpage}" "slxdecode ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+slxdecode \- Decode a SLX stream into human readable form.
+.SH SYNOPSIS
+.B slxdecode
+.RI [ options "] <" slx-file
+.SH DESCRIPTION
+.B slxdecode
+decodes a SLX stream into human readable form.
+.P
+A SLX stream is the printer language used by some Lexmark
+printers, such as the C500.
+.P
+More information on the Software Imaging K.K. SLX stream can be found at:
+.P
+.RS
+http://softwareimaging.com/products-services/sorcerer/index.asp
+.RE
+
+.SH COMMAND LINE OPTIONS
+These are the options that can appear on the command line.
+.TP
+.BI \-d\0 basename
+Basename of .pbm file for saving decompressed planes.
+.TP
+.BI \-r\0 basename
+Basename of .jbg file for saving raw planes
+.TP
+.BI \-h
+Print hex file offsets.
+.TP
+.BI \-o
+Print file offsets.
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Decode an SLX file created by foo2slx.
+
+.nf
+.ft CW
+$ slxdecode < testpage.zm
+SLX_MAGIC, 0x584c53a5 (SLX)
+SLT_START_DOC, 12 items
+        SLI_PAGECOUNT, 4294967295 (0xffffffff)
+        SLI_DMDUPLEX, 0 (0x0)
+        SLI_DMCOLLATE, 0 (0x0)
+        SLI_0x3, 0 (0x0)
+        SLI_DISPLAY, 0 (0x0)
+        SLI_0x5, 0 (0x0)
+        SLI_0x6, 0 (0x0)
+        SLI_0x7, 1 (0x1)
+        SLI_0x8, 0 (0x0)
+        SLI_0x9, 0 (0x0)
+        SLI_COUNT, 1 (0x1)
+        SLI_DMCOLLATE, 0 (0x0)
+SLT_START_PAGE, 16 items [Page 1]
+        SLI_DMPAPER, 6 (0x6)
+        SLI_CUSTOM_X, 0 (0x0)
+        SLI_CUSTOM_Y, 0 (0x0)
+        SLI_DMCOPIES, 1 (0x1)
+        SLI_DMDEFAULTSOURCE, 0 (0x0)
+        SLI_DMMEDIATYPE, 0 (0x0)
+        SLI_NBIE, 0 (0x0)
+        SLI_RESOLUTION_X, 600 (0x258)
+        SLI_RESOLUTION_Y, 600 (0x258)
+        SLI_OFFSET_X, 102 (0x66)
+        SLI_OFFSET_Y, 102 (0x66)
+        SLI_RASTER_X, 4896 (0x1320)
+        SLI_RASTER_Y, 6392 (0x18f8)
+        SLI_0x10d, 4896 (0x1320)
+        SLI_0x10e, 6392 (0x18f8)
+        SLI_0x10f, 1 (0x1)
+SLT_JBIG_BIH, 0 items
+        Data: 20 bytes
+                DL = 0, D = 0, P = 1, - = 0, XY = 4896 x 6392
+                L0 = 128, MX = 0, MY = 0
+                Order   = 0
+                Options = 8  TPBON
+                50 stripes, 0 layers, 1 planes
+SLT_JBIG_BID, 0 items
+        Data: 116 bytes
+SLT_END_JBIG, 0 items
+SLT_END_PAGE, 0 items
+SLT_END_DOC, 0 items
+.ft P
+.fi
+
+.SH FILES
+.BR /usr/bin/slxdecode
+.SH SEE ALSO
+.BR foo2slx-wrapper (1),
+.BR foo2slx (1),
+.BR jbg2pbm (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLSLX}/
+'\"
+'\"
+'\"
+.em pdf_outline

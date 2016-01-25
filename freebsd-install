@@ -1,0 +1,103 @@
+#!/bin/sh
+
+PROGNAME="$0"
+
+usage() {
+	cat <<EOF
+NAME
+    `basename $PROGNAME` - freebsd-install
+
+SYNOPSIS
+    `basename $PROGNAME` [options]
+
+DESCRIPTION
+    freebsd-install
+
+OPTIONS
+    -D lvl	Debug level
+EOF
+
+	exit 1
+}
+
+#
+#       Report an error and exit
+#
+error() {
+	echo "`basename $PROGNAME`: $1" >&2
+	exit 1
+}
+
+debug() {
+	if [ $DEBUG -ge $1 ]; then
+	    echo "`basename $PROGNAME`: $2" >&2
+	fi
+}
+
+#
+#       Process the options
+#
+DEBUG=0
+while getopts "D:h?" opt
+do
+	case $opt in
+	D)	DEBUG="$OPTARG";;
+	h|\?)	usage;;
+	esac
+done
+shift `expr $OPTIND - 1`
+
+#
+#	Main Program
+#
+RULES=/tmp/devfs.rules
+RC_CONF=/tmp/rc.conf
+RULES=/etc/devfs.rules
+RC_CONF=/etc/rc.conf
+
+RULESET_NAME=printers_foo2zjs
+RULESET_NUM=42
+RULESET="[$RULESET_NAME=$RULESET_NUM]"
+
+#
+#	Create devfs.rules
+#
+touch $RULES
+if grep -s -q "Begin $RULESET_NAME" $RULES; then
+	ex - $RULES <<-EOF
+	/^# Begin $RULESET_NAME.*/,/^# End $RULESET_NAME.*/d
+	w
+	q
+	EOF
+fi
+ex - $RULES <<-EOF
+a
+# Begin $RULESET_NAME (added by foo2zjs/freebsd-install)
+$RULESET
+add path 'ulpt*' mode 0666 group cups
+add path 'unlpt*' mode 0666 group cups
+add path 'ugen*' mode 0666 group cups
+add path 'usb/*' mode 0666 group cups
+# End $RULESET_NAME (added by foo2zjs/freebsd-install)
+.
+w
+q
+EOF
+
+#
+#	Add:	devfs_system_ruleset="printers_foo2zjs"
+#
+if grep -q -s $RULESET_NAME $RC_CONF; then
+	ex - $RC_CONF <<-EOF
+	/devfs_system_ruleset="$RULESET_NAME"/d
+	w
+	q
+	EOF
+fi
+ex - $RC_CONF <<-EOF
+a
+devfs_system_ruleset="$RULESET_NAME"
+.
+w
+q
+EOF

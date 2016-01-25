@@ -1,0 +1,42 @@
+#!/bin/sh
+
+#
+# Test a new foomatic printer entry.
+#	
+
+# This stuff should be passable on the command line to make this script generic
+# TODO
+MAINDB=/usr/share/foomatic/db/source
+NEWDB=./foomatic-db
+
+PRINTER="Lexmark-Z43"
+DRIVER=drv_z42
+PRINTER="Minolta-magicolor_2300_DL"
+DRIVER=foo2zjs
+OPTIONS="-o Resolution=600x600"
+OPTIONS=
+OPTIONS="-o ColorMode=Color -o Nup=2up"
+
+# Copy the new DB XML files into the main database
+for dir in driver printer opt; do
+    root cp $NEWDB/$dir/*.xml $MAINDB/$dir
+done
+
+# Issue a command to make foomatic recognize the new DB entries
+root rm -rf /var/cache/foomatic/*/*
+(cd /var/cache/foomatic/compiled; root foomatic-combo-xml -O >overview.xml)
+
+# Create the perl script that drives the printer with the above options
+foomatic-datafile -t direct -p $PRINTER -d $DRIVER > xxx.foo
+
+# Fix the directomatic script so it produces useful information
+sed < /usr/bin/directomatic > xxxomatic \
+    -e 's/debug=0/debug=1/' \
+    -e 's#/tmp/prnlog#xxx.prnlog#'
+chmod +x xxxomatic
+
+# Run the script
+./xxxomatic -P xxx.foo $OPTIONS testpage.ps > xxx.prn
+
+# Ferret out the useful information
+sed -n 's/.*running: \(.*\)/\1/p' xxx.prnlog

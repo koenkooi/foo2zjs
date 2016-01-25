@@ -1,0 +1,163 @@
+'\" t
+.TH foo2slx 1 "${MODpage}" "foo2slx ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2slx \- Convert Ghostscript pbmraw or bitcmyk format into a
+SLX printer stream
+.SH SYNOPSIS
+.B foo2slx
+.RI [ options "] <" pbmraw-file " >" slx-file
+.sp 1
+.B foo2slx
+.RI [ options "] <" bitcmyk-file " >" slx-file
+.sp 1
+.B foo2slx
+.RI [ options "] <" pksmraw-file " >" slx-file
+.SH DESCRIPTION
+.B foo2slx
+converts Ghostscript pbmraw, bitcmyk, or pksmraw output formats to monochrome
+or color SLX streams,
+for driving the Lexmark C500 network color laser printer
+and other SLZ-based printers.  The SLX stream is a variant of ZjStream
+produced by Software Imaging K.K.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-c
+Force color mode if autodetect doesn't work.
+.TP
+.BI \-g\0 xpix x ypix
+Set page dimensions in pixels [10200x6600].
+.TP
+.BI \-m\0 media
+Media code to send to printer [0].
+.TS
+l l l
+l n n.
+_
+Media	SLX
+_
+plain	0
+transparency	1
+labels	2
+thick1	3
+envelope1	4
+thin	5
+thick2	6
+envelope2	7
+middle	8
+special	9
+.TE
+.TP
+.BI \-p\0 paper
+Paper code to send to printer [6].
+.TS
+box;
+| n l | n l.
+6	letter	2	A4
+9	legal	4	B5
+8	executive	5	B5iso
+10	env #10	11	env DL
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [1200x600].
+.TP
+.BI \-s\0 source
+Source (InputSlot) code to send to printer [0].
+.TS
+| n l | n l.
+0	auto	1	cassette1
+.TE
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2slx\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [0x0].
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [0x0].
+.TP
+.BI \-L\0 mask
+Send logical clipping amounts implied by -u/-l in the ZjStream [3].
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-A
+AllIsBlack: convert C=1,M=1,Y=1 to just K=1.  Works with bitcmyk input only.
+.TP
+.BI \-B
+BlackClears: K=1 forces C,M,Y to 0.  Works with bitcmyk input only.
+.TP
+.SS Debugging Options
+These options are used for debugging \fBfoo2slx\fP.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a black and white SLX stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -r1200x600 -sDEVICE=pbmraw \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2slx -r1200x600 -g10200x6600 -p1 >testpage.zm
+.fi
+.RE
+.P
+Create a color SLX stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -g10200x6600 -r1200x600 -sDEVICE=bitcmyk \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2slx -r1200x600 -g10200x6600 -p1 >testpage.zc
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2slx
+.SH SEE ALSO
+.BR foo2slx-wrapper (1),
+.BR slxdecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLSLX}/
+'\"
+'\"
+'\"
+.em pdf_outline

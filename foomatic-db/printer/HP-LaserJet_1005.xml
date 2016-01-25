@@ -1,0 +1,58 @@
+<printer id="printer/HP-LaserJet_1005">
+  <make>HP</make>
+  <model>LaserJet 1005</model>
+  <mechanism>
+    <laser/><!--not "color"-->
+    <resolution>
+      <dpi>
+        <x>600</x>
+        <y>600</y>
+      </dpi>
+    </resolution>
+    <margins>
+	<general>
+	    <unit>mm</unit>
+	    <top>4</top>
+	    <bottom>4</bottom>
+	    <left>4</left>
+	    <right>4</right>
+	</general>
+    </margins>
+    <consumables>
+      <comments>
+        <en>Cartridge containing toner and imaging drum</en>
+      </comments>
+    <!--one or more "partno" elements.--></consumables>
+  </mechanism>
+  <url>http://h20015.www2.hp.com/en/document.jhtml?lc=en&amp;docName=bpl12705</url>
+  <lang>
+    <proprietary/>
+  <!--no pjl--><!--No "text"?--></lang>
+  <autodetect>
+	<parallel>
+	    <ieee1284>MFG:Hewlett-Packard;MDL:hp LaserJet 1005 series;CMD:ZJS;CLS:PRINTER;DES:hp LaserJet 1005 series;</ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>hp LaserJet 1005 series</model>
+	    <commandset>ZJS</commandset>
+	</parallel>
+  </autodetect>
+  <functionality>B</functionality>
+  <driver>foo2zjs</driver>
+  <!--no "contrib_url"-->
+  <comments>
+    <en>
+
+    This printer is supported by the foo2zjs free software printer driver.
+    &lt;p&gt;
+
+    The printer is faster than the LaserJet 1000 and has both USB and
+    parallel connections. It has only 1 MB of RAM and 32 kB of ROM.&lt;p&gt;
+
+    The firmware of the printer must be uploaded after turning it
+    on.  You can use a hotplug/udev script which comes with foo2zjs,
+    or do it manually:
+    &quot;&lt;tt&gt;cat /usr/share/foo2zjs/firmware/sihp1005.dl >
+    /dev/usb/lp0&lt;/tt&gt;&quot;.
+    </en>
+  </comments>
+</printer>

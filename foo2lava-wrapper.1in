@@ -1,0 +1,235 @@
+'\" t
+.TH foo2lava-wrapper 1 "${MODpage}" "foo2lava-wrapper ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2lava-wrapper \- Convert Postscript into a LAVAFLOW or OPL printer stream
+.SH SYNOPSIS
+.B foo2lava-wrapper
+.RI [ options "] [" ps-file ]
+.SH DESCRIPTION
+.B foo2lava-wrapper
+is a Foomatic compatible printer wrapper for the \fBfoo2lava\fP printer driver.
+This script reads a Postscript \fIps-file\fP or standard input
+and converts it to Zenographics LAVAFLOW printer format
+for driving
+the Konica Minolta magicolor 1600W color laser printer,
+the Konica Minolta magicolor 1680MF/1690MF AIO printer,
+the Konica Minolta magicolor 2480/2490 MF AIO printer,
+the Konica Minolta magicolor 2530 DL network color laser printer,
+and other Zenographics-based LAVAFLOW printers.
+.P
+This script can be used in a standalone fashion, but is intended to
+be called from a printer spooler system which uses the Foomatic
+printer database.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-c
+Print in color (else monochrome).
+.TP
+.BI \-C\0 colormode
+Color correction mode [0].
+.TS
+n l .
+1	Photos (using m2300w CRDs)
+2	Photos and text (using m2300w CRDs)
+3	Graphics and text (using m2300w CRDs)
+10	ICM color profile (using -G *.icm file)
+.TE
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-m\0 media
+Media code to send to printer [0].
+.TS
+l l l
+l n n.
+_
+Media	2530DL
+_
+plain	0
+transparency	4
+thick stock	20
+envelope	22
+letterhead	23
+postcard	25
+labels	26
+recycled	27
+.TE
+.TP
+.BI \-p\0 paper
+Paper size code to send to printer [2].
+.TS
+box;
+| n l | n l.
+1	executive	25	A5
+2	letter	26	A4
+3	legal	45	B5jis
+80	env Monarch	65	B5iso
+81	env #10	90	env DL
+91	env C5	92	env B5
+835	4x6" photo	837	10x15cm photo
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [1200x600].
+.TP
+.BI \-s\0 source
+Source (Input Slot) code to send to printer [255].
+.TS
+| n l | n l.
+1	Tray 1	255	auto
+4	Tray 2	
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI "\-2 \-3 \-4 \-5 \-6 \-8 \-9 \-10 \-12 \-14 \-15 \-16 \-18"
+Print in N-up.  Requires the \fBpsutils\fP package.
+.TP
+.BI \-o\0 orient
+Orientation used for N-up.
+.TS
+l l l.
+Portrait	-op	(normal)
+Landscape	-ol	(rotated 90 degrees anticlockwise)
+Seascape	-os	(rotated 90 degrees clockwise)
+.TE
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2lava\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [varies with paper size].
+The defaults should work on the 2200DL and 2300DL, and have not
+been tested on any other printers.
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [varies with paper size].
+The defaults should work on the 2200DL and 2300DL, and have not
+been tested on any other printers.
+.TP
+.BI \-L\0 mask
+Send the logical clipping values from -u/-l in the LAVAFLOW stream.
+\fBfoo2lava-wrapper\fP always runs Ghostscript with the ideal page dimensions,
+so that the scale of the image is correct,
+regardless whether or not the printer has unprintable regions.
+This option is used to move the position of the clipped image
+back to where it belongs on the page.  The default is to send
+the amount which was clipped by -u and -l, and should be
+good in most cases.
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-z\0 model
+Model.  The  default is [0].
+.TS
+l l l.
+model	protocol	Description
+0	LAVAFLOW	magicolor 2490 MF
+0	LAVAFLOW	magicolor 2530 DL
+1	OPL	magicolor 2480 MF
+2	LAVAFLOW	magicolor 1600W
+2	LAVAFLOW	magicolor 1680MF
+2	LAVAFLOW	magicolor 1690MF
+.TE
+.SS Color Tweaking Options
+These are the options used to control the quality of color output.
+Color correction is currently a WORK IN PROGRESS.
+.TP
+.BI \-g\0 gsopts
+Additional options to pass to Ghostscript, such as -g\(lq-dDITHERPPI=nnn\(rq,
+etc.  This option may appear more than once.
+.TP
+.BI \-G\0 profile.icm
+Convert \fIprofile.icm\fP to a Postscript color rendering
+dictionary (CRD) using \fBfoo2zjs-icc2ps\fP and
+adjust the printer colors by using the Postscript \fBsetcolorrendering\fP
+operator.  (WORK IN PROGRESS).
+.TP
+.BI \-G\0 gamma-file.ps
+Prepend \fIgamma-file.ps\fP to the Postscript input to perform
+color correction using the \fBsetcolortransfer\fP Postscript operator.
+For example, the file might contain:
+.br
+{0.333 exp} {0.333 exp} {0.333 exp} {0.333 exp} setcolortransfer
+.TP
+.BI \-I\0 intent
+Select profile intent from the ICM file.
+0=Perceptual, 1=Colorimetric, 2=Saturation, 3=Absolute.
+Default is 0 (perceptual).
+.SS Debugging Options
+These options are used for debugging \fBfoo2lava\fP and its wrapper.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a monochrome LAVAFLOW stream from a Postscript document,
+examine it, and then print it using a RAW print queue:
+
+.RS
+.nf
+foo2lava-wrapper testpage.ps > testpage.zm
+lavadecode < testpage.zm
+lpr -P raw testpage.zm
+.fi
+.RE
+.P
+Create a color LAVAFLOW stream from a Postscript document:
+
+.RS
+.nf
+foo2lava-wrapper -c testpage.ps > testpage.zc
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2lava-wrapper
+.SH SEE ALSO
+.BR foo2lava (1),
+.BR lavadecode (1)
+.BR opldecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLZJS}/
+'\"
+'\"
+'\"
+.em pdf_outline

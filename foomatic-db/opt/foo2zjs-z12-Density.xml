@@ -1,0 +1,54 @@
+<!--
+     foo2zjs-z1 and foo2zjs-z2
+-->
+<option type="enum" id="opt/foo2zjs-z12-Density">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Print Density</en> </arg_longname>
+    <arg_shortname> <en>Density</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>150</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>-T%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	<driver>foo2zjs-z1</driver>
+	<arg_defval>ev/foo2zjs-z12-Density-3</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	<driver>foo2zjs-z2</driver>
+	<arg_defval>ev/foo2zjs-z12-Density-3</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2zjs-z12-Density-1">
+	    <ev_longname> <en>Extra Light (1)</en> </ev_longname>
+	    <ev_shortname> <en>Density1</en> </ev_shortname>
+	    <ev_driverval>1</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-z12-Density-2">
+	    <ev_longname> <en>Light (2)</en> </ev_longname>
+	    <ev_shortname> <en>Density2</en> </ev_shortname>
+	    <ev_driverval>2</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-z12-Density-3">
+	    <ev_longname> <en>Medium (3)</en> </ev_longname>
+	    <ev_shortname> <en>Density3</en> </ev_shortname>
+	    <ev_driverval>3</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-z12-Density-4">
+	    <ev_longname> <en>Dark (4)</en> </ev_longname>
+	    <ev_shortname> <en>Density4</en> </ev_shortname>
+	    <ev_driverval>4</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-z12-Density-5">
+	    <ev_longname> <en>Extra Dark (5)</en> </ev_longname>
+	    <ev_shortname> <en>Density5</en> </ev_shortname>
+	    <ev_driverval>5</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

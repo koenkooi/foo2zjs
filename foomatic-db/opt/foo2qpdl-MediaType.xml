@@ -1,0 +1,87 @@
+<option type="enum" id="opt/foo2qpdl-MediaType">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Media Type</en> </arg_longname>
+    <arg_shortname> <en>MediaType</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>150</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>-m%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	<driver>foo2qpdl</driver>
+	<arg_defval>ev/foo2qpdl-MediaType-0</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2qpdl-MediaType-0">
+	    <ev_longname> <en>Plain Paper</en> </ev_longname>
+	    <ev_shortname> <en>plain</en> </ev_shortname>
+	    <ev_driverval>0</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-1">
+	    <ev_longname> <en>Thick Stock</en> </ev_longname>
+	    <ev_shortname> <en>thick</en> </ev_shortname>
+	    <ev_driverval>1</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-2">
+	    <ev_longname> <en>Thin Stock</en> </ev_longname>
+	    <ev_shortname> <en>thin</en> </ev_shortname>
+	    <ev_driverval>2</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-3">
+	    <ev_longname> <en>Bond</en> </ev_longname>
+	    <ev_shortname> <en>bond</en> </ev_shortname>
+	    <ev_driverval>3</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-4">
+	    <ev_longname> <en>Color Paper</en> </ev_longname>
+	    <ev_shortname> <en>color</en> </ev_shortname>
+	    <ev_driverval>4</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-5">
+	    <ev_longname> <en>Card Stock</en> </ev_longname>
+	    <ev_shortname> <en>card</en> </ev_shortname>
+	    <ev_driverval>5</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-6">
+	    <ev_longname> <en>Labels</en> </ev_longname>
+	    <ev_shortname> <en>labels</en> </ev_shortname>
+	    <ev_driverval>6</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-7">
+	    <ev_longname> <en>Envelope</en> </ev_longname>
+	    <ev_shortname> <en>envelope</en> </ev_shortname>
+	    <ev_driverval>7</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-8">
+	    <ev_longname> <en>Preprinted</en> </ev_longname>
+	    <ev_shortname> <en>preprinted</en> </ev_shortname>
+	    <ev_driverval>8</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-9">
+	    <ev_longname> <en>Cotton</en> </ev_longname>
+	    <ev_shortname> <en>cotton</en> </ev_shortname>
+	    <ev_driverval>9</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-10">
+	    <ev_longname> <en>Recycled Paper</en> </ev_longname>
+	    <ev_shortname> <en>recycled</en> </ev_shortname>
+	    <ev_driverval>10</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-11">
+	    <ev_longname> <en>Transparency</en> </ev_longname>
+	    <ev_shortname> <en>transparency</en> </ev_shortname>
+	    <ev_driverval>11</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2qpdl-MediaType-12">
+	    <ev_longname> <en>Archive Paper</en> </ev_longname>
+	    <ev_shortname> <en>archive</en> </ev_shortname>
+	    <ev_driverval>12</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

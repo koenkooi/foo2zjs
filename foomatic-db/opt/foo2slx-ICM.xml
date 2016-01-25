@@ -1,0 +1,65 @@
+<option type="enum" id="opt/foo2slx-ICM">
+    <comments>
+	<en>
+	This option controls which .ICM file to use for color correction.
+	ICM files are stored in directory /usr/share/foo2slx/icm/.
+	</en>
+    </comments>
+    <arg_longname> <en>ICM Color Profile</en> </arg_longname>
+    <arg_shortname> <en>ICM</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>Adjustment</arg_group>
+	<arg_order>300</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2slx</driver>
+	    <arg_defval>ev/foo2slx-ICM-0</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2slx-ICM-none">
+	    <ev_longname> <en>No ICM color correction</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>none</en> </ev_shortname>
+	    <ev_driverval>-Gnone.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2slx-ICM-0">
+	    <ev_longname> <en>File lexRPCA2000.icm (xp)</en> </ev_longname>
+	    <ev_shortname> <en>lexRPCA2000</en> </ev_shortname>
+	    <ev_driverval>-GlexRPCA2000.icm</ev_driverval>
+	</enum_val>
+
+        <enum_val id="ev/foo2slx-ICM-testing">
+            <ev_longname> <en>File testing.icm</en> </ev_longname>
+            <ev_shortname> <en>testing</en> </ev_shortname>
+            <ev_driverval>-Gtesting.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2slx-ICM-user1">
+            <ev_longname> <en>File user1.icm</en> </ev_longname>
+            <ev_shortname> <en>user1</en> </ev_shortname>
+            <ev_driverval>-Guser1.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2slx-ICM-user2">
+            <ev_longname> <en>File user2.icm</en> </ev_longname>
+            <ev_shortname> <en>user2</en> </ev_shortname>
+            <ev_driverval>-Guser2.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2slx-ICM-user3">
+            <ev_longname> <en>File user3.icm</en> </ev_longname>
+            <ev_shortname> <en>user3</en> </ev_shortname>
+            <ev_driverval>-Guser3.icm</ev_driverval>
+        </enum_val>
+        <enum_val id="ev/foo2slx-ICM-user4">
+            <ev_longname> <en>File user4.icm</en> </ev_longname>
+            <ev_shortname> <en>user4</en> </ev_shortname>
+            <ev_driverval>-Guser4.icm</ev_driverval>
+        </enum_val>
+    </enum_vals>
+</option>

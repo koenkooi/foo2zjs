@@ -1,0 +1,176 @@
+<option type="enum" id="opt/foo2hiperc-ICM">
+    <comments>
+	<en>
+	This option controls which .ICM file to use for color correction.
+	ICM files are stored in directory /usr/share/foo2hiperc/icm/.
+	</en>
+    </comments>
+    <arg_longname> <en>ICM Color Profile</en> </arg_longname>
+    <arg_shortname> <en>ICM</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>Adjustment</arg_group>
+	<arg_order>300</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2hiperc</driver>
+	    <arg_defval>ev/foo2hiperc-ICM-3200-600</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hiperc-z1</driver>
+	    <arg_defval>ev/foo2hiperc-ICM-3200-600</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2hiperc-ICM-none">
+	    <ev_longname> <en>No ICM color correction</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>none</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gnone.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-301-600M">
+	    <ev_longname> <en>OKC301H1.icm - 600dpi Multi C301dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC301H1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC301H1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-301-1200">
+	    <ev_longname> <en>OKC301H2.icm - 1200dpi C301dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC301H2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC301H2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-301-600">
+	    <ev_longname> <en>OKC301H3.icm - 600dpi C301dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC301H3</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC301H3.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-310-600M">
+	    <ev_longname> <en>OKC310H1.icm - 600dpi Multi C310dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC310H1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC310H1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-310-1200">
+	    <ev_longname> <en>OKC310H2.icm - 1200dpi C310dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC310H2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC310H2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-310-600">
+	    <ev_longname> <en>OKC310H3.icm - 600dpi C310dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC310H3</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC310H3.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-511-600M">
+	    <ev_longname> <en>OKC551H1.icm - 600dpi Multi C511dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC551H1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC511H1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-511-1200">
+	    <ev_longname> <en>OKC551H2.icm - 1200dpi C511dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC551H2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC511H2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-511-600">
+	    <ev_longname> <en>OKC551H3.icm - 600dpi C511dn</en> </ev_longname>
+	    <ev_shortname> <en>OKC551H3</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK5111H3.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-810-600M">
+	    <ev_longname> <en>OKC810H1.icm - 600dpi Multi C810</en> </ev_longname>
+	    <ev_shortname> <en>OKC810H1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC810H1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-810-1200">
+	    <ev_longname> <en>OKC810H2.icm - 1200dpi C810</en> </ev_longname>
+	    <ev_shortname> <en>OKC810H2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC810H2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-810-600">
+	    <ev_longname> <en>OKC810H3.icm - 600dpi C810</en> </ev_longname>
+	    <ev_shortname> <en>OKC810H3</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOKC810H3.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-3200-600">
+	    <ev_longname> <en>OK3200L2.icm - 600dpi C3100/C3200/C5100/C5200</en> </ev_longname>
+	    <ev_shortname> <en>OK3200L2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK3200L2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-3200-1200">
+	    <ev_longname> <en>OK3200L1.icm - 1200dpi C3100/C3200/C5100/C5200</en> </ev_longname>
+	    <ev_shortname> <en>OK3200L1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK3200L1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-3400-600">
+	    <ev_longname> <en>C3400-L2.icm - 600dpi C3300/C3400/C3530 MFP</en> </ev_longname>
+	    <ev_shortname> <en>C3400-L2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GC3400-L2-BIN-ICC_0604110.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-3400-1200">
+	    <ev_longname> <en>C3400-L1.icm - 1200dpi C3300/C3400/C3530 MFP</en> </ev_longname>
+	    <ev_shortname> <en>C3400-L1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GC3400-L1-BIN-ICC_0603150.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-5600-600M">
+	    <ev_longname> <en>OK5600L1.icm - 600dpi Multi C5500/C5600/C5800</en> </ev_longname>
+	    <ev_shortname> <en>OK5600L1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK5600L1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-5600-1200">
+	    <ev_longname> <en>OK5600L2.icm - 1200dpi C5500/C5600/C5800</en> </ev_longname>
+	    <ev_shortname> <en>OK5600L2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK5600L2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-5600-600">
+	    <ev_longname> <en>OK5600L3.icm - 600dpi C5500/C5600/C5800</en> </ev_longname>
+	    <ev_shortname> <en>OK5600L3</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK5600L3.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-160-600M">
+	    <ev_longname> <en>OK160L1.icm - 600dpi Multi d-Color P160W</en> </ev_longname>
+	    <ev_shortname> <en>OK160L1</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK5600L1.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-160-1200">
+	    <ev_longname> <en>OK160L2.icm - 1200dpi d-Color P160W</en> </ev_longname>
+	    <ev_shortname> <en>OK160L2</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK5600L2.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2hiperc-ICM-160-600">
+	    <ev_longname> <en>OK160L3.icm - 600dpi d-Color P160W</en> </ev_longname>
+	    <ev_shortname> <en>OK160L3</en> </ev_shortname>
+	    <ev_driverval>-C10 -GOK5600L3.icm</ev_driverval>
+	</enum_val>
+
+        <enum_val id="ev/foo2hiperc-ICM-testing-300">
+            <ev_longname> <en>File testing.icm</en> </ev_longname>
+            <ev_shortname> <en>testing</en> </ev_shortname>
+            <ev_driverval>-C10 -Gtesting.icm</ev_driverval>
+        </enum_val>
+
+    </enum_vals>
+</option>

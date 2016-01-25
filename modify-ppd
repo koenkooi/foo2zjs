@@ -1,0 +1,73 @@
+#!/bin/sh
+
+#
+# Portable version of 'which'
+#
+pathfind() {
+    if [ "$1" = -p ]; then
+	optp=1
+	shift
+    else
+	optp=0
+    fi
+    OLDIFS="$IFS"
+    IFS=:
+    for p in $PATH; do
+	if [ -x "$p/$*" ]; then
+	    if [ $optp = 1 ]; then
+		echo "$p/$*"
+	    fi
+	    IFS="$OLDIFS"
+	    return 0
+	fi
+    done
+    IFS="$OLDIFS"
+    return 1
+}
+
+#
+#	Modify select PPD files
+#
+if pathfind cups-config; then
+    cupsdev=1
+else
+    cupsdev=0
+fi
+
+awk '
+BEGIN {
+    negate = 1
+}
+
+{
+    print
+}
+
+/"\(C110\)"/			{ do_cmd = "foo2lava-pjl" }
+/"\(mc1600W\)"/			{ do_cmd = "foo2lava-pjl" }
+/"\(mc1680MF\)"/		{ do_cmd = "foo2lava-pjl" }
+/"\(mc1690MF\)"/		{ do_cmd = "foo2lava-pjl" }
+/"\(magicolor 2490 MF\)"/	{ do_cmd = "foo2lava-pjl" }
+/"\(mc2530DL\)"/		{ do_cmd = "foo2lava-pjl"; negate = 0 }
+/"\(magicolor 4690MF\)"/	{ do_cmd = "foo2lava-pjl" }
+
+/^\*cupsFilter:/ {
+    if (cupsdev && do_cmd)
+    {
+	print "*cupsFilter:\t\"application/vnd.cups-command 100 command2" \
+		do_cmd "\""
+
+	print "*% Specify the list of commands we support"
+	print "*cupsCommands:\t\"PrintSelfTestPage ReportLevels\""
+
+	# SNMP marker levels are WRONG
+	print "*cupsSNMPSupplies:\tFalse"
+
+	# When cups gets updated for USB bidirectional (v1.5???) ...
+	# print "*cupsBIDI:\tTrue"
+
+	printf "*foo2zjsNegateMarkerLevels:\t%s\n",
+	    negate ? "True" : "False"
+    }
+}
+' cupsdev=$cupsdev

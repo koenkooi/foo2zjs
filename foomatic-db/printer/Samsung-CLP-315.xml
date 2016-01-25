@@ -1,0 +1,65 @@
+<printer id="printer/Samsung-CLP-315">
+    <make>Samsung</make>
+    <model>CLP-315</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (2000 prints) - $54
+		Toner Yellow (1000 prints) - $45
+		Toner Magenta (1000 prints) - $45
+		Toner Cyan (1000 prints) - $45
+		Waste Toner (5000 prints) - $10
+		Drum Kit (20000 prints) - $96
+	    </en> </comments>
+	    <partno>CLP-K300A</partno>
+	    <partno>CLP-Y300A</partno>
+	    <partno>CLP-M300A</partno>
+	    <partno>CLP-C300A</partno>
+	    <partno>CLP-W300A</partno>
+	    <partno>CLP-R300A</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.samsung.com/Products/PrinterandMultifunction/ColorLaserPrinters/CLP_300NXAA.asp</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+        <parallel>
+            <ieee1284>MFG:Samsung;CMD:SPLC;MDL:CLP-310 Series;CLS:PRINTER;</ieee1284>
+            <manufacturer>Samsung</manufacturer>
+            <model>CLP-310 Series</model>
+            <commandset>SPLC</commandset>
+        </parallel>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2qpdl</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Samsung CLP-310/315 (USB) and Samsung CLP-310N/315W (Net) are
+	color laser printers with a 2008 street price of $159 USD and $249 USD.
+	The case is white for the CLP-310, black for the CLP-315. Other than
+	that, there is no difference.
+
+	This printer is supported by the foo2qpdl open software printer driver.
+
+    </en> </comments>
+</printer>

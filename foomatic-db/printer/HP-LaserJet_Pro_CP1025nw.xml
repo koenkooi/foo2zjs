@@ -1,0 +1,62 @@
+<printer id="printer/HP-LaserJet_Pro_CP1025nw">
+  <make>HP</make>
+  <model>LaserJet Pro CP1025nw</model>
+  <mechanism>
+    <laser/>
+    <color/>
+    <resolution>
+      <dpi>
+        <x>1200</x>
+        <y>600</y>
+      </dpi>
+    </resolution>
+    <margins>
+	<general>
+	    <unit>mm</unit>
+	    <top>4</top>
+	    <bottom>4</bottom>
+	    <left>4</left>
+	    <right>4</right>
+	</general>
+    </margins>
+    <consumables>
+      <comments> <en>
+	HP 126A Black Print Cartridge (1200 prints) - $50
+	HP 126A Cyan Print Cartridge (1000 prints) - $56
+	HP 126A Magenta Print Cartridge (1000 prints) - $56
+	HP 126A Yellow Print Cartridge (1000 prints) - $56
+	HP 126A LaserJet Imaging Drum (14000 prints) - $80
+      </en></comments>
+      <partno>CE310A</partno>
+      <partno>CE311A</partno>
+      <partno>CE313A</partno>
+      <partno>CE312A</partno>
+      <partno>CE314A</partno>
+    </consumables>
+  </mechanism>
+  <url>http://h10010.www1.hp.com/wwpc/us/en/sm/WF05a/18972-18972-3328060-15077-3328070-4052955.html</url>
+  <lang>
+    <proprietary/>
+    <!--no pjl--><!--No "text"?-->
+  </lang>
+  <autodetect>
+	<parallel>
+	    <ieee1284>MFG:Hewlett-Packard;MDL:HP LaserJet CP1025nw;CMD:ZJS,PJL,ACL;CLS:PRINTER;DES:HP LaserJet CP1025nw;FWVER:20100510;LEDMDIS:USB#ff#04#01
+	    </ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>HP LaserJet CP1025nw</model>
+	    <commandset>ZJS,PJL,ACL</commandset>
+	</parallel>
+  </autodetect>
+  <functionality>B</functionality>
+  <driver>foo2zjs-z3</driver>
+  <!--no "contrib_url"-->
+  <comments>
+    <en>
+
+    This printer is supported by the foo2zjs free software printer driver.
+    &lt;p&gt;
+
+    </en>
+  </comments>
+</printer>

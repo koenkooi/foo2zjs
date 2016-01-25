@@ -1,0 +1,63 @@
+<printer id="printer/HP-Color_LaserJet_1500">
+    <make>HP</make>
+    <model>Color LaserJet 1500</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>600</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>inch</unit>
+		<top>0.166666</top>
+		<bottom>0.166666</bottom>
+		<left>0.166666</left>
+		<right>0.166666</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (5000 prints) - $70
+		Toner Cyan (4000 prints) - $90
+		Toner Magenta (4000 prints) - $90
+		Toner Yellow (4000 prints) - $90
+		Imaging Drum (20000 prints) - $160
+	    </en> </comments>
+	    <partno>C9700A</partno>
+	    <partno>C9701A</partno>
+	    <partno>C9703A</partno>
+	    <partno>C9702A</partno>
+	    <partno>C9704A</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.hp-expo.com/uk/eng/products/laserjet/q2489a.html</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+	<parallel>
+	    <ieee1284>CLS:PRINTER;MDL:hp color LaserJet 1500;MFG:Hewlett-Packard;CMD:OAKRAS;</ieee1284>
+	    <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>hp color LaserJet 1500</model>
+	    <commandset>OAKRAS</commandset>
+	</parallel>
+    </autodetect>
+    <functionality>C</functionality>
+    <driver>foo2oak</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Color LaserJet 1500 is a USB laser printer with a 2003 street
+	price of $600-$800 USD.  This printer is supported by the foo2oak
+	printer driver.
+
+	The Color LaserJet 1500L comes with a multi-purpose tray only,
+	the Color LaserJet 1500 comes with an additional 250-sheet tray.
+
+    </en> </comments>
+</printer>

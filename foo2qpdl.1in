@@ -1,0 +1,205 @@
+'\" t
+.TH foo2qpdl 1 "${MODpage}" "foo2qpdl ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2qpdl \- Convert Ghostscript pbmraw or bitcmyk format into a
+QPDL printer stream
+.SH SYNOPSIS
+.B foo2qpdl
+.RI [ options "] <" pbmraw-file " >" qpdl-file
+.sp 1
+.B foo2qpdl
+.RI [ options "] <" bitcmyk-file " >" qpdl-file
+.sp 1
+.B foo2qpdl
+.RI [ options "] <" pksmraw-file " >" qpdl-file
+.SH DESCRIPTION
+.B foo2qpdl
+converts Ghostscript pbmraw, bitcmyk, or pksmraw output formats to monochrome
+or color QPDL streams,
+for driving the Samsung CLP-300, CLX-2160, CLP-600, CLX-3160, CLP-610
+CLP-620, CLP-360, CLP-365,
+and the Xerox Phaser 6110
+QPDL printers.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-c
+Force color mode if autodetect doesn't work.
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-g\0 xpix x ypix
+Set page dimensions in pixels [10200x6600].
+.TP
+.BI \-m\0 media
+Media code to send to printer [0].
+.TS
+l l l
+l n n.
+_
+Media	QPDL
+_
+plain	0
+thick	1
+thin	2
+bond	3
+color	4
+card	5
+labels	6
+envelope	7
+preprinted	8
+cotton	9
+recycled	10
+transparency	11
+archive	12
+.TE
+.TP
+.BI \-p\0 paper
+Paper code to send to printer [0].
+.TS
+box;
+| n l | n l.
+0	letter	1	legal
+2	A4	3	executive
+6	env #10	7	env Monarch
+8	env C5	9	env DL
+11	B5jis	12	B5iso
+16	A5	17	A6
+23	env C6	24	folio
+25	env 6.75	26	env #9
+28	oficio	21	custom
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [1200x600].
+.TP
+.BI \-s\0 source
+Source (InputSlot) code to send to printer [255].
+.TS
+| n l | n l.
+1	auto	2	manual
+3	multi	4	tray1
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI \-J\0 filename
+Filename string to send to printer.
+.TP
+.BI \-U\0 username
+Username string to send to printer.
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2qpdl\fP
+for a particular printer.
+.TP
+.BI \-a\0 b,c,s,cr,mg,yb
+Color Adjust: brightness, contrast, saturation, cyan-red balance,
+magenta-green balance, and yellow-blue balance from 0 to 100.
+The default is 50,50,50,50,50,50.
+This only works when the -z3 (e.g. CLP-365) model is set!
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [0x0].
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [0x0].
+.TP
+.BI \-L\0 mask
+Send logical clipping amounts implied by -u/-l in the QPDL stream [3].
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-A
+AllIsBlack: convert C=1,M=1,Y=1 to just K=1.  Works with bitcmyk input only.
+.TP
+.BI \-B
+BlackClears: K=1 forces C,M,Y to 0.  Works with bitcmyk input only.
+.TP
+.BI \-z\0 model
+Printer model. Model 0 is the default.
+.TS
+l l.
+model	Description
+0	CLP-300, CLX-2160, CLX-3160
+1	CLP-600
+2	CLP-310, CLP-315, CLP-610, CLX-3175
+3	CLP-620, CLP-360, CLP-365
+.TE
+.SS Debugging Options
+These options are used for debugging \fBfoo2qpdl\fP.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a black and white QPDL stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -r1200x600 -sDEVICE=pbmraw \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2qpdl -r1200x600 -g10200x6600 -p0 >testpage.zm
+.fi
+.RE
+.P
+Create a color QPDL stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -g10200x6600 -r1200x600 -sDEVICE=bitcmyk \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2qpdl -r1200x600 -g10200x6600 -p0 >testpage.zc
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2qpdl
+.SH SEE ALSO
+.BR foo2qpdl-wrapper (1),
+.BR qpdldecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.com>
+.br
+${URLQPDL}/
+'\"
+'\"
+'\"
+.em pdf_outline

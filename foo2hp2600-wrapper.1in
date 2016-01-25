@@ -1,0 +1,241 @@
+'\" t
+.TH foo2hp2600-wrapper 1 "${MODpage}" "foo2hp2600-wrapper ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2hp2600-wrapper \- Convert Postscript into a ZJS printer stream
+.SH SYNOPSIS
+.B foo2hp2600-wrapper
+.RI [ options "] [" ps-file ]
+.SH DESCRIPTION
+.B foo2hp2600-wrapper
+is a Foomatic compatible printer wrapper for the \fBfoo2hp\fP printer driver.
+This script reads a Postscript \fIps-file\fP or standard input
+and converts it to Zenographics ZjStream printer format
+for driving the Hewlett-Packard 2600n color laser printer
+and other Zenographics-based printers.
+.P
+This script can be used in a standalone fashion, but is intended to
+be called from a printer spooler system which uses the Foomatic
+printer database.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-b\0 bits
+Number of bits per plane. 1 or 2. [1].
+.TP
+.BI \-c
+Print in color (else monochrome).
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-m\0 media
+Media code to send to printer [1].
+.TS
+l l
+l n.
+_
+Media	HPLJ 2600n
+_
+plain	1
+preprinted	514
+letterhead	513
+transparency	2
+prepunched	515
+labels	265
+bond	260
+recycled	516
+color	512
+tough	276
+envelope	267
+light	258
+heavy	262
+cardstock	261
+lightglossy	268
+glossy	269
+heavyglossy	270
+cover	277
+photo	278
+.TE
+.TP
+.BI \-p\0 paper
+Paper size code to send to printer [1].
+.TS
+box;
+| n l | n l.
+1	letter	9	A4
+5	legal	11	A5
+7	executive	13	B5jis
+20	env #10	27	env DL
+28	env C5	34	env B5
+37	env Monarch		
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [1200x600].
+.TP
+.BI \-s\0 source
+Source (Input Slot) code to send to printer [7].
+.TS
+| n l | n l.
+1	tray 2	4	manual/tray 1
+2	tray 3	7	auto
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI "\-2 \-3 \-4 \-5 \-6 \-8 \-9 \-10 \-12 \-14 \-15 \-16 \-18"
+Print in N-up.  Requires the \fBpsutils\fP package.
+.TP
+.BI \-o\0 orient
+Orientation used for N-up.
+.TS
+l l l.
+Portrait	-op	(normal)
+Landscape	-ol	(rotated 90 degrees anticlockwise)
+Seascape	-os	(rotated 90 degrees clockwise)
+.TE
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2hp\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [varies with paper size].
+The defaults should work on the 2200DL and 2300DL, and have not
+been tested on any other printers.
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [varies with paper size].
+The defaults should work on the 2200DL and 2300DL, and have not
+been tested on any other printers.
+.TP
+.BI \-L\0 mask
+Send the logical clipping values from -u/-l in the ZjStream.
+\fBfoo2hp2600-wrapper\fP always runs Ghostscript with the ideal page dimensions,
+so that the scale of the image is correct,
+regardless whether or not the printer has unprintable regions.
+This option is used to move the position of the clipped image
+back to where it belongs on the page.  The default is to send
+the amount which was clipped by -u and -l, and should be
+good in most cases.
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-O\0 parm=val
+Alignment of CMYK.  \fIparm\fP is c, m, y, or k.
+\fIval\fP is in rows.  Multiple options are allowed.
+The default is "-Oc=0 -Om=0 -Oy=0 -Ok=0".
+.TP
+.BI \-P
+Do not send START_PLANE codes on monochrome output.  May be
+needed by some monochrome-only printers, such as the
+HP LaserJet 1000.
+.TP
+.BI \-X\0 padlen
+Add extra zero padding to the end of BID segments.  The default is
+16 bytes.  Padding 16 bytes of zeroes
+is needed for older ZjStream printers, such as the Minolta 2200DL
+and HP LaserJet 1000, and seems harmless to newer ones, such as
+the Minolta 2300DL.  So the default should be good for all cases.
+.TP
+.BI \-z\0 model
+Model: Model: 0=HP CLJ 1600/2600n; 1=HP CLJ CP1215
+.SS Color Tweaking Options
+These are the options used to control the quality of color output.
+Color correction is currently a WORK IN PROGRESS.
+.TP
+.BI \-g\0 gsopts
+Additional options to pass to Ghostscript, such as -g\(lq-dDITHERPPI=nnn\(rq,
+etc.  This option may appear more than once.
+.TP
+.BI \-G\0 profile.icm
+Convert \fIprofile.icm\fP to a Postscript color rendering
+dictionary (CRD) using \fBfoo2zjs-icc2ps\fP and
+adjust the printer colors by using the Postscript \fBsetcolorrendering\fP
+operator.  If \fIprofile.icm\fP is none.icm, then prepare for ordering a
+ICM custom printer profile (i.e. from www.ICCFactory.com).
+.TP
+.BI \-G\0 gamma-file.ps
+Prepend \fIgamma-file.ps\fP to the Postscript input to perform
+color correction using the \fBsetcolortransfer\fP Postscript operator.
+For example, the file might contain:
+.br
+{0.333 exp} {0.333 exp} {0.333 exp} {0.333 exp} setcolortransfer
+.TP
+.BI \-I\0 intent
+Select profile intent from the ICM file.
+0=Perceptual, 1=Colorimetric, 2=Saturation, 3=Absolute.
+Default is 0 (perceptual).
+.SS Debugging Options
+These options are used for debugging \fBfoo2hp\fP and its wrapper.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a monochrome ZjStream from a Postscript document,
+examine it, and then print it using a RAW print queue:
+
+.RS
+.nf
+foo2hp2600-wrapper testpage.ps > testpage.zm
+zjsdecode < testpage.zm
+lpr -P raw testpage.zm
+.fi
+.RE
+.P
+Create a color ZjStream stream from a Postscript document:
+
+.RS
+.nf
+foo2hp2600-wrapper -c testpage.ps > testpage.zc
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2hp2600-wrapper
+.SH SEE ALSO
+.BR foo2hp (1),
+.BR zjsdecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLHP}/
+'\"
+'\"
+'\"
+.em pdf_outline

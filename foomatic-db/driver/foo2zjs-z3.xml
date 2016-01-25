@@ -1,0 +1,19 @@
+<!--
+     foo2zjs-z3 driver
+-->
+<driver id="driver/foo2zjs-z3">
+    <name>foo2zjs-z3</name>
+    <url>http://foo2zjs.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2zjs-wrapper -z3 -P -L0 %A</prototype>
+    </execution>
+    <comments> <en>
+	This driver will also work for the HP LaserJet Pro CP1025nw
+	and other Zenographics-based printers.
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/HP-LaserJet_Pro_CP1025nw</id></printer>
+    </printers>
+</driver>

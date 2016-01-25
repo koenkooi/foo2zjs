@@ -1,0 +1,95 @@
+<option type="enum" id="opt/foo2xxx-NupOrient">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>N-up Orientation</en> </arg_longname>
+    <arg_shortname> <en>NupOrient</en> </arg_shortname>
+    <arg_execution>
+        <arg_group>Miscellaneous</arg_group>
+	<arg_order>200</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z1</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z2</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z3</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2oak</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2oak-z1</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hp</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2xqx</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2slx</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hiperc</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hiperc-z1</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2xxx-NupOrient-port</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2xxx-NupOrient-port">
+	    <ev_longname> <en>Portrait</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>port</en> </ev_shortname>
+	    <ev_driverval></ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-NupOrient-land">
+	    <ev_longname> <en>Landscape</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>land</en> </ev_shortname>
+	    <ev_driverval>-ol</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-NupOrient-sea">
+	    <ev_longname> <en>Seascape</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>sea</en> </ev_shortname>
+	    <ev_driverval>-os</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

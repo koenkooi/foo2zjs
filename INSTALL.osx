@@ -1,0 +1,397 @@
+==============================================================================
+How to Disable System Integrity Protection (rootless) in OS X El Capitan
+==============================================================================
+
+You need to disable rootless in Mac OSX 10.11 or greater.  Please follow
+these instructions:
+
+    http://osxdaily.com/2015/10/05/disable-rootless-system-integrity-protection-mac-os-x/
+
+==============================================================================
+MAC OSX INSTALLATION NOTES -
+
+HP LaserJet 1018/1020 and Color LaserJet 1600/2600n and Color LaserJet CP1215
+Using the "MacPorts" project
+==============================================================================
+by Rick Richardson 07/31/11
+
+1) Browse to:
+    http://developer.apple.com/xcode/
+	OR
+    https://developer.apple.com/downloads/index.action
+	Search for "Command Line Tools"
+
+    Download and install "Xcode 3", the C compiler.  It is in the lower right:
+	"Looking for Xcode 3? Download Now"
+
+    For OSX Lion (10.7) only read:
+	http://anatomicwax.tumblr.com/post/8064949186/installing-xcode-3-2-6-on-lion-redux
+
+	"Installing Xcode 3.2.6 On Lion Redux
+
+	In my last post I gave a set of simple steps that allowed one to
+	install Xcode 3.2.6 on Lion. In looking through the
+	isDevToolsCompatible function again, I noticed that it would return
+	true if the COMMAND_LINE_INSTALL environment variable was set no
+	matter what version Mac OS X you are running.
+
+	It's now possible to greatly simplify the installation process:
+
+	    Mount the Xcode 3.2.6 DMG
+	    Open Terminal
+	    Enter the commands:
+
+	    export COMMAND_LINE_INSTALL=1
+	    open "/Volumes/Xcode and iOS SDK/Xcode and iOS SDK.mpkg"
+
+	The open command will launch the installer app and allow you to
+	install Xcode 3.2.6 on Lion with no package modifications."
+
+2) Browse to:
+    http://www.macports.org/install.php/
+
+    Download and install the "Mac OS X Package (.pkg) Installer".
+
+3) Do:
+    Finder -> Applications -> Utilities -> Terminal
+
+    If bash is not your shell (i.e. using broken tcsh):
+	$ chsh -s bash
+	$ exit
+
+    $ export PATH=$PATH:/opt/local/bin
+    $ sudo port selfupdate
+    $ sudo port install coreutils
+    $ sudo port install gsed
+    $ sudo port install wget
+    $ sudo port install a2ps
+    $ sudo port install ghostscript
+
+	NOTE: Use ghostscript 8.63 or before OR 8.64_2 or after if you want
+	color (i.e. HP CP1215, Samsung, etc..).  gs 8.64_1 has a bug in it.
+	Reference: http://bugs.ghostscript.com/show_bug.cgi?id=690287
+
+    Ref:
+	$ port list coreutils gsed wget ghostscript
+	coreutils                      @8.10           sysutils/coreutils
+	gsed                           @4.2.1          textproc/gsed
+	wget                           @1.12           net/wget
+	ghostscript                    @9.02           print/ghostscript
+
+4) Browse to:
+    http://www.openprinting.org/download/foomatic/foomatic-filters-4.0.17.tar.gz
+
+    and install the Foomatic-RIP (foomatic-RIP and foomatic-gswrapper):
+
+    $ wget http://www.openprinting.org/download/foomatic/foomatic-filters-4.0.17.tar.gz
+    $ tar zxvf foomatic-filters-4.0.17.tar.gz
+    $ cd foomatic-filters-4.0.17
+    $ CPPFLAGS="-I/opt/local/include" LDFLAGS="-L/opt/local/lib" ./configure --prefix=/usr --disable-dbus
+    $ make
+    $ sudo make install
+
+5) Now install foo2zjs.  Browse to:
+    http://foo2zjs.rkkda.com/
+
+    and follow the instructions in http://foo2zjs.rkkda.com/INSTALL.
+
+6)  Now configure the printer
+    Choose either 6a) OR 6b)
+
+6a) Mac OS Printer Setup Utility
+    Browse to:
+	http://foo2zjs.rkkda.com/macosx/
+
+6b) CUPS UNIX Printing System
+    Browse to:
+	http://foo2zjs.rkkda.com/cups/
+
+    Then surf to: http://localhost:631 and follow the CUPS instructions.
+
+    In particular, you can set up Color and other things.
+
+	Set Printer Options -> Color Mode -> Color
+
+7) If HP LaserJet 10xx, you must send a firmware file to the printer each time
+   you power it up:
+
+	For HP LasetJet 1018:
+	    $ lp -oraw /usr/share/foo2zjs/firmware/sihp1018.dl
+	For HP LasetJet 1020:
+	    $ lp -oraw /usr/share/foo2zjs/firmware/sihp1020.dl
+	For HP LasetJet P1005:
+	    $ lp -oraw /usr/share/foo2xqx/firmware/sihpP1005.dl
+	For HP LasetJet P1006:
+	    $ lp -oraw /usr/share/foo2xqx/firmware/sihpP1006.dl
+	For HP LasetJet P1505:
+	    $ lp -oraw /usr/share/foo2xqx/firmware/sihpP1505.dl
+
+    -OR-
+
+	Add a line to /etc/rc.local and reboot:
+
+	killall osx-hplj-hotplug; osx-hplj-hotplug >/tmp/osx-hplj-hotplug 2>&1 &
+
+    -OR-
+
+	Issue a "make install-hotplug" command:
+
+	$ sudo make install-hotplug
+
+    Light should flash orange for ~5 seconds as the firmware is
+    getting downloaded.
+
+Sample Screenshots:
+
+    HP LaserJet 1020:
+	http://foo2zjs.rkkda.com/macosx/
+
+    HP Color LaserJet CP1215:
+	http://foo2hp.rkkda.com/macosx/
+
+
+
+==============================================================================
+MAC OSX INSTALLATION NOTES - HP LaserJet 1018/1020
+Using "fink" project
+==============================================================================
+by Rick Richardson 04/21/07
+
+1) Browse to:
+    http://developer.apple.com/tools/download/
+
+    Download and install "Xcode 3", the C compiler.  It is in the lower right:
+	"Looking for Xcode 3? Download Now"
+
+2) Browse to:
+    http://www.finkproject.org/download/
+
+    Download and install "fink".
+	Double-click "Fink-0.8.1-XYZ-Installer.dmg"
+	    (where XYZ is either PowerPC or Intel)
+        to mount the disk image, then double-click the
+	"Fink 0.8.1 XYZ Installer.pkg" package inside.
+	Follow the instructions on screen.
+	$ /sw/bin/pathsetup.sh
+	$ fink scanpackages
+	$ fink index
+	$ sudo apt-get update
+	$ sudo apt-get install fink
+
+3) Do:
+    $ sudo apt-get install ghostscript
+
+4) Browse to:
+    http://www.linuxprinting.org/download/foomatic/foomatic-filters-3.0-current.tar.gz
+
+    and install the Foomatic-RIP (foomatic-RIP and foomatic-gswrapper).
+
+    $ tar zxvf foomatic-filters-3.0-current.tar.gz
+    $ cd foomatic-filters-3.0-20070820
+    $ ./configure --prefix=/usr
+    $ make
+    $ sudo make install
+
+5) Now install foo2zjs.  Browse to:
+    http://foo2zjs.rkkda.com/
+
+    and follow the instructions.
+
+6)  Now configure the printer
+    Choose either 6a) OR 6b)
+
+6a) Mac OS Printer Setup Utility
+    Browse to:
+	http://foo2zjs.rkkda.com/macosx/
+
+6b) CUPS UNIX Printing System
+    Browse to:
+	http://foo2zjs.rkkda.com/cups/
+
+    Then surf to: http://localhost:631 and follow the CUPS instructions.
+
+    In particular, you can set up Color and other things.
+
+	Set Printer Options -> Color Mode -> Color
+
+
+7) If HP LaserJet 10xx, you must send a firmware file to the printer each time
+   you power it up:
+
+    $ lp -oraw /usr/share/foo2zjs/firmware/sihp1018.dl
+	-OR-
+    $ lp -oraw /usr/share/foo2zjs/firmware/sihp1020.dl
+
+
+
+
+
+===============================================================================
+MAC OSX INSTALLATION NOTES -- foo2zjs + magicolor 2200DL + OSX
+===============================================================================
+by Clint Morgan <clint@morgantechnologies.com> - 12/29/2003
+
+
+FOREWORD
+--------
+These notes are intended to provide specific instructions for the installation
+of foo2zjs on a Mac running OS X, specifically 10.3 (Panther), so you can print
+to a magicolor 2200DL.  However, the same instructions should apply to other
+foo2zjs compatible printers and OS X 10.2 (Jaguar) or newer.
+
+These notes are for a network attached printer.  USB printers will not
+work right now because OSX doesn't have a raw USB device like linux does.
+
+These instructions are as-is.  I can't guarantee they will work for everyone,
+that I'll be able to answer any questions, nor that any URLs mentioned in these
+instructions will be valid at the time you read this.  Be sure to read the
+instructions that come with the various source packages mentioned below, as
+they will probably help you build the specific package in question.  Just
+knowing that this can be done and the software required to do it will probably
+be enough to get you over any hurdles.
+
+
+
+REQUIREMENTS
+------------
+These requirements are listed in order of their dependencies where dependencies
+exist.  I have also included the version numbers I used at the time I wrote
+this.  The versions I choose were simply the most current that existed at the
+time, in most cases anyway.  The only exception is GhostScript because various
+information I found said the newer version wasn't as good (something about
+color if I recall correctly)
+
+1) Apple Developer Tools (Jaguar) or Xcode (Panther)
+   Go to http://www.apple.com for more information.
+
+2) gettext-0.13.0 (required by glib)
+   Go to http://www.gnu.org/software/gettext/gettext.html for more info.
+
+3) glib-2.2.3 (required by ghostscript)
+   Go to http://www.gtk.org for more info. NOTE: You do NOT need the entire
+   GTK+ toolkit.
+
+4) ghostscript-7.07 (required by foo2zjs)
+   Go to http://www.ghostscript.com for more info.  You can also check out
+   sourceforge.net.  NOTE: You do NOT need EPS Ghostscript in order to use
+   foo2zjs.  You have 2 licenses of GhostScript to choose from: the AFPL
+   license or the GPL license.  I have no idea if there is any difference in
+   the code, but I choose the GPL version.  Also, you may find that there is
+   a source distribution specifically for the Mac.  I couldn't get it to
+   build, but you're more than welcome to try.
+
+5) ghostscript-font-6.0 (required by you if you want ghostscript to do anything)
+   Go to http://www.ghostscript.com for more info.  You can also check out
+   sourceforge.net.  NOTE: The fonts are distributed as a separate package
+   and are NOT included with ghostscript itself.)
+
+6) wget-1.9 (required by foo2zjs build process)
+   Go to http://www.gnu.org/directory/wget.html for more info.  This utility
+   is required by the foo2zjs build process at the time of this writing.  It
+   is also used by another foo2zjs utility (getweb) to download ICM color
+   profiles.
+
+7) foomatic-filters-3.0.0 (required by foo2zjs)
+   Go to http://www.linuxprinting.org/foomatic.html for more info.  All you
+   need is the foomatic-filters package.
+
+8) foo2zjs (required by you)
+   Go to http://foo2zjs.rkkda.com for more info.
+
+
+NOTE: By default, most of these packages will be installed under the /usr/local
+directories.  I've noticed that this is not generally the trend under OS X. You
+may choose to add --prefix=/usr when running configure.
+
+  IE :  sudo ./configure --prefix=/usr
+
+
+
+INSTALLATION
+------------
+
+1) Download, build and install the packages mentioned above.  See the install
+   instructions for each package.
+
+   NOTE #1: Installing software on OS X generally requires superuser privileges.
+            If in doubt, always prefix commands mentioned in each software
+            package's instructions with "sudo".
+
+              eg: sudo ./configure --prefix=/usr
+                  sudo make
+                  sudo make install
+
+   NOTE #2: When installing foomatic-filters, use the following command:
+
+              sudo make install CUPS=/usr/libexec/cups \
+	                        CUPS_FILTERS=/usr/libexec/cups/filter
+
+            All on one line, of course.  This will install the foomatic-rip
+            filter in correct place in Panther (10.3.x) and presumably in
+            Jaguar (10.2.x) so that CUPS can find it.
+
+
+2) Make sure CUPS is enabled by viewing "/etc/hostconfig" and looking for
+   "CUPS=-YES-".  If you see "CUPS=-NO-", change it and restart your Mac.
+
+   If CUPS is already enabled, type "sudo killall -HUP cupsd" in a terminal
+   window to reinitialize CUPS and make the newly installed drivers available.
+
+3) Now let's setup the printer.  However, you CANNOT use the "Printer Setup
+   Utility" within OSX.  Unfortunately that utility does not allow you to
+   specify the TCP port used to communicate with the printer.  Instead we
+   have to use the CUPS web administration utility by going to:
+
+     http://localhost:631
+
+   This is apparently the default way to access the CUPS administrator 'cause
+   I didn't have to do anything to gain access to it.  If you are attempting
+   to use the DB25-to-USB converter cable mentioned in the FOREWORD to hook the
+   printer directly to your Mac, you may be able to use the "Printer Setup
+   Utility" app; however, you can still use the CUPS web administration page
+   also.
+
+   a) Go to http://localhost:631
+   b) Click on "Manage Printers"
+   c) Click on "Add Printer"
+   d) Fill in a Name, Location and/or Description with whatever you want.
+   e) Select "AppSocket/HP JetDirect" from the list of devices.
+   f) Enter "socket://<printerhostname>:35" as the Device URI, where
+      <printerhostname> is the hostname or IP address of your printer and
+      35 is the TCP port the 2200DL receives print jobs on.
+   
+      eg: socket://192.168.1.254:35
+
+      Note: There are some references between the 2200DL and port 9100 on the
+            Internet.  This is a valid port for other Minolta printers, but
+            NOT the 2200DL.
+
+   g) Select the make of your printer.  This is "Minolta" for the 2200DL.
+   h) Select the model of your printer.
+
+HP LASERJET 1000/1005/1018/1020 NOTES
+-------------------------------------
+    You must send a firmware file to the printer each time you power it
+    up.  If you downloaded the extra files for the HP above, a typical
+    command line to load the firmware would be:
+
+                lp -oraw /usr/share/foo2zjs/firmware/sihp1018.dl
+                lp -oraw /usr/share/foo2zjs/firmware/sihp1020.dl
+
+YOU'RE DONE
+-----------
+Now you should be able to use your printer.  Even though you can't use the
+"Printer Setup Utility" to setup the printer, the printer will show up within
+it.  You will still have to use the CUPS admin page to make any changes to your
+printer configuration.
+
+BTW, Apple, Mac, Jaguar, Panther, Xcode are probably trademarks of Apple
+Computer, Inc. or their respective owners.  Minolta, Desklaser, magicolor, etc.
+may be trademarks of Konika Minolta Printing Solutions U.S.A., Inc. or their
+respective owners.  And other marks may be the intellectual property of their
+respective owners.
+
+Send any questions, suggestions and/or corrections to the email address above.
+Remember, though, I may be slow to respond to some requests or may not be able
+to respond to all.  However, I hope this document gives you enough information
+to give you a jump-start.

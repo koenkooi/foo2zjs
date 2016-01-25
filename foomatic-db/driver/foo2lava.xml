@@ -1,0 +1,31 @@
+<driver id="driver/foo2lava">
+    <name>foo2lava</name>
+    <url>http://foo2lava.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2lava-wrapper %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the Konica Minolta magicolor 2530 DL
+	and the magicolor 1600W (or Oki C110).
+
+	It also works with the Konica Minolta magicolor 1680MF, the 
+	magicolor 1690MF, magicolor 2480 MF, the magicolor 2490 MF,
+	the magicolor 4690MF,  the Xerox Phaser 6115MFP (printer only).
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/KONICA_MINOLTA-magicolor_1600W</id></printer>
+	<printer><id>printer/KONICA_MINOLTA-magicolor_1680MF</id></printer>
+	<printer><id>printer/KONICA_MINOLTA-magicolor_1690MF</id></printer>
+	<printer><id>printer/KONICA_MINOLTA-magicolor_2480_MF</id></printer>
+	<printer><id>printer/KONICA_MINOLTA-magicolor_2490_MF</id></printer>
+	<printer><id>printer/KONICA_MINOLTA-magicolor_2530_DL</id></printer>
+	<printer><id>printer/KONICA_MINOLTA-magicolor_4690MF</id></printer>
+	<printer><id>printer/Oki-C110</id></printer>
+	<printer><id>printer/Xerox-Phaser_6115MFP</id></printer>
+	<printer><id>printer/Xerox-Phaser_6121MFP</id></printer>
+	<printer><id>printer/Generic-GDI_Printer</id></printer>
+    </printers>
+</driver>

@@ -1,0 +1,964 @@
+TOPICS
+------
+    * INSTALLATION
+    * GHOSTSCRIPT BUGS
+    * FEDORA NOTES 
+    * UBUNTU NOTES
+    * DEBIAN NOTES
+    * OPENSUSE 1x.x NOTES
+    * ACER ASPIRE ONE NOTES
+    * ASUS EEE PC NOTES
+    * MAC OS X NOTES
+    * FREEBSD NOTES
+    * OPENBSD NOTES
+    * OPENSOLARIS, SOLARIS EXPRESS DEVELOPER EDITION 9/07, Solaris 11+ NOTES
+    * MINOLTA-QMS 2200/2300 DL NOTES
+    * CUPS USB NOTES
+    * HP LASERJET 1000/1005/1018/1020, P1005/P1006/P1007/P1008/P1505 NOTES
+    * HP SMART INSTALL NOTES
+    * PSUTILS AND 2/4-UP CAPABILITY
+    * CUSTOM PAGE SIZE
+    * LANDSCAPE ORIENTATION
+    * SET DEFAULT MEDIA WITH CUPS
+    * MANUAL DUPLEX
+    * UPDATE
+    * UNINSTALLING
+    * BUG REPORTS
+    * DEVELOPER AND DEBUGGING TIPS
+    * CUSTOM ICC/ICM COLOR PRINTER PROFILE (BUY)
+    * CUSTOM ICC/ICM COLOR PRINTER PROFILE (ARGYLL)
+
+INSTALLATION
+------------
+Unpack:
+    $ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+    $ tar zxf foo2zjs.tar.gz
+    $ cd foo2zjs
+
+(Optional) Uninstall:
+    $ su		OR	$ sudo make uninstall
+    # make uninstall
+
+Compile:
+    $ make
+
+Get extra files from the web, such as .ICM profiles (for color correction)
+and firmware.  Select the model number for your printer:
+    $ ./getweb 1025     # Get HP LaserJet Pro CP1025nw .ICM files
+    $ ./getweb 1215	# Get HP Color LaserJet CP1215 .ICM files
+    $ ./getweb 1500	# Get HP Color LaserJet 1500 .ICM files
+    $ ./getweb 1600	# Get HP Color LaserJet 1600 .ICM files
+    $ ./getweb 2600n	# Get HP Color LaserJet 2600n .ICM files
+
+    $ ./getweb 1600w    # Get Konica Minolta magicolor 1600W .ICM files
+    $ ./getweb 1680     # Get Konica Minolta magicolor 1680MF .ICM files
+    $ ./getweb 1690     # Get Konica Minolta magicolor 1690MF .ICM files
+    $ ./getweb 2480	# Get Konica Minolta magicolor 2480 MF .ICM files
+    $ ./getweb 2490	# Get Konica Minolta magicolor 2490 MF .ICM files
+    $ ./getweb 2530	# Get Konica Minolta magicolor 2530 DL .ICM files
+    $ ./getweb 4690     # Get Konica Minolta magicolor 4690MF .ICM files
+    $ ./getweb 110      # Get Oki C110 .ICM files
+    $ ./getweb 6115	# Get Xerox Phaser 6115MFP .ICM files
+    $ ./getweb 6121     # Get Xerox Phaser 6121MFP.ICM files
+
+    $ ./getweb cpwl	# Get Minolta Color PageWorks/Pro L .ICM files
+    $ ./getweb 2200	# Get Minolta/QMS magicolor 2200 DL .ICM files
+    $ ./getweb 2300	# Get Minolta/QMS magicolor 2300 DL .ICM files
+    $ ./getweb 2430	# Get Konica Minolta magicolor 2430 DL .ICM files
+
+    $ ./getweb 300      # Get Samsung CLP-300 .ICM files
+    $ ./getweb 315      # Get Samsung CLP-315 .ICM files
+    $ ./getweb 325      # Get Samsung CLP-325 .ICM files
+    $ ./getweb 360      # Get Samsung CLP-360 .ICM files
+    $ ./getweb 365      # Get Samsung CLP-365 .ICM files
+    $ ./getweb 600      # Get Samsung CLP-600 .ICM files
+    $ ./getweb 610      # Get Samsung CLP-610 .ICM files
+    $ ./getweb 2160     # Get Samsung CLX-2160 .ICM files
+    $ ./getweb 3160     # Get Samsung CLX-3160 .ICM files
+    $ ./getweb 3175     # Get Samsung CLX-3175 .ICM files
+    $ ./getweb 3185     # Get Samsung CLX-3185 .ICM files
+    $ ./getweb 6110     # Get Xerox Phaser 6110 and 6110MFP .ICM files
+
+    $ ./getweb 500      # Get Lexmark C500 .ICM files
+
+    $ ./getweb 301      # Get Oki C301dn .ICM files
+    $ ./getweb c310     # Get Oki C310dn .ICM files
+    $ ./getweb c511     # Get Oki C511dn .ICM files
+    $ ./getweb c810     # Get Oki C810 .ICM files
+    $ ./getweb 3200     # Get Oki C3200 .ICM files
+    $ ./getweb 3300     # Get Oki C3300 .ICM files
+    $ ./getweb 3400     # Get Oki C3400 .ICM files
+    $ ./getweb 3530     # Get Oki C3530 MFP .ICM files
+    $ ./getweb 5100     # Get Oki C5100 .ICM files
+    $ ./getweb 5200     # Get Oki C5200 .ICM files
+    $ ./getweb 5500     # Get Oki C5500 .ICM files
+    $ ./getweb 5600     # Get Oki C5600 .ICM files
+    $ ./getweb 5800     # Get Oki C5800 .ICM files
+
+    $ ./getweb 160	# Get Olivetti d-Color P160W .ICM files
+
+    $ ./getweb 1000	# Get HP LaserJet 1000 firmware file
+    $ ./getweb 1005	# Get HP LaserJet 1005 firmware file
+    $ ./getweb 1018	# Get HP LaserJet 1018 firmware file
+    $ ./getweb 1020	# Get HP LaserJet 1020 firmware file
+
+    $ ./getweb P1005	# Get HP LaserJet P1005 firmware file
+    $ ./getweb P1006	# Get HP LaserJet P1006 firmware file
+    $ ./getweb P1007	# Get HP LaserJet P1007 firmware file
+    $ ./getweb P1008	# Get HP LaserJet P1008 firmware file
+    $ ./getweb P1505	# Get HP LaserJet P1505 firmware file
+
+Install driver, foomatic XML files, PPD files, and extra files:
+    $ su		OR	$ sudo make install
+    # make install
+
+(Optional) Install hotplug (for HP LJ 1000/1005/1018/1020/P100[5678]/P1505):
+    $ su		OR	$ sudo make install-hotplug
+    # make install-hotplug
+
+    Unplug and re-plug the USB printer
+
+If you use CUPS to manage your printers, you must restart cupsd:
+    # make cups		OR	$ sudo make cups
+
+Test operation of programs. Skip this if you don't have the exact same
+version of Ghostscript that I have, Fedora ghostscript 8.71-16.fc14, because
+it will not pass since different versions of Ghostscript generate different
+raster images:
+    # make test
+
+Create printers (Fedora 6/7/8/.../16 and Ubuntu 7.10/8.x/9.x/10.x/11.x):
+    # system-config-printer
+
+Create printers (Redhat 7.2/7.3/8.0/9.0, Fedora Core 1-5):
+    # printconf-gui
+
+Create printers (Mandrake/Manrivia)
+    # printerdrake
+
+Create printers (openSUSE 10.x/11.x)
+    # yast2 printer
+
+Create printers (Ubuntu 5.10/6.06/6.10/7.04)
+    $ sudo gnome-cups-manager
+    $ sudo make cups		# Ubuntu has a bug in gnome-cups-manager
+
+	NOTE: to edit a queue hit "Properties" (click right mouse button).
+
+Create printers (Debian)
+    Connect with a web browser to:
+	http://localhost:631
+    And configure printer (HP example shown) to:
+	HP LaserJet 2600n, Foomatic + foo2zjs (en)
+    Then edit "Manage Printers->Configure Printer" to suit you,
+    such as "Page Size" or "Color Mode".
+
+Create printers (Solaris 11+)
+    # printmgr
+
+Create printers (command line using CUPS)
+    # lpadmin -p "NAME" -v "URI" -E -P file.ppd.gz
+    i.e.
+	# lpadmin -p hp1020 -v "usb://HP/LaserJet%201020" -E \
+	    -P /usr/share/cups/model/HP-LaserJet_1020.ppd.gz
+    Set the default:
+	# lpadmin -d "NAME"
+
+Create at least one queue for monochrome, and another queue
+for color printing.  Create the queues, then edit them and
+set the "device options" as desired.
+
+For a networked Minolta/QMS 2300 DL, I used a "Queue Type"
+of "Unix Printer (LPD)", and set the "Server" to the IP address
+of the printer, and the "Queue" to "lp".
+
+For a networked HP Color Laserjet 2600n, I used a "Queue Type"
+of "Networked JetDirect", and set the "Printer" to the IP address
+of the printer, and the "Port" to "9100".
+
+GHOSTSCRIPT BUGS
+----------------
+    * ghostscript 8.64 is broken w.r.t. color.  Don't use!
+
+    * ghostscript 9.00 is broken w.r.t. fonts in landscape mode.
+
+    * ghostscript 9.+ is broken w.r.t. color. Don't use
+
+    * Well Tempered Screening (WTS) works with ghostscript 8.54 thru 8.70+.
+      So if you want BEST COLORS, you'll have to install gs 8.54 or better
+      if you don't have it.
+
+	OPTIONAL: 
+	    # yum install cups-devel
+		-OR-
+	    $ sudo apt-get install cups-dev
+
+	$ gs --version
+	8.15.2
+	
+	$ wget "http://ghostscript.com/releases/ghostscript-8.71.tar.gz"
+	$ tar zxf ghostscript-8.71.tar.gz
+	$ cd ghostscript-8.71
+	$ ./autogen.sh
+	$ make
+	$ su				OR $ sudo cp bin/gs /usr/bin/gs.foo
+	# cp bin/gs /usr/bin/gs.foo
+
+	(Optional)
+	# make install			OR $ sudo make install
+
+	$ gs.foo --version
+	8.71
+
+      If that doesn't compile (e.g. Ubuntu 11.10+), try this:
+	$ cd ghostscript-8.71
+	$ ./configure  --without-jbig2dec
+	$ make CFLAGS+="-DHAVE_SYS_TIME_H=1"
+
+    * Halftoning Bug:
+        "The problems with WTS are primarily that it seems to fall down
+	on the halftone generation for some angles when the lpi is high for
+	the current resolution." - Ray Johnston <ray.johnston@artifex.com>
+
+	So choose Standard, Accurate Screens, or reduce the resolution to
+	600x600.
+
+    * Ghostscript before 8.55 has a problem with ICM files and 64-bit gcc.
+      It causes a segfault with km2430_2.icm. So don't select that one.
+
+FEDORA NOTES 
+------------
+    Install tix, foomatic\*, and system-config-printer FIRST:
+	# yum install tix foomatic\* system-config-printer
+
+    If you are using a USB printer AND Fedora 12+, do this:
+
+	# grep udev-configure-printer /var/log/messages
+	/var/log/messages:Jan 23 07:32:54 dual udev-configure-printer: \
+    		invalid or missing IEEE 1284 Device ID
+
+	# rpm -e --nodeps system-config-printer-udev
+
+	# shutdown -r now
+
+	Power off then on the printer.
+
+    Ref:
+	http://bugzilla.redhat.com/show_bug.cgi?id=558162
+
+UBUNTU NOTES
+------------
+    Install build-essential, tix, foomatic-filters, groff, dc FIRST:
+	$ sudo apt-get install build-essential tix foomatic-filters groff dc
+
+	$ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+	$ tar zxf foo2zjs.tar.gz
+	$ cd foo2zjs
+	$ sudo make uninstall
+	$ make
+	$ ./getweb 1020
+	    OR other printer
+	$ sudo make install install-hotplug cups
+
+	For 7.10 and later users:
+	    $ sudo system-config-printer
+
+	For 5.10/6.06/6.10/7.04 users:
+	    $ sudo gnome-cups-manager
+	    [configure ColorMode = Color if a color printer]
+	    $ sudo make cups
+
+	    Ubuntu has a bug in gnome-cups-manager with Color, so you must
+	    restart cups.  No other distro has this bug.
+
+    If that doesn't work, then fire up:
+	$ firefox http://localhost:631
+
+	And click on:
+	    Printers -> Set Printer Options -> Color Mode -> Color
+	Then click on:
+	    Set Printer Options
+
+DEBIAN NOTES
+------------
+    Install build-essential, tix, foomatic-filters, groff, cupsys, dc FIRST:
+	$ su
+	# apt-get install build-essential tix foomatic-filters groff dc
+	# apt-get install cups		# For all others
+	    OR
+	# apt-get install cupsys	# For lenny and earlier
+
+	$ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+        $ tar zxf foo2zjs.tar.gz
+        $ cd foo2zjs
+        $ make
+        $ ./getweb 1020
+            OR other printer
+        $ su
+        # make install install-hotplug cups
+
+	$ firefox http://localhost:631
+
+OPENSUSE 1x.x NOTES
+-------------------
+    Do this:
+
+	# zypper install make gcc
+
+	# zypper service-add \
+	    http://download.opensuse.org/repositories/Printing/openSUSE_11.3/ \
+	    Printing
+	# zypper up -r Printing -t package
+    
+    Then install using the above instructions.
+
+ACER ASPIRE ONE NOTES
+---------------------
+
+    Ref: http://the.taoofmac.com/media/Acer/Aspire\ One/AA1notes.htm
+
+    It is a version of Fedora.
+
+	Get a shell by typing Alt+F2 then Return.
+
+	$ su
+	# yum install make gcc
+	<ctrl-d>
+
+	$ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+        $ tar zxf foo2zjs.tar.gz
+        $ cd foo2zjs
+        $ make
+        $ ./getweb 1020
+            OR other printer, e.g. 2600n
+	$ su
+        # make install install-hotplug cups
+
+    
+ASUS EEE PC NOTES
+-----------------
+
+    It is a version of Xandros.  First:
+
+	Get a shell by typing ctrl-alt-T
+	$ sudo su -
+	# vi or kwrite /etc/apt/sources.list
+	    add the following line:
+		deb ftp://ftp.us.debian.org/debian stable main contrib non-free
+	# apt-get -f install
+	# apt-get install wget
+	# apt-get install build-essential
+	<ctrl-d>
+
+	$ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+        $ tar zxf foo2zjs.tar.gz
+        $ cd foo2zjs
+        $ make
+        $ ./getweb 1020
+            OR other printer, e.g. 2600n
+        $ sudo make install install-hotplug cups
+
+    Then use the "Add Printer" GUI.
+
+MAC OS X NOTES
+---------------
+    Please read the detailed installation instructions by Clint Morgan
+    and Rick Richardson in the file INSTALL.osx.
+
+FREEBSD NOTES
+-------------
+    You need the following packages before you start the "make":
+	# pkg_add -r wget
+	# pkg_add -r gmake
+	# pkg_add -r ghostscript-gnu
+	# pkg_add -r cups
+	# pkg_add -r foomatic-filters
+	# pkg_add -r unzip
+
+    Use "gmake" instead of "make".  E.G. gmake; ./getweb XXX; gmake install
+
+    USB NOTES FOR FREEBSD 8.0 AND GREATER
+    -------------------------------------
+	$ gmake
+	$ ./getweb 1020
+            OR other printer, e.g. 2600n
+	# gmake install install-hotplug
+	# ./freebsd-install
+
+	Use:
+	    usb:/dev/ulpt0	Device with reset #0
+	    usb:/dev/unlpt0	Device without reset #0
+	    usb:/dev/ulpt1	Device with reset #1
+	    usb:/dev/unlpt1	Device without reset #1
+	for the URI.
+
+	More information:
+	    http://menhennitt.com.au/wordpress/2009/09/27/printing-to-an-hp-laserjet-1020-from-freebsd-8-using-cups-and-foo2zjs
+	    http://farid.hajji.name/blog/2010/02/02/printing-woes-on-freebsd-8-with-cups/
+
+    USB NOTES FOR FREEBSD 7.x AND LESSER
+    ------------------------------------
+	- Build the kernel without the ulpt driver. 
+	    e.g.
+	    # vi /usr/src/sys/i386/conf/GENERIC
+		comment out 'device ulpt'
+	    # cd /usr/src/
+	    # make buildkernel KERNCONF=GENERIC
+	    # make installkernel KERNCONF=GENERIC
+	    reboot
+
+	- Do one of these lines each time the HP printer is powered up:
+	    # cat /usr/share/foo2zjs/firmware/sihp1018.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2zjs/firmware/sihp1020.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2xqx/firmware/sihpP1005.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2xqx/firmware/sihpP1006.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2xqx/firmware/sihpP1505.dl > /dev/ugen0.1
+
+	More information:
+	    http://www.webmiscreants.com/index.php?page=howto_P1006
+
+OPENBSD NOTES
+-------------
+    You need the following packages before you start the "make":
+	# pkg_add wget
+	# pkg_add gmake
+	# pkg_add -i ghostscript
+	# pkg_add cups
+	# pkg_add unzip
+
+    Use "gmake" instead of "make".  E.G. gmake; ./getweb XXX; gmake install
+
+    USB NOTES FOR OPENBSD
+	- Build the kernel without the ulpt driver. 
+	    e.g.
+	    # vi /usr/src/sys/i386/conf/GENERIC
+		comment out 'device ulpt'
+	    # cd /usr/src/
+	    # make buildkernel KERNCONF=GENERIC
+	    # make installkernel KERNCONF=GENERIC
+	    reboot
+
+	- Do one of these lines each time the printer is powered up:
+	    # cat /usr/share/foo2zjs/firmware/sihp1018.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2zjs/firmware/sihp1020.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2xqx/firmware/sihpP1005.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2xqx/firmware/sihpP1006.dl > /dev/ugen0.1
+	    # cat /usr/share/foo2xqx/firmware/sihpP1505.dl > /dev/ugen0.1
+
+OPENSOLARIS, SOLARIS EXPRESS DEVELOPER EDITION 9/07, Solaris 11+ NOTES
+----------------------------------------------------------------------
+    Use "bash" for your shell.  Only network printers are supported.
+
+    $ export PATH=$PATH:/sbin:/usr/sbin:/usr/sfw/bin:/opt/sfw/bin
+    
+    Do this:
+
+	[ Load CD Solaris_Software_Companion]
+	$ cd /media/S10_807_SOFTWARE_COMPANION/Solaris_Software_Companion/Solaris_i386/Packages
+	$ su root -c "/usr/bin/bash"
+	# pkgadd -d `pwd` SFWgroff
+	# pkgadd -d `pwd` SFWgawk
+
+    OR
+	Browse to:
+	    http://pkg.opensolaris.org/release/en/index.shtml
+	and Search or Browse Packages and download:
+
+	    SUNWscp
+	    SUNWgawk
+	    SUNWgroff
+
+    Then:
+
+    $ wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+    $ tar zxf foo2zjs.tar.gz
+    $ cd foo2zjs
+
+    $ gmake
+    $ ./getweb 2530
+	OR other printer
+
+    $ su root -c "/usr/bin/bash"
+    # gmake install
+    # printmgr
+
+    To see a screen to the GUI:
+	http://foo2lava.rkkda.com/solaris/
+
+    NOTE: you cannot see the printer options (Paper Source, Paper Type,
+    Paper Media, Color Mode, ICM, etc.).  There is NO GUI to do it!!!
+    Sorry.
+
+MINOLTA-QMS 2200/2300 DL NOTES
+------------------------------
+    Use the network interface if you can.  These printers understand Unix
+    LPD printer server protocol.  So when setting up the printer queue,
+    you can select "UNIX Printer (lpd queue)", set the lpd queue name to
+    "lp" (arbitrary), and set the "Server" to the IP address of the
+    printer.
+
+    These printers also understand several other printer server protocols,
+    such as JetDirect and IPP, but I have not tried them.  In any case,
+    I'm not aware of any advantages of using them over LPD.
+
+    The USB interface on this printer will work if your printer is at
+    firmware revision 2.55 or later.  Mine was not, but I was able to
+    get this firmware from the Konica Minolta Europe web site.  The USA
+    site doesn't have it.  Upgrading the firmware on your printer can
+    be dangerous and might turn your printer into a paperweight, so I do
+    not recommend it unless you need USB and are a computer expert.  To
+    get the v2.55 firmware upgrade, try:
+	./getweb 2300dl_fw
+
+CUPS USB NOTES
+--------------
+    If you are using the USB port, then the URI should be:
+	file:/dev/usb/lp0	OR	usb:/dev/usb/lp0
+	file:/dev/usb/lp1	OR	usb:/dev/usb/lp1
+    OR
+	usb://Samsung/CLP-310%20Series
+	usb://Samsung/CLP-310%20Series
+	usb://HP/Color%20LaserJet%20CP1215
+	usb://HP/Color%20LaserJet%202600n
+	usb://HP/LaserJet%201000
+	usb://HP/LaserJet%201005
+	usb://HP/LaserJet%201018
+	usb://HP/LaserJet%201020
+	usb://HP/LaserJet%20P1005
+	usb://HP/LaserJet%20P1006
+	usb://HP/LaserJet%20P1007
+	usb://HP/LaserJet%20P1008
+	usb://HP/LaserJet%20P1505
+	usb://HP/LaserJet%20Professional%20P1102w
+
+    Don't use hp://<whatever> because that is for hplip (a closed source,
+    proprietary driver).
+
+    Do a "make cups" as root if you haven't done it before.
+
+HP LASERJET 1000/1005/1018/1020, P1005/P1006/P1007/P1008/P1505 NOTES
+--------------------------------------------------------------------
+    These printers need their firmware downloaded to them every time they
+    are powered up.
+
+	On Linux with USB connected printer:
+	    If you are running Linux and the printer is connected via USB, you
+	    can arrange for the firmware to be automatically downloaded to the
+	    printer by performing one more installation step:
+
+	    # make install-hotplug
+
+	    Power off then on the printer. Light should flash orange for
+	    ~5 seconds as the firmware is getting downloaded.
+
+	On another OS or with a parallel port connected printer:
+
+	    You must send a firmware file to the printer each time you power it
+	    up.  If you downloaded the extra files for the HP above, a typical
+	    command line to load the firmware would be ONE of these:
+
+	    # cat /usr/share/foo2zjs/firmware/sihp1000.dl > /dev/usb/lp0
+	    # cat /usr/share/foo2zjs/firmware/sihp1005.dl > /dev/usb/lp0
+	    # cat /usr/share/foo2zjs/firmware/sihp1018.dl > /dev/usb/lp0
+	    # cat /usr/share/foo2zjs/firmware/sihp1020.dl > /dev/usb/lp0
+	    # cat /usr/share/foo2xqx/firmware/sihpP1005.dl > /dev/usb/lp0
+	    # cat /usr/share/foo2xqx/firmware/sihpP1006.dl > /dev/usb/lp0
+	    # cat /usr/share/foo2xqx/firmware/sihpP1505.dl > /dev/usb/lp0
+
+	    Light should flash orange for ~5 seconds as the firmware is
+	    getting downloaded.
+
+	On Mac OS X:
+
+	    You must send a firmware file to the printer each time you power it
+	    up.  If you downloaded the extra files for the HP above, a typical
+	    command line to load the firmware would be:
+
+		$ lp -oraw /usr/share/foo2zjs/firmware/sihp1018.dl
+		$ lp -oraw /usr/share/foo2zjs/firmware/sihp1020.dl
+		$ lp -oraw /usr/share/foo2xqx/firmware/sihpP1005.dl
+		$ lp -oraw /usr/share/foo2xqx/firmware/sihpP1006.dl
+		$ lp -oraw /usr/share/foo2xqx/firmware/sihpP1505.dl
+
+	    -OR-
+
+		Add a line to /etc/rc.local and reboot:
+
+		    killall osx-hplj-hotplug; \
+			osx-hplj-hotplug >/tmp/osx-hplj-hotplug 2>&1 &
+
+	    -OR-
+
+		Issue a "make install-hotplug" command:
+	    
+		$ sudo make install-hotplug
+
+	    Light should flash orange for ~5 seconds as the firmware is
+	    getting downloaded.
+
+    Firmware Not Downloaded:
+	# usb_printerid /dev/usb/lp0
+	GET_DEVICE_ID string:
+	MFG:Hewlett-Packard;MDL:HP LaserJet 1020;CMD:ACL;CLS: PRINTER;\
+		    DES:HP LaserJet 1020;
+
+    Firmware Downloaded:
+	# usb_printerid /dev/usb/lp0
+	GET_DEVICE_ID string:
+	MFG:Hewlett-Packard;MDL:HP LaserJet 1020;CMD:ACL;CLS: PRINTER;\
+		    DES:HP LaserJet 1020;FWVER:20050309;
+
+    NOTE: The original HP files are named '*.img'.  Sometimes HP supplies
+    these files ready-to-download to the printer, sometimes they are raw
+    ARM executables and need to have a special header added to them before
+    they can be downloaded.  The "make install" step will use the supplied
+    "arm2hpdl" program to automatically detect which kind of file they are
+    and convert them (if needed) to the downloadable '*.dl' format.
+
+    These printers do not have a "button" when you run out of paper.
+    But, there is a GNOME gui in:
+
+	Applications -> System Tools -> HPLJ 10xx Replaced Paper
+
+    It requires tcl, tk, and tix.  Fedora 5 and later:
+	# yum install tcl tk tix
+
+    or, you can simulate this by reloading the paper and doing:
+
+	$ usb_printerid /dev/usb/lp0
+
+    or, you can open the print cartridge door and then close it.
+
+HP SMART INSTALL NOTES
+----------------------
+    The printers HP LaserJet Pro P1102, HP LaserJet Pro CP1025, and simliar
+    models have a virtual CD-ROM (a fake USB CD drive) in USB mode.  You can
+    disable this three ways:
+
+    Method 1:
+	NOTE: this is a non-open-source method!
+	- Connect the printer to a Windows PC and turn it on.
+	  The fake CD-ROM appears on Windows.
+	- Insert the original Driver CD that ships with the printer
+	- Run SIUtility.exe or SIUtility64.exe from the UTIL folder and
+	  COMPLETELY DISABLE THIS "HP SMART INSTALL" FEATURE. 
+
+    Method 2:
+	- Install usb_modeswitch and usb_modeswitch-data from your distro's
+	  repository. I.E.:
+	    # yum install usb_modeswitch usb_modeswitch-data
+	  OR
+	    $ sudo apt-get install usb-modeswitch-data
+	  OR
+	    Surf to: http://www.draisberghof.de/usb_modeswitch/
+	- Power cycle the printer.
+
+    Method 3:
+	NOTE: this is a non-open-source method!
+	- Execute:
+	    $ wget http://hplipopensource.com/hplip-web/smartinstall/\
+		SmartInstallDisable-Tool.run
+	    $ sh SmartInstallDisable-Tool.run
+
+PSUTILS AND 2/4-UP CAPABILITY
+-----------------------------
+    If you would like to use the 2-up/4-up capability, then you need to
+    get and install Angus Duggan's excellent psutils package.  You can
+    find the source code for psutils here:
+
+	http://knackered.knackered.org/angus/psutils/index.html
+
+    Or an RPM here:
+
+	http://rpmfind.net/linux/rpm2html/search.php?query=psutils
+
+CUSTOM PAGE SIZE
+----------------
+
+    Append "PageSize=Custom.MMMxNNNin" to the lpr command.  E.G.
+
+    $ lpr -P hp2600 -o media=letter -o PageSize=Custom.4x6in ~/testpage.ps
+    $ lpr -P hp2600 -o media=letter -o PageSize=Custom.10x15cm ~/testpage.ps
+    $ lpr -P hp1020 -o media=letter -o PageSize=Custom.4x6in ~/testpage.ps
+
+    Or, use a GUI that allows the custom size parameters, e.g.
+    "evince" - PostScript and PDF File Viewer.
+
+LANDSCAPE ORIENTATION
+---------------------
+    This driver just prints Postscript and doesn't know what the
+    orientation is (*).  Other higher level programs format your
+    data into Postscript, e.g CUPS. 
+
+    The CUPS -o landscape option will rotate the page 90 degrees to print
+    in landscape orientation:
+
+    $ lp -o landscape filename
+    $ lpr -o landscape filename
+
+    (*) except for N-up printing, because psnup (from psutils) requires it!
+
+SET DEFAULT MEDIA WITH CUPS
+---------------------------
+    $ sudo
+    # lpoptions -o media=A4
+	-OR-
+    # lpoptions -o media=Letter
+
+MANUAL DUPLEX
+-------------
+
+    See:
+	https://sourceforge.net/projects/g-manual-duplex/
+
+	Install:
+	    $ make
+	    $ su
+	    # make install      -OR-    $ sudo make install
+	    [logout]
+	    [login]
+
+	Then:
+	    Using the Gnome 2 or Gnome-3 Classic (fallback) GUI:
+	    1a)     System Tools -> Gnome Manual Duplex
+		    - OR -
+	    1b)     Add to Panel -> Gnome Manual Duplex applet -> Add
+	    2)      Print -> GnomeManualDuplex (Virtual Printer) -> Print
+
+	    Using the Gnome 3 Shell GUI:
+	    1)      $ gnome-session-properties
+		    Startup Programs -> GnomeManualDuplex -> Enable
+		    [logout][login]
+	    2)      Print -> GnomeManualDuplex (Virtual Printer) -> Print
+
+	    Works with *.ps and *.pdf files.
+	    Works with Gnome-2 or Gnome-3.
+
+	- Print odd pages
+	- Wait for confimation message
+	- Insert in the same orientation into the printer
+	- Print reverse even pages
+
+	Howto (video):
+	    http://www.youtube.com/watch?v=c4Ghomz6RQI
+
+    -OR-
+	$ psmandup [options] file.ps
+	
+	Ref:
+	    Fedora: # yum install a2ps
+	    Ubuntu: $ sudo apt-get install a2ps
+
+    -OR- (Gnome)
+	Print -> Page Setup -> Only print -> Odd Sheets
+
+	then:
+
+	Print -> Page Setup -> Only print -> Even Sheets
+
+    -OR- (Gnome)
+	Print -> Job -> Odd Pages
+
+	then:
+
+	Print -> Job -> Even Pages 
+
+    -OR- (KDE)
+	Okular -> Print -> Copies -> Page Set -> Odd Pages
+
+	then:
+
+	Okular -> Print -> Copies -> Page Set -> Even Pages
+
+    Ref:
+	http://bugzilla.gnome.org/show_bug.cgi?id=520598
+
+UPDATE
+------
+    Here are handy lines you can click on to get the latest version:
+
+	http://foo2zjs.rkkda.com/
+	wget http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+
+    My advice: update early and often!!!!
+
+UNINSTALLING
+------------
+    This will uninstall everything from your system.
+
+    $ su
+    # make uninstall
+
+BUG REPORTS
+-----------
+    PLEASE use the forums at:
+	http://foo2zjs.rkkda.com/forum/index.php
+
+    I do not read or reply to HTML email or messages sent under an alias.
+    I failed out of french class, so don't even think about sending
+    me email in anything but English.
+
+    Rick Richardson
+
+DEVELOPER AND DEBUGGING TIPS
+----------------------------
+    If you want to work on this program, I recommend creating a "raw"
+    printer queue directed at the printer, with no protocol conversions.
+    OR, simple copy the file to /dev/usb/lp0 (USB) or nc (netcat) the
+    file (network).
+
+    Then, you can use the "foo2zjs-wrapper" program to convert Postscript
+    test programs to ZjS format, and inspect them with "zjsdecode" before
+    deciding whether to print them or not.  For example:
+
+	foo2zjs-wrapper testpage.ps > testpage.zm
+	foo2zjs-wrapper -c testpage.ps > testpage.zc
+
+	zjsdecode < testpage.zm
+	zjsdecode < testpage.zc
+
+	lpr -Praw testpage.zm
+	    OR
+	cp testpage.zm /dev/usb/lp0
+	    OR
+	nc 192.168.1.NNN 9100 < testpage.zm
+
+    Same thing for the other drivers, e.g. ...
+
+	foo2hiperc-wrapper testpage.ps > testpage.hc
+	hipercdecode < testpage.hc
+	nc 192.168.1.NNN 9100 < testpage.hc
+
+    If the printer is an HP LaserJet 10xx or P1xxx and needs to have the
+    firmware downloaded, this will tell you (P1006):
+	Before:
+	    usb_printerid /dev/usb/lp0
+	    MFG:Hewlett-Packard;MDL:HP LaserJet P1006;CMD:ACL;CLS:PRINTER;\
+		DES:HP LaserJet P1006;
+
+	After:
+	    usb_printerid /dev/usb/lp0
+	    MFG:Hewlett-Packard;MDL:HP LaserJet P1006;CMD:ACL;CLS:PRINTER;\
+		DES:HP LaserJet P1006;FWVER:20080415;
+
+CUSTOM ICC/ICM COLOR PRINTER PROFILE (BUY)
+------------------------------------------
+
+    I need:
+	Dell 1355 or Xerox 6015		default resolution
+	Samsung CLP-315			default resolution
+	Samsung CLP-325			default resolution
+	Samsung CLP-360 or 365		default resolution
+	Samsung CLP-600			default resolution
+	Samsung CLP-610			default resolution
+	Samsung CLP-620			default resolution
+	HP Color LaserJet 1500		default resolution
+	HP Color LaserJet CP1215	default resolution, 1-bit and 2-bit
+	HP Color LaserJet 2600n		2-bit, default resolution
+
+    NOTE:
+    This works only if you have ghostscript 8.x. If you have gs 9.x, then
+    read "GHOSTSCRIPT BUGS" and prepare /usr/bin/gs.foo from gs 8.x.
+
+    0)	Pick a vendor, e.g.
+	    google: "Custom Printer Profiles"
+
+	    MadManChan's Custom Printer Profiles
+	    http://people.csail.mit.edu/ericchan/photos/profiles.html
+	    Cost: 20 dollars
+
+	    PC35 PhotoLab Custom Printer Profiling Services
+	    http://printerprofiles.homestead.com/
+	    Cost: 30 dollars
+
+	    Cathy's Profiles
+	    http://www.cathysprofiles.com/
+	    Cost: 35 dollars
+
+	    "Custom ICC ICM colour printer profile RGB or CMYK"
+	    Seller: personalised101
+	    http://stores.ebay.ie/The-Graphics-Depot 
+	    Cost: 10 pounds
+
+	    "We Create a Custom ICC Profile for Your Printer-"
+	    Seller: fotojimbo
+	    http://search.ebay.com/_W0QQsassZfotojimbo
+	    Cost: 10 dollars
+
+	    "Custom Color ICC Profile Printer Epson HP Canon 3800"
+	    Seller: Booksmart Studio
+	    http://stores.shop.ebay.com/Booksmart-Studio
+	    Cost: 25 dollars
+
+    1)	Convert the vendor sheet(s) from *.tif to page*.ps (OPTIONAL)
+
+	    $ gimp
+
+		OR
+
+	    Preferred, using ImageMagick's "convert"
+	    $ convert Color\ Patch\ RGB\ \(Page\ 1\).tif page1.ps
+	    $ convert Color\ Patch\ RGB\ \(Page\ 2\).tif page2.ps
+
+		OR
+
+	    From *.jpg to *.ps
+	    $ convert a300DPI_i1-RGB-1.5.jpg -rotate 90 -density 300x300 \
+		-quality 100 page1.ps
+
+    2)	Print the Postscript vendor sheet(s) with NO color correction:
+
+	    $ foo2hp2600-wrapper -c -C10 -Gnone.icm page1.ps > test1.prn
+
+	    $ nc 192.168.1.xxxxxxx 9100 < test1.prn
+		OR
+	    $ cp test1.prn /dev/usb/lp0
+
+	    repeat for page2.ps (if necessary).
+
+    3)	Send them to the vendor by POSTAL MAIL
+
+    4)	Get back *.icc/*.icm profile by EMAIL or WEB
+
+    5)	Put it in /usr/share/foo2hp/icm/testing.icm
+
+    6)	Print a test picture:
+
+	    $ foo2hp2600-wrapper -c -C10 -Gtesting.icm \
+		picture.ps > picture.prn
+
+	    $ nc 192.168.1.xxxxxxx 9100 < picture.prn
+		OR
+	    $ cp picture.prn /dev/usb/lp0
+
+    7)	If it is OK, send "testing.icm" to rick.richardson@comcast.net
+	for inclusion in foo2zjs.
+
+    Other printers: use foo2qpdl-wrapper and /usr/share/foo2qpdl/icm/
+    Other printers: use foo2lava-wrapper and /usr/share/foo2lava/icm/
+
+CUSTOM ICC/ICM COLOR PRINTER PROFILE (ARGYLL)
+---------------------------------------------
+    NOTE:
+    This works only if you have ghostscript 8.x. If you have gs 9.x, then
+    read "GHOSTSCRIPT BUGS" and prepare /usr/bin/gs.foo from gs 8.x.
+
+    Reference:
+	firefox http://www.xritephoto.com/html/colormunkisplash.htm
+	firefox http://www.argyllcms.com/
+	man printer-profile
+
+    DON'T DO THIS ON A 32-BIT (i386) PROCESSOR!
+	Ghostscript (8.63) has problems.  Weird color profile data.
+
+    ONLY DO THIS ON A 64-BIT (x86_64)PROCESSOR.
+	But, you can use the color profile on i386 and x86_64.
+
+    YOU HAVE BEEN WARNED!!!
+
+    Execute:
+	$ man printer-profile
+	$ printer-profile  manuf model [rgb|cmyk] [patches] [ink-limit]
+
+    If it is OK, send "testing.icm" to rick.richardson@comcast.net
+	for inclusion in foo2zjs.

@@ -1,0 +1,59 @@
+<printer id="printer/Samsung-CLX-3185">
+    <make>Samsung</make>
+    <model>CLX-3185</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (1500 prints) - $54
+		Toner Cyan (1000 prints) - $45
+		Toner Magenta (1000 prints) - $45
+		Toner Yellow (1000 prints) - $45
+		Waste Toner (5000 prints) - $10
+		Drum Kit (24000 prints) - $96
+	    </en> </comments>
+	    <partno>CLT-K407S</partno>
+	    <partno>CLT-C406S</partno>
+	    <partno>CLT-M406s</partno>
+	    <partno>CLT-Y406s</partno>
+	    <partno>CLT-W409SEE</partno>
+	    <partno>CLT-R407</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.samsung.com/us/computer/printers/CLX-3185/XAA</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2qpdl</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Samsung CLX-3185 (USB) and CLX-3185FW (network) is color laser
+	multifunction printer with a 2010 street price of $225/$550 USD.
+
+	This printer is supported by the foo2qpdl open software printer driver.
+
+	Only the printer function is supported by this driver.
+
+    </en> </comments>
+</printer>

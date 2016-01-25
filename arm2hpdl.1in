@@ -1,0 +1,44 @@
+.TH arm2hpdl 1 "${MODpage}" "arm2hpdl ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+arm2hpdl \- Add HP download header/trailer to an ARM ELF binary.
+.SH SYNOPSIS
+.B arm2hpdl
+.RI [ options "] arm-binary.img > hpdl.dl"
+.SH DESCRIPTION
+.B arm2hpdl
+adds an HP download header/trailer to an ARM ELF binary.
+If the file already has an HP header, just copy it to stdout.
+.SH COMMAND LINE OPTIONS
+These are the options that can appear on the command line.
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Add an HPDL header to a HP LaserJet 1005.
+
+.nf
+.ft CW
+$ arm2hpdl sihp1005.img > sihp1005.dl
+.ft P
+.fi
+
+.SH FILES
+.BR /usr/bin/arm2hpdl,
+.BR /usr/share/foo2*/firmware/
+.SH SEE ALSO
+.BR foo2zjs (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLZJS}/
+'\"
+'\"
+'\"
+.em pdf_outline

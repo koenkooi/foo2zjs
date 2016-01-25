@@ -1,0 +1,1841 @@
+2015-10-24	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db/printer/Epson-AcuLaser_CX17NF.xml:
+		Change margins on Epson AcuLaser CX17NF.
+
+2015-10-11	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Epson AcuLaser CX17NF using the foo2hbpl2 driver.
+
+2015-07-04	pavel.shvagirev	<pavel.shvagirev@gmail.com>
+	* Modify: hplj10XX to not call us twice on Ubuntu 14.
+
+2015-05-11	Rick Richardson <rick.richardson@comcast.net>
+	* Bug in foomatic-db/printer/Xerox-Phaser_6115MFP.xml . Should use
+	  foo2lava driver. Thanks to user "ophers".
+
+2015-02-11	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Oki C511 using foo2hiperc.
+
+2014-12-21	Rick Richardson <rick.richardson@comcast.net>
+	* osx-hotplug: make it work with OS X 10.10
+
+2014-12-04	Rick Richardson <rick.richardson@comcast.net>
+	* make cups: add "Sandboxing Relaxed" to cups-files.conf iff cups >= 2
+
+2014-09-25	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hblp2, foo2hblp2-wrapper, foomatic et al:
+	    Add paper size A5.
+	* foo2hblp2 foomatic db entries:
+	    Changed resolution to 600x600, 1200x600, and 1200x1200.
+	    Note: need to recreate the printers if you want more choices!
+
+2014-05-19	Rick Richardson <rick.richardson@comcast.net>
+	* HP CLJ CP1215:  Adjust margins: *HWMargins: 18 14.40 18 14
+
+2014-05-04	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hbpl2-wrapper: Change PAPER=21 to PAPER=0 for custom page sizes.
+
+2014-04-17	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Fuji Xerox DocuPrint CM215 MFP using the foo2hbpl2
+	driver.
+
+2014-04-08	Rick Richardson <rick.richardson@comcast.net>
+	* Upgrade to JBIGKIT 2.1
+
+2014-04-01	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hbpl2 foomatic-db files and PPDs:
+	    Bug with default PageSize.
+	    PLEASE delete and recreate the foo2hbpl2 printers.
+
+2014-03-22	Rick Richardson <rick.richardson@comcast.net>
+	* hbpldecode: another redundancy from Dave Coffin
+
+2014-03-18	Rick Richardson <rick.richardson@comcast.net>
+	* hbpldecode: More envelope sizes.
+
+2014-03-17	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hbpl2.c: Bug, was using A4(1) instead of letter(4) by default
+	* hbpldecode: Print out paper codes.
+
+2014-03-15	Rick Richardson <rick.richardson@comcast.net>
+	* hbpldecode: More changes from Dave.  Still gets 
+	    Segmentation fault (core dumped)
+	* hbpldecode: Changed unsigned to int in 2 places.  Works good!!!
+
+2014-03-13	Rick Richardson <rick.richardson@comcast.net>
+	* hbpldecode: Bug with no -d/-r.
+
+2014-03-13	Rick Richardson <rick.richardson@comcast.net>
+	* hbpldecode: Changes to pick apart version 1 from
+	    Dave Coffin <dcoffin@cybercom.net>
+	* I get:
+	    Decoding page 1 to page-01.ppm ...
+	    Segmentation fault (core dumped)
+
+2014-03-02	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Fuji Xerox DocuPrint M215 MFP using the foo2hbpl2 driver.
+
+2014-02-09	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Xerox WorkCentre 3045 MFP using the foo2hbpl2 driver.
+
+2014-01-26	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl et al: with -z3 (e.g. CLP-365) you can adjust
+	    Brightness and Contrast for monochrome prints, and you can adjust
+	    Saturation, Cyan-Red, Magenta-Green, Yellow-Blue Balances.
+	* foo2hp: somewhere a bug in foomatic (probably 4.x) crept in
+	    so foo2hp-AlignCMYK.xml was only processing one option instead
+	    of three options!  Split the file into foo2hp-AlignC.xml,
+	    foo2hp-AlignM.xml, and foo2hp-AlignY.xml.
+
+2014-01-24	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Dell C1765nf/nfw using the foo2hbpl2 driver.
+
+2014-01-08	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Epson AcuLaser M1400 using the foo2hbpl2 driver.
+
+2013-12-25	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: HP LaserJet Pro M1212nf MFP using the foo2xqx driver.
+
+2013-12-01	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hiperc: clean up man pages
+
+2013-11-29	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hiperc-wrapper, foomatic and PPD stuff:
+	    add -z1 for Oki C810 so everything will be
+	    rotated 90 degrees EXCEPT paper==a3 OR paper==ledger/tabloid
+
+2013-11-18	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Oki C810 with A3 size paper.
+
+2013-08-13	Rick Richardson <rick.richardson@comcast.net>
+	* printer-profile: add Samsung clp-365.
+
+2013-08-06	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Fuji Xerox DocuPrint P205
+	* foo2hbpl2: Bpp = ResX / ResY
+
+2013-07-31	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs-pstops: Fix for FreeBSD
+
+2013-06-18	Rick Richardson <rick.richardson@comcast.net>
+	* Fix typo's in manual pages.
+
+2013-05-27	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db/printer/Samsung-CLX-3185.xml: fix typo
+
+	    "Please move "FileDevice Yes" on line 139 of /etc/cups/cupsd.conf
+2013-03-21	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: change cups target /etc/cups/cups-files.conf if it exists.
+	    "Please move "FileDevice Yes" on line 139 of /etc/cups/cupsd.conf
+	    to the /etc/cups/cups-files.conf file; this will become an error
+	    in a future release."
+
+2013-03-06	Rick Richardson <rick.richardson@comcast.net>
+	* cleanup on foo2hblp2.
+
+2013-03-03	Rick Richardson <rick.richardson@comcast.net>
+	* printer-profile: add dell 1355.
+	* foo2hbpl2: merge in changes from Peter Korf <peter@niendo.de>
+	* hbpldecode: swap yellow and cyan
+	* New Printers: Fuji Xerox DocuPrint CM205
+	* hbpldecode: implement -d option
+
+2013-03-02	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hbpl2 et al: Added manual pages.
+	* foo2hbpl2 et al: added new page sizes for envelopes
+
+2013-03-01	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hbpl2, foo2hbpl2-wrapper, foomatic and PPD stuff: Added
+	* New Printers: Dell 1355 and Xerox WorkCentre 6015 
+	    - pre-alpha quality !!!!!!
+	* merge in changes from Peter Korf <peter@niendo.de>
+
+2013-02-20	Rick Richardson <rick.richardson@comcast.net>
+	* install-hotplug: Fedora 18 changed "/usr/lib/udev/udevd"
+	    to "/usr/lib/systemd/systemd-udevd".
+
+2013-02-19	Rick Richardson <rick.richardson@comcast.net>
+	* hbpldecode: Handle \r\n in the PCL stream.
+	* hbpldecode: Update for HBPL version 2
+
+2013-01-22	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Samsung CLX-3185, CLX-3185FW
+
+2013-01-14	Rick Richardson <rick.richardson@comcast.net>
+	* hplj10xx_gui.tcl: Bug: add "replace" parm in "old"
+
+2013-01-13	Rick Richardson <rick.richardson@comcast.net>
+	* hplj1000: add a sleep 3
+
+2013-01-04	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Okidata C301dn
+
+2013-01-02	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Samsung CLP-365W
+
+2012-09-09	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: Add DESTDIR to CUPS_SERVERBIN
+
+2012-06-01	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile, hplj1000: remove /lib/udev/rules.d/86-hpmud_plugin.rules
+	    Same thing as 2010-12-10, different path!
+
+2012-05-10	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: gratiutous movement of udevd in F17
+
+2012-05-04	Rick Richardson <rick.richardson@comcast.net>
+	* hplj1000: put an "exit" in
+
+2012-02-23	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs-pstops: put gs9 code in, but no CMYK color profiles (yet).
+
+2011-12-27	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: install-ppd for Mac
+
+2011-12-26	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: make cups FileDevice Yes
+
+2011-12-02	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: ignore warning from missing cups-config
+	* Makefile: "make cups" for Fedora 16
+
+2011-11-23	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: command2foo2lava-pjl won't work with cups < 1.4
+	* foo2zjs-pstops.sh: also do %%Page: (1) 1
+
+2011-11-12	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs: there is a bug in HP printers p1102 (-z2) and
+	    cp1025 (-z3).  Workaround is to set MX=0.
+	* foo2zjs-wrapper: fix initial offset for -z2 and -z3 printers.
+
+2011-11-08	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak: don't error out if padlen == 0
+
+2011-11-05	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: change "make cups" target to also add a "FileDev Yes" line
+	    to /etc/cups/cupsd.conf.  Because cups 1.4.6+ does not like
+	    the usb:/dev/usb/lp0 syntax, but file:/dev/usb/lp0 works.
+
+2011-10-23	Rick Richardson <rick.richardson@comcast.net>
+	* updated the C110 ieee1284 string.
+
+2011-10-23	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs-wrapper: put gs9 code in, but no CMYK color profiles (yet).
+
+2011-10-20	Rick Richardson <rick.richardson@comcast.net>
+	* hplj1000: Reverse the checks for Ubuntu 11.10.
+
+2011-10-14	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db, PPDs: New printer "KONICA_MINOLTA-magicolor_2430"
+		like Minolta-magicolor_2430 except for Manufacturer.
+
+2011-10-14	Till Kamppeeter <till.kamppeter@gmail.com>
+	* hplj1000: make it work with usblp and CUPS (libusb)
+
+2011-10-10	Rick Richardson <rick.richardson@comcast.net>
+	* lavadecode: print the compression (JBIG or unknown)
+
+2011-10-09	Rick Richardson <rick.richardson@comcast.net>
+	* lavadecode: adjust for magicolor 3730
+
+2011-09-01	Rick Richardson <rick.richardson@comcast.net>
+	* Updated: printer-profile script to Argyll_V1.3.4
+
+2011-08-10	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db, PPDs: Bug with Samsung CLP-325, CLP-325W.
+	    PLEASE delete and recreate CLP-325 printers.
+
+2011-08-07	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak-wrapper: KM-1635/2035: don't rotate on A3 or ledger size paper
+
+2011-07-31	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: all-test checks for dc -V and gsed (OSX only).
+
+2011-07-30	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs-pstops: Use gsed instead of sed on Mac OSX
+
+2011-07-22	Rick Richardson <rick.richardson@comcast.net>
+	* osx-hotplug/osx-hplj-hotplug.m: cleanup for xcode 4.x
+
+2011-07-17	Rick Richardson <rick.richardson@comcast.net>
+	* opt/foo2lava-ColorMode.xml, PPD's: Removed -C1 -C2 -C3 opts;
+	    they are for magicolor 2300 DL only.
+
+2011-06-09	Rick Richardson <rick.richardson@comcast.net>
+	* Cleanup: remove "unused-but-set-variable".
+
+2011-06-02	Rick Richardson <rick.richardson@comcast.net>
+	* New program: hbpldecode for decoding Fuji-Zerox cp105b
+	    and Dell 1250c.
+
+2011-05-25	Rick Richardson <rick.richardson@comcast.net>
+	* make install on Fedora 15:
+	    Use "rpm -e --nodeps system-config-printer-udev" instead of "yum".
+
+2011-03-08	Rick Richardson <rick.richardson@comcast.net>
+	* hplj10xx.conf: For FreeBSD 8, s/zjx/xqx/ for HP LJ P???? printers
+	    Ref: Yury G. Kudryashov <urkud.urkud@gmail.com>
+
+2011-02-10	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: fix perms on PPD files.
+
+2011-01-31	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Oki C310dn.
+
+2011-01-23	Rick Richardson <rick.richardson@comcast.net>
+	* osx-hotplug/osx-hplj-hotplug.1in: Man page
+
+2011-01-21	Rick Richardson <rick.richardson@comcast.net>
+	* osx-hotplug/osx-hplj-hotplug.m:
+	  If FWVER is present, then no download is needed.
+
+2011-01-20	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: make install-hotplug for OSX.
+
+2011-01-19	Rick Richardson <rick.richardson@comcast.net>
+	* Change foo2hp2600-wrapper to remove "expr substr ..." and
+	  replace it with "echo ... | sed ..." for OSX (because expr != gexpr)
+
+2011-01-18	Rick Richardson <rick.richardson@comcast.net>
+	* New program: osx-hplj-hotplug
+	    Does hotplug on Mac OSX.  Add a line to /etc/rc.local and reboot:
+
+	    killall osx-hplj-hotplug; osx-hplj-hotplug \
+		    >/tmp/osx-hplj-hotplug 2>&1 &
+2011-04-15	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Samsung CLP-325, CLP-325W.
+
+2011-03-08	Rick Richardson <rick.richardson@comcast.net>
+	* hplj10xx.conf: For FreeBSD 8, s/zjx/xqx/ for HP LJ P???? printers
+	    Ref: Yury G. Kudryashov <urkud.urkud@gmail.com>
+
+2011-02-10	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: fix perms on PPD files.
+
+2011-01-31	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Oki C310dn.
+
+2011-01-23	Rick Richardson <rick.richardson@comcast.net>
+	* osx-hotplug/osx-hplj-hotplug.1in: Man page
+
+2011-01-21	Rick Richardson <rick.richardson@comcast.net>
+	* osx-hotplug/osx-hplj-hotplug.m:
+	  If FWVER is present, then no download is needed.
+
+2011-01-20	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: make install-hotplug for OSX.
+
+2011-01-19	Rick Richardson <rick.richardson@comcast.net>
+	* Change foo2hp2600-wrapper to remove "expr substr ..." and
+	  replace it with "echo ... | sed ..." for OSX (because expr != gexpr)
+
+2011-01-18	Rick Richardson <rick.richardson@comcast.net>
+	* New program: osx-hplj-hotplug
+	    Does hotplug on Mac OSX.  Add a line to /etc/rc.local and reboot:
+
+	    killall osx-hplj-hotplug; osx-hplj-hotplug \
+		    >/tmp/osx-hplj-hotplug 2>&1 &
+
+2011-01-14	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper, foomatic-db, PPDs: Add Halftone Algoritm.
+	    Standard (QUALITY=1), Accurate Screens (QUALITY=as),
+	    Well Tempered Screens (QUALITY=wts).  WTS is the default.
+	    PLEASE delete and recreate ALL printers.
+
+2011-01-09	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper:
+	    use QUALITY=1 instead of QUALITY=wts due to a bug in gs (8.71+)
+
+2011-01-09	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db, PPDs: Change ICM value for CLX-3175 (comestic)
+
+2010-12-22	Rick Richardson <rick.richardson@comcast.net>
+	* New printers: HP LaserJet 1022n, HP LaserJet 1022nw
+	* hplj1020.desktop: change Name and Comment
+
+2010-12-13	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs.c: with -z3, use BIH width for ZJI_RASTER_X
+	  Tested with a real HP LaserJet Pro CP1025nw printer.
+
+	* ICM for -z3 is done.  Do: make; ./getweb 1025; make install
+	  and PLEASE delete and recreate the foo2zjs-z3 printers
+
+2010-12-12	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs.c: with -z3, adjust to mod(128) pixels.
+
+2010-12-10	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile, hplj1000 et al:
+	    rm /etc/udev/rules.d/*hpmud*laserjet_{1000,1005,1018, 1020,
+			p1005,p1006,p1007,p1008,p1505}*
+
+	    Needed for Ubuntu 10.04 and greater with the proprietary "hplip"
+	    package installed.
+
+	    rm /etc/udev/rules.d/*hpmud_support.rules
+
+	    Needed for Fedora 13+
+
+2010-12-09	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs.c, foo2zjs-wrapper.in, zjsdecode, ppd/*, foomatic-db/*:
+	    Add 4x6, 5x8, and 10x15 page size for HP LaserJet Pro CP1025nw
+
+2010-12-08	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs.c, foo2zjs-wrapper.in, zjsdecode:
+	    Add -z3 for HP LaserJet Pro CP1025nw
+	* New Printer: HP LaserJet Pro CP1025nw
+	    ALPHA quality!!!  No ICM for color yet!!!
+
+2010-11-12	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Olivetti d-Color P160W
+
+2010-11-02	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak-wrapper: Change default HP CLJ 1500 ICM file. Do:
+			make; ./getweb 1500; make install
+
+2010-10-26	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*wrapper: Typo in GAMMAFILE
+
+2010-10-26	József CZOMPÓ <czo@czo.hu>
+	* foo2oak et al:  Add tray 2.
+	* foo2oak.c:  make -A and -B compatible with foo2hp, foo2zjs.
+
+2010-10-16	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c: Iff MODE_COLOR and nbie = 1, then it is a mono page.
+
+2010-10-12	Rick Richardson <rick.richardson@comcast.net>
+	* getweb: move dl2300.tar.gz
+
+2010-08-17	Rick Richardson <rick.richardson@comcast.net>
+	* New foo2lava printer: Xerox Phaser 6121MFP (printer only)
+
+2010-08-09	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: only do command2foo2lava-pjl IFF cups-devel package
+	    is installed
+
+2010-08-07	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: -z3 resolution
+
+2010-07-28	Rick Richardson <rick.richardson@comcast.net>
+	* Added manual page for foo2zjs-icc2ps.
+
+2010-07-26	Rick Richardson <rick.richardson@comcast.net>
+	* command2foo2lava-pjl.c: switched to use foo2zjsNegateMarkerLevels
+
+2010-07-25	Rick Richardson <rick.richardson@comcast.net>
+	* command2foo2lava-pjl.c: improved formatting
+
+2010-07-24	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper: add eval gs.foo for BSD
+
+2010-07-22	Rick Richardson <rick.richardson@comcast.net>
+	* Modify "modify-ppd" file for *cupsSNMPSupplies: False
+	* Modify: foo2zjs for Duplex and -z2 (HP P1606dn)
+
+2010-07-20	Rick Richardson <rick.richardson@comcast.net>
+	* Reinhold Kainhofer <reinhold@kainhofer.com>
+	    * New file: command2foo2lava-pjl.c
+	    * New file: modify-ppd
+	    * Change PPD's for Konica Minolta mc1600W, mc1680MF, mc1690MF,
+	      mc2490 MF, mc2530 DL, mc4690MF, and Oki C110 if cups-devel
+	      is installed.
+	    Used for reporting marker (toner) levels via PJL on
+	    foo2lava printers.
+	* command2foo2lava-pjl.c: Add a sleep(5) for mc2530 DL
+	* command2foo2lava-pjl.c: Add IMGDRUM, CONSUMETONERCOUNTERFEIT*
+	* command2foo2lava-pjl.c: Read PPD file for product
+
+2010-06-20	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs, foo2zjs-wrapper, foomatic and ppd file:
+	    Add Printer Density.  For HP zjs printers.  Please remove
+	    and recreate the printers.
+
+2010-06-19	Rick Richardson <rick.richardson@comcast.net>
+	* Add manual page for gipddecode.
+	* foo2xqx, foo2xqx-wrapper, foomatic and ppd file:
+	    Add Printer Density.  For HP xqx printers.  Please remove
+	    and recreate the printers.
+
+2010-06-15	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl foomatic-db and PPD files: fix Duplex for clp-6100, clp-610,
+	  clp-620. Manual Duplex is no longer supported. Use Gnome-Manual-Duplex
+	  instead.
+
+	  Please delete and recreate the Samsung CLP-6?? printers.
+
+	* New Printer: Oki C110
+
+2010-05-28	Rick Richardson <rick.richardson@comcast.net>
+	* Split out foo2zjs into:
+	    foo2zjs	- Minolta 2200 DL, 2300 DL, HP 1000, HP 1005
+	    foo2zjs-z1	- HP 1018, 1020, 1022, M1319MFP, P2035
+	    foo2zjs-z2	- HP Laserjet Pro P1102, P1102w, P1566, P1606dn
+
+	* Add new paper sizes and media types to foo2zjs-z1 and foo2zjs-z2
+	    A6, 16K *, Postcard and Double Postcard, German Legal (8.5 x 13!)
+
+	* PLEASE delete and recreate the foo2zjs-z1 and foo2zjs-z2 printers!!!
+	  Otherwise, Page Size will be "Letter" even if you set it to A4.
+	  This is a Cups problem (cups-1.4.2-26.fc11.i586).
+
+2010-05-24	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2xxx-{Copies,Nup,NupOrient}.xml: include foo2oak-z1 driver
+
+2010-05-07	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2zjs.c: if Model == MODEL_HP_PRO, blank initial lines
+	    for 0.25".  Sheesh!!!
+	* Modify: foo2zjs-wrapper: -z2 set_clipping <x1> 2 <x2> <y2>
+
+2010-05-06	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2qpdl.c: modolo 256 on custom paper size.
+
+2010-05-04	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2qpdl-wrapper: modolo 256 some papers (i.e. env#10)
+
+2010-05-02	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: hplj10xx_gui.tcl to put in the status
+
+2010-05-01	Rick Richardson <rick.richardson@comcast.net>
+	* Upgrade P1005, P1006, P1505 firmware to 09/16/2009
+
+2010-04-29	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: hplj10xx_gui.tcl to put in the pagecount
+
+2010-04-21	Rick Richardson <rick.richardson@comcast.net>
+	* New Printers: Oki C5650
+
+2010-04-12	Rick Richardson <rick.richardson@comcast.net>
+	* New Printers: HP LaserJet Pro P1102, P1102w
+	* New Printers: HP LaserJet Pro P1566
+	* New Printers: HP LaserJet Pro P1606dn
+
+2010-04-09	Rick Richardson <rick.richardson@comcast.net>
+	* hplj10xx.rules: implement old(1.47-) and new(1.48+) rules
+
+2010-03-29	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Samsung CLP-620 added to foo2qpdl et al.
+
+2010-03-26	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: install-hotplug: remove system-config-printer-udev.
+
+2010-03-11	Rick Richardson <rick.richardson@comcast.net>
+	* foo2xqx-wrapper: Add -p257, -p263, -p264 for 16K* paper.
+	* foomatic-db and .ppd files: Add three 16K papers to foo2xqx driver.
+	* Makefile: Get rid of Ubuntu 9.*'s
+		/lib/udev/rules.d/85-hplj10xx.rules
+	  because it does not work!
+
+2010-03-07	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper: Bug fix for custom page size.  Some versions
+	  of CUPS don't embed the size in the PS file:
+	    %%BeginFeature: *CustomPageSize True
+	    552.755920410156 765.354370117188 1 0.000000 0.000000
+	  and only list it in the command line:
+	    foo2zjs-wrapper -pCustom.533x765
+	* Fix WARN with cupstestppd PPD/*.ppd:
+	    EnvB5 -> EnvISOB5
+	    Nup -> NupPages
+	* Fix FAIL with cupstestppd PPD/*.ppd:
+	    ManualDuplex -> no (replaced by GnomeManualDuplex)
+	    http://sourceforge.net/projects/g-manual-duplex/
+
+2010-03-06	Rick Richardson <rick.richardson@comcast.net>
+	* New Printers: HP LaserJet P1505n, P2014n, P2035n
+
+2010-03-02	Rick Richardson <rick.richardson@comcast.net>
+	* Updated foo2lava manual pages
+	* Adjust Makefile so it doesn't do some tests (gs 8.71 is flaky)
+
+2010-02-26	Rick Richardson <rick.richardson@comcast.net>
+	* Added freebsd-install for FreeBSD 8.x
+
+2010-02-25	Rick Richardson <rick.richardson@comcast.net>
+	* Added /etc/devd/hplj10xx.conf for FreeBSD 8.x
+
+2010-02-07	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hp2600-wrapper: add -O to log for debugging.
+
+2010-01-23	Rick Richardson <rick.richardson@comcast.net>
+	* hplj1000 install-usblp: remove bug
+
+2010-01-06	Rick Richardson <rick.richardson@comcast.net>
+	* Updated: printer-profile script to Argyll_V1.1.0_RC4
+
+2009-12-03	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hiperc.c: C5600: Set Duplex like this:
+	    if (Duplex == DMDUPLEX_OFF)
+	            rec[6] = be32(0);
+	    else
+		    rec[6] = be32( (PageNum & 1) ? 0x100 : 0x200);
+	* foo2hiperc.c: Don't do EvenPages() when auto-duplex.
+
+2009-11-12	Rick Richardson <rick.richardson@comcast.net>
+	* foo2xqx.c: set PJL ECONOMODE ON/OFF 
+
+2009-11-06	Rick Richardson <rick.richardson@comcast.net>
+	* Updated: printer-profile script to Argyll_V1.1.0_RC1
+
+2009-10-27	Rick Richardson <rick.richardson@comcast.net>
+	* hplj1000: add an exit 0 to install-usblp
+
+2009-10-25	jkan <jkanefendt@googlemail.com>
+	* foo2hp.c: add alignment for -b2
+
+2009-10-17	Rick Richardson <rick.richardson@comcast.net>
+	* clp-310: fix PPD file
+
+2009-10-14	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak: Fix sprintf bug
+
+2009-10-13	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak, foo2oak-wrapper: Add short edge
+
+2009-10-12	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak, foo2oak-wrapper:
+		Change papercode UNK for KM-1635
+		Add OAK_DRIVER record.
+		Adjust JBG parms
+
+2009-10-10	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak: Add a DUPLEX record type.
+
+2009-10-09	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak, foo2oak-wrapper, foomatic, and PPD's: 
+	    Add Duplex option for Kyocera Mita KM-1635, KM-2035.
+
+2009-09-22	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hp, foo2hp2600-wrapper, foomatic, and PPD's: 
+	    HP LJC CP1215: Add alignment for Cyan, Magenta, or Yellow.
+
+2009-09-08	Rick Richardson <rick.richardson@comcast.net>
+	* For Ubuntu 9.10 Alpha 5:  fix Makefile and hplj1000
+	    to *not* list usblp in /etc/modprobe.d/blacklist*
+
+2009-06-23	Rick Richardson <rick.richardson@comcast.net>
+	* Moved: Minolta-QMS Page Page, 2200 DL, 2300 DL *.icm files
+
+2009-06-14	Rick Richardson <rick.richardson@comcast.net>
+	* New foo2lava printer:
+	    Konica-Minolta magicolor 4690MF
+	* upgate getweb for the 4690 printer
+
+2009-06-07	Rick Richardson <rick.richardson@comcast.net>
+	* Moved: Minolta-QMS Page Page, 2200 DL, 2300 DL *.icm files
+
+2009-05-30	Rick Richardson <rick.richardson@comcast.net>
+	* Added: Samsung CLP-310 manual pages.
+
+2009-05-11	Rick Richardson <rick.richardson@comcast.net>
+	* On SUSE, /bin/logger instead of /usr/bin/logger
+
+2009-05-04	Rick Richardson <rick.richardson@comcast.net>
+	* Added: Samsung CLP-310 like CLP-315.  The case is white!
+
+2009-04-22	Rick Richardson <rick.richardson@comcast.net>
+	* Update: zjsdecode, foo2hp.c: Add ZJI_BITMAP_xxx types.
+
+2009-04-13	Rick Richardson <rick.richardson@comcast.net>
+	* Fix: hplj1000 to protect against /lp*
+
+2009-03-24	Rick Richardson <rick.richardson@comcast.net>
+	* Add: km-1600-rgb-392-bpp1.icm for color correction using
+	    the X-rite ColorMunki and Argyll.
+	    For KONICA MINOLTA 1600W, 1680MF, 1690MF
+	    Delete 1600W, re-download, make, ./getweb 1600w, make install
+
+2009-03-24	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2zjs-icc2ps to "Little CMS" (lcms), v1.18.
+	$ make regress
+	[same as 03/01/09]
+
+2009-03-14	Rick Richardson <rick.richardson@comcast.net>
+	* New foo2lava printers: 
+	    Konica-Minolta magicolor 1600W
+	    Konica-Minolta magicolor 1680MF
+	    Konica-Minolta magicolor 1690MF
+	  ALPHA QUALITY!  PRINTER ONLY!
+
+2009-03-08	Rick Richardson <rick.richardson@comcast.net>
+	* New: printer-profile script using X-Rite ColorMunki and Argyll CMS
+
+2009-03-08	Rick Richardson <rick.richardson@comcast.net>
+	* Updated samclp-315-argyll-0.icm for color correction using
+	    the X-rite ColorMunki and Argyll!
+	  Do:
+	     $ ./getweb 315
+	     $ su
+	     # make install
+
+2009-03-07	Rick Richardson <rick.richardson@comcast.net>
+	* Clean up fwrite/fread/fscanf warnings on Ubuntu 8.10.
+
+2009-03-04	Rick Richardson <rick.richardson@comcast.net>
+	* zjsdecode: Add bpp=2 when doing -d.  Produces a .pgm file.
+
+2009-03-04	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper: Add logging of foo2zjs-icc2ps
+
+2009-03-01	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2zjs-icc2ps to "Little CMS" (lcms), v1.18 beta 1.
+	$ make regress
+	little cms PostScript converter - v1.5+v1.18beta1+foo2zjs
+	ca8227261a3b18e10ee7fa720dd90ccb  C3400-L1-BIN-ICC_0603150.icm.ps
+	91625a11ef859a4c3662379db1ffafd2  C3400-L2-BIN-ICC_0604110.icm.ps
+	6dd402051dd3747e40b1a7b1e2e82196  hp1215-argyll-0.icm.ps
+	9f104c51f07705599ce874f83c6f8783  hpclj2600n-0.icm.ps
+	6f324397fad3c195250ec7a159d293f9  hpclj2600n-1.icm.ps
+	96454f21ba7c1ccad1953524670f5f72  km2430_0.icm.ps
+	862ca1d836f097ea403ba9f630a5258f  km2430_1.icm.ps
+	35f478bf58d43db5cc0853caec9a5868  km2430_2.icm.ps
+	f75cb27671de78d63a81d7be3bff310f  km2530_0.icm.ps
+	a1c0cccd4b898319fc37887a7106466b  km2530_1.icm.ps
+	ab78bcd38fad306ddeda108a43c31c96  km2530_2.icm.ps
+	44d45f189f3986eef5b7565159da167e  km2530-jconner-d50.icm.ps
+	312e49d3deaed093c8b3834487bc7620  lexRPCA2000.icm.ps
+	e72e37a4f8cb14e36dfe8337b6988aee  OK3200L1.icm.ps
+	9bab8e1f5a3a78c5e47316941bb4c915  OK3200L2.icm.ps
+	1d63e82bae789fc2c5101dbc4077e67c  OK5600L1.icm.ps
+	bd6a812ce413387288d23e4773b80c8b  OK5600L2.icm.ps
+	8d0d23d861137faf90ab567e2f20afbd  OK5600L3.icm.ps
+	f9d96dc460f49e718ce3a9963e7d7595  samclp300-0.icm.ps
+	7014e454afff845627779cda3b28e0c5  samclp315-argyll-0.icm.ps
+
+2009-02-19	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hp: Fix segv when -b2 and -d2 are given.
+	* foo2hp: Fix PageNum when -b2 is given.
+
+2009-01-22	Rick Richardson <rick.richardson@comcast.net>
+	* New printer: HP LaserJet M1319 MFP.  Printer only!!
+
+2009-01-22	Rick Richardson <rick.richardson@comcast.net>
+	* New printer: HP LaserJet P2035
+
+2009-01-22	Rick Richardson <rick.richardson@comcast.net>
+	* zjsdecode: add -p option for HP LaserJet P2035
+
+2009-01-11	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak-wrapper bug fix
+
+2008-12-31	Rick Richardson <rick.richardson@comcast.net>
+	* New printer: Samsung CLX-3175
+
+2008-12-29	Rick Richardson <rick.richardson@comcast.net>
+	* New printer: Oki C3100
+
+2008-12-07	Rick Richardson <rick.richardson@comcast.net>
+	* Samsung CLP-315:
+	    - Now use Argyll (samclp-315-argyll-0.icm) for color correction
+	    - make; ./getweb 315; make install
+	    - Delete and recreate Samsung CLP-315
+
+2008-12-06	Rick Richardson <rick.richardson@comcast.net>
+	* HP CLJ CP1215:
+	    - Now use Argyll (hp1215-argyll-0.icm) for color correction
+	    - make; ./getweb 1215; make install
+	    - Delete and recreate HP Color LaserJet CP1215
+	    - foo2hp2600-wrapper: implement -z <model>; 0=1600/2600, 1=1215
+
+2008-12-04	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs-pstops: Fix bug with -w
+
+2008-10-07	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: bug fix: -z2 (clp-315. clp-610): stripe starts
+		with 0, not 1.
+
+2008-09-23	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: bug fix: LONGEDGE does not need to be flipped on CLP-610.
+	* zjsdecode, gipddecode, slxdecode: fix bug with argc[1]
+
+2008-09-22	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: Do auto duplex on clp-610
+		Delete CLP-610 printer then re-install them (PPD changed) 
+
+2008-09-18	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: Change unknown value (margin?) based on page size.
+
+2008-09-05	Rick Richardson <rick.richardson@comcast.net>
+	* Upgrade to JBIGKIT 2.0
+
+2008-07-30	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: rm gipddecode.o on a "make clean".
+
+2008-07-22	Rick Richardson <rick.richardson@comcast.net>
+	* New printer: Samsung CLP-315
+
+2008-06-05	Rick Richardson <rick.richardson@comcast.net>
+	* New printers: HP LJ P1007 and P1008
+
+2008-06-03	Rick Richardson <rick.richardson@comcast.net>
+	* Upgrade P1005, P1006, P1505 firmware to 04/15/2008
+
+2008-05-23	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db and PPDs: update ieee string for CP1215
+
+2008-05-21	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db and PPDs: New HP Color LaserJet CP1215 using foo2hp
+		ALPHA QUALITY, imperfect color correction.
+
+2008-05-15	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db and PPDs:  New Oki C3530 MFP
+
+2008-05-01	Rick Richardson <rick.richardson@comcast.net>
+	* New Printers: Kyocera Mita KM-1635, KM-2035.
+	* foomatic-db and PPDs: Kyocera Mita KM-1635, KM-2035.
+		- PageSize, InputSlot, MediaType
+
+2008-04-30	Rick Richardson <rick.richardson@comcast.net>
+	* foo2oak, foo2oak-wrapper, foo2zjs-pstops:
+		Implement rotate 90 for Kyocera Mita KM-1635, KM-2035.
+	* foo2hiperc: fix 600x1200 resolution.
+
+2008-04-26	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c: implement copies.
+
+2008-04-24	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hiperc-wrapper, et al:
+		Change Input Slot to
+		    auto, tray1, tray2, multi, manual
+
+2008-04-18	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl-wrapper:  set clipping to 150x100 for Custom page size.
+
+2008-04-01	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Samsung CLP-610 added to foo2qpdl et al.
+
+2008-03-30	Rick Richardson <rick.richardson@comcast.net>
+	* qpdldecode: add new compression mode 0x15 for CLP-610.
+
+2008-03-24	Rick Richardson <rick.richardson@comcast.net>
+	* New printer: HP LaserJet 2014 using foo2xqx.
+
+2008-03-23	Rick Richardson <rick.richardson@comcast.net>
+	* Add: gipddecode.for Granite Image Printer Driver.  Used
+		by Granite Systems, inc. a.k.a Monotype Imaging, e.g.
+		Dell 1125 MFP, Lexmark X500
+
+2008-02-16	Rick Richardson <rick.richardson@comcast.net>
+	* Add: manual pages for arm2hpdl, usb_printerid
+	* Modify: foo2xqx-wrapper to put in WTS.
+
+2008-02-15	Rick Richardson <rick.richardson@comcast.net>
+	* Add: Copies, Nup, NupOrient, Quality to foo2hiperc, foo2slx
+		foomatic-db and PPD files
+
+2008-02-07	Rick Richardson <rick.richardson@comcast.net>
+	* Add: HP-LaserJet_M1120_MFP using the foo2xqx driver
+	* Modify: Oki foomatic and PPD entries for C5500/C5600/C5800
+		    Color Correction
+
+2008-02-06	Rick Richardson <rick.richardson@comcast.net>
+	* Add: C5200
+	* Modify: Oki foomatic and PPD entries for C3200/C5100/C5200 
+		    Color Correction
+	* Modify: Oki foomatic and PPD entries for C3300/C3400 
+		    Color Correction
+
+2008-02-05	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2hiperc.  Put out the correct end_doc
+	* Modify: foo2hiperc.  Pad to 256 lines.
+
+2008-02-02	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2hiperc color mode
+	* Modify: foo2hiperc compessed mode.
+	
+2008-02-01	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2hiperc et al.
+	
+2008-01-31	Rick Richardson <rick.richardson@comcast.net>
+	* Add: man pages for foo2hiperc.
+	* Modify: foo2hiperc et al.
+
+2008-01-30	Rick Richardson <rick.richardson@comcast.net>
+	* Add: foo2hiperc et al.  Another set of printers added:
+		Oki C3200n/C3300n/C3400n/C5100n/C5500n
+	  Note: alpha quality, no color correction at all!!!
+
+2008-01-28	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: getweb 2300 
+
+2008-01-22	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: icc2ps to "Little CMS" (lcms), v1.17.
+		Bugs fixed in icc2ps/cmsio1.c.
+
+2008-01-22	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: icc2ps/cmsio1.c to malloc space for wchar_t right.
+
+2007-12-27	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2*-wrapper to only put in WTS stuff when in COLOR (-c)
+	    Otherwise, gs 8.60/8.61 core dumps with -r1200x600
+
+2007-12-19	Rick Richardson <rick.richardson@comcast.net>
+	* Modify manual pages for Solaris
+	* Modify  foo2zjs-pstops: remove sed -e "$a"
+	* Modify foo2oak.c, oakdecode.c for OpenBSD
+
+2007-12-15	Rick Richardson <rick.richardson@comcast.net>
+	* Modify foo2qpdl-InputSlot.xml: Add lower paper tray 2.
+
+2007-12-13	Rick Richardson <rick.richardson@comcast.net>
+	* Modify foo2slx.c: Do manual duplex.
+
+2007-12-10	Rick Richardson <rick.richardson@comcast.net>
+	* Modify foo2slx.c: produce colors in the right order.
+
+2007-12-10	Rick Richardson <rick.richardson@comcast.net>
+	* Modify foo2slx.c: Set ExtraPad to 0.
+	* Modify foo2slx.c: Use item_int32_write_pad for 0x03, 0x04
+
+2007-12-09	Rick Richardson <rick.richardson@comcast.net>
+	* Modify foo2*.c:
+	    If called by CUPS, print page accounting stuff to stderr.
+	    Change DEVICE_URL to DEVICE_URI for IsCUPS
+	    This is a misfeature of CUPS only.
+	* Modify foo2slx.c: Add pad to SLI_0x03.
+	* Modify foo2slx-wrapper: GAMMAFILE=default for color
+
+2007-12-08	Rick Richardson <rick.richardson@comcast.net>
+	* Modify foo2slx.c: 
+		SLI_COUNT, 1 (0x1)
+		SLI_0x0e, 0 (0x0)  (was SLI_DMCOLLATE)
+
+2007-12-07	Rick Richardson <rick.richardson@comcast.net>
+	* Modify foo2*-wrapper:  change CustomPageSize for Acrobat 8.1.1 rpm.
+	* Modify foo2*-wrapper:  change ghostscript for Acrobat 8.1.1:
+		"gs ... -" to "gs ... -_"
+
+2007-11-26	Rick Richardson <rick.richardson@comcast.net>
+	* Modify Makefile:
+	  OpenSolaris, Solaris Express Developer Edition 9/07, Solaris 11 (beta)
+	  Make networking (2530 dl, Samsung 300, etc.) printers work.
+	    
+2007-11-25	Rick Richardson <rick.richardson@comcast.net>
+	* Add printers HP LaserJet P1005/P1006/P1505 to foo2xqx driver.
+
+2007-11-21	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: Makefile install usb_printerid /bin
+
+2007-11-17	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: Makefile uninstall
+
+2007-11-15	Rick Richardson <rick.richardson@comcast.net>
+	* Put in comments RE: /bin/ into hp1000 and Makefile
+
+2007-11-14	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: hplj10xx_gui.tcl to use /sys/...
+
+2007-11-13	Rick Richardson <rick.richardson@comcast.net>
+	* Add: hplj10xx_gui.tcl
+	    Usage: $ wish /usr/share/foo2zjs/hplj10xx_gui.tcl
+
+2007-11-12	Rick Richardson <rick.richardson@comcast.net>
+	* Add: GNOME desktop file: hplj1020.desktop
+	    Applications -> System Tools -> HPLJ 10xx Replaced Paper
+	    invokes: usb_printerid /dev/usb/lp0
+
+2007-11-10	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: hplj10xx.rules to put -%n in the symlink field
+
+2007-11-06	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: *.1in: Only use specialps with -Tps
+	* Modify: *.1in: get rid of:
+	    grotty:./foo2lava.1:4269: character above first line discarded
+
+2007-11-05	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2*.c bug with -l, -u
+	* Modify: opldecode.c,.1 change ro to opl.
+
+2007-11-01	Rick Richardson <rick.richardson@comcast.net>
+	* Add: foo2slx et al.  Another printer added: Lexmark C500n
+	  Note: alpha quality!!!
+
+2007-10-30	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2zjs-pstops take out CIEColor
+	* Modify: zjsdecode, qpdldecode
+	* Modify: foo2qpdl-wrapper: Add default for -G
+
+2007-10-26	Rick Richardson <rick.richardson@comcast.net>
+	* Put version info in getweb and foo2zjs-pstops
+	* foo2*-wrapper: Make PREFILTER=tee if -D9
+
+2007-10-25	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2zjs-pstops put it before "%%Page: 1 1"
+
+2007-10-24	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: foo2zjs-pstops so that CIE + WTS are in the right order.
+	
+2007-10-23	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava ICM: km2530-jconner-d50.icm is the default
+	    Do:	
+		$ ./getweb 2530
+	        $ sudo make install
+	    again.
+
+2007-10-22	Rick Richardson <rick.richardson@comcast.net>
+	* Add: foo2zjs-pstops: Add PS code for foo2*-wrapper
+	* Modify foo2*-wrapper: Use WTS with Firefox, et al.
+
+2007-10-20	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic-db/opts/*ICM*, PPD/*: improved
+
+2007-10-19	Rick Richardson <rick.richardson@comcast.net>
+	* Replace sihp1020.img with sihp1020-20050309.img. Was 20041129.
+	    $ ./getweb 1020
+	    # make install
+	* Resurrect foo2oak
+
+2007-10-18	Rick Richardson <rick.richardson@comcast.net>
+	* foo2zjs-wrapper: Implement WTS when -C10.
+	* foo2hp2600-wrapper: Segfault on 64-bit and gs 8.14/8.15.
+
+2007-10-15	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper: WTS works with this workaround:
+	    GSOPTS="-dCOLORSCREEN -dMaxBitmap=500000000 $GSOPTS"
+	    So WTS works on 8.54-8.57 AND 8.60-8.61.
+	* INSTALL:
+	    * Well Tempered Screening (WTS) works with ghostscript 8.54-8.60+.
+		So if you want BEST COLORS, you'll have to install gs 8.54 or
+		better if you don't have it.
+
+	    $ gs --version
+	    8.15.2
+
+	    $ wget "http://mirror.cs.wisc.edu/pub/mirrors/ghost/GPL/gs860/ghostscript-8.60.tar.gz"
+	    $ tar zxf ghostscript-8.60.tar.gz
+	    $ cd ghostscript-8.60
+	    $ ./autogen.sh
+	    $ make
+	    $ su                            OR $ sudo cp bin/gs /usr/bin/gs.foo
+	    # cp bin/gs /usr/bin/gs.foo
+
+2007-10-12	Rick Richardson <rick.richardson@comcast.net>
+	* 11-hplj10xx.rules: Cleanup
+
+2007-10-11	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava-wrapper, foo2hp2600-wrapper, foo2qpdl-wrapper:
+	    Avoid WTS if gs is 8.60/8.61.
+
+2007-10-10	Rick Richardson <rick.richardson@comcast.net>
+	* Add: Well Tempered Screening (WTS) to foo2lava-wrapper
+            # CUPS also does grief by adding its own PS code to the input file.
+            # We take care of that with the sed command.  Thus, Well Tempered
+            # Screening (WTS) now works!
+
+2007-09-19	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava: If 2480MF then switch CYAN/YELLOW.
+	* foo2lava: If 2530DL, output DOTS
+
+2007-09-18	Rick Richardson <rick.richardson@comcast.net>
+	* Modify: Changes to Makefile to get it to build on OpenBSD.
+	* foo2lava: If 2480MF then don't output DOTS.
+	 
+2007-09-01	Rick Richardson <rick.richardson@comcast.net>
+	* foomatic: Eliminate 600x600 from 2200 DL.
+
+2007-08-22	Rick Richardson <rick.richardson@comcast.net>
+	* Add:	foo2qpdl et al for Samsung CLX-2160.
+
+2007-07-18	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava: Puts DOTS/WHITEDOTS immediately after JBIG, for 2490.
+
+2007-07-15	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hp foo2lava foo2oak foo2qpdl foo2xqx foo2zjs:
+	    If called by CUPS, print page accounting stuff to stderr.
+	    This is a misfeature of CUPS only.
+
+2007-07-12	Rick Richardson <rick.richardson@comcast.net>
+	* foo2{zjs,lava,xqx}-wrapper: Bug: color && res=600
+	* lavadecode: Bug: -d decfile 
+
+2007-07-01	Rick Richardson <rick.richardson@comcast.net>
+	* KonicaMinolta-magicolor_2530_DL.xml and .ppd:
+	    Change IEEE-1284 string.
+
+2007-06-29	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: Change to limit chunk size to 0x80000 for CLP-600.
+
+2007-06-27	Rick Richardson <rick.richardson@comcast.net>
+	* qpdldecode: Increase buffer to 5120*1024.
+
+2007-06-24	Rick Richardson <rick.richardson@comcast.net>
+	* qpdldecode: xres/yes decode.
+
+2007-06-23	Rick Richardson <rick.richardson@comcast.net>
+	* qpdldecode: Put in want and got for the checksum.
+
+2007-06-10	Rick Richardson <rick.richardson@comcast.net>
+	* *-wrapper: MAC OS X: Add /opt/local/bin (gs) to PATH for MAC OS X
+	    DarwinPorts.
+
+2007-06-07	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava: foomatic entries for 2480.
+	* foo2lava: ICM entries for 2530, 2490, 2530
+	* foo2qpdl: ICM entries for cc none.
+	* foo2lava: custom page size
+
+2007-06-04	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava: Add -z1 (2480MF) to produce OPL data.
+
+2007-06-02	Rick Richardson <rick.richardson@comcast.net>
+	* opldecode: Decode OPL print streams, e.g.  magicolor 2480 MF.
+
+2007-06-01	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: Change ICM from -z0 to -C10 -Gsamclp300-0.icm
+	* getweb: Add 300, 600, 3160, 6110 to get profiles from the web.
+
+	    $ make
+	    $ ./getweb 300 	# or 3160, 6110
+	    # make install cups
+
+	    Delete Samsung CLP-300/600, CLX-3160, Xerox Phaser 6110/6115MFP
+	    and recreate them again.
+
+2007-05-16	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl-wrapper: fix it again.  NOTE: use only gs 7.07 OR gs 8.54+
+	to print color!!!!  Ubuntu has a problem with gs 8.15!!!
+
+2007-05-15	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl-wrapper: Fix gamma for black text (black-text.ps).
+	    For Samsung CLP-300/600, CLX-3160, Xerox Phaser 6110/6115MFP.
+
+2007-05-08	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper: Implement Custom Page Size.
+	* foo2zjs, foo2lava, foo2xqx: Implement Custom Page Size.
+	* *.ppd: Implement Custom Page Size.
+
+	$ lpr -Php1022 -o PageSize=Custom.4x6in ~/testpage.ps
+
+2007-04-27	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl.c: Fix bug with 600x600 resolution.
+	* foo2qpdl.c: COLORMODE=MONO if Mode==MODE_MONO
+
+2007-04-24	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: Install in /usr/share/ppd/foo2zjs (Debian 4.0).
+
+2007-04-18	Rick Richardson <rick.richardson@comcast.net>
+	* Doc: INSTALL.osx improved.
+
+2007-04-13	Rick Richardson <rick.richardson@comcast.net>
+	* Add: Xerox Phaser 6115MFP
+
+2007-04-11	Rick Richardson <rick.richardson@comcast.net>
+	* getweb: MAC OS X: use 'curl' instead of 'wget'
+	* *-wrapper: MAC OS X: Add /sw/bin (gs) to PATH for MAC OS X fink.
+
+2007-04-02	Rick Richardson <rick.richardson@comcast.net>
+	* foo2*-wrapper: Fix logging: GAMMAFILE, GSOPTS
+
+2007-03-13	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl: Add ICM profiles to PPD files.
+
+2007-03-11	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl-wrapper: models -z0, -z1
+
+2007-03-10	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl.c: Implement -d4, -d5 (manual duplex)
+	* foo2qpdl: PPD et al.
+
+2007-03-09	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl.c: Implement -t (Save Toner)
+	* foo2qpdl.c: Implement -2/3/4/etc. (Nup)
+	* foo2qpdl.c: RECTYPE 0x0 is per page.
+
+2007-03-08	Rick Richardson <rick.richardson@comcast.net>
+	* manual.pdf: pdfbookmark -count
+	* Xerox-Phaser-6110.xml: autodetect
+	* Xerox-Phaser-6110.ppd: autodetect
+
+2007-03-03	Rick Richardson <rick.richardson@comcast.net>
+	* Add:	foo2qpdl et al for Xerox Phaser 6110.
+
+2007-02-27	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c: Cosmetic: \033&l0H instead of \f.
+
+2007-02-26	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c: Insert formfeed (\f).
+
+2007-02-25	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl.c: pn goes from 4, 1, 2, 3
+	* foo2lava.c: config image data command #=4(2).
+
+2007-02-24	Rick Richardson <rick.richardson@comcast.net>
+	* foo2qpdl.c: blp16 for color
+    
+2007-02-20	Rick Richardson <rick.richardson@comcast.net>
+	* Add:	foo2qpdl et al for Samsung CLP-300, CLP-600, CLX-3160.
+		Only JBIG (type 0x13) compression is implemented.
+		Alpha quality.
+
+2007-02-04	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c:  Set \033*r-1004U for color.
+
+2007-02-03	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c:  Set XOFFSET/YOFFSET to ResX / 6.
+	* foo2lava.c:  26 byte config image data command #=4(2).
+	* foo2lava.c:  Pad JBIG data to a multiple of 32 bytes.
+
+2007-01-28	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c:  put in 8 or 26 byte config image data command.
+	* foo2lava-MediaType.xml: use -m0 for plain paper.
+
+2007-01-27	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava.c:  Pad JBIG data to a multiple of 16 bytes.
+
+2007-01-20	Rick Richardson <rick.richardson@comcast.net>
+	* hplj1000: Add "foo2zjs: " to the output.
+
+2007-01-08	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: bug with install-hotplug and hplj1000
+
+2006-12-24	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava: Add black/non-black pixel counts.  Ditto for color.
+
+2006-12-23	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava-wrapper: Adjust paper sizes.
+
+2006-12-22	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava: JBIG data (cont) is at the end.
+
+2006-12-20	Rick Richardson <rick.richardson@comcast.net>
+	* lavadecode: Put in [letter], etc.
+
+2006-12-18	Rick Richardson <rick.richardson@comcast.net>
+	* foo2lava: Add Konica Minolta magicolor 2490 MF all-in-one.
+	  PRINTER ONLY!
+
+2006-12-17	Rick Richardson <rick.richardson@comcast.net>
+	* Implement -3,-6,-8,-9,-10,-12,-14,-15,-16,-18 N-up.
+
+2006-12-12	Rick Richardson <rick.richardson@comcast.net>
+	* lavadecode: put comments in.
+	* lavadecode.1: put example in.
+
+2006-12-07	Rick Richardson <rick.richardson@comcast.net>
+	* all: update email address, copyright.
+
+2006-12-06	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hp: update for new 'RaS3' CUPS header (bpp=2).
+
+2006-12-04	Rick Richardson <rick.richardson@comcast.net>
+	* Fix bug in lavadecode.
+	* foo2hp: update for new 'RaS3' CUPS header (bpp=2).
+
+2006-11-30	Rick Richardson <rick.richardson@comcast.net>
+	* Add: foo2lava entries for foomatic (part).
+	* Add: foo2lava entries for foomatic (rest).
+
+2006-11-29	Rick Richardson <rick.richardson@comcast.net>
+	* Add: foo2lava, foo2lava-wrapper for KM magicolor 2530 DL.
+
+2006-11-26	Rick Richardson <rickr@mn.rr.com>
+	* Add: lavadecode for decoding KM magicolor 2530 DL.
+
+2006-11-26	Rick Richardson <rickr@mn.rr.com>
+	* foo2xqx cleanup.
+
+2006-11-25	Rick Richardson <rickr@mn.rr.com>
+	* Implement Duplex for foo2xqx.
+
+2006-11-24	Rick Richardson <rickr@mn.rr.com>
+	* Fix: foo2xqx-wrapper and foo2xqx for A4.
+	* Fix: foo2xqx-wrapper and foo2xqx for letter/legal.
+
+2006-11-23	Rick Richardson <rickr@mn.rr.com>
+	* Add:  foo2xqx
+		* Resolution
+		* Economode
+	* Bug: DMMEDIA_STANDARD -> DMMEDIA_PLAIN
+
+2006-11-21	Rick Richardson <rickr@mn.rr.com>
+	* Add:	foo2xqx et al for HP LaserJet M1005 MFP
+		Beta quality.
+		* MediaTypes added
+		* Input Slot added
+
+2006-10-10	Rick Richardson <rickr@mn.rr.com>
+	* Modify foo2zjs.c: Allow manual duplex on HP 1022.
+
+2006-10-04	Rick Richardson <rickr@mn.rr.com>
+	* Put tray3 in foo2hp.
+
+2006-09-29	Rick Richardson <rickr@mn.rr.com>
+	* Change Makefile to delete Ubuntu ppd's.
+
+2006-09-19	Rick Richardson <rickr@mn.rr.com>
+	* Makefile: "make cups" now works with Slackware.
+
+2006-09-11	Rick Richardson <rickr@mn.rr.com>
+	* Removed foo2oak and oakdecode
+
+2006-08-04	Rick Richardson <rickr@mn.rr.com>
+	* Porting base changed to FC5.
+
+2006-06-25	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp2600-wrapper to avoid bugs in gs 8.14 and 8.15 (Ubuntu).
+	  gs 8.14/8.15 has bugs in it, so no WTS and no great colors
+	  for Ubuntu unless you upgrade to gs 8.54 OR downgrade to gs 7.07.
+	  
+2006-06-20	Rick Richardson <rickr@mn.rr.com>
+	* Modify: Makefile, added install-hotplug-test
+
+2006-06-19	Rick Richardson <rickr@mn.rr.com>
+	* Modify: icc2ps/lcms.h for *BSD.
+
+2006-06-07	Rick Richardson <rickr@mn.rr.com>
+	* Modify: hplj10xx.rules to change BUS= to BUS==, SYSFS{}= to SYSFS{}==
+		    (undocumented change per "man udev")
+
+2006-06-02	Rick Richardson <rickr@mn.rr.com>
+	* Update: hpclj2600n-1.icm to 060513_827411_1.icm (ICCFactory 1)
+
+	    Read "COPYING" first!!  Only those tarballs from 
+	    http://foo2hp.rkkda.com can use the ICM file.  No
+	    3rd-party packages can.
+
+	    To update your version:
+		./getweb 2600n
+		su
+		make install
+	  Really good colors with this one!
+
+2006-05-23	Rick Richardson <rickr@mn.rr.com>
+	* Modify: icc2ps to "Little CMS" (lcms), v1.15.
+		  Also modify cmsio1.c to remove warnings.
+	* Modify: hplj10xx.rules to change KERNEL= to KERNEL==
+		    (undocumented change per "man udev")
+
+2006-05-15	Rick Richardson <rickr@mn.rr.com>
+	* Modify: Makefile to put in test for gcc.
+
+2006-05-12	Rick Richardson <rickr@mn.rr.com>
+	* Add: Well Tempered Screening (WTS) to foo2hp2600-wrapper
+	    # CUPS also does grief by adding its own PS code to the input file.
+	    # We take care of that with the sed command.  Thus, Well Tempered
+	    # Screening (WTS) now works!
+	* Make default ICM file for HP 1600/2600n to hpclj2600n-1.icm,
+	    a.k.a ICCFactory 1, 060413_131593_1.icm
+
+2006-05-11	Rick Richardson <rickr@mn.rr.com>
+	* Modify: "./getweb 1020" to get HP LaserJet 1020 files from the web.
+	* Modify: "./getweb 1018" to get HP LaserJet 1018 files from the web.
+	* Modify: "./getweb 1005" to get HP LaserJet 1005 files from the web.
+	* Modify: "./getweb 1000" to get HP LaserJet 1000 files from the web.
+
+2006-05-10	Rick Richardson <rickr@mn.rr.com>
+	* New printer added: HP LaserJet 1022
+	* Change: foomatic-db/printer/HP-Color_LaserJet_*.xml
+	    <autodetect> strings from 2600 to 2600n and Color LaserJet.
+	* USB support for 2600n now works.
+
+2006-05-09	Rick Richardson <rickr@mn.rr.com>
+	* Modify: "./getweb 2600n" to get HP 2600n ICM files from the web.
+	* Modify: "./getweb 1600" to get HP 1600 ICM files from the web.
+	* Modify: "./getweb 2430" to get Minolta 2430 ICM files from the web.
+
+2006-05-04	Rick Richardson <rickr@mn.rr.com>
+	* Modify: hplj10xx.rules to change product name from
+	    "hp LaserJet 1005" to "hp LaserJet 1005 series"
+
+2006-05-01	Rick Richardson <rickr@mn.rr.com>
+	* New printer added: HP LaserJet 1018
+
+2006-04-30	Rick Richardson <rickr@mn.rr.com>
+	* Modify: zjs.h, zjsdecode.c for Zenographics ZX 1.1 format.
+
+2006-04-28	Rick Richardson <rickr@mn.rr.com>
+	* Add: N-up orientation to foo2*wrapper (-o orient) and
+		foomatic files.
+	* Modify: do -t (SaveToner) in the HP1020 printer.
+	* Modify: foo2zjs.c to implement 1200x600 for HP LaserJet 1020
+	* Adjust: foomatic and PPD entries for above.
+		Redhat: printconf-gui, Edit a queue, change nothing, then Apply.
+		Others: delete and recreate HP 1020 queues.
+
+2006-04-25	Rick Richardson <rickr@mn.rr.com>
+	* Modify: Makefile to do install-test for foomatic-rip
+
+2006-04-16	Rick Richardson <rickr@mn.rr.com>
+	* Modify: PPD/* to update *Manufacturer strings.
+	* Modify: foo2*-wrapper.1 to document -I intent.
+	* Modify: revert firmware file HP 1020 to 20041118.
+
+2006-04-14	Rick Richardson <rickr@mn.rr.com>
+	* Modify: firmware file for HP 1020 printer to 2005/03/18.
+
+2006-04-12	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2zjs-wrapper to implement -C10 -Gnone, for
+	    testing ICM files.
+
+2006-03-27	Rick Richardson <rickr@mn.rr.com>
+	* Add: Manual Duplex to foo2hp/foo2hp2600-wrapper.
+	    Long edge (ManualDuplexNoTumble, -d4) and
+	    short edge (ManualDuplexTumble, -d5).
+
+	    First the odd pages are printed.  Then the printer pauses
+	    for you to load tray 2.  Remove the odd pages and put them in
+	    tray 2.  Hit "v/" (continue). Then the even pages are printed.
+
+2006-03-24	Rick Richardson <rickr@mn.rr.com>
+	*Modify: foo2hp et al to put in envelope pagesizes.
+
+2006-02-28	Rick Richardson <rickr@mn.rr.com>
+	* Modify: hplj10xx - use ed instead of ex (gentoo "fix")
+	* Modify: Makefile target "cups" for Gentoo.
+
+2006-02-27	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foomatic-db/opt/*Nup* to make shortname = 1up.
+	    re-gen PPD's.
+
+2006-02-23	Rick Richardson <rickr@mn.rr.com>
+	* Modify: zjsdecode.c, set planeNum to 1.
+
+2006-02-16	Rick Richardson <rickr@mn.rr.com>
+	* Modify: Makefile install-foo to be RedHat FC4 compatible by
+	    removing /var/cache/foomatic/printconf.pickle and letting
+	    printconf-gui recreate it.
+
+2006-02-08	Rick Richardson <rickr@mn.rr.com>
+	* Modify: /etc/hotplug/usb/hp10xx to add a chmod 0666 for SUSE 10.0
+
+2006-01-24	Rick Richardson <rickr@mn.rr.com>
+	* Modify: SUSE 10.0 hotplug changes to
+		/etc/udev/rules.d/11-hplj10xx.rules
+
+2006-01-16	Rick Richardson <rickr@mn.rr.com>
+	* Modify: More changes to Makefile to get it to build on FreeBSD.
+
+2006-01-15	Rick Richardson <rickr@mn.rr.com>
+	* Modify: Makefile to get it to build on FreeBSD.
+
+2006-01-13	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foomatic DB entries and PPD files for HP LJ 1000/1005/1020.
+		  Add paper margins.
+
+2006-01-12	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp2600-wrapper to change default ICM file
+	  when -b1 and gs is 32-bit (gs segfaults on 64-bit).
+	  Much better color when -b1 and 32-bit gs.
+
+2006-01-07	Rick Richardson <rickr@mn.rr.com>
+	* Add: hp2600n default ICM profile (color correction) to bpp=1.
+	    There is no default for bpp=2 right now, pending pksmraw
+	    support.
+
+2006-01-04	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp bpp=2 mirror array.
+
+2006-01-03	Rick Richardson <rickr@mn.rr.com>
+	* Modify: hplj10?? to work with FC4 and udev.
+	    There is a timeout problem with udev and FC4, so spin off the
+	    firmware download.
+
+2005-12-30	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp, foo2hp2600-wrapper to implement -t (Draft Mode).
+
+2005-12-28	Rick Richardson <rickr@mn.rr.com>
+	* Add make target "make uninstall".
+
+2005-12-27	Rick Richardson <rickr@mn.rr.com>
+	* Modify: 2430 PPD file, hplj10xx file
+
+2005-12-23	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2zjs, foo2zjs-wrapper to implement -t (Draft Mode).
+	    Only for 1 bpp monochrome.
+
+2005-12-21	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp, foo2hp2600-wrapper to implement bpp=2 for mono&color.
+
+2005-12-20	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp, foo2hp2600-wrapper to implement bpp=2 for color only.
+
+2005-12-14	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2zjs, foo2zjs-wrapper to implement Draft Mode (-t).
+
+2005-12-04	Rick Richardson <rickr@mn.rr.com>
+	* Modify: hplj10XX to not call us twice on FC4.
+
+2005-12-01	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2zjs, foo2zjs-wrapper so it prints on HP LJ 1020.
+		Tested thru Fedora Core 3.
+
+2005-11-24	Rick Richardson <rickr@mn.rr.com>
+	* Added: hpclj2600n.icm for color calibration
+
+2005-11-20	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp & wrapper 
+		1-bpp color printing
+		gs 8.xx is best.
+
+2005-11-13	Rick Richardson <rickr@mn.rr.com>
+	* Added: PPD/HP-Color_LaserJet_2600n.ppd
+		foomatic DB entries for 2600
+	* Modify: getweb.in for foo2hp.
+
+2005-11-12	Rick Richardson <rickr@mn.rr.com>
+	* Modify: foo2hp.c, bpl16 = (bpl + 15) & ~15;
+
+2005-11-10	Rick Richardson <rickr@mn.rr.com>
+	* Added: foo2hp 
+		 foo2hp2600-wrapper
+	* Right now, just for test purposes.  Use it like this:
+	    $ foo2hp2600-wrapper testpage.ps >xxx
+	    $ zjsdecode -dxxx <xxx
+	    $ xv xxx-01-3.pbm
+	    $ lpr -Praw xxx
+	  Must have a "raw" printer!!!
+
+2005-11-07	Rick Richardson <rickr@mn.rr.com>
+	* Partial implementation of HP LJ 2600n.
+	    zjsdecode -dxxx < 2600n.prn
+
+2005-11-06	Rick Richardson <rickr@mn.rr.com>
+	* Add -h (hex output) to zjsdecode.
+
+2005-11-01	Rick Richardson <rickr@mn.rr.com>
+	* Add hplj10xx.rules for make install-hotplug using udev.
+
+2005-02-13	Rick Richardson <rickr@mn.rr.com>
+	* Add Minolta 2430.
+
+2004-10-23	Rick Richardson <rickr@mn.rr.com>
+	* Make code 64-bit clean for x86_64 (but not well tested).
+
+2004-09-11	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs-wrapper
+	    Abandon all use of "which", because you need a "which which"
+	    Legwork by Alex Schnar
+
+2004-09-07	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs-wrapper:
+	    Fix problem on distros and MacOS where ash is /bin/sh
+
+2004-07-01	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs: update to current m2300w {prolog,screen1200}.ps
+
+2004-06-22	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs-wrapper:
+	    switch to kh/kx CRD's, which will print pure text pages using
+	    just the K plane, even on a color queue.  Make colormode 2
+	    (graphics+text) the default if no mode is specified.
+
+2004-06-15	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs-wrapper: fix bug introduced in last change if gs8 isn't available
+
+2004-06-13	Rick Richardson <rickr@mn.rr.com>
+	* Adjust foo2zjs-wrapper to try to use a local copy of GS 8.14,
+	  rather than the distro supplied gs 8.  Try to pick the best
+	  default color mode based on what is installed on the users
+	  computer.
+
+2004-06-11	Rick Richardson <rickr@mn.rr.com>
+	* Upgrade to JBIGKIT 1.6
+
+2004-06-06	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs: Add capability to use the 2300w color correction procedure
+	  using tuned CRD's by Gerhard Fuernkranz and Leif Birkenfeld.
+	  Not yet documented nor made the default pending further modifications.
+	  In particular, printing a monochrome document on a color queue
+	  will not yet be optimized to a monochrome print.
+	* Fix error in "getweb update"
+	* foo2zjs: Add ability to take input from GS in pksmraw format.
+
+2004-04-13	Rick Richardson <rickr@mn.rr.com>
+	* Add the ./getweb 2300dl_fw command to download firmware update for
+	  the 2300DL printer.  Improve INSTALL documentation.
+
+2004-04-10	Rick Richardson <rickr@mn.rr.com>
+	* Improve hplj100x USB firmware download script to autodetect printers.
+	* getweb 1005: Update URL for getting HP 1005 firmware.
+	* foo2oak: Add foomatic options to allow configuring an ICM profile.
+
+2004-04-09	Rick Richardson <rickr@mn.rr.com>
+	* foo2oak: Fix argument on END_PAGE command for color printing.
+	           Stefan Huber says this should enable color.
+		   Also fix page length and clipping for A4 paper.
+
+2004-04-07	Rick Richardson <rickr@mn.rr.com>
+	* Add Makefile target "make install-hotplug" to automatically
+	  download HP LJ1000 firmware files.
+
+2004-03-27	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs: minor code change in handling file args to make it the
+		    the same as with foo2oak.
+
+2004-03-19	Rick Richardson <rickr@mn.rr.com>
+	* foo2oak: only build this on ia32 arch
+	* Ignore error from groff, OS X has lousy man macros
+
+2004-02-10	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs: use the correct bit mirroring array in color duplex mode.
+
+2004-02-01	Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs: fix clipping bug when length of clipped region is not
+		   a multiple of four.  Affected color output.
+	* foo2oak: fix clipping bug when length of clipped region is not
+		   a multiple of four.  Affected 1-bit color output.
+	* foo2oak: fix output order of color planes (think its YMCK, not CMYK)
+
+2004-01-20	Rick Richardson <rickr@mn.rr.com>
+	* Remove Glossy from legal media types for 2300DL
+
+2003-12-29	Clint Morgan <clint@morgantechnologies.com>
+	* Updated INSTALL.osx
+
+2003-12-07      Rick Richardson <rickr@mn.rr.com>
+	* Add Clint Morgan's installation instructions for Mac OS X
+	  (file INSTALL-osx.txt).  Thanks Clint.
+
+2003-12-03      Rick Richardson <rickr@mn.rr.com>
+	* foo2zjs: Remove space in 2 shortnames for pageworks/pro printer.
+
+2003-11-25      Rick Richardson <rickr@mn.rr.com>
+	* foo2oak: Update LJ1500 with IEEE-1284 strings.
+	* all: Overhaul for new website location.
+
+2003-11-12      Rick Richardson <rickr@mn.rr.com>
+	* foo2oak: add 1284 ID strings to foomatic database entry.
+	* all: Install PPD files in /usr/share/cups/model (if it exists)
+
+2003-11-11      Rick Richardson <rickr@mn.rr.com>
+	* GET THIS VERSION!
+	  Roadrunner's FTP server was on old backup tapes for over 2 days.
+	  Its entirely possible that you got a shite copy of this driver
+	  in that time period.
+
+2003-11-09      Rick Richardson <rickr@mn.rr.com>
+	* Update PPD files and add PPD files for OAKT printers.
+
+2003-11-08      Rick Richardson <rickr@mn.rr.com>
+	* foo2oak: Implement code structure for 2-bit color output using
+		the ghostscript CUPS device.
+		This output (4 level color) has not been tuned.
+
+2003-11-07      Rick Richardson <rickr@mn.rr.com>
+	* foo2oak: Implement the code structure for 2-bit monochrome output,
+		and add -b2 option to foo2oak-wrapper to select it.
+		This output (4 level grayscale) has not been tuned.
+
+2003-11-05      Rick Richardson <rickr@mn.rr.com>
+	* CRITICAL fix for embarrasing memory leak.
+
+	* Add wrappers and binaries for 1-bit OAKT support (HP LaserJet 1500).
+	  Absolutely untested with a real printer.  This driver is offered
+	  in binary only.
+
+2003-10-17      Rick Richardson <rickr@mn.rr.com>
+	* Update README and INSTALL documentation
+	* Add PPD files from linuxprinting.org
+
+2003-10-09      Rick Richardson <rickr@mn.rr.com>
+	* Fix long edge duplex mode.  I was unaware that foo2zjs
+	  needs to rotate the even page images 180 degrees because
+	  the printer can't even do that by itself :-).
+	* Upgrade to JBIGKIT 1.5
+	* Modified zjsdecode (actually, jbig.c) to decode JBIG the data
+	  produced by other printer drivers when MY > 0.
+
+2003-08-07      Rick Richardson <rickr@mn.rr.com>
+	* Change icc2ps/lcms.h to set USE_BIG_ENDIAN on OS X
+
+2003-07-23      Rick Richardson <rickr@mn.rr.com>
+	* Fool with the Ghostscript to foo2zjs plumbing to avoid getting
+	  messages on Postscript's stdout intermingled with the
+          pbm/bitcmyk output.
+
+2003-06-29      Rick Richardson <rickr@mn.rr.com>
+	* Add XML files for Minolta Color PageWorks/Pro L
+
+2003-06-19      Rick Richardson <rickr@mn.rr.com>
+	* If color has been selected, but there isn't any color on the page,
+	  then produce a monochrome ZjStream.
+
+2003-05-31      Rick Richardson <rickr@mn.rr.com>
+	* Use /usr/bin/logger to log the command line passed to the wrapper,
+	  in case I need it for bug reports.
+
+2003-05-30      Rick Richardson <rickr@mn.rr.com>
+	* Build usb_printerid only on Linux.
+	* Other minor changes to get it to compile on the SourceForge
+	  compile farm OS X machine.
+
+2003-05-27      Rick Richardson <rickr@mn.rr.com>
+	* Add margins (printable area) to 2300 DL foomatic printer description
+	* Add margins (printable area) to 2200 DL foomatic printer description
+	* Fixed Duplex foomatic option - it was overriding the
+	  InputSlot option and preventing tray selection.
+
+2003-05-26      Rick Richardson <rickr@mn.rr.com>
+	* Fixed -d option to zjsdecode
+
+2003-05-08      Rick Richardson <rickr@mn.rr.com>
+	* Sheesh, added missing foo2zjs-wrapper.in
+	* Added HP 1005 .xml file from Till.
+
+2003-05-06      Rick Richardson <rickr@mn.rr.com>
+	* Add missing usb_printerid file.  Not needed yet, but
+	  will be used for firmware autodownload.
+
+2003-05-01      Rick Richardson <rickr@mn.rr.com>
+	* Put correct checksum calculation into arm2hpdl
+	  It should now work properly.
+
+2003-04-30      Rick Richardson <rickr@mn.rr.com>
+	* Fix warning from grops when creating manual page
+
+2003-04-30      Rick Richardson <rickr@mn.rr.com>
+	* Add skeletal arm2hpdl program to convert ARM executables
+	  in ELF format to the HP download format.  For converting the
+	  sihp1005.img file to the format that the HP LJ1005 printer wants.
+	  Unfortunately, this program is incomplete.  The calculation
+	  of the checksum/crc/whatever trailer is incorrect.  But I
+	  throw the program out there in case somebody figures out
+	  the algorithm before me.
+
+2003-04-26      Rick Richardson <rickr@mn.rr.com>
+	* Properly constrain the InputSlot (Media Source) options
+	  for the 2200/2300 DL printers to those values that these
+	  printers actually support.
+
+2003-04-16      Rick Richardson <rickr@mn.rr.com>
+	* Add hack to fix clipping region for A4 paper on HP1000
+
+2003-04-07      Rick Richardson <rickr@mn.rr.com>
+	* Include unistd.h, not getopt.h.
+
+2003-03-30      Rick Richardson <rickr@mn.rr.com>
+	* Default GSOPTS=-dCOLORSCREEN.
+
+	* Allow more than one -g option to be passed to wrapper.
+
+2003-03-29      Rick Richardson <rickr@mn.rr.com>
+	* Add foomatic option to select ICM color profile file.
+	  Add foomatic option to select ICM color profile intent.
+	  Remove temporary ICM testing hack.
+
+	* Remove "unset OPTIND", fix for broken 'dash' shell.
+
+	* Rename the "geticc" convenience script to "getweb" and make it
+	  a general tool for retrieving "extra" files needed with some
+	  printer models.  Teach it how to download HP firmware files
+	  and to update the foo2zjs software itself.  E.G.
+	    ./getweb 2300	# Get Minolta 2300 DL .ICM files
+	    ./getweb 2200	# Get Minolta 2200 DL .ICM files
+	    ./getweb 1000	# Get HP LJ1000 firmware file
+	    ./getweb update	# Get latest version of this software.
+
+	* Adjust clipping region based on printer resolution.  This may
+	  fix issues with the HP LJ1000, which prints at 600x600.
+
+	* Add regression tests
+
+2003-03-28      Rick Richardson <rickr@mn.rr.com>
+	* Add foo2zjs-Duplex.xml foomatic option
+	* Add 'geticc' convenience script, to retrieve ICM profiles
+	  from Minolta website.  ./geticc 2200 or ./geticc 2300
+
+2003-03-27      Rick Richardson <rickr@mn.rr.com>
+	* Add developmental skeleton of .ICM file handling using icc2ps
+          to the wrapper.  This is used for color correction.
+	  WORK IN PROGRESS TO BE USED ONLY BY EXPERT TESTERS.
+	  For the time being, you must use the foo2zjs-wrapper from
+	  the command line and add a -G option which points to the
+	  .ICM file you want to fool around with.  You have to get
+	  the .ICM files from your printer manufacturer's website or
+	  by raping the Windows driver for them.
+
+	  For now only, if you put a file into /usr/share/foo2zjs/icm/
+	  called "testing.icm", the wrapper script will use that as
+	  the .ICM file, even if you don't specify a -G option.
+	  In a real implementation, we will need to select the file
+          based on the printer model, resolution, quality, media, and
+          individual user bias.  Sigh.
+
+	* Add -F option for prepending job with a firmware download.
+	  Somebody tell me if this is useful.
+
+2003-03-25      Rick Richardson <rickr@mn.rr.com>
+	* Added foo2zjs-PrinterType.xml option as per Till, which sets
+	  the foo2zjs -P option flag for HP LaserJet 1000 printers.
+
+	* Set clipping region for A4 paper on 2200 DL
+
+2003-03-24      Rick Richardson <rickr@mn.rr.com>
+	* Update foomatic entries for Till's editorial changes.
+
+2003-03-23      Rick Richardson <rickr@mn.rr.com>
+	* Add -X option to add extra zero padding to end of BID.  Default
+	  the value to 16 bytes.  This seems to fix all issues with the
+	  Minolta/QMS 2200DL according to Adam Erickson.  In particular,
+	  the 2200 DL will no longer print some pages blank nor hang with
+          the "Processing" message on the last page of the job.
+
+	* Minor improvements to zjsdecode
+
+2003-03-22      Rick Richardson <rickr@mn.rr.com>
+	* Install color correct template files to /usr/share/foo2zjs/
+	  This is in case anybody gets a wild hair and wants to try tuning
+	  the color correction.  At this point, they are just placeholders
+	  until I get edjamacated on the process for tuning.
+
+	* Add -G option to foo2zjs-wrapper, to specify a gamma file for
+	  color correction.
+
+	* Add -P option to foo2zjs and wrapper.  This turns off the output
+	  of START_PLANE codes, and may be needed by some non-color printers.
+	  The default is now to send start plane codes, even for black and
+	  white print jobs.
+
+	* Add manual pages.
+
+2003-03-21      Rick Richardson <rickr@mn.rr.com>
+	* Turn on JBG_DELAY_AT option in JBIG encoder.  This seems to
+	  fix the problem where some pages would not print properly,
+	  especially color pages where you would get yellow splotches.
+
+	* Add ability to change -l and -u thru the wrapper script.
+
+	* Add ability to specify whether logical clipping values should
+	  be sent to printer with -L <mask>.
+
+2003-03-20      Rick Richardson <rickr@mn.rr.com>
+	* Add options -u WxH and -l WxH to specify upper left and
+	  lower right clipping of the printers unprintable area.
+          This seems to be required by the 2200 DL, otherwise you
+	  get pixel skew.  The 2300 DL seems immune to this problem,
+	  but clipping and then using a logical page offset in the Zjs
+	  stream will work for it as well.
+
+	* Add the ability to output a single color plane using black ink.
+	  This is to help track down an issue where the yellow plane
+          sometimes goes nuts and prints yellow for the bottom portion
+          of some pages.  Its cheaper to waste black toner than color
+	  toner.  Especially yellow toner, which is usually the first
+	  color to empty.
+
+	* Improve "make install" target.
+
+2003-03-17      Rick Richardson <rickr@mn.rr.com>
+	* Add page number to zjsdecode filenames.
+	* Fix endianess issues.
+
+2003-03-12      Rick Richardson <rickr@mn.rr.com>
+	* Fix typo in wrapper script that would prevent anything from
+	  printing when using foomatic.
+
+2003-03-10      Rick Richardson <rickr@mn.rr.com>
+	* Forgot to include jbg2pbm.c in tarball
+
+2003-03-08      Rick Richardson <rickr@mn.rr.com>
+	* Add -r option to xjsdecode, for saving raw JBG planes
+	  to a file for examination.
+
+2003-03-07      Rick Richardson <rickr@mn.rr.com>
+	* When printing B&W, do not output START_PLANE.  This may
+	  or may not work around issues with the LJ-1000.
+	* Incorporate XML changes from Till.
+
+2003-03-05      Rick Richardson <rickr@mn.rr.com>
+	* Change default color algorithm to convert C=1,M=1,Y=1 to
+	  pure black.  Likewise, if B=1 then turn off CMY
+	* Add 2-up and 4-up options (requires psutils package)
+	* Add Source option
+
+2003-03-04      Rick Richardson <rickr@mn.rr.com>
+	* First public release

@@ -1,0 +1,23 @@
+<!--
+     foo2zjs-z2 driver
+-->
+<driver id="driver/foo2zjs-z2">
+    <name>foo2zjs-z2</name>
+    <url>http://foo2zjs.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2zjs-wrapper -z2 -P -L0 %A</prototype>
+    </execution>
+    <comments> <en>
+	This driver will also work for the HP LaserJet
+	Pro P1102, Pro P1566, Pro P1606dn, P2035, and other
+	Zenographics-based printers.
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/HP-LaserJet_Pro_P1102</id></printer>
+	<printer><id>printer/HP-LaserJet_Pro_P1102w</id></printer>
+	<printer><id>printer/HP-LaserJet_Pro_P1566</id></printer>
+	<printer><id>printer/HP-LaserJet_Pro_P1606dn</id></printer>
+    </printers>
+</driver>

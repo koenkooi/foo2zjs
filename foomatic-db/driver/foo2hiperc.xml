@@ -1,0 +1,34 @@
+<driver id="driver/foo2hiperc">
+    <name>foo2hiperc</name>
+    <url>http://foo2hiperc.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2hiperc-wrapper %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the Oki Data Color Laser Printers
+	C301dn, C310dn, C3200, C3300, C3400, C5100, C5200, C56xx and C5800.
+
+	&lt;p&gt;
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/Oki-C301dn</id></printer>
+	<printer><id>printer/Oki-C310dn</id></printer>
+	<printer><id>printer/Oki-C511dn</id></printer>
+	<printer><id>printer/Oki-C3100</id></printer>
+	<printer><id>printer/Oki-C3200</id></printer>
+	<printer><id>printer/Oki-C3300</id></printer>
+	<printer><id>printer/Oki-C3400</id></printer>
+	<printer><id>printer/Oki-C3530_MFP</id></printer>
+	<printer><id>printer/Oki-C5100</id></printer>
+	<printer><id>printer/Oki-C5200</id></printer>
+	<printer><id>printer/Oki-C5500</id></printer>
+	<printer><id>printer/Oki-C5600</id></printer>
+	<printer><id>printer/Oki-C5650</id></printer>
+	<printer><id>printer/Oki-C5800</id></printer>
+	<printer><id>printer/Olivetti-d-Color_P160W</id></printer>
+	<printer><id>printer/Generic-GDI_Printer</id></printer>
+    </printers>
+</driver>

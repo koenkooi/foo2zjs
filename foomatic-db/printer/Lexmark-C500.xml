@@ -1,0 +1,54 @@
+<printer id="printer/Lexmark-C500">
+    <make>Lexmark</make>
+    <model>C500</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (5000 prints) - $90
+		Toner Yellow (3000 prints) - $90
+		Toner Magenta (3000 prints) - $90
+		Toner Cyan (3000 prints) - $90
+		Photodeveloper Cartridge (120000 prints) - $205
+	    </en> </comments>
+	    <partno>C500H2KG</partno>
+	    <partno>C500H2YG</partno>
+	    <partno>C500H2MG</partno>
+	    <partno>C500H2CG</partno>
+	    <partno>C500X26G</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.lexmark.com/lexmark/product/home/435/0,6970,204816596_653293763_728193459_en,00.html</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2slx</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Lexmark C500 is a networked color laser printer with a
+	2007 street price of $300 USD.  This printer is supported
+	by the foo2slx open software printer driver.
+
+    </en> </comments>
+</printer>

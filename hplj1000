@@ -1,0 +1,309 @@
+#!/bin/sh
+
+#	hplj1000:
+#	hplj1005:
+#	hplj1018:
+#	hplj1020:
+#	hpljP1005:
+#	hpljP1006:
+#	hpljP1007:
+#	hpljP1008:
+#	hpljP1505:
+#
+#	Hotplug script for HP *1??? USB laser printers.  The model number
+#	that this script deals with is determined from the script name.
+#
+#	Used to download firmware automatically into the printer when it
+#	is powered up or plugged into the USB port.
+#
+#	Also, run this script once with the magic argument "install-usermap"
+#	to create the proper entry in the /etc/hotplug/usb.usermap file.
+#
+#	The inspiration fo this script is from:
+#		Oscar Santacreu. Alicante-Spain (2002)
+#		Mike Morgan (2004)
+#
+
+# udev calls us twice on FC4! Just want /dev/usb/lp<N>
+case "$DEVNAME" in
+/dev/usb/usb*)	exit;;	# Bug: FC4
+/dev/bus/usb/*)	exit;;	# Bug: Ubuntu 14
+esac
+
+PROGNAME="$0"
+
+#
+# Set $DEV to, e.g. /dev/usb/lp0, to force the device you want
+# Else, leave it null to automatically detect the device
+#
+DEV=/dev/usb/lp0
+DEV=""
+
+#
+# Path to the USB CUPS backend. We use this backend to upload the firmware
+# into the printer when we are on a CUPS/libusb-based system.
+#
+USB_BACKEND=/usr/lib/cups/backend/usb
+
+#
+# Directory to find downloadable HP firmware files sihpMMMM.dl
+#
+FWDIR=/usr/share/foo2zjs/firmware
+
+#
+# Program used to determine USB printer id information
+#
+# NOTE: /usr/bin is NOT mounted at this point
+#
+# e.g. /etc/rc.sysinit:
+#    /sbin/start_udev
+#    [snip]
+#    # Mount all other filesystems (except for NFS and /proc, which is already
+#
+PRINTERID=/bin/usb_printerid
+
+#
+#	Figure out how to log our messages
+#
+if [ -t 1 ]; then
+    # Running from a tty...
+    log() {
+	echo "$PROGNAME: foo2zjs: $@"
+    }
+elif [ -x /usr/bin/logger ]; then
+    # Have logger...
+    log() {
+	logger -t "$PROGNAME" -- "foo2zjs: $@"
+    }
+else
+    # No logger...
+    log() {
+	echo "$PROGNAME: foo2zjs: $@" >> /var/log/messages
+    }
+fi
+
+#
+#	Figure out the model number from the name of this script
+#
+case "$0" in
+*P1005)
+    MODEL=P1005; FWMODEL=$MODEL
+    USB1=0x03f0	#Vendor
+    USB2=0x3d17	#Model
+    FWDIR=/usr/share/foo2xqx/firmware
+    ;;
+*P1006)
+    MODEL=P1006; FWMODEL=$MODEL
+    USB1=0x03f0	#Vendor
+    USB2=0x3e17	#Model
+    FWDIR=/usr/share/foo2xqx/firmware
+    ;;
+*P1007)
+    MODEL=P1007; FWMODEL=P1005		# Alias
+    USB1=0x03f0	#Vendor
+    USB2=0x4817	#Model
+    FWDIR=/usr/share/foo2xqx/firmware
+    ;;
+*P1008)
+    MODEL=P1008; FWMODEL=P1006		# Alias
+    USB1=0x03f0	#Vendor
+    USB2=0x4917	#Model
+    FWDIR=/usr/share/foo2xqx/firmware
+    ;;
+*P1505)
+    MODEL=P1505; FWMODEL=$MODEL
+    USB1=0x03f0	#Vendor
+    USB2=0x3f17	#Model
+    FWDIR=/usr/share/foo2xqx/firmware
+    ;;
+*P1505n)
+    MODEL=P1505n; FWMODEL=$MODEL
+    USB1=0x03f0	#Vendor
+    USB2=0x4017	#Model
+    FWDIR=/usr/share/foo2xqx/firmware
+    ;;
+*1000)
+    MODEL=1000; FWMODEL=$MODEL
+    USB1=0x03f0	#Vendor
+    USB2=0x0517	#Model
+    ;;
+*1005)
+    MODEL=1005; FWMODEL=$MODEL
+    USB1=0x03f0	#Vendor
+    USB2=0x1317	#Model
+    ;;
+*1018)
+    MODEL=1018; FWMODEL=$MODEL
+    USB1=0x03f0 #Vendor
+    USB2=0x4117 #Model
+    ;;
+*1020)
+    MODEL=1020; FWMODEL=$MODEL
+    USB1=0x03f0 #Vendor
+    USB2=0x2b17 #Model
+    ;;
+*)
+    log "Only HP LaserJet 100[05],1018,1020,P100[5678],P1505 are supported"
+    exit
+    ;;
+esac
+
+#
+#	Remove HPLIP proprietary rules!
+#
+model=` echo "$MODEL" | tr 'A-Z' 'a-z' `
+rm -f /etc/udev/rules.d/*hpmud*laserjet_${model}*
+rm -f /etc/udev/rules.d/*hpmud_support.rules
+rm -f /etc/udev/rules.d/*hpmud_plugin.rules
+rm -f /lib/udev/rules.d/*hpmud_support.rules
+rm -f /lib/udev/rules.d/*hpmud_plugin.rules
+
+#
+#	The special command line argument "install-usermap" will install
+#	the proper entry into the /etc/hotplug/usb.usermap file
+#
+case "$1" in
+install-usermap)
+    if [ "$USB2" != "" ]; then
+	if [ -w /etc/hotplug/usb.usermap ]; then
+		USERMAP=/etc/hotplug/usb.usermap
+	elif [ -d /etc/hotplug/usb/ ]; then
+		USERMAP=/etc/hotplug/usb/foo2zjs.usermap
+		if [ ! -s $USERMAP ]; then
+			echo > $USERMAP
+		fi
+	else
+		log "No /etc/hotplug usermap!"
+		exit
+	fi
+	chmod 664 $USERMAP
+	ex - $USERMAP <<-EOF
+	g/^hplj$MODEL/d
+	\$a
+	hplj$MODEL 0x0003 $USB1 $USB2 0x0000 0x0000 0x00 0x00 0x00 0x00 0x00 0x00 0x00000000
+	.
+	w
+	q
+	EOF
+    else
+	log "I don't know the USB info for this model yet.  Please run"
+	log "usb_printerid on the usb device and send the output to:"
+	log "rick.richardson@comcast.net"
+    fi
+    exit 0
+    ;;
+install-usblp)
+    for f in /etc/modprobe.d/blacklist*; do
+	if grep -s -q usblp $f; then
+	    ed - $f <<-EOF
+		g/^blacklist.*usblp/d
+		w
+		q
+		EOF
+	    #echo $f
+	    /sbin/modprobe usblp
+	fi
+    done
+    exit 0
+    ;;
+esac
+ 
+#
+#	Procedures to load a single device with firmware
+#
+load_usblp() {
+    _dev="$1"
+    fw="$FWDIR/sihp$FWMODEL.dl"
+    if [ ! -f "$fw" ]; then
+	log "Missing HP LaserJet $MODEL firmware file $fw"
+	log "...read foo2zjs installation instructions and run ./getweb $MODEL"
+	return 1
+    fi
+
+    log "loading HP LaserJet $MODEL firmware $fw to $_dev ..."
+    # There is a timeout problem with udev and FC4, so spin it off.
+    (
+	if cat $fw > $_dev; then
+	    log "... download successful."
+	else
+	    log "... download failed."
+	fi
+    ) &
+    return 0
+}
+
+load_cups() {
+    fw="$FWDIR/sihp$FWMODEL.dl"
+    if [ ! -f "$fw" ]; then
+	log "Missing HP LaserJet $MODEL firmware file $fw"
+	log "...read foo2zjs installation instructions and run ./getweb $MODEL"
+	return 1
+    fi
+
+    # There is a timeout problem with udev and FC4, so spin it off.
+    (
+	device_found=0
+	for uri in `$USB_BACKEND 2> /dev/null | grep -i 'HP.*LaserJet.*'"$MODEL" | grep -v FWVER | cut -d ' ' -f 2`; do
+	    log "loading HP LaserJet $MODEL firmware $fw to CUPS USB device ..."
+	    device_found=1
+	    if DEVICE_URI="$uri" $USB_BACKEND 1 1 1 1 '' $fw 2> /dev/null; then
+		log "$uri... download successful."
+	    else
+		log "$uri... download failed."
+	    fi
+	done
+    ) &
+    return 0
+}
+
+#
+#	Add a sleep
+#
+sleep 3
+
+#
+#	OK, now download firmware to any printers that need it
+#
+if [ "$DEV" != "" ]; then
+    #
+    # force downloading to a specific device
+    #
+    load_usblp "$DEV"
+elif [ -x $PRINTERID -o -x $USB_BACKEND ]; then
+    if [ -x $PRINTERID ]; then
+	#
+	# Sniff around for printers that need a firmware download
+	#
+	usblps=`find /dev/usb -type c -name 'lp*'`" "`find /dev -type c -name 'usblp*'`
+	for dev in $usblps; do
+	    status=`$PRINTERID $dev 2>/dev/null | grep -y "hp LaserJet $MODEL"`
+	    if [ "$status" != "" ]; then
+		# This is a LaserJet 100x
+		chmod 0666 $dev
+		status=`$PRINTERID $dev | grep 'FWVER'`
+		if [ "$status" = "" ]; then
+		    # Firmware is not yet loaded
+		    load_usblp "$dev"
+		else
+		    log "HP LaserJet $MODEL firmware already loaded into $dev"
+		fi
+	    fi
+	done
+	if [ "$usblps" != " " ]; then
+	    # All done!
+	    exit
+	fi
+    fi
+
+    if [ -x $USB_BACKEND ]; then
+	#
+	# If we have CUPS installed, use the CUPS "usb" backend, as then we do
+	# not need to care whether the system uses the usblp kernel module or
+	# libusb
+	#
+	load_cups
+    fi
+else
+    log "HP LaserJet $MODEL firmware was not downloaded..."
+    log "...couldn't find $PRINTERID, DEV is not set, and CUPS not installed."
+fi

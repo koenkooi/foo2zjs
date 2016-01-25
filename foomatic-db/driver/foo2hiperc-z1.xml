@@ -1,0 +1,19 @@
+<driver id="driver/foo2hiperc-z1">
+    <name>foo2hiperc-z1</name>
+    <url>http://foo2hiperc.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2hiperc-wrapper -z1 %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the Oki Data Color Laser Printers
+	with an A3/tabloid paper size, like the C810.
+
+	&lt;p&gt;
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/Oki-C810</id></printer>
+    </printers>
+</driver>

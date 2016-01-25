@@ -1,0 +1,15 @@
+%%
+%% This is for fooling around with color correction.  None of the
+%% values in this file are tuned for the 2300 DL yet.  So far, I
+%% have not come across a *process* for determining what should go
+%% into this file.  Also see "gamma-lookup.ps" for another approach.
+%%
+%% This defines a set of four PS procedures, one for each of C, M, Y, and K,
+%% whose input is a value in the range 0.0..1.0, and whose output should be
+%% a corrected value in the same range.
+%%
+%%   CYAN      MAGENTA     YELLOW      BLACK
+%{0.217 exp} {0.217 exp} {0.217 exp} {0.217 exp} setcolortransfer
+%{0.256 exp} {0.256 exp} {0.256 exp} {0.256 exp} setcolortransfer
+{0.333 exp} {0.333 exp} {0.333 exp} {0.333 exp} setcolortransfer
+%{0.450 exp} {0.450 exp} {0.450 exp} {0.450 exp} setcolortransfer

@@ -1,0 +1,202 @@
+<option type="enum" id="opt/foo2qpdl-ICM">
+    <comments>
+	<en>
+	This option controls which .ICM file to use for color correction.
+	ICM files are stored in directory /usr/share/foo2qpdl/icm/.
+	</en>
+    </comments>
+    <arg_longname> <en>ICM Color Profile</en> </arg_longname>
+    <arg_shortname> <en>ICM</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>Adjustment</arg_group>
+	<arg_order>300</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-300</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-300</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-310</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-315</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-315</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-315</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-325</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-325</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-365</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-365</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLX-2160</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-2160</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLX-3160</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-3160</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLX-3175</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-3175</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLX-3185</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-3185</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Xerox</make>
+	    <model>Phaser 6110</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-6110</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-600</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-600</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-610</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-610</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>CLP-620</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ICM-620</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2qpdl-ICM-none">
+	    <ev_longname> <en>No ICM color correction</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>none</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gnone.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-300">
+	    <ev_longname> <en>CLP-300</en> </ev_longname>
+	    <ev_shortname> <en>clp300</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp300-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-315">
+	    <ev_longname> <en>CLP-310/315</en> </ev_longname>
+	    <ev_shortname> <en>clp315</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp315-argyll-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-325">
+	    <ev_longname> <en>CLP-320/325</en> </ev_longname>
+	    <ev_shortname> <en>clp325</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp315-argyll-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-365">
+	    <ev_longname> <en>CLP-360/365</en> </ev_longname>
+	    <ev_shortname> <en>clp365</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp315-argyll-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-2160">
+	    <ev_longname> <en>CLX-2160</en> </ev_longname>
+	    <ev_shortname> <en>clx2160</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp300-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-3160">
+	    <ev_longname> <en>CLX-3160</en> </ev_longname>
+	    <ev_shortname> <en>clx3160</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp300-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-3175">
+	    <ev_longname> <en>CLX-3175</en> </ev_longname>
+	    <ev_shortname> <en>clx3175</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp315-argyll-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-3185">
+	    <ev_longname> <en>CLX-3185</en> </ev_longname>
+	    <ev_shortname> <en>clx3185</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp315-argyll-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-6110">
+	    <ev_longname> <en>Phaser 6110</en> </ev_longname>
+	    <ev_shortname> <en>ph6110</en> </ev_shortname>
+	    <ev_driverval>-C10 -Gsamclp300-0.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-600">
+	    <ev_longname> <en>CLP-600</en> </ev_longname>
+	    <ev_shortname> <en>clp600</en> </ev_shortname>
+	    <ev_driverval>-z1</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-610">
+	    <ev_longname> <en>CLP-610</en> </ev_longname>
+	    <ev_shortname> <en>clp610</en> </ev_shortname>
+	    <ev_driverval>-z2</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2qpdl-ICM-620">
+	    <ev_longname> <en>CLP-620</en> </ev_longname>
+	    <ev_shortname> <en>clp620</en> </ev_shortname>
+	    <ev_driverval>-z3</ev_driverval>
+	</enum_val>
+
+        <enum_val id="ev/foo2qpdl-ICM-testing">
+            <ev_longname> <en>File testing.icm</en> </ev_longname>
+            <ev_shortname> <en>testing</en> </ev_shortname>
+            <ev_driverval>-C10 -Gtesting.icm</ev_driverval>
+        </enum_val>
+
+        <enum_val id="ev/foo2qpdl-ICM-testing2">
+            <ev_longname> <en>File testing2.icm</en> </ev_longname>
+            <ev_shortname> <en>testing2</en> </ev_shortname>
+            <ev_driverval>-C10 -Gtesting2.icm</ev_driverval>
+        </enum_val>
+
+        <enum_val id="ev/foo2qpdl-ICM-testing3">
+            <ev_longname> <en>File testing3.icm</en> </ev_longname>
+            <ev_shortname> <en>testing3</en> </ev_shortname>
+            <ev_driverval>-C10 -Gtesting3.icm</ev_driverval>
+        </enum_val>
+
+    </enum_vals>
+</option>

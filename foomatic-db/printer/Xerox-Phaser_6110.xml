@@ -1,0 +1,70 @@
+<printer id="printer/Xerox-Phaser_6110">
+    <make>Xerox</make>
+    <model>Phaser 6110</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Cyan (1000 prints) - $45
+		Toner Magenta (1000 prints) - $45
+		Toner Yellow (1000 prints) - $45
+		Toner Black (2000 prints) - $54
+		Waste Toner (5000 prints) - $10
+		Drum Kit (20000 prints) - $159
+	    </en> </comments>
+	    <partno>106R01271</partno>
+	    <partno>106R01272</partno>
+	    <partno>106R01273</partno>
+	    <partno>106R01274</partno>
+	    <partno>108R00722</partno>
+	    <partno>108R00744</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.office.xerox.com/printers/color-printers/phaser-6110/enus.html</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+        <parallel>
+            <ieee1284>MFG:Xerox;CMD:SPLC;MDL:Phaser 6110;CLS:PRINTER;STATUS:BUSY;</ieee1284>
+            <manufacturer>Xerox</manufacturer>
+            <model>Phaser 6110</model>
+            <commandset>SPLC</commandset>
+        </parallel>
+	<snmp>
+	    <description>Xerox Phaser 6110</description>
+	</snmp>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2qpdl</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Xerox Phaser 6110/B (USB) and Xerox Phaser 6110/N (Net) are color
+	laser printers with a 2007 street price of $249 USD and $269 USD.
+
+	The Xerox Phaser 6110MFP is a color multifunction printer with a 2007
+	street price of $579 USD.
+
+	These printers are supported by the foo2qpdl open software printer
+	driver.
+
+    </en> </comments>
+</printer>

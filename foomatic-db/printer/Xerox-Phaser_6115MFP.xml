@@ -1,0 +1,56 @@
+<printer id="printer/Xerox-Phaser_6115MFP">
+    <make>Xerox</make>
+    <model>Phaser 6115MFP</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>2400</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4</top>
+		<bottom>4</bottom>
+		<left>4</left>
+		<right>4</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Cyan (4500 prints) - $160
+		Toner Magenta (4500 prints) - $160
+		Toner Yellow (4500 prints) - $160
+		Toner Black (4500 prints) - $100
+		Imaging Unit (20000 prints) - $160
+	    </en> </comments>
+	    <partno>113R00693</partno>
+	    <partno>113R00694</partno>
+	    <partno>113R00695</partno>
+	    <partno>113R00692</partno>
+	    <partno>113R00691</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.office.xerox.com/multifunction-printer/color-multifunction/phaser-6115mfp/enus.html</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2lava</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Xerox Phaser 6115MFP is a color multifunction printer with a 2007
+	street price of $799 USD.
+
+	This printer is supported by the foo2lava open software printer
+	driver.
+
+    </en> </comments>
+</printer>

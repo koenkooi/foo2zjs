@@ -1,0 +1,43 @@
+DEBUGGING USB SUBSYSTEM
+-----------------------
+
+0. Have HP LaserJet 1020
+
+1. Install the latest http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+
+2. Prepare the kernel
+
+    Taken from: /usr/src/linux/Documentation/usb/usbmon.txt
+
+    # mount -t debugfs none_debugs /sys/kernel/debug
+    # modprobe usbmon				(if kernel loads a module)
+
+    # ls /sys/kernel/debug/usbmon
+    1s  1t  2s  2t  3s  3t  4s  4t
+
+    # grep -B4 /proc/bus/usb/devices Laser
+    T:  Bus=01 Lev=01 Prnt=01 Port=04 Cnt=01 Dev#=  3 Spd=480 MxCh= 0
+    D:  Ver= 2.00 Cls=00(>ifc ) Sub=00 Prot=00 MxPS=64 #Cfgs=  1
+    P:  Vendor=03f0 ProdID=2b17 Rev= 1.00
+    S:  Manufacturer=Hewlett-Packard
+    S:  Product=HP LaserJet 1020
+
+    Bus=01 is what you fill it here,
+
+3. Start 'cat'
+
+    # BUS=1t
+    # cat /sys/kernel/debug/usbmon/$BUS > /tmp/1.mon.out
+
+4. Wait for problem.....
+
+5. Interrupt 'cat' with Control-C
+
+6. File bug report at:
+
+    RedHat:	https://bugzilla.redhat.com/bugzilla/index.cgi
+    Mandriva:	http://qa.mandriva.com/
+    SUSE:	http://en.opensuse.org/Submitting_Bug_Reports
+    Ubuntu:	https://launchpad.net/distros/ubuntu/+bugs
+
+    Do not file bug report with me.  It is a kernel problem.

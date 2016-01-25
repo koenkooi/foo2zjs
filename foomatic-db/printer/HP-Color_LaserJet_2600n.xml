@@ -1,0 +1,58 @@
+<printer id="printer/HP-Color_LaserJet_2600n">
+    <make>HP</make>
+    <model>Color LaserJet 2600n</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>600</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>inch</unit>
+		<top>0.166666</top>
+		<bottom>0.166666</bottom>
+		<left>0.166666</left>
+		<right>0.166666</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Q6000A  HP Color LaserJet black print cartridge  [Add $75.00]
+		Q6001A  HP Color LaserJet cyan print cartridge  [Add $82.00]
+		Q6002A  HP Color LaserJet yellow print cartridge  [Add $82.00]
+		Q6003A  HP Color LaserJet magenta print cartridge  [Add $82.00]
+	    </en> </comments>
+	    <partno>Q6000A</partno>
+	    <partno>Q6001A</partno>
+	    <partno>Q6002A</partno>
+	    <partno>Q6003A</partno>
+	</consumables>
+    </mechanism>
+    <url>http://h10010.www1.hp.com/wwpc/us/en/sm/WF05a/18972-236251-236268-15077-f51-446153.html</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+        <parallel>
+            <ieee1284>MFG:Hewlett-Packard;MDL:HP Color LaserJet 2600n;CMD:ACL;CLS:PRINTER;DES:HP Color LaserJet 2600n;</ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+            <model>HP Color LaserJet 2600n</model>
+            <commandset>ACL</commandset>
+        </parallel>
+    </autodetect>
+    <functionality>C</functionality>
+    <driver>foo2hp</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Color LaserJet 2600n is color laser printer with a 2005 street
+	price of $360 USD.  This printer is supported by the foo2hp
+	printer driver.
+
+    </en> </comments>
+</printer>

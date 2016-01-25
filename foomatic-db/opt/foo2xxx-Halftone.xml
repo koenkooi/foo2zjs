@@ -1,0 +1,97 @@
+<option type="enum" id="opt/foo2xxx-Halftone">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Halftone Algorithm</en> </arg_longname>
+    <arg_shortname> <en>halftone</en> </arg_shortname>
+    <arg_execution>
+        <arg_group>Adjustment</arg_group>
+	<arg_order>110</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto> %s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z1</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z2</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z3</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+<!--
+	Doesn't have -t option
+	<constraint sense="true">
+	    <driver>foo2oak</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2oak-z1</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+-->
+	<constraint sense="true">
+	    <driver>foo2hp</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2xqx</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2slx</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hiperc</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hiperc-z1</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2xxx-Halftone-Default</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2xxx-Halftone-Default">
+	    <ev_longname> <en>Default</en> </ev_longname>
+	    <ev_shortname> <en>default</en> </ev_shortname>
+	    <ev_driverval></ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Halftone-Standard">
+	    <ev_longname> <en>Standard</en> </ev_longname>
+	    <ev_shortname> <en>standard</en> </ev_shortname>
+	    <ev_driverval>-q1 </ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Halftone-as">
+	    <ev_longname> <en>Accurate Screens (better)</en> </ev_longname>
+	    <ev_shortname> <en>as</en> </ev_shortname>
+	    <ev_driverval>-qas </ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Halftone-wts">
+	    <ev_longname> <en>Well Tempered Screens (best)</en> </ev_longname>
+	    <ev_shortname> <en>wts</en> </ev_shortname>
+	    <ev_driverval>-qwts </ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

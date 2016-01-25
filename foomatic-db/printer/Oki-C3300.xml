@@ -1,0 +1,53 @@
+<printer id="printer/Oki-C3300">
+    <make>Oki</make>
+    <model>C3300</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>600</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (1500 prints) - $32
+		Toner Yellow (1500 prints) - $65
+		Toner Magenta (1500 prints) - $65
+		Toner Cyan (1500 prints) - $65
+		Drum Black (15000 prints) - $100
+		Drum Yellow (1500 prints) - $120
+		Drum Magenta (1500 prints) - $120
+		Drum Cyan (1500 prints) - $120
+	    </en> </comments>
+	    <partno>43034804</partno>
+	</consumables>
+    </mechanism>
+    <url>http://my.okidata.com/pp-C3300n.nsf</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2hiperc</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Oki C3300 is a networked color laser printer with a
+	2007 street price of $399 USD.  This printer is supported
+	by the foo2hiperc open software printer driver.
+
+    </en> </comments>
+</printer>

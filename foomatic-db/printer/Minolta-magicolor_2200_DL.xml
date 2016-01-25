@@ -1,0 +1,66 @@
+<printer id="printer/Minolta-magicolor_2200_DL">
+    <make>Minolta</make>
+    <model>magicolor 2200 DL</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4</top>
+		<bottom>4</bottom>
+		<left>4</left>
+		<right>4</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (6000 prints) - $77
+		Toner Yellow (6000 prints) - $143
+		Toner Magenta (6000 prints) - $143
+		Toner Cyan (6000 prints) - $143
+		OPC Drum Catridge (30000 prints) - $99
+		Transfer Belt (100K prints) - $349
+		Fuser Oil Roller (21K prints) - $49
+		Fuser Unit/Transfer Roller Kit (100K prints) - $499
+		Waste Toner Bottle (30000 prints) - $29
+	    </en> </comments>
+	    <partno>1710471-001</partno>
+	    <partno>1710471-002</partno>
+	    <partno>1710471-003</partno>
+	    <partno>1710471-004</partno>
+	    <partno>1710476-001</partno>
+	    <partno>1710478-001</partno>
+	    <partno>1710475-001</partno>
+	    <partno>1710483-001</partno>
+	    <partno>1710477-001</partno>
+	    <!--one or more "partno" elements.-->
+	</consumables>
+    </mechanism>
+    <url>http://www.minolta-qms.com/products/color/mc2200DL/index.asp</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+	<!--  HOW DO I SPECIFY SNMP AUTODETECT???????? -->
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2zjs</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The magicolor 2200 DL is a network color laser printer which
+	uses the Zenographics ZjStream printer language.
+
+	This printer is supported by the foo2zjs free software printer
+	driver.
+
+    </en> </comments>
+</printer>

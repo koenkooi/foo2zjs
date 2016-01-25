@@ -1,0 +1,58 @@
+<printer id="printer/Oki-C511dn">
+    <make>Oki</make>
+    <model>C511dn</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>600</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (7000 prints) - $117
+		Toner Yellow (5000 prints) - $150
+		Toner Magenta (5000 prints) - $150
+		Toner Cyan (5000 prints) - $150
+		Transfer Belt (60000 prints) - $78
+		Fuser Unit (60000 prints) - $78
+		Image Drum (30000/20000 prints) - $160
+	    </en> </comments>
+	    <partno>44973508</partno>
+	    <partno>44469722</partno>
+	    <partno>44469723</partno>
+	    <partno>44469724</partno>
+	    <partno>44472202</partno>
+	    <partno>44472603</partno>
+	    <partno>44968301</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.oki.co.uk/printers/colour-printers/workgroup-printers/detail.aspx?prodid=tcm:122-131702-16</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2hiperc</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Oki C511dn is a networked color laser printer with a
+	2014 street price of $275 USD.  This printer is supported
+	by the foo2hiperc open software printer driver.
+
+    </en> </comments>
+</printer>

@@ -1,0 +1,54 @@
+.TH foo2zjs-icc2ps 1 "Sun Jun 20 04:33:46 2010" "foo2zjs-icc2ps 0.0"
+#ifndef OLDGROFF
+#include "../macros.man"
+#endif
+.SH NAME
+foo2zjs-icc2ps - little cms PostScript converter.
+.SH SYNOPSIS
+.B foo2zjs-icc2ps
+.RI [ options ]
+.SH DESCRIPTION
+lcms is a standalone CMM engine, which deals with the color management.
+It implements a fast transformation between ICC profiles.
+.B foo2zjs-icc2ps 
+is little cms PostScript converter.
+.SH COMMAND LINE OPTIONS
+.TP
+.B \-b 
+Black point compensation (CRD only).
+.TP
+.B \-c <0,1,2>
+Precision (0=LowRes, 1=Normal (default), 2=Hi-res) (CRD only)
+.TP
+.BI \-i\  profile
+Input profile: Generates Color Space Array (CSA).
+.TP
+.B \-n <gridpoints>
+Alternate way to set precision, number of CLUT points (CRD only)
+.TP
+.BI \-o\  profile
+.p
+Output profile: Generates Color Rendering Dictionary(CRD).
+.TP
+.B \-t <0,1,2,3>
+Intent (0=Perceptual, 1=Colorimetric, 2=Saturation, 3=Absolute).
+.TP
+.B \-u 
+Do NOT generate resource name on CRD.
+.SH FILES
+.BR /usr/share/foo2*/icm/*
+.SH SEE ALSO
+.BR foo2hiperc-wrapper (1),
+.BR foo2hp2600-wrapper (1),
+.BR foo2lava-wrapper (1),
+.BR foo2oak-wrapper (1),
+.BR foo2qpdl-wrapper (1),
+.BR foo2zjs-wrapper (1),
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+http://foo2zjs.rkkda.com/
+'/"
+'/"
+'/"
+.em pdf_outline

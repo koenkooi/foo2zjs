@@ -1,0 +1,53 @@
+<printer id="printer/Kyocera-KM-1635">
+    <make>Kyocera</make>
+    <model>KM-1635</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>600</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>inch</unit>
+		<top>0.166666</top>
+		<bottom>0.166666</bottom>
+		<left>0.166666</left>
+		<right>0.166666</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (15000 prints) - $70
+		Imaging Drum (150000 prints) - $160
+	    </en> </comments>
+	    <partno>tk410</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.kyoceramita.eu/index/products/product/km1635.html</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+<!--
+    <autodetect>
+	<parallel>
+	    <ieee1284>CLS:PRINTER;MDL:hp color LaserJet 1500;MFG:Hewlett-Packard;CMD:OAKRAS;</ieee1284>
+	    <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>hp color LaserJet 1500</model>
+	    <commandset>OAKRAS</commandset>
+	</parallel>
+    </autodetect>
+-->
+    <functionality>C</functionality>
+    <driver>foo2oak-z1</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The KM-1635 is a copier.  Only the print function is supported.
+
+    </en> </comments>
+</printer>

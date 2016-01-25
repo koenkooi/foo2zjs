@@ -1,0 +1,193 @@
+'\" t
+.TH foo2lava 1 "${MODpage}" "foo2lava ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2lava \- Convert Ghostscript pbmraw or bitcmyk format into a
+LAVAFLOW or a OPL printer stream
+.SH SYNOPSIS
+.B foo2lava
+.RI [ options "] <" pbmraw-file " >" lava-file
+.sp 1
+.B foo2lava
+.RI [ options "] <" bitcmyk-file " >" lava-file
+.sp 1
+.B foo2lava
+.RI [ options "] <" pksmraw-file " >" lava-file
+.SH DESCRIPTION
+.B foo2lava
+converts Ghostscript pbmraw, bitcmyk, or pksmraw output formats to monochrome
+or color LAVAFLOW or OPL streams,
+for driving the Konica Minolta magicolor 2530 DL network color laser printer,
+the Konica Minolta magicolor 2480/2480 MF AIO printer,
+and other Zenographics-based LAVAFLOW printers.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-c
+Force color mode if autodetect doesn't work.
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-g\0 xpix x ypix
+Set page dimensions in pixels [10200x6600].
+.TP
+.BI \-m\0 media
+Media code to send to printer [0].
+.TS
+l l l
+l n n.
+_
+Media	2530DL
+_
+plain	0
+transparency	4
+thick stock	20
+envelope	22
+letterhead	23
+postcard	25
+labels	26
+recycled	27
+.TE
+.TP
+.BI \-p\0 paper
+Paper code to send to printer [2].
+.TS
+box;
+| n l | n l.
+1	executive	25	A5
+2	letter	26	A4
+3	legal	45	B5jis
+80	env Monarch	65	B5iso
+81	env #10	90	env DL
+91	env C5	92	env C6
+835	4x6" photo	837	10x15cm photo
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [1200x600].
+.TP
+.BI \-s\0 source
+Source (InputSlot) code to send to printer [255].
+.TS
+| n l | n l.
+1	Tray 1	255	auto
+4	Tray 2
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI \-J\0 filename
+Filename string to send to printer.
+.TP
+.BI \-U\0 username
+Username string to send to printer.
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2lava\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [0x0].
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [0x0].
+.TP
+.BI \-L\0 mask
+Send logical clipping amounts implied by -u/-l in the LAVAFLOW stream [3].
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-A
+AllIsBlack: convert C=1,M=1,Y=1 to just K=1.  Works with bitcmyk input only.
+.TP
+.BI \-B
+BlackClears: K=1 forces C,M,Y to 0.  Works with bitcmyk input only.
+.TP
+.BI \-z\0 model
+Model.  The  default is [0].
+.TS
+l l l.
+model	protocol	Description
+0	LAVAFLOW	magicolor 2490 MF
+0	LAVAFLOW	magicolor 2530 DL
+1	OPL	magicolor 2480 MF
+2	LAVAFLOW	magicolor 1600W
+2	LAVAFLOW	magicolor 1680MF
+2	LAVAFLOW	magicolor 1690MF
+.TE
+.SS Debugging Options
+These options are used for debugging \fBfoo2lava\fP.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a black and white LAVAFLOW stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -r1200x600 -sDEVICE=pbmraw \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2lava -r1200x600 -g10200x6600 -p1 >testpage.zm
+.fi
+.RE
+.P
+Create a color LAVAFLOW stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -g10200x6600 -r1200x600 -sDEVICE=bitcmyk \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2lava -r1200x600 -g10200x6600 -p1 >testpage.zc
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2lava
+.SH SEE ALSO
+.BR foo2lava-wrapper (1),
+.BR lavadecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.com>
+.br
+${URLZJS}/
+'\"
+'\"
+'\"
+.em pdf_outline

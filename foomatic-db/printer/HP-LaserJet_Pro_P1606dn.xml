@@ -1,0 +1,55 @@
+<printer id="printer/HP-LaserJet_Pro_P1606dn">
+  <make>HP</make>
+  <model>LaserJet Pro P1606dn</model>
+  <mechanism>
+    <laser/><!--not "color"-->
+    <resolution>
+      <dpi>
+        <x>600</x>
+        <y>600</y>
+      </dpi>
+    </resolution>
+    <margins>
+	<general>
+	    <unit>mm</unit>
+	    <top>4</top>
+	    <bottom>4</bottom>
+	    <left>4</left>
+	    <right>4</right>
+	</general>
+    </margins>
+    <consumables>
+      <comments> <en>
+	Print cartridge (2000 prints) - $65
+      </en></comments>
+      <partno>Q2612A</partno>
+    </consumables>
+  </mechanism>
+  <url>http://h10010.www1.hp.com/wwpc/us/en/sm/WF05a/18972-18972-3328059-14638-3328066-4110408.html</url>
+  <lang>
+    <proprietary/>
+    <!--no pjl--><!--No "text"?-->
+  </lang>
+  <autodetect>
+	<parallel>
+	    <ieee1284>MFG:Hewlett-Packard;MDL:HP LaserJet Professional P1606dn;CMD:ACL;CLS:PRINTER;DES:HP LaserJet Pro P1606dn;</ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>HP LaserJet Professional P1606dn</model>
+	    <commandset>ACL</commandset>
+	</parallel>
+  </autodetect>
+  <functionality>B</functionality>
+  <driver>foo2zjs-z2</driver>
+  <!--no "contrib_url"-->
+  <comments>
+    <en>
+
+    This printer is supported by the foo2zjs free software printer driver.
+    &lt;p&gt;
+
+    The printer is faster than the LaserJet 1000 and has a USB
+    connection.&lt;p&gt;
+
+    </en>
+  </comments>
+</printer>

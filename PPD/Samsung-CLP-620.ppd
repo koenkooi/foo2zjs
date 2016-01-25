@@ -1,0 +1,1185 @@
+*PPD-Adobe: "4.3"
+*%
+*% For information on using this, and to obtain the required backend
+*% script, consult http://www.openprinting.org/
+*%
+*% This file is published under the GNU General Public License
+*%
+*% PPD-O-MATIC (3.0.0 or newer) generated this PPD file. It is for use with 
+*% all programs and environments which use PPD files for dealing with
+*% printer capability information. The printer must be configured with the
+*% "foomatic-rip" backend filter script of Foomatic 3.0.0 or newer. This 
+*% file and "foomatic-rip" work together to support PPD-controlled printer
+*% driver option access with arbitrary free software printer drivers and
+*% printing spoolers.
+*%
+*% To save this file on your disk, wait until the download has completed
+*% (the animation of the browser logo must stop) and then use the
+*% "Save as..." command in the "File" menu of your browser or in the 
+*% pop-up manu when you click on this document with the right mouse button.
+*% DO NOT cut and paste this file into an editor with your mouse. This can
+*% introduce additional line breaks which lead to unexpected results.
+*%
+*% You may save this file as 'Samsung-CLP-620-foo2qpdl.ppd'
+*%
+*%
+*FormatVersion:	"4.3"
+*FileVersion:	"1.1"
+*LanguageVersion: English 
+*LanguageEncoding: ISOLatin1
+*PCFileName:	"FOO2QPDL.PPD"
+*Manufacturer:	"Samsung"
+*Product:	"(CLP-620)"
+*cupsVersion:	1.0
+*cupsManualCopies: True
+*cupsModelNumber:  2
+*cupsFilter:	"application/vnd.cups-postscript 0 foomatic-rip"
+*%pprRIP:        foomatic-rip other
+*ModelName:     "Samsung CLP-620"
+*ShortNickName: "Samsung CLP-620 foo2qpdl"
+*NickName:      "Samsung CLP-620 Foomatic/foo2qpdl (recommended)"
+*PSVersion:	"(3010.000) 550"
+*PSVersion:	"(3010.000) 651"
+*PSVersion:	"(3010.000) 652"
+*PSVersion:	"(3010.000) 653"
+*PSVersion:	"(3010.000) 704"
+*PSVersion:	"(3010.000) 705"
+*PSVersion:	"(3010.000) 800"
+*LanguageLevel:	"3"
+*ColorDevice:	True
+*DefaultColorSpace: RGB
+*FileSystem:	False
+*Throughput:	"1"
+*LandscapeOrientation: Plus90
+*TTRasterizer:	Type42
+*1284DeviceID: "DRV:Dfoo2qpdl,R1,M0,TF;"
+
+*driverName foo2qpdl/foo2qpdl: ""
+*driverType F/Filter: ""
+*driverUrl: "http://foo2qpdl.rkkda.com/"
+*driverObsolete: False
+
+
+
+
+*HWMargins: 9 12.00 9 12
+*VariablePaperSize: True
+*MaxMediaWidth: 100000
+*MaxMediaHeight: 100000
+*NonUIOrderDependency: 135 AnySetup *CustomPageSize
+*CustomPageSize True: "pop pop pop pop pop
+%% FoomaticRIPOptionSetting: PageSize=Custom"
+*End
+*FoomaticRIPOptionSetting PageSize=Custom: "-pCustom.%0x%1 "
+*ParamCustomPageSize Width: 1 points 36 100000
+*ParamCustomPageSize Height: 2 points 36 100000
+*ParamCustomPageSize Orientation: 3 int 0 0
+*ParamCustomPageSize WidthOffset: 4 points 0 0
+*ParamCustomPageSize HeightOffset: 5 points 0 0
+
+*FoomaticIDs: Samsung-CLP-620 foo2qpdl
+*FoomaticRIPCommandLine: "foo2qpdl-wrapper %A"
+
+*OpenGroup: General/General
+
+*OpenUI *Quality/Printing Quality: PickOne
+*FoomaticRIPOption Quality: enum CmdLine A
+*OrderDependency: 110 AnySetup *Quality
+*DefaultQuality: normal
+*Quality draft/Draft: "%% FoomaticRIPOptionSetting: Quality=draft"
+*FoomaticRIPOptionSetting Quality=draft: " -t  "
+*Quality normal/Normal: "%% FoomaticRIPOptionSetting: Quality=normal"
+*FoomaticRIPOptionSetting Quality=normal: "  "
+*CloseUI: *Quality
+
+*FoomaticRIPOption PrinterType: enum CmdLine A 110
+*FoomaticRIPOptionSetting PrinterType=z3: "-z3 "
+
+*OpenUI *ColorMode/Color Mode: PickOne
+*FoomaticRIPOption ColorMode: enum CmdLine A
+*OrderDependency: 120 AnySetup *ColorMode
+*DefaultColorMode: Monochrome
+*ColorMode Color/Color: "%% FoomaticRIPOptionSetting: ColorMode=Color"
+*FoomaticRIPOptionSetting ColorMode=Color: "-c "
+*ColorMode Monochrome/Monochrome: "%% FoomaticRIPOptionSetting: ColorMode=Monochrome"
+*FoomaticRIPOptionSetting ColorMode=Monochrome: " "
+*CloseUI: *ColorMode
+
+*OpenUI *Resolution/Resolution: PickOne
+*FoomaticRIPOption Resolution: enum CmdLine A
+*OrderDependency: 130 AnySetup *Resolution
+*DefaultResolution: 1200x600dpi
+*Resolution 600x600dpi/600x600 dpi: "%% FoomaticRIPOptionSetting: Resolution=600x600dpi"
+*FoomaticRIPOptionSetting Resolution=600x600dpi: "-r600x600 "
+*Resolution 1200x600dpi/1200x600 dpi: "%% FoomaticRIPOptionSetting: Resolution=1200x600dpi"
+*FoomaticRIPOptionSetting Resolution=1200x600dpi: "-r1200x600 "
+*Resolution 1200x1200dpi/1200x1200 dpi: "%% FoomaticRIPOptionSetting: Resolution=1200x1200dpi"
+*FoomaticRIPOptionSetting Resolution=1200x1200dpi: "-r1200x1200 "
+*CloseUI: *Resolution
+
+*OpenUI *PageSize/Page Size: PickOne
+*FoomaticRIPOption PageSize: enum CmdLine A
+*OrderDependency: 135 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter/Letter: "%% FoomaticRIPOptionSetting: PageSize=Letter"
+*FoomaticRIPOptionSetting PageSize=Letter: "-p0 "
+*PageSize A4/A4: "%% FoomaticRIPOptionSetting: PageSize=A4"
+*FoomaticRIPOptionSetting PageSize=A4: "-p2 "
+*PageSize A5/A5: "%% FoomaticRIPOptionSetting: PageSize=A5"
+*FoomaticRIPOptionSetting PageSize=A5: "-p16 "
+*PageSize A6/A6: "%% FoomaticRIPOptionSetting: PageSize=A6"
+*FoomaticRIPOptionSetting PageSize=A6: "-p17 "
+*PageSize B5iso/B5 (ISO): "%% FoomaticRIPOptionSetting: PageSize=B5iso"
+*FoomaticRIPOptionSetting PageSize=B5iso: "-p12 "
+*PageSize B5jis/B5 (JIS): "%% FoomaticRIPOptionSetting: PageSize=B5jis"
+*FoomaticRIPOptionSetting PageSize=B5jis: "-p11 "
+*PageSize Env10/Env #10: "%% FoomaticRIPOptionSetting: PageSize=Env10"
+*FoomaticRIPOptionSetting PageSize=Env10: "-p6 "
+*PageSize EnvC5/Env C5: "%% FoomaticRIPOptionSetting: PageSize=EnvC5"
+*FoomaticRIPOptionSetting PageSize=EnvC5: "-p8 "
+*PageSize EnvC6/Env C6: "%% FoomaticRIPOptionSetting: PageSize=EnvC6"
+*FoomaticRIPOptionSetting PageSize=EnvC6: "-p23 "
+*PageSize EnvDL/Env DL: "%% FoomaticRIPOptionSetting: PageSize=EnvDL"
+*FoomaticRIPOptionSetting PageSize=EnvDL: "-p9 "
+*PageSize EnvMonarch/Env Monarch: "%% FoomaticRIPOptionSetting: PageSize=EnvMonarch"
+*FoomaticRIPOptionSetting PageSize=EnvMonarch: "-p7 "
+*PageSize Executive/Executive: "%% FoomaticRIPOptionSetting: PageSize=Executive"
+*FoomaticRIPOptionSetting PageSize=Executive: "-p3 "
+*PageSize Folio/Folio: "%% FoomaticRIPOptionSetting: PageSize=Folio"
+*FoomaticRIPOptionSetting PageSize=Folio: "-p24 "
+*PageSize Legal/Legal: "%% FoomaticRIPOptionSetting: PageSize=Legal"
+*FoomaticRIPOptionSetting PageSize=Legal: "-p1 "
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 135 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter/Letter: "%% FoomaticRIPOptionSetting: PageSize=Letter"
+*PageRegion A4/A4: "%% FoomaticRIPOptionSetting: PageSize=A4"
+*PageRegion A5/A5: "%% FoomaticRIPOptionSetting: PageSize=A5"
+*PageRegion A6/A6: "%% FoomaticRIPOptionSetting: PageSize=A6"
+*PageRegion B5iso/B5 (ISO): "%% FoomaticRIPOptionSetting: PageSize=B5iso"
+*PageRegion B5jis/B5 (JIS): "%% FoomaticRIPOptionSetting: PageSize=B5jis"
+*PageRegion Env10/Env #10: "%% FoomaticRIPOptionSetting: PageSize=Env10"
+*PageRegion EnvC5/Env C5: "%% FoomaticRIPOptionSetting: PageSize=EnvC5"
+*PageRegion EnvC6/Env C6: "%% FoomaticRIPOptionSetting: PageSize=EnvC6"
+*PageRegion EnvDL/Env DL: "%% FoomaticRIPOptionSetting: PageSize=EnvDL"
+*PageRegion EnvMonarch/Env Monarch: "%% FoomaticRIPOptionSetting: PageSize=EnvMonarch"
+*PageRegion Executive/Executive: "%% FoomaticRIPOptionSetting: PageSize=Executive"
+*PageRegion Folio/Folio: "%% FoomaticRIPOptionSetting: PageSize=Folio"
+*PageRegion Legal/Legal: "%% FoomaticRIPOptionSetting: PageSize=Legal"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: Letter
+*ImageableArea Letter/Letter: "9 12.00 603 780.00"
+*ImageableArea A4/A4: "9 12.00 586 830.00"
+*ImageableArea A5/A5: "9 12.00 411 583.00"
+*ImageableArea A6/A6: "9 12.00 288 408.00"
+*ImageableArea B5iso/B5 (ISO): "9 12.00 489 696.00"
+*ImageableArea B5jis/B5 (JIS): "9 12.00 509 715.00"
+*ImageableArea Env10/Env #10: "9 12.00 288 672.00"
+*ImageableArea EnvC5/Env C5: "9 12.00 450 637.00"
+*ImageableArea EnvC6/Env C6: "9 12.00 314 447.00"
+*ImageableArea EnvDL/Env DL: "9 12.00 302 611.00"
+*ImageableArea EnvMonarch/Env Monarch: "9 12.00 270 528.00"
+*ImageableArea Executive/Executive: "9 12.00 513 744.00"
+*ImageableArea Folio/Folio: "9 12.00 603 924.00"
+*ImageableArea Legal/Legal: "9 12.00 603 996.00"
+
+*DefaultPaperDimension: Letter
+*PaperDimension Letter/Letter: "612 792"
+*PaperDimension A4/A4: "595 842"
+*PaperDimension A5/A5: "420 595"
+*PaperDimension A6/A6: "297 420"
+*PaperDimension B5iso/B5 (ISO): "498 708"
+*PaperDimension B5jis/B5 (JIS): "518 727"
+*PaperDimension Env10/Env #10: "297 684"
+*PaperDimension EnvC5/Env C5: "459 649"
+*PaperDimension EnvC6/Env C6: "323 459"
+*PaperDimension EnvDL/Env DL: "311 623"
+*PaperDimension EnvMonarch/Env Monarch: "279 540"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension Folio/Folio: "612 936"
+*PaperDimension Legal/Legal: "612 1008"
+
+*OpenUI *InputSlot/Media Source: PickOne
+*FoomaticRIPOption InputSlot: enum CmdLine A
+*OrderDependency: 150 AnySetup *InputSlot
+*DefaultInputSlot: Auto
+*InputSlot Tray1/Upper / Tray 1: "%% FoomaticRIPOptionSetting: InputSlot=Tray1"
+*FoomaticRIPOptionSetting InputSlot=Tray1: "-s4 "
+*InputSlot Tray2/Lower / Tray 2: "%% FoomaticRIPOptionSetting: InputSlot=Tray2"
+*FoomaticRIPOptionSetting InputSlot=Tray2: "-s5 "
+*InputSlot Auto/Auto Select: "%% FoomaticRIPOptionSetting: InputSlot=Auto"
+*FoomaticRIPOptionSetting InputSlot=Auto: "-s1 "
+*InputSlot Manual/Manual Select: "%% FoomaticRIPOptionSetting: InputSlot=Manual"
+*FoomaticRIPOptionSetting InputSlot=Manual: "-s2 "
+*InputSlot Multi/Multipurpose: "%% FoomaticRIPOptionSetting: InputSlot=Multi"
+*FoomaticRIPOptionSetting InputSlot=Multi: "-s3 "
+*CloseUI: *InputSlot
+
+*OpenUI *MediaType/Media Type: PickOne
+*FoomaticRIPOption MediaType: enum CmdLine A
+*OrderDependency: 150 AnySetup *MediaType
+*DefaultMediaType: plain
+*MediaType plain/Plain Paper: "%% FoomaticRIPOptionSetting: MediaType=plain"
+*FoomaticRIPOptionSetting MediaType=plain: "-m0 "
+*MediaType archive/Archive Paper: "%% FoomaticRIPOptionSetting: MediaType=archive"
+*FoomaticRIPOptionSetting MediaType=archive: "-m12 "
+*MediaType bond/Bond: "%% FoomaticRIPOptionSetting: MediaType=bond"
+*FoomaticRIPOptionSetting MediaType=bond: "-m3 "
+*MediaType card/Card Stock: "%% FoomaticRIPOptionSetting: MediaType=card"
+*FoomaticRIPOptionSetting MediaType=card: "-m5 "
+*MediaType color/Color Paper: "%% FoomaticRIPOptionSetting: MediaType=color"
+*FoomaticRIPOptionSetting MediaType=color: "-m4 "
+*MediaType cotton/Cotton: "%% FoomaticRIPOptionSetting: MediaType=cotton"
+*FoomaticRIPOptionSetting MediaType=cotton: "-m9 "
+*MediaType envelope/Envelope: "%% FoomaticRIPOptionSetting: MediaType=envelope"
+*FoomaticRIPOptionSetting MediaType=envelope: "-m7 "
+*MediaType labels/Labels: "%% FoomaticRIPOptionSetting: MediaType=labels"
+*FoomaticRIPOptionSetting MediaType=labels: "-m6 "
+*MediaType preprinted/Preprinted: "%% FoomaticRIPOptionSetting: MediaType=preprinted"
+*FoomaticRIPOptionSetting MediaType=preprinted: "-m8 "
+*MediaType recycled/Recycled Paper: "%% FoomaticRIPOptionSetting: MediaType=recycled"
+*FoomaticRIPOptionSetting MediaType=recycled: "-m10 "
+*MediaType thick/Thick Stock: "%% FoomaticRIPOptionSetting: MediaType=thick"
+*FoomaticRIPOptionSetting MediaType=thick: "-m1 "
+*MediaType thin/Thin Stock: "%% FoomaticRIPOptionSetting: MediaType=thin"
+*FoomaticRIPOptionSetting MediaType=thin: "-m2 "
+*MediaType transparency/Transparency: "%% FoomaticRIPOptionSetting: MediaType=transparency"
+*FoomaticRIPOptionSetting MediaType=transparency: "-m11 "
+*CloseUI: *MediaType
+
+*OpenUI *Duplex/Duplex Printing: PickOne
+*FoomaticRIPOption Duplex: enum CmdLine A
+*OrderDependency: 210 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex DuplexNoTumble/Long Edge (Standard): "%% FoomaticRIPOptionSetting: Duplex=DuplexNoTumble"
+*FoomaticRIPOptionSetting Duplex=DuplexNoTumble: "-d2 "
+*Duplex DuplexTumble/Short Edge (Flip): "%% FoomaticRIPOptionSetting: Duplex=DuplexTumble"
+*FoomaticRIPOptionSetting Duplex=DuplexTumble: "-d3 "
+*Duplex None/Off: "%% FoomaticRIPOptionSetting: Duplex=None"
+*FoomaticRIPOptionSetting Duplex=None: "-d1 "
+*CloseUI: *Duplex
+
+*OpenUI *Copies/Copies: PickOne
+*FoomaticRIPOption Copies: int CmdLine A
+*FoomaticRIPOptionPrototype Copies: "-n%s "
+*FoomaticRIPOptionRange Copies: 1 100
+*OrderDependency: 220 AnySetup *Copies
+*DefaultCopies: 1
+*FoomaticRIPDefaultCopies: 1
+*Copies 1/1: "%% FoomaticRIPOptionSetting: Copies=1"
+*Copies 2/2: "%% FoomaticRIPOptionSetting: Copies=2"
+*Copies 3/3: "%% FoomaticRIPOptionSetting: Copies=3"
+*Copies 4/4: "%% FoomaticRIPOptionSetting: Copies=4"
+*Copies 5/5: "%% FoomaticRIPOptionSetting: Copies=5"
+*Copies 6/6: "%% FoomaticRIPOptionSetting: Copies=6"
+*Copies 7/7: "%% FoomaticRIPOptionSetting: Copies=7"
+*Copies 8/8: "%% FoomaticRIPOptionSetting: Copies=8"
+*Copies 9/9: "%% FoomaticRIPOptionSetting: Copies=9"
+*Copies 10/10: "%% FoomaticRIPOptionSetting: Copies=10"
+*Copies 11/11: "%% FoomaticRIPOptionSetting: Copies=11"
+*Copies 12/12: "%% FoomaticRIPOptionSetting: Copies=12"
+*Copies 13/13: "%% FoomaticRIPOptionSetting: Copies=13"
+*Copies 14/14: "%% FoomaticRIPOptionSetting: Copies=14"
+*Copies 15/15: "%% FoomaticRIPOptionSetting: Copies=15"
+*Copies 16/16: "%% FoomaticRIPOptionSetting: Copies=16"
+*Copies 17/17: "%% FoomaticRIPOptionSetting: Copies=17"
+*Copies 18/18: "%% FoomaticRIPOptionSetting: Copies=18"
+*Copies 19/19: "%% FoomaticRIPOptionSetting: Copies=19"
+*Copies 20/20: "%% FoomaticRIPOptionSetting: Copies=20"
+*Copies 21/21: "%% FoomaticRIPOptionSetting: Copies=21"
+*Copies 22/22: "%% FoomaticRIPOptionSetting: Copies=22"
+*Copies 23/23: "%% FoomaticRIPOptionSetting: Copies=23"
+*Copies 24/24: "%% FoomaticRIPOptionSetting: Copies=24"
+*Copies 25/25: "%% FoomaticRIPOptionSetting: Copies=25"
+*Copies 26/26: "%% FoomaticRIPOptionSetting: Copies=26"
+*Copies 27/27: "%% FoomaticRIPOptionSetting: Copies=27"
+*Copies 28/28: "%% FoomaticRIPOptionSetting: Copies=28"
+*Copies 29/29: "%% FoomaticRIPOptionSetting: Copies=29"
+*Copies 30/30: "%% FoomaticRIPOptionSetting: Copies=30"
+*Copies 31/31: "%% FoomaticRIPOptionSetting: Copies=31"
+*Copies 32/32: "%% FoomaticRIPOptionSetting: Copies=32"
+*Copies 33/33: "%% FoomaticRIPOptionSetting: Copies=33"
+*Copies 34/34: "%% FoomaticRIPOptionSetting: Copies=34"
+*Copies 35/35: "%% FoomaticRIPOptionSetting: Copies=35"
+*Copies 36/36: "%% FoomaticRIPOptionSetting: Copies=36"
+*Copies 37/37: "%% FoomaticRIPOptionSetting: Copies=37"
+*Copies 38/38: "%% FoomaticRIPOptionSetting: Copies=38"
+*Copies 39/39: "%% FoomaticRIPOptionSetting: Copies=39"
+*Copies 40/40: "%% FoomaticRIPOptionSetting: Copies=40"
+*Copies 41/41: "%% FoomaticRIPOptionSetting: Copies=41"
+*Copies 42/42: "%% FoomaticRIPOptionSetting: Copies=42"
+*Copies 43/43: "%% FoomaticRIPOptionSetting: Copies=43"
+*Copies 44/44: "%% FoomaticRIPOptionSetting: Copies=44"
+*Copies 45/45: "%% FoomaticRIPOptionSetting: Copies=45"
+*Copies 46/46: "%% FoomaticRIPOptionSetting: Copies=46"
+*Copies 47/47: "%% FoomaticRIPOptionSetting: Copies=47"
+*Copies 48/48: "%% FoomaticRIPOptionSetting: Copies=48"
+*Copies 49/49: "%% FoomaticRIPOptionSetting: Copies=49"
+*Copies 50/50: "%% FoomaticRIPOptionSetting: Copies=50"
+*Copies 51/51: "%% FoomaticRIPOptionSetting: Copies=51"
+*Copies 52/52: "%% FoomaticRIPOptionSetting: Copies=52"
+*Copies 53/53: "%% FoomaticRIPOptionSetting: Copies=53"
+*Copies 54/54: "%% FoomaticRIPOptionSetting: Copies=54"
+*Copies 55/55: "%% FoomaticRIPOptionSetting: Copies=55"
+*Copies 56/56: "%% FoomaticRIPOptionSetting: Copies=56"
+*Copies 57/57: "%% FoomaticRIPOptionSetting: Copies=57"
+*Copies 58/58: "%% FoomaticRIPOptionSetting: Copies=58"
+*Copies 59/59: "%% FoomaticRIPOptionSetting: Copies=59"
+*Copies 60/60: "%% FoomaticRIPOptionSetting: Copies=60"
+*Copies 61/61: "%% FoomaticRIPOptionSetting: Copies=61"
+*Copies 62/62: "%% FoomaticRIPOptionSetting: Copies=62"
+*Copies 63/63: "%% FoomaticRIPOptionSetting: Copies=63"
+*Copies 64/64: "%% FoomaticRIPOptionSetting: Copies=64"
+*Copies 65/65: "%% FoomaticRIPOptionSetting: Copies=65"
+*Copies 66/66: "%% FoomaticRIPOptionSetting: Copies=66"
+*Copies 67/67: "%% FoomaticRIPOptionSetting: Copies=67"
+*Copies 68/68: "%% FoomaticRIPOptionSetting: Copies=68"
+*Copies 69/69: "%% FoomaticRIPOptionSetting: Copies=69"
+*Copies 70/70: "%% FoomaticRIPOptionSetting: Copies=70"
+*Copies 71/71: "%% FoomaticRIPOptionSetting: Copies=71"
+*Copies 72/72: "%% FoomaticRIPOptionSetting: Copies=72"
+*Copies 73/73: "%% FoomaticRIPOptionSetting: Copies=73"
+*Copies 74/74: "%% FoomaticRIPOptionSetting: Copies=74"
+*Copies 75/75: "%% FoomaticRIPOptionSetting: Copies=75"
+*Copies 76/76: "%% FoomaticRIPOptionSetting: Copies=76"
+*Copies 77/77: "%% FoomaticRIPOptionSetting: Copies=77"
+*Copies 78/78: "%% FoomaticRIPOptionSetting: Copies=78"
+*Copies 79/79: "%% FoomaticRIPOptionSetting: Copies=79"
+*Copies 80/80: "%% FoomaticRIPOptionSetting: Copies=80"
+*Copies 81/81: "%% FoomaticRIPOptionSetting: Copies=81"
+*Copies 82/82: "%% FoomaticRIPOptionSetting: Copies=82"
+*Copies 83/83: "%% FoomaticRIPOptionSetting: Copies=83"
+*Copies 84/84: "%% FoomaticRIPOptionSetting: Copies=84"
+*Copies 85/85: "%% FoomaticRIPOptionSetting: Copies=85"
+*Copies 86/86: "%% FoomaticRIPOptionSetting: Copies=86"
+*Copies 87/87: "%% FoomaticRIPOptionSetting: Copies=87"
+*Copies 88/88: "%% FoomaticRIPOptionSetting: Copies=88"
+*Copies 89/89: "%% FoomaticRIPOptionSetting: Copies=89"
+*Copies 90/90: "%% FoomaticRIPOptionSetting: Copies=90"
+*Copies 91/91: "%% FoomaticRIPOptionSetting: Copies=91"
+*Copies 92/92: "%% FoomaticRIPOptionSetting: Copies=92"
+*Copies 93/93: "%% FoomaticRIPOptionSetting: Copies=93"
+*Copies 94/94: "%% FoomaticRIPOptionSetting: Copies=94"
+*Copies 95/95: "%% FoomaticRIPOptionSetting: Copies=95"
+*Copies 96/96: "%% FoomaticRIPOptionSetting: Copies=96"
+*Copies 97/97: "%% FoomaticRIPOptionSetting: Copies=97"
+*Copies 98/98: "%% FoomaticRIPOptionSetting: Copies=98"
+*Copies 99/99: "%% FoomaticRIPOptionSetting: Copies=99"
+*Copies 100/100: "%% FoomaticRIPOptionSetting: Copies=100"
+*CloseUI: *Copies
+
+*CloseGroup: General
+
+*OpenGroup: Color Adjust/Color Adjust
+
+*OpenUI *cab/Mono or Color Adjust Brightness: PickOne
+*FoomaticRIPOption cab: int CmdLine A
+*FoomaticRIPOptionPrototype cab: "-ab=%s "
+*FoomaticRIPOptionRange cab: 0 100
+*OrderDependency: 211 AnySetup *cab
+*Defaultcab: 50
+*FoomaticRIPDefaultcab: 50
+*cab 0/0: "%% FoomaticRIPOptionSetting: cab=0"
+*cab 1/1: "%% FoomaticRIPOptionSetting: cab=1"
+*cab 2/2: "%% FoomaticRIPOptionSetting: cab=2"
+*cab 3/3: "%% FoomaticRIPOptionSetting: cab=3"
+*cab 4/4: "%% FoomaticRIPOptionSetting: cab=4"
+*cab 5/5: "%% FoomaticRIPOptionSetting: cab=5"
+*cab 6/6: "%% FoomaticRIPOptionSetting: cab=6"
+*cab 7/7: "%% FoomaticRIPOptionSetting: cab=7"
+*cab 8/8: "%% FoomaticRIPOptionSetting: cab=8"
+*cab 9/9: "%% FoomaticRIPOptionSetting: cab=9"
+*cab 10/10: "%% FoomaticRIPOptionSetting: cab=10"
+*cab 11/11: "%% FoomaticRIPOptionSetting: cab=11"
+*cab 12/12: "%% FoomaticRIPOptionSetting: cab=12"
+*cab 13/13: "%% FoomaticRIPOptionSetting: cab=13"
+*cab 14/14: "%% FoomaticRIPOptionSetting: cab=14"
+*cab 15/15: "%% FoomaticRIPOptionSetting: cab=15"
+*cab 16/16: "%% FoomaticRIPOptionSetting: cab=16"
+*cab 17/17: "%% FoomaticRIPOptionSetting: cab=17"
+*cab 18/18: "%% FoomaticRIPOptionSetting: cab=18"
+*cab 19/19: "%% FoomaticRIPOptionSetting: cab=19"
+*cab 20/20: "%% FoomaticRIPOptionSetting: cab=20"
+*cab 21/21: "%% FoomaticRIPOptionSetting: cab=21"
+*cab 22/22: "%% FoomaticRIPOptionSetting: cab=22"
+*cab 23/23: "%% FoomaticRIPOptionSetting: cab=23"
+*cab 24/24: "%% FoomaticRIPOptionSetting: cab=24"
+*cab 25/25: "%% FoomaticRIPOptionSetting: cab=25"
+*cab 26/26: "%% FoomaticRIPOptionSetting: cab=26"
+*cab 27/27: "%% FoomaticRIPOptionSetting: cab=27"
+*cab 28/28: "%% FoomaticRIPOptionSetting: cab=28"
+*cab 29/29: "%% FoomaticRIPOptionSetting: cab=29"
+*cab 30/30: "%% FoomaticRIPOptionSetting: cab=30"
+*cab 31/31: "%% FoomaticRIPOptionSetting: cab=31"
+*cab 32/32: "%% FoomaticRIPOptionSetting: cab=32"
+*cab 33/33: "%% FoomaticRIPOptionSetting: cab=33"
+*cab 34/34: "%% FoomaticRIPOptionSetting: cab=34"
+*cab 35/35: "%% FoomaticRIPOptionSetting: cab=35"
+*cab 36/36: "%% FoomaticRIPOptionSetting: cab=36"
+*cab 37/37: "%% FoomaticRIPOptionSetting: cab=37"
+*cab 38/38: "%% FoomaticRIPOptionSetting: cab=38"
+*cab 39/39: "%% FoomaticRIPOptionSetting: cab=39"
+*cab 40/40: "%% FoomaticRIPOptionSetting: cab=40"
+*cab 41/41: "%% FoomaticRIPOptionSetting: cab=41"
+*cab 42/42: "%% FoomaticRIPOptionSetting: cab=42"
+*cab 43/43: "%% FoomaticRIPOptionSetting: cab=43"
+*cab 44/44: "%% FoomaticRIPOptionSetting: cab=44"
+*cab 45/45: "%% FoomaticRIPOptionSetting: cab=45"
+*cab 46/46: "%% FoomaticRIPOptionSetting: cab=46"
+*cab 47/47: "%% FoomaticRIPOptionSetting: cab=47"
+*cab 48/48: "%% FoomaticRIPOptionSetting: cab=48"
+*cab 49/49: "%% FoomaticRIPOptionSetting: cab=49"
+*cab 50/50: "%% FoomaticRIPOptionSetting: cab=50"
+*cab 51/51: "%% FoomaticRIPOptionSetting: cab=51"
+*cab 52/52: "%% FoomaticRIPOptionSetting: cab=52"
+*cab 53/53: "%% FoomaticRIPOptionSetting: cab=53"
+*cab 54/54: "%% FoomaticRIPOptionSetting: cab=54"
+*cab 55/55: "%% FoomaticRIPOptionSetting: cab=55"
+*cab 56/56: "%% FoomaticRIPOptionSetting: cab=56"
+*cab 57/57: "%% FoomaticRIPOptionSetting: cab=57"
+*cab 58/58: "%% FoomaticRIPOptionSetting: cab=58"
+*cab 59/59: "%% FoomaticRIPOptionSetting: cab=59"
+*cab 60/60: "%% FoomaticRIPOptionSetting: cab=60"
+*cab 61/61: "%% FoomaticRIPOptionSetting: cab=61"
+*cab 62/62: "%% FoomaticRIPOptionSetting: cab=62"
+*cab 63/63: "%% FoomaticRIPOptionSetting: cab=63"
+*cab 64/64: "%% FoomaticRIPOptionSetting: cab=64"
+*cab 65/65: "%% FoomaticRIPOptionSetting: cab=65"
+*cab 66/66: "%% FoomaticRIPOptionSetting: cab=66"
+*cab 67/67: "%% FoomaticRIPOptionSetting: cab=67"
+*cab 68/68: "%% FoomaticRIPOptionSetting: cab=68"
+*cab 69/69: "%% FoomaticRIPOptionSetting: cab=69"
+*cab 70/70: "%% FoomaticRIPOptionSetting: cab=70"
+*cab 71/71: "%% FoomaticRIPOptionSetting: cab=71"
+*cab 72/72: "%% FoomaticRIPOptionSetting: cab=72"
+*cab 73/73: "%% FoomaticRIPOptionSetting: cab=73"
+*cab 74/74: "%% FoomaticRIPOptionSetting: cab=74"
+*cab 75/75: "%% FoomaticRIPOptionSetting: cab=75"
+*cab 76/76: "%% FoomaticRIPOptionSetting: cab=76"
+*cab 77/77: "%% FoomaticRIPOptionSetting: cab=77"
+*cab 78/78: "%% FoomaticRIPOptionSetting: cab=78"
+*cab 79/79: "%% FoomaticRIPOptionSetting: cab=79"
+*cab 80/80: "%% FoomaticRIPOptionSetting: cab=80"
+*cab 81/81: "%% FoomaticRIPOptionSetting: cab=81"
+*cab 82/82: "%% FoomaticRIPOptionSetting: cab=82"
+*cab 83/83: "%% FoomaticRIPOptionSetting: cab=83"
+*cab 84/84: "%% FoomaticRIPOptionSetting: cab=84"
+*cab 85/85: "%% FoomaticRIPOptionSetting: cab=85"
+*cab 86/86: "%% FoomaticRIPOptionSetting: cab=86"
+*cab 87/87: "%% FoomaticRIPOptionSetting: cab=87"
+*cab 88/88: "%% FoomaticRIPOptionSetting: cab=88"
+*cab 89/89: "%% FoomaticRIPOptionSetting: cab=89"
+*cab 90/90: "%% FoomaticRIPOptionSetting: cab=90"
+*cab 91/91: "%% FoomaticRIPOptionSetting: cab=91"
+*cab 92/92: "%% FoomaticRIPOptionSetting: cab=92"
+*cab 93/93: "%% FoomaticRIPOptionSetting: cab=93"
+*cab 94/94: "%% FoomaticRIPOptionSetting: cab=94"
+*cab 95/95: "%% FoomaticRIPOptionSetting: cab=95"
+*cab 96/96: "%% FoomaticRIPOptionSetting: cab=96"
+*cab 97/97: "%% FoomaticRIPOptionSetting: cab=97"
+*cab 98/98: "%% FoomaticRIPOptionSetting: cab=98"
+*cab 99/99: "%% FoomaticRIPOptionSetting: cab=99"
+*cab 100/100: "%% FoomaticRIPOptionSetting: cab=100"
+*CloseUI: *cab
+
+*OpenUI *cac/Mono or Color Adjust Contrast: PickOne
+*FoomaticRIPOption cac: int CmdLine A
+*FoomaticRIPOptionPrototype cac: "-ac=%s "
+*FoomaticRIPOptionRange cac: 0 100
+*OrderDependency: 212 AnySetup *cac
+*Defaultcac: 50
+*FoomaticRIPDefaultcac: 50
+*cac 0/0: "%% FoomaticRIPOptionSetting: cac=0"
+*cac 1/1: "%% FoomaticRIPOptionSetting: cac=1"
+*cac 2/2: "%% FoomaticRIPOptionSetting: cac=2"
+*cac 3/3: "%% FoomaticRIPOptionSetting: cac=3"
+*cac 4/4: "%% FoomaticRIPOptionSetting: cac=4"
+*cac 5/5: "%% FoomaticRIPOptionSetting: cac=5"
+*cac 6/6: "%% FoomaticRIPOptionSetting: cac=6"
+*cac 7/7: "%% FoomaticRIPOptionSetting: cac=7"
+*cac 8/8: "%% FoomaticRIPOptionSetting: cac=8"
+*cac 9/9: "%% FoomaticRIPOptionSetting: cac=9"
+*cac 10/10: "%% FoomaticRIPOptionSetting: cac=10"
+*cac 11/11: "%% FoomaticRIPOptionSetting: cac=11"
+*cac 12/12: "%% FoomaticRIPOptionSetting: cac=12"
+*cac 13/13: "%% FoomaticRIPOptionSetting: cac=13"
+*cac 14/14: "%% FoomaticRIPOptionSetting: cac=14"
+*cac 15/15: "%% FoomaticRIPOptionSetting: cac=15"
+*cac 16/16: "%% FoomaticRIPOptionSetting: cac=16"
+*cac 17/17: "%% FoomaticRIPOptionSetting: cac=17"
+*cac 18/18: "%% FoomaticRIPOptionSetting: cac=18"
+*cac 19/19: "%% FoomaticRIPOptionSetting: cac=19"
+*cac 20/20: "%% FoomaticRIPOptionSetting: cac=20"
+*cac 21/21: "%% FoomaticRIPOptionSetting: cac=21"
+*cac 22/22: "%% FoomaticRIPOptionSetting: cac=22"
+*cac 23/23: "%% FoomaticRIPOptionSetting: cac=23"
+*cac 24/24: "%% FoomaticRIPOptionSetting: cac=24"
+*cac 25/25: "%% FoomaticRIPOptionSetting: cac=25"
+*cac 26/26: "%% FoomaticRIPOptionSetting: cac=26"
+*cac 27/27: "%% FoomaticRIPOptionSetting: cac=27"
+*cac 28/28: "%% FoomaticRIPOptionSetting: cac=28"
+*cac 29/29: "%% FoomaticRIPOptionSetting: cac=29"
+*cac 30/30: "%% FoomaticRIPOptionSetting: cac=30"
+*cac 31/31: "%% FoomaticRIPOptionSetting: cac=31"
+*cac 32/32: "%% FoomaticRIPOptionSetting: cac=32"
+*cac 33/33: "%% FoomaticRIPOptionSetting: cac=33"
+*cac 34/34: "%% FoomaticRIPOptionSetting: cac=34"
+*cac 35/35: "%% FoomaticRIPOptionSetting: cac=35"
+*cac 36/36: "%% FoomaticRIPOptionSetting: cac=36"
+*cac 37/37: "%% FoomaticRIPOptionSetting: cac=37"
+*cac 38/38: "%% FoomaticRIPOptionSetting: cac=38"
+*cac 39/39: "%% FoomaticRIPOptionSetting: cac=39"
+*cac 40/40: "%% FoomaticRIPOptionSetting: cac=40"
+*cac 41/41: "%% FoomaticRIPOptionSetting: cac=41"
+*cac 42/42: "%% FoomaticRIPOptionSetting: cac=42"
+*cac 43/43: "%% FoomaticRIPOptionSetting: cac=43"
+*cac 44/44: "%% FoomaticRIPOptionSetting: cac=44"
+*cac 45/45: "%% FoomaticRIPOptionSetting: cac=45"
+*cac 46/46: "%% FoomaticRIPOptionSetting: cac=46"
+*cac 47/47: "%% FoomaticRIPOptionSetting: cac=47"
+*cac 48/48: "%% FoomaticRIPOptionSetting: cac=48"
+*cac 49/49: "%% FoomaticRIPOptionSetting: cac=49"
+*cac 50/50: "%% FoomaticRIPOptionSetting: cac=50"
+*cac 51/51: "%% FoomaticRIPOptionSetting: cac=51"
+*cac 52/52: "%% FoomaticRIPOptionSetting: cac=52"
+*cac 53/53: "%% FoomaticRIPOptionSetting: cac=53"
+*cac 54/54: "%% FoomaticRIPOptionSetting: cac=54"
+*cac 55/55: "%% FoomaticRIPOptionSetting: cac=55"
+*cac 56/56: "%% FoomaticRIPOptionSetting: cac=56"
+*cac 57/57: "%% FoomaticRIPOptionSetting: cac=57"
+*cac 58/58: "%% FoomaticRIPOptionSetting: cac=58"
+*cac 59/59: "%% FoomaticRIPOptionSetting: cac=59"
+*cac 60/60: "%% FoomaticRIPOptionSetting: cac=60"
+*cac 61/61: "%% FoomaticRIPOptionSetting: cac=61"
+*cac 62/62: "%% FoomaticRIPOptionSetting: cac=62"
+*cac 63/63: "%% FoomaticRIPOptionSetting: cac=63"
+*cac 64/64: "%% FoomaticRIPOptionSetting: cac=64"
+*cac 65/65: "%% FoomaticRIPOptionSetting: cac=65"
+*cac 66/66: "%% FoomaticRIPOptionSetting: cac=66"
+*cac 67/67: "%% FoomaticRIPOptionSetting: cac=67"
+*cac 68/68: "%% FoomaticRIPOptionSetting: cac=68"
+*cac 69/69: "%% FoomaticRIPOptionSetting: cac=69"
+*cac 70/70: "%% FoomaticRIPOptionSetting: cac=70"
+*cac 71/71: "%% FoomaticRIPOptionSetting: cac=71"
+*cac 72/72: "%% FoomaticRIPOptionSetting: cac=72"
+*cac 73/73: "%% FoomaticRIPOptionSetting: cac=73"
+*cac 74/74: "%% FoomaticRIPOptionSetting: cac=74"
+*cac 75/75: "%% FoomaticRIPOptionSetting: cac=75"
+*cac 76/76: "%% FoomaticRIPOptionSetting: cac=76"
+*cac 77/77: "%% FoomaticRIPOptionSetting: cac=77"
+*cac 78/78: "%% FoomaticRIPOptionSetting: cac=78"
+*cac 79/79: "%% FoomaticRIPOptionSetting: cac=79"
+*cac 80/80: "%% FoomaticRIPOptionSetting: cac=80"
+*cac 81/81: "%% FoomaticRIPOptionSetting: cac=81"
+*cac 82/82: "%% FoomaticRIPOptionSetting: cac=82"
+*cac 83/83: "%% FoomaticRIPOptionSetting: cac=83"
+*cac 84/84: "%% FoomaticRIPOptionSetting: cac=84"
+*cac 85/85: "%% FoomaticRIPOptionSetting: cac=85"
+*cac 86/86: "%% FoomaticRIPOptionSetting: cac=86"
+*cac 87/87: "%% FoomaticRIPOptionSetting: cac=87"
+*cac 88/88: "%% FoomaticRIPOptionSetting: cac=88"
+*cac 89/89: "%% FoomaticRIPOptionSetting: cac=89"
+*cac 90/90: "%% FoomaticRIPOptionSetting: cac=90"
+*cac 91/91: "%% FoomaticRIPOptionSetting: cac=91"
+*cac 92/92: "%% FoomaticRIPOptionSetting: cac=92"
+*cac 93/93: "%% FoomaticRIPOptionSetting: cac=93"
+*cac 94/94: "%% FoomaticRIPOptionSetting: cac=94"
+*cac 95/95: "%% FoomaticRIPOptionSetting: cac=95"
+*cac 96/96: "%% FoomaticRIPOptionSetting: cac=96"
+*cac 97/97: "%% FoomaticRIPOptionSetting: cac=97"
+*cac 98/98: "%% FoomaticRIPOptionSetting: cac=98"
+*cac 99/99: "%% FoomaticRIPOptionSetting: cac=99"
+*cac 100/100: "%% FoomaticRIPOptionSetting: cac=100"
+*CloseUI: *cac
+
+*OpenUI *cas/Color Adjust Saturation: PickOne
+*FoomaticRIPOption cas: int CmdLine A
+*FoomaticRIPOptionPrototype cas: "-as=%s "
+*FoomaticRIPOptionRange cas: 0 100
+*OrderDependency: 213 AnySetup *cas
+*Defaultcas: 50
+*FoomaticRIPDefaultcas: 50
+*cas 0/0: "%% FoomaticRIPOptionSetting: cas=0"
+*cas 1/1: "%% FoomaticRIPOptionSetting: cas=1"
+*cas 2/2: "%% FoomaticRIPOptionSetting: cas=2"
+*cas 3/3: "%% FoomaticRIPOptionSetting: cas=3"
+*cas 4/4: "%% FoomaticRIPOptionSetting: cas=4"
+*cas 5/5: "%% FoomaticRIPOptionSetting: cas=5"
+*cas 6/6: "%% FoomaticRIPOptionSetting: cas=6"
+*cas 7/7: "%% FoomaticRIPOptionSetting: cas=7"
+*cas 8/8: "%% FoomaticRIPOptionSetting: cas=8"
+*cas 9/9: "%% FoomaticRIPOptionSetting: cas=9"
+*cas 10/10: "%% FoomaticRIPOptionSetting: cas=10"
+*cas 11/11: "%% FoomaticRIPOptionSetting: cas=11"
+*cas 12/12: "%% FoomaticRIPOptionSetting: cas=12"
+*cas 13/13: "%% FoomaticRIPOptionSetting: cas=13"
+*cas 14/14: "%% FoomaticRIPOptionSetting: cas=14"
+*cas 15/15: "%% FoomaticRIPOptionSetting: cas=15"
+*cas 16/16: "%% FoomaticRIPOptionSetting: cas=16"
+*cas 17/17: "%% FoomaticRIPOptionSetting: cas=17"
+*cas 18/18: "%% FoomaticRIPOptionSetting: cas=18"
+*cas 19/19: "%% FoomaticRIPOptionSetting: cas=19"
+*cas 20/20: "%% FoomaticRIPOptionSetting: cas=20"
+*cas 21/21: "%% FoomaticRIPOptionSetting: cas=21"
+*cas 22/22: "%% FoomaticRIPOptionSetting: cas=22"
+*cas 23/23: "%% FoomaticRIPOptionSetting: cas=23"
+*cas 24/24: "%% FoomaticRIPOptionSetting: cas=24"
+*cas 25/25: "%% FoomaticRIPOptionSetting: cas=25"
+*cas 26/26: "%% FoomaticRIPOptionSetting: cas=26"
+*cas 27/27: "%% FoomaticRIPOptionSetting: cas=27"
+*cas 28/28: "%% FoomaticRIPOptionSetting: cas=28"
+*cas 29/29: "%% FoomaticRIPOptionSetting: cas=29"
+*cas 30/30: "%% FoomaticRIPOptionSetting: cas=30"
+*cas 31/31: "%% FoomaticRIPOptionSetting: cas=31"
+*cas 32/32: "%% FoomaticRIPOptionSetting: cas=32"
+*cas 33/33: "%% FoomaticRIPOptionSetting: cas=33"
+*cas 34/34: "%% FoomaticRIPOptionSetting: cas=34"
+*cas 35/35: "%% FoomaticRIPOptionSetting: cas=35"
+*cas 36/36: "%% FoomaticRIPOptionSetting: cas=36"
+*cas 37/37: "%% FoomaticRIPOptionSetting: cas=37"
+*cas 38/38: "%% FoomaticRIPOptionSetting: cas=38"
+*cas 39/39: "%% FoomaticRIPOptionSetting: cas=39"
+*cas 40/40: "%% FoomaticRIPOptionSetting: cas=40"
+*cas 41/41: "%% FoomaticRIPOptionSetting: cas=41"
+*cas 42/42: "%% FoomaticRIPOptionSetting: cas=42"
+*cas 43/43: "%% FoomaticRIPOptionSetting: cas=43"
+*cas 44/44: "%% FoomaticRIPOptionSetting: cas=44"
+*cas 45/45: "%% FoomaticRIPOptionSetting: cas=45"
+*cas 46/46: "%% FoomaticRIPOptionSetting: cas=46"
+*cas 47/47: "%% FoomaticRIPOptionSetting: cas=47"
+*cas 48/48: "%% FoomaticRIPOptionSetting: cas=48"
+*cas 49/49: "%% FoomaticRIPOptionSetting: cas=49"
+*cas 50/50: "%% FoomaticRIPOptionSetting: cas=50"
+*cas 51/51: "%% FoomaticRIPOptionSetting: cas=51"
+*cas 52/52: "%% FoomaticRIPOptionSetting: cas=52"
+*cas 53/53: "%% FoomaticRIPOptionSetting: cas=53"
+*cas 54/54: "%% FoomaticRIPOptionSetting: cas=54"
+*cas 55/55: "%% FoomaticRIPOptionSetting: cas=55"
+*cas 56/56: "%% FoomaticRIPOptionSetting: cas=56"
+*cas 57/57: "%% FoomaticRIPOptionSetting: cas=57"
+*cas 58/58: "%% FoomaticRIPOptionSetting: cas=58"
+*cas 59/59: "%% FoomaticRIPOptionSetting: cas=59"
+*cas 60/60: "%% FoomaticRIPOptionSetting: cas=60"
+*cas 61/61: "%% FoomaticRIPOptionSetting: cas=61"
+*cas 62/62: "%% FoomaticRIPOptionSetting: cas=62"
+*cas 63/63: "%% FoomaticRIPOptionSetting: cas=63"
+*cas 64/64: "%% FoomaticRIPOptionSetting: cas=64"
+*cas 65/65: "%% FoomaticRIPOptionSetting: cas=65"
+*cas 66/66: "%% FoomaticRIPOptionSetting: cas=66"
+*cas 67/67: "%% FoomaticRIPOptionSetting: cas=67"
+*cas 68/68: "%% FoomaticRIPOptionSetting: cas=68"
+*cas 69/69: "%% FoomaticRIPOptionSetting: cas=69"
+*cas 70/70: "%% FoomaticRIPOptionSetting: cas=70"
+*cas 71/71: "%% FoomaticRIPOptionSetting: cas=71"
+*cas 72/72: "%% FoomaticRIPOptionSetting: cas=72"
+*cas 73/73: "%% FoomaticRIPOptionSetting: cas=73"
+*cas 74/74: "%% FoomaticRIPOptionSetting: cas=74"
+*cas 75/75: "%% FoomaticRIPOptionSetting: cas=75"
+*cas 76/76: "%% FoomaticRIPOptionSetting: cas=76"
+*cas 77/77: "%% FoomaticRIPOptionSetting: cas=77"
+*cas 78/78: "%% FoomaticRIPOptionSetting: cas=78"
+*cas 79/79: "%% FoomaticRIPOptionSetting: cas=79"
+*cas 80/80: "%% FoomaticRIPOptionSetting: cas=80"
+*cas 81/81: "%% FoomaticRIPOptionSetting: cas=81"
+*cas 82/82: "%% FoomaticRIPOptionSetting: cas=82"
+*cas 83/83: "%% FoomaticRIPOptionSetting: cas=83"
+*cas 84/84: "%% FoomaticRIPOptionSetting: cas=84"
+*cas 85/85: "%% FoomaticRIPOptionSetting: cas=85"
+*cas 86/86: "%% FoomaticRIPOptionSetting: cas=86"
+*cas 87/87: "%% FoomaticRIPOptionSetting: cas=87"
+*cas 88/88: "%% FoomaticRIPOptionSetting: cas=88"
+*cas 89/89: "%% FoomaticRIPOptionSetting: cas=89"
+*cas 90/90: "%% FoomaticRIPOptionSetting: cas=90"
+*cas 91/91: "%% FoomaticRIPOptionSetting: cas=91"
+*cas 92/92: "%% FoomaticRIPOptionSetting: cas=92"
+*cas 93/93: "%% FoomaticRIPOptionSetting: cas=93"
+*cas 94/94: "%% FoomaticRIPOptionSetting: cas=94"
+*cas 95/95: "%% FoomaticRIPOptionSetting: cas=95"
+*cas 96/96: "%% FoomaticRIPOptionSetting: cas=96"
+*cas 97/97: "%% FoomaticRIPOptionSetting: cas=97"
+*cas 98/98: "%% FoomaticRIPOptionSetting: cas=98"
+*cas 99/99: "%% FoomaticRIPOptionSetting: cas=99"
+*cas 100/100: "%% FoomaticRIPOptionSetting: cas=100"
+*CloseUI: *cas
+
+*OpenUI *cacr/Color Adjust Cyan-Red: PickOne
+*FoomaticRIPOption cacr: int CmdLine A
+*FoomaticRIPOptionPrototype cacr: "-acr=%s "
+*FoomaticRIPOptionRange cacr: 0 100
+*OrderDependency: 220 AnySetup *cacr
+*Defaultcacr: 50
+*FoomaticRIPDefaultcacr: 50
+*cacr 0/0: "%% FoomaticRIPOptionSetting: cacr=0"
+*cacr 1/1: "%% FoomaticRIPOptionSetting: cacr=1"
+*cacr 2/2: "%% FoomaticRIPOptionSetting: cacr=2"
+*cacr 3/3: "%% FoomaticRIPOptionSetting: cacr=3"
+*cacr 4/4: "%% FoomaticRIPOptionSetting: cacr=4"
+*cacr 5/5: "%% FoomaticRIPOptionSetting: cacr=5"
+*cacr 6/6: "%% FoomaticRIPOptionSetting: cacr=6"
+*cacr 7/7: "%% FoomaticRIPOptionSetting: cacr=7"
+*cacr 8/8: "%% FoomaticRIPOptionSetting: cacr=8"
+*cacr 9/9: "%% FoomaticRIPOptionSetting: cacr=9"
+*cacr 10/10: "%% FoomaticRIPOptionSetting: cacr=10"
+*cacr 11/11: "%% FoomaticRIPOptionSetting: cacr=11"
+*cacr 12/12: "%% FoomaticRIPOptionSetting: cacr=12"
+*cacr 13/13: "%% FoomaticRIPOptionSetting: cacr=13"
+*cacr 14/14: "%% FoomaticRIPOptionSetting: cacr=14"
+*cacr 15/15: "%% FoomaticRIPOptionSetting: cacr=15"
+*cacr 16/16: "%% FoomaticRIPOptionSetting: cacr=16"
+*cacr 17/17: "%% FoomaticRIPOptionSetting: cacr=17"
+*cacr 18/18: "%% FoomaticRIPOptionSetting: cacr=18"
+*cacr 19/19: "%% FoomaticRIPOptionSetting: cacr=19"
+*cacr 20/20: "%% FoomaticRIPOptionSetting: cacr=20"
+*cacr 21/21: "%% FoomaticRIPOptionSetting: cacr=21"
+*cacr 22/22: "%% FoomaticRIPOptionSetting: cacr=22"
+*cacr 23/23: "%% FoomaticRIPOptionSetting: cacr=23"
+*cacr 24/24: "%% FoomaticRIPOptionSetting: cacr=24"
+*cacr 25/25: "%% FoomaticRIPOptionSetting: cacr=25"
+*cacr 26/26: "%% FoomaticRIPOptionSetting: cacr=26"
+*cacr 27/27: "%% FoomaticRIPOptionSetting: cacr=27"
+*cacr 28/28: "%% FoomaticRIPOptionSetting: cacr=28"
+*cacr 29/29: "%% FoomaticRIPOptionSetting: cacr=29"
+*cacr 30/30: "%% FoomaticRIPOptionSetting: cacr=30"
+*cacr 31/31: "%% FoomaticRIPOptionSetting: cacr=31"
+*cacr 32/32: "%% FoomaticRIPOptionSetting: cacr=32"
+*cacr 33/33: "%% FoomaticRIPOptionSetting: cacr=33"
+*cacr 34/34: "%% FoomaticRIPOptionSetting: cacr=34"
+*cacr 35/35: "%% FoomaticRIPOptionSetting: cacr=35"
+*cacr 36/36: "%% FoomaticRIPOptionSetting: cacr=36"
+*cacr 37/37: "%% FoomaticRIPOptionSetting: cacr=37"
+*cacr 38/38: "%% FoomaticRIPOptionSetting: cacr=38"
+*cacr 39/39: "%% FoomaticRIPOptionSetting: cacr=39"
+*cacr 40/40: "%% FoomaticRIPOptionSetting: cacr=40"
+*cacr 41/41: "%% FoomaticRIPOptionSetting: cacr=41"
+*cacr 42/42: "%% FoomaticRIPOptionSetting: cacr=42"
+*cacr 43/43: "%% FoomaticRIPOptionSetting: cacr=43"
+*cacr 44/44: "%% FoomaticRIPOptionSetting: cacr=44"
+*cacr 45/45: "%% FoomaticRIPOptionSetting: cacr=45"
+*cacr 46/46: "%% FoomaticRIPOptionSetting: cacr=46"
+*cacr 47/47: "%% FoomaticRIPOptionSetting: cacr=47"
+*cacr 48/48: "%% FoomaticRIPOptionSetting: cacr=48"
+*cacr 49/49: "%% FoomaticRIPOptionSetting: cacr=49"
+*cacr 50/50: "%% FoomaticRIPOptionSetting: cacr=50"
+*cacr 51/51: "%% FoomaticRIPOptionSetting: cacr=51"
+*cacr 52/52: "%% FoomaticRIPOptionSetting: cacr=52"
+*cacr 53/53: "%% FoomaticRIPOptionSetting: cacr=53"
+*cacr 54/54: "%% FoomaticRIPOptionSetting: cacr=54"
+*cacr 55/55: "%% FoomaticRIPOptionSetting: cacr=55"
+*cacr 56/56: "%% FoomaticRIPOptionSetting: cacr=56"
+*cacr 57/57: "%% FoomaticRIPOptionSetting: cacr=57"
+*cacr 58/58: "%% FoomaticRIPOptionSetting: cacr=58"
+*cacr 59/59: "%% FoomaticRIPOptionSetting: cacr=59"
+*cacr 60/60: "%% FoomaticRIPOptionSetting: cacr=60"
+*cacr 61/61: "%% FoomaticRIPOptionSetting: cacr=61"
+*cacr 62/62: "%% FoomaticRIPOptionSetting: cacr=62"
+*cacr 63/63: "%% FoomaticRIPOptionSetting: cacr=63"
+*cacr 64/64: "%% FoomaticRIPOptionSetting: cacr=64"
+*cacr 65/65: "%% FoomaticRIPOptionSetting: cacr=65"
+*cacr 66/66: "%% FoomaticRIPOptionSetting: cacr=66"
+*cacr 67/67: "%% FoomaticRIPOptionSetting: cacr=67"
+*cacr 68/68: "%% FoomaticRIPOptionSetting: cacr=68"
+*cacr 69/69: "%% FoomaticRIPOptionSetting: cacr=69"
+*cacr 70/70: "%% FoomaticRIPOptionSetting: cacr=70"
+*cacr 71/71: "%% FoomaticRIPOptionSetting: cacr=71"
+*cacr 72/72: "%% FoomaticRIPOptionSetting: cacr=72"
+*cacr 73/73: "%% FoomaticRIPOptionSetting: cacr=73"
+*cacr 74/74: "%% FoomaticRIPOptionSetting: cacr=74"
+*cacr 75/75: "%% FoomaticRIPOptionSetting: cacr=75"
+*cacr 76/76: "%% FoomaticRIPOptionSetting: cacr=76"
+*cacr 77/77: "%% FoomaticRIPOptionSetting: cacr=77"
+*cacr 78/78: "%% FoomaticRIPOptionSetting: cacr=78"
+*cacr 79/79: "%% FoomaticRIPOptionSetting: cacr=79"
+*cacr 80/80: "%% FoomaticRIPOptionSetting: cacr=80"
+*cacr 81/81: "%% FoomaticRIPOptionSetting: cacr=81"
+*cacr 82/82: "%% FoomaticRIPOptionSetting: cacr=82"
+*cacr 83/83: "%% FoomaticRIPOptionSetting: cacr=83"
+*cacr 84/84: "%% FoomaticRIPOptionSetting: cacr=84"
+*cacr 85/85: "%% FoomaticRIPOptionSetting: cacr=85"
+*cacr 86/86: "%% FoomaticRIPOptionSetting: cacr=86"
+*cacr 87/87: "%% FoomaticRIPOptionSetting: cacr=87"
+*cacr 88/88: "%% FoomaticRIPOptionSetting: cacr=88"
+*cacr 89/89: "%% FoomaticRIPOptionSetting: cacr=89"
+*cacr 90/90: "%% FoomaticRIPOptionSetting: cacr=90"
+*cacr 91/91: "%% FoomaticRIPOptionSetting: cacr=91"
+*cacr 92/92: "%% FoomaticRIPOptionSetting: cacr=92"
+*cacr 93/93: "%% FoomaticRIPOptionSetting: cacr=93"
+*cacr 94/94: "%% FoomaticRIPOptionSetting: cacr=94"
+*cacr 95/95: "%% FoomaticRIPOptionSetting: cacr=95"
+*cacr 96/96: "%% FoomaticRIPOptionSetting: cacr=96"
+*cacr 97/97: "%% FoomaticRIPOptionSetting: cacr=97"
+*cacr 98/98: "%% FoomaticRIPOptionSetting: cacr=98"
+*cacr 99/99: "%% FoomaticRIPOptionSetting: cacr=99"
+*cacr 100/100: "%% FoomaticRIPOptionSetting: cacr=100"
+*CloseUI: *cacr
+
+*OpenUI *camg/Color Adjust Magenta-Green: PickOne
+*FoomaticRIPOption camg: int CmdLine A
+*FoomaticRIPOptionPrototype camg: "-amg=%s "
+*FoomaticRIPOptionRange camg: 0 100
+*OrderDependency: 220 AnySetup *camg
+*Defaultcamg: 50
+*FoomaticRIPDefaultcamg: 50
+*camg 0/0: "%% FoomaticRIPOptionSetting: camg=0"
+*camg 1/1: "%% FoomaticRIPOptionSetting: camg=1"
+*camg 2/2: "%% FoomaticRIPOptionSetting: camg=2"
+*camg 3/3: "%% FoomaticRIPOptionSetting: camg=3"
+*camg 4/4: "%% FoomaticRIPOptionSetting: camg=4"
+*camg 5/5: "%% FoomaticRIPOptionSetting: camg=5"
+*camg 6/6: "%% FoomaticRIPOptionSetting: camg=6"
+*camg 7/7: "%% FoomaticRIPOptionSetting: camg=7"
+*camg 8/8: "%% FoomaticRIPOptionSetting: camg=8"
+*camg 9/9: "%% FoomaticRIPOptionSetting: camg=9"
+*camg 10/10: "%% FoomaticRIPOptionSetting: camg=10"
+*camg 11/11: "%% FoomaticRIPOptionSetting: camg=11"
+*camg 12/12: "%% FoomaticRIPOptionSetting: camg=12"
+*camg 13/13: "%% FoomaticRIPOptionSetting: camg=13"
+*camg 14/14: "%% FoomaticRIPOptionSetting: camg=14"
+*camg 15/15: "%% FoomaticRIPOptionSetting: camg=15"
+*camg 16/16: "%% FoomaticRIPOptionSetting: camg=16"
+*camg 17/17: "%% FoomaticRIPOptionSetting: camg=17"
+*camg 18/18: "%% FoomaticRIPOptionSetting: camg=18"
+*camg 19/19: "%% FoomaticRIPOptionSetting: camg=19"
+*camg 20/20: "%% FoomaticRIPOptionSetting: camg=20"
+*camg 21/21: "%% FoomaticRIPOptionSetting: camg=21"
+*camg 22/22: "%% FoomaticRIPOptionSetting: camg=22"
+*camg 23/23: "%% FoomaticRIPOptionSetting: camg=23"
+*camg 24/24: "%% FoomaticRIPOptionSetting: camg=24"
+*camg 25/25: "%% FoomaticRIPOptionSetting: camg=25"
+*camg 26/26: "%% FoomaticRIPOptionSetting: camg=26"
+*camg 27/27: "%% FoomaticRIPOptionSetting: camg=27"
+*camg 28/28: "%% FoomaticRIPOptionSetting: camg=28"
+*camg 29/29: "%% FoomaticRIPOptionSetting: camg=29"
+*camg 30/30: "%% FoomaticRIPOptionSetting: camg=30"
+*camg 31/31: "%% FoomaticRIPOptionSetting: camg=31"
+*camg 32/32: "%% FoomaticRIPOptionSetting: camg=32"
+*camg 33/33: "%% FoomaticRIPOptionSetting: camg=33"
+*camg 34/34: "%% FoomaticRIPOptionSetting: camg=34"
+*camg 35/35: "%% FoomaticRIPOptionSetting: camg=35"
+*camg 36/36: "%% FoomaticRIPOptionSetting: camg=36"
+*camg 37/37: "%% FoomaticRIPOptionSetting: camg=37"
+*camg 38/38: "%% FoomaticRIPOptionSetting: camg=38"
+*camg 39/39: "%% FoomaticRIPOptionSetting: camg=39"
+*camg 40/40: "%% FoomaticRIPOptionSetting: camg=40"
+*camg 41/41: "%% FoomaticRIPOptionSetting: camg=41"
+*camg 42/42: "%% FoomaticRIPOptionSetting: camg=42"
+*camg 43/43: "%% FoomaticRIPOptionSetting: camg=43"
+*camg 44/44: "%% FoomaticRIPOptionSetting: camg=44"
+*camg 45/45: "%% FoomaticRIPOptionSetting: camg=45"
+*camg 46/46: "%% FoomaticRIPOptionSetting: camg=46"
+*camg 47/47: "%% FoomaticRIPOptionSetting: camg=47"
+*camg 48/48: "%% FoomaticRIPOptionSetting: camg=48"
+*camg 49/49: "%% FoomaticRIPOptionSetting: camg=49"
+*camg 50/50: "%% FoomaticRIPOptionSetting: camg=50"
+*camg 51/51: "%% FoomaticRIPOptionSetting: camg=51"
+*camg 52/52: "%% FoomaticRIPOptionSetting: camg=52"
+*camg 53/53: "%% FoomaticRIPOptionSetting: camg=53"
+*camg 54/54: "%% FoomaticRIPOptionSetting: camg=54"
+*camg 55/55: "%% FoomaticRIPOptionSetting: camg=55"
+*camg 56/56: "%% FoomaticRIPOptionSetting: camg=56"
+*camg 57/57: "%% FoomaticRIPOptionSetting: camg=57"
+*camg 58/58: "%% FoomaticRIPOptionSetting: camg=58"
+*camg 59/59: "%% FoomaticRIPOptionSetting: camg=59"
+*camg 60/60: "%% FoomaticRIPOptionSetting: camg=60"
+*camg 61/61: "%% FoomaticRIPOptionSetting: camg=61"
+*camg 62/62: "%% FoomaticRIPOptionSetting: camg=62"
+*camg 63/63: "%% FoomaticRIPOptionSetting: camg=63"
+*camg 64/64: "%% FoomaticRIPOptionSetting: camg=64"
+*camg 65/65: "%% FoomaticRIPOptionSetting: camg=65"
+*camg 66/66: "%% FoomaticRIPOptionSetting: camg=66"
+*camg 67/67: "%% FoomaticRIPOptionSetting: camg=67"
+*camg 68/68: "%% FoomaticRIPOptionSetting: camg=68"
+*camg 69/69: "%% FoomaticRIPOptionSetting: camg=69"
+*camg 70/70: "%% FoomaticRIPOptionSetting: camg=70"
+*camg 71/71: "%% FoomaticRIPOptionSetting: camg=71"
+*camg 72/72: "%% FoomaticRIPOptionSetting: camg=72"
+*camg 73/73: "%% FoomaticRIPOptionSetting: camg=73"
+*camg 74/74: "%% FoomaticRIPOptionSetting: camg=74"
+*camg 75/75: "%% FoomaticRIPOptionSetting: camg=75"
+*camg 76/76: "%% FoomaticRIPOptionSetting: camg=76"
+*camg 77/77: "%% FoomaticRIPOptionSetting: camg=77"
+*camg 78/78: "%% FoomaticRIPOptionSetting: camg=78"
+*camg 79/79: "%% FoomaticRIPOptionSetting: camg=79"
+*camg 80/80: "%% FoomaticRIPOptionSetting: camg=80"
+*camg 81/81: "%% FoomaticRIPOptionSetting: camg=81"
+*camg 82/82: "%% FoomaticRIPOptionSetting: camg=82"
+*camg 83/83: "%% FoomaticRIPOptionSetting: camg=83"
+*camg 84/84: "%% FoomaticRIPOptionSetting: camg=84"
+*camg 85/85: "%% FoomaticRIPOptionSetting: camg=85"
+*camg 86/86: "%% FoomaticRIPOptionSetting: camg=86"
+*camg 87/87: "%% FoomaticRIPOptionSetting: camg=87"
+*camg 88/88: "%% FoomaticRIPOptionSetting: camg=88"
+*camg 89/89: "%% FoomaticRIPOptionSetting: camg=89"
+*camg 90/90: "%% FoomaticRIPOptionSetting: camg=90"
+*camg 91/91: "%% FoomaticRIPOptionSetting: camg=91"
+*camg 92/92: "%% FoomaticRIPOptionSetting: camg=92"
+*camg 93/93: "%% FoomaticRIPOptionSetting: camg=93"
+*camg 94/94: "%% FoomaticRIPOptionSetting: camg=94"
+*camg 95/95: "%% FoomaticRIPOptionSetting: camg=95"
+*camg 96/96: "%% FoomaticRIPOptionSetting: camg=96"
+*camg 97/97: "%% FoomaticRIPOptionSetting: camg=97"
+*camg 98/98: "%% FoomaticRIPOptionSetting: camg=98"
+*camg 99/99: "%% FoomaticRIPOptionSetting: camg=99"
+*camg 100/100: "%% FoomaticRIPOptionSetting: camg=100"
+*CloseUI: *camg
+
+*OpenUI *cayb/Color Adjust Yellow-Blue: PickOne
+*FoomaticRIPOption cayb: int CmdLine A
+*FoomaticRIPOptionPrototype cayb: "-ayb=%s "
+*FoomaticRIPOptionRange cayb: 0 100
+*OrderDependency: 220 AnySetup *cayb
+*Defaultcayb: 50
+*FoomaticRIPDefaultcayb: 50
+*cayb 0/0: "%% FoomaticRIPOptionSetting: cayb=0"
+*cayb 1/1: "%% FoomaticRIPOptionSetting: cayb=1"
+*cayb 2/2: "%% FoomaticRIPOptionSetting: cayb=2"
+*cayb 3/3: "%% FoomaticRIPOptionSetting: cayb=3"
+*cayb 4/4: "%% FoomaticRIPOptionSetting: cayb=4"
+*cayb 5/5: "%% FoomaticRIPOptionSetting: cayb=5"
+*cayb 6/6: "%% FoomaticRIPOptionSetting: cayb=6"
+*cayb 7/7: "%% FoomaticRIPOptionSetting: cayb=7"
+*cayb 8/8: "%% FoomaticRIPOptionSetting: cayb=8"
+*cayb 9/9: "%% FoomaticRIPOptionSetting: cayb=9"
+*cayb 10/10: "%% FoomaticRIPOptionSetting: cayb=10"
+*cayb 11/11: "%% FoomaticRIPOptionSetting: cayb=11"
+*cayb 12/12: "%% FoomaticRIPOptionSetting: cayb=12"
+*cayb 13/13: "%% FoomaticRIPOptionSetting: cayb=13"
+*cayb 14/14: "%% FoomaticRIPOptionSetting: cayb=14"
+*cayb 15/15: "%% FoomaticRIPOptionSetting: cayb=15"
+*cayb 16/16: "%% FoomaticRIPOptionSetting: cayb=16"
+*cayb 17/17: "%% FoomaticRIPOptionSetting: cayb=17"
+*cayb 18/18: "%% FoomaticRIPOptionSetting: cayb=18"
+*cayb 19/19: "%% FoomaticRIPOptionSetting: cayb=19"
+*cayb 20/20: "%% FoomaticRIPOptionSetting: cayb=20"
+*cayb 21/21: "%% FoomaticRIPOptionSetting: cayb=21"
+*cayb 22/22: "%% FoomaticRIPOptionSetting: cayb=22"
+*cayb 23/23: "%% FoomaticRIPOptionSetting: cayb=23"
+*cayb 24/24: "%% FoomaticRIPOptionSetting: cayb=24"
+*cayb 25/25: "%% FoomaticRIPOptionSetting: cayb=25"
+*cayb 26/26: "%% FoomaticRIPOptionSetting: cayb=26"
+*cayb 27/27: "%% FoomaticRIPOptionSetting: cayb=27"
+*cayb 28/28: "%% FoomaticRIPOptionSetting: cayb=28"
+*cayb 29/29: "%% FoomaticRIPOptionSetting: cayb=29"
+*cayb 30/30: "%% FoomaticRIPOptionSetting: cayb=30"
+*cayb 31/31: "%% FoomaticRIPOptionSetting: cayb=31"
+*cayb 32/32: "%% FoomaticRIPOptionSetting: cayb=32"
+*cayb 33/33: "%% FoomaticRIPOptionSetting: cayb=33"
+*cayb 34/34: "%% FoomaticRIPOptionSetting: cayb=34"
+*cayb 35/35: "%% FoomaticRIPOptionSetting: cayb=35"
+*cayb 36/36: "%% FoomaticRIPOptionSetting: cayb=36"
+*cayb 37/37: "%% FoomaticRIPOptionSetting: cayb=37"
+*cayb 38/38: "%% FoomaticRIPOptionSetting: cayb=38"
+*cayb 39/39: "%% FoomaticRIPOptionSetting: cayb=39"
+*cayb 40/40: "%% FoomaticRIPOptionSetting: cayb=40"
+*cayb 41/41: "%% FoomaticRIPOptionSetting: cayb=41"
+*cayb 42/42: "%% FoomaticRIPOptionSetting: cayb=42"
+*cayb 43/43: "%% FoomaticRIPOptionSetting: cayb=43"
+*cayb 44/44: "%% FoomaticRIPOptionSetting: cayb=44"
+*cayb 45/45: "%% FoomaticRIPOptionSetting: cayb=45"
+*cayb 46/46: "%% FoomaticRIPOptionSetting: cayb=46"
+*cayb 47/47: "%% FoomaticRIPOptionSetting: cayb=47"
+*cayb 48/48: "%% FoomaticRIPOptionSetting: cayb=48"
+*cayb 49/49: "%% FoomaticRIPOptionSetting: cayb=49"
+*cayb 50/50: "%% FoomaticRIPOptionSetting: cayb=50"
+*cayb 51/51: "%% FoomaticRIPOptionSetting: cayb=51"
+*cayb 52/52: "%% FoomaticRIPOptionSetting: cayb=52"
+*cayb 53/53: "%% FoomaticRIPOptionSetting: cayb=53"
+*cayb 54/54: "%% FoomaticRIPOptionSetting: cayb=54"
+*cayb 55/55: "%% FoomaticRIPOptionSetting: cayb=55"
+*cayb 56/56: "%% FoomaticRIPOptionSetting: cayb=56"
+*cayb 57/57: "%% FoomaticRIPOptionSetting: cayb=57"
+*cayb 58/58: "%% FoomaticRIPOptionSetting: cayb=58"
+*cayb 59/59: "%% FoomaticRIPOptionSetting: cayb=59"
+*cayb 60/60: "%% FoomaticRIPOptionSetting: cayb=60"
+*cayb 61/61: "%% FoomaticRIPOptionSetting: cayb=61"
+*cayb 62/62: "%% FoomaticRIPOptionSetting: cayb=62"
+*cayb 63/63: "%% FoomaticRIPOptionSetting: cayb=63"
+*cayb 64/64: "%% FoomaticRIPOptionSetting: cayb=64"
+*cayb 65/65: "%% FoomaticRIPOptionSetting: cayb=65"
+*cayb 66/66: "%% FoomaticRIPOptionSetting: cayb=66"
+*cayb 67/67: "%% FoomaticRIPOptionSetting: cayb=67"
+*cayb 68/68: "%% FoomaticRIPOptionSetting: cayb=68"
+*cayb 69/69: "%% FoomaticRIPOptionSetting: cayb=69"
+*cayb 70/70: "%% FoomaticRIPOptionSetting: cayb=70"
+*cayb 71/71: "%% FoomaticRIPOptionSetting: cayb=71"
+*cayb 72/72: "%% FoomaticRIPOptionSetting: cayb=72"
+*cayb 73/73: "%% FoomaticRIPOptionSetting: cayb=73"
+*cayb 74/74: "%% FoomaticRIPOptionSetting: cayb=74"
+*cayb 75/75: "%% FoomaticRIPOptionSetting: cayb=75"
+*cayb 76/76: "%% FoomaticRIPOptionSetting: cayb=76"
+*cayb 77/77: "%% FoomaticRIPOptionSetting: cayb=77"
+*cayb 78/78: "%% FoomaticRIPOptionSetting: cayb=78"
+*cayb 79/79: "%% FoomaticRIPOptionSetting: cayb=79"
+*cayb 80/80: "%% FoomaticRIPOptionSetting: cayb=80"
+*cayb 81/81: "%% FoomaticRIPOptionSetting: cayb=81"
+*cayb 82/82: "%% FoomaticRIPOptionSetting: cayb=82"
+*cayb 83/83: "%% FoomaticRIPOptionSetting: cayb=83"
+*cayb 84/84: "%% FoomaticRIPOptionSetting: cayb=84"
+*cayb 85/85: "%% FoomaticRIPOptionSetting: cayb=85"
+*cayb 86/86: "%% FoomaticRIPOptionSetting: cayb=86"
+*cayb 87/87: "%% FoomaticRIPOptionSetting: cayb=87"
+*cayb 88/88: "%% FoomaticRIPOptionSetting: cayb=88"
+*cayb 89/89: "%% FoomaticRIPOptionSetting: cayb=89"
+*cayb 90/90: "%% FoomaticRIPOptionSetting: cayb=90"
+*cayb 91/91: "%% FoomaticRIPOptionSetting: cayb=91"
+*cayb 92/92: "%% FoomaticRIPOptionSetting: cayb=92"
+*cayb 93/93: "%% FoomaticRIPOptionSetting: cayb=93"
+*cayb 94/94: "%% FoomaticRIPOptionSetting: cayb=94"
+*cayb 95/95: "%% FoomaticRIPOptionSetting: cayb=95"
+*cayb 96/96: "%% FoomaticRIPOptionSetting: cayb=96"
+*cayb 97/97: "%% FoomaticRIPOptionSetting: cayb=97"
+*cayb 98/98: "%% FoomaticRIPOptionSetting: cayb=98"
+*cayb 99/99: "%% FoomaticRIPOptionSetting: cayb=99"
+*cayb 100/100: "%% FoomaticRIPOptionSetting: cayb=100"
+*CloseUI: *cayb
+
+*CloseGroup: Color Adjust
+
+*OpenGroup: Adjustment/Adjustment
+
+*OpenUI *halftone/Halftone Algorithm: PickOne
+*FoomaticRIPOption halftone: enum CmdLine A
+*OrderDependency: 110 AnySetup *halftone
+*Defaulthalftone: default
+*halftone default/Default: "%% FoomaticRIPOptionSetting: halftone=default"
+*FoomaticRIPOptionSetting halftone=default: "  "
+*halftone as/Accurate Screens (better): "%% FoomaticRIPOptionSetting: halftone=as"
+*FoomaticRIPOptionSetting halftone=as: " -qas  "
+*halftone standard/Standard: "%% FoomaticRIPOptionSetting: halftone=standard"
+*FoomaticRIPOptionSetting halftone=standard: " -q1  "
+*halftone wts/Well Tempered Screens (best): "%% FoomaticRIPOptionSetting: halftone=wts"
+*FoomaticRIPOptionSetting halftone=wts: " -qwts  "
+*CloseUI: *halftone
+
+*OpenUI *ICM/ICM Color Profile: PickOne
+*FoomaticRIPOption ICM: enum CmdLine A
+*OrderDependency: 300 AnySetup *ICM
+*DefaultICM: clp620
+*ICM clp300/CLP-300: "%% FoomaticRIPOptionSetting: ICM=clp300"
+*FoomaticRIPOptionSetting ICM=clp300: "-C10 -Gsamclp300-0.icm "
+*ICM clp315/CLP-310/315: "%% FoomaticRIPOptionSetting: ICM=clp315"
+*FoomaticRIPOptionSetting ICM=clp315: "-C10 -Gsamclp315-argyll-0.icm "
+*ICM clp325/CLP-320/325: "%% FoomaticRIPOptionSetting: ICM=clp325"
+*FoomaticRIPOptionSetting ICM=clp325: "-C10 -Gsamclp315-argyll-0.icm "
+*ICM clp365/CLP-360/365: "%% FoomaticRIPOptionSetting: ICM=clp365"
+*FoomaticRIPOptionSetting ICM=clp365: "-C10 -Gsamclp315-argyll-0.icm "
+*ICM clp600/CLP-600: "%% FoomaticRIPOptionSetting: ICM=clp600"
+*FoomaticRIPOptionSetting ICM=clp600: "-z1 "
+*ICM clp610/CLP-610: "%% FoomaticRIPOptionSetting: ICM=clp610"
+*FoomaticRIPOptionSetting ICM=clp610: "-z2 "
+*ICM clp620/CLP-620: "%% FoomaticRIPOptionSetting: ICM=clp620"
+*FoomaticRIPOptionSetting ICM=clp620: "-z3 "
+*ICM clx2160/CLX-2160: "%% FoomaticRIPOptionSetting: ICM=clx2160"
+*FoomaticRIPOptionSetting ICM=clx2160: "-C10 -Gsamclp300-0.icm "
+*ICM clx3160/CLX-3160: "%% FoomaticRIPOptionSetting: ICM=clx3160"
+*FoomaticRIPOptionSetting ICM=clx3160: "-C10 -Gsamclp300-0.icm "
+*ICM clx3175/CLX-3175: "%% FoomaticRIPOptionSetting: ICM=clx3175"
+*FoomaticRIPOptionSetting ICM=clx3175: "-C10 -Gsamclp315-argyll-0.icm &&
+"
+*End
+*ICM clx3185/CLX-3185: "%% FoomaticRIPOptionSetting: ICM=clx3185"
+*FoomaticRIPOptionSetting ICM=clx3185: "-C10 -Gsamclp315-argyll-0.icm &&
+"
+*End
+*ICM none/No ICM color correction: "%% FoomaticRIPOptionSetting: ICM=none"
+*FoomaticRIPOptionSetting ICM=none: "-C10 -Gnone.icm "
+*ICM ph6110/Phaser 6110: "%% FoomaticRIPOptionSetting: ICM=ph6110"
+*FoomaticRIPOptionSetting ICM=ph6110: "-C10 -Gsamclp300-0.icm "
+*ICM testing/File testing.icm: "%% FoomaticRIPOptionSetting: ICM=testing"
+*FoomaticRIPOptionSetting ICM=testing: "-C10 -Gtesting.icm "
+*ICM testing2/File testing2.icm: "%% FoomaticRIPOptionSetting: ICM=testing2"
+*FoomaticRIPOptionSetting ICM=testing2: "-C10 -Gtesting2.icm "
+*ICM testing3/File testing3.icm: "%% FoomaticRIPOptionSetting: ICM=testing3"
+*FoomaticRIPOptionSetting ICM=testing3: "-C10 -Gtesting3.icm "
+*CloseUI: *ICM
+
+*CloseGroup: Adjustment
+
+*OpenGroup: Miscellaneous/Miscellaneous
+
+*OpenUI *NupOrient/N-up Orientation: PickOne
+*FoomaticRIPOption NupOrient: enum CmdLine A
+*OrderDependency: 200 AnySetup *NupOrient
+*DefaultNupOrient: port
+*NupOrient land/Landscape: "%% FoomaticRIPOptionSetting: NupOrient=land"
+*FoomaticRIPOptionSetting NupOrient=land: "-ol "
+*NupOrient port/Portrait: "%% FoomaticRIPOptionSetting: NupOrient=port"
+*FoomaticRIPOptionSetting NupOrient=port: " "
+*NupOrient sea/Seascape: "%% FoomaticRIPOptionSetting: NupOrient=sea"
+*FoomaticRIPOptionSetting NupOrient=sea: "-os "
+*CloseUI: *NupOrient
+
+*OpenUI *NupPages/N-up Printing: PickOne
+*FoomaticRIPOption NupPages: enum CmdLine A
+*OrderDependency: 200 AnySetup *NupPages
+*DefaultNupPages: 1up
+*NupPages 1up/1-up: "%% FoomaticRIPOptionSetting: NupPages=1up"
+*FoomaticRIPOptionSetting NupPages=1up: " "
+*NupPages 2up/2-up: "%% FoomaticRIPOptionSetting: NupPages=2up"
+*FoomaticRIPOptionSetting NupPages=2up: "-2 "
+*NupPages 3up/3-up: "%% FoomaticRIPOptionSetting: NupPages=3up"
+*FoomaticRIPOptionSetting NupPages=3up: "-3 "
+*NupPages 4up/4-up: "%% FoomaticRIPOptionSetting: NupPages=4up"
+*FoomaticRIPOptionSetting NupPages=4up: "-4 "
+*NupPages 6up/6-up: "%% FoomaticRIPOptionSetting: NupPages=6up"
+*FoomaticRIPOptionSetting NupPages=6up: "-6 "
+*NupPages 8up/8-up: "%% FoomaticRIPOptionSetting: NupPages=8up"
+*FoomaticRIPOptionSetting NupPages=8up: "-8 "
+*NupPages 10up/10-up: "%% FoomaticRIPOptionSetting: NupPages=10up"
+*FoomaticRIPOptionSetting NupPages=10up: "-10 "
+*NupPages 12up/12-up: "%% FoomaticRIPOptionSetting: NupPages=12up"
+*FoomaticRIPOptionSetting NupPages=12up: "-12 "
+*NupPages 14up/14-up: "%% FoomaticRIPOptionSetting: NupPages=14up"
+*FoomaticRIPOptionSetting NupPages=14up: "-14 "
+*NupPages 15up/15-up: "%% FoomaticRIPOptionSetting: NupPages=15up"
+*FoomaticRIPOptionSetting NupPages=15up: "-15 "
+*NupPages 16up/16-up: "%% FoomaticRIPOptionSetting: NupPages=16up"
+*FoomaticRIPOptionSetting NupPages=16up: "-16 "
+*NupPages 18up/18-up: "%% FoomaticRIPOptionSetting: NupPages=18up"
+*FoomaticRIPOptionSetting NupPages=18up: "-18 "
+*CloseUI: *NupPages
+
+*CloseGroup: Miscellaneous
+
+
+*% Generic boilerplate PPD stuff as standard PostScript fonts and so on
+
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.007S)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.007S)" Standard ROM
+*Font Bookman-Demi: Standard "(001.004S)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.004S)" Standard ROM
+*Font Bookman-Light: Standard "(001.004S)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.004S)" Standard ROM
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Courier-Bold: Standard "(002.004S)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.004S)" Standard ROM
+*Font Courier-Oblique: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.009S)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(001.007S)" Standard ROM
+*Font Palatino-Bold: Standard "(001.005S)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Italic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Roman: Standard "(001.005S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font Times-Bold: Standard "(001.007S)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.009S)" Standard ROM
+*Font Times-Italic: Standard "(001.007S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(001.007S)" Standard ROM
+*Font ZapfDingbats: Special "(001.004S)" Standard ROM
+

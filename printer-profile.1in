@@ -1,0 +1,68 @@
+.TH printer-profile 1 "${MODpage}" "printer-profile ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+printer-profile \- Profile using X-Rite ColorMunki and Argyll CMS
+.SH SYNOPSIS
+.B printer-profile
+.RI [ options "] manuf model [rgb|cmyk] [patches] [ink-limit]"
+.SH DESCRIPTION
+.B printer-profile
+prints a test chart, uses the ColorMunki instrument to scan it in, then
+computes an ICM profile using the Argyll Color Management System.
+
+Manuf is "sam".  Model is "clp-300", "clp-315", "clp-325" or "clp-365".
+.br
+Manuf is "hp".  Model is "2600" or "cp1215".
+.br
+Manuf is "km".  Model is "2300" or "2530".
+.br
+Manuf is "dell". Model is "1355".
+.br
+
+"rgb" is the usual setting.  "patches" is a multiple 196 per page.
+
+Edit the script for additional models.
+
+.SH OPTIONS
+    -b 1|2        Bits per pixel (1)
+    -r XRESxYRES  Resolution. Default=''. ()
+    -P rem-print  Remote print (64-bit) machine, or none (amd)
+    -S rem-scan   Remote scan (ColorMunki) machine, or none (mac)
+    -D lvl        Debug level
+
+.SH EXAMPLES
+Profile the Samsung clp-315:
+
+.nf
+.ft CW
+$ printer-profile sam 315 rgb 196
+.ft P
+.fi
+
+.SH BUGS
+gs 8.64 and before has problems with 32-bit machines and color profile
+data.  Don't use!
+
+You need Argyll_V1.5.1 or later.
+.SH FILES
+.BR /usr/bin/printer-profile,
+.BR /usr/share/foo2*/icm/testing.icm
+.SH SEE ALSO
+firefox http://www.xritephoto.com/html/colormunkisplash.htm
+.br
+firefox http://www.argyllcms.com/
+.br
+firefox http://www.argyllcms.com/Argyll_V1.5.1_src.zip
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLZJS}/
+'\"
+'\"
+'\"
+.em pdf_outline

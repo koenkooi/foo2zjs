@@ -1,0 +1,27 @@
+<!--
+     foo2zjs-z1 driver
+-->
+<driver id="driver/foo2zjs-z1">
+    <name>foo2zjs-z1</name>
+    <url>http://foo2zjs.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2zjs-wrapper -z1 -P -L0 %A</prototype>
+    </execution>
+    <comments> <en>
+	This driver will also work for the HP LaserJet
+	1018, 1020, 1022, P2035, and other
+	Zenographics-based printers.
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/HP-LaserJet_1018</id></printer>
+	<printer><id>printer/HP-LaserJet_1020</id></printer>
+	<printer><id>printer/HP-LaserJet_1022</id></printer>
+	<printer><id>printer/HP-LaserJet_1022n</id></printer>
+	<printer><id>printer/HP-LaserJet_1022nw</id></printer>
+	<printer><id>printer/HP-LaserJet_P2035</id></printer>
+	<printer><id>printer/HP-LaserJet_P2035n</id></printer>
+	<printer><id>printer/HP-LaserJet_M1319_MFP</id></printer>
+    </printers>
+</driver>

@@ -1,0 +1,76 @@
+<option type="enum" id="opt/foo2oak-ICM">
+    <comments>
+	<en>
+	This option controls which .ICM file to use for color correction.
+	ICM files are stored in directory /usr/share/foo2oak/icm/.
+	</en>
+    </comments>
+    <arg_longname> <en>ICM Color Profile</en> </arg_longname>
+    <arg_shortname> <en>ICM</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>Adjustment</arg_group>
+	<arg_order>300</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2oak</driver>
+	    <arg_defval>ev/foo2oak-ICM-default</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2oak-ICM-default">
+	    <ev_longname> <en>Default ICM color correction</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>default</en> </ev_shortname>
+	    <ev_driverval>-Gdefault</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2oak-ICM-none">
+	    <ev_longname> <en>No ICM color correction</en> </ev_longname>
+	    <ev_shortname> <en>none</en> </ev_shortname>
+	    <ev_driverval>-Gnone.icm</ev_driverval>
+	</enum_val>
+
+        <enum_val id="ev/foo2oak-ICM-hpclj2500">
+            <ev_longname> <en>File hpclj2500rgb.icm</en> </ev_longname>
+            <ev_shortname> <en>hpclj2500</en> </ev_shortname>
+            <ev_driverval>-Ghpclj2500rgb.icm</ev_driverval>
+        </enum_val>
+
+        <enum_val id="ev/foo2oak-ICM-hpclj2600n-1">
+            <ev_longname> <en>File hpclj2600n-1.icm (ICCFactory 1)</en> </ev_longname>
+            <ev_shortname> <en>hpclj2600n-1</en> </ev_shortname>
+            <ev_driverval>-Ghpclj2600n-1.icm</ev_driverval>
+        </enum_val>
+
+	<enum_val id="ev/foo2oak-ICM-testing">
+	    <ev_longname> <en>File testing.icm</en> </ev_longname>
+	    <ev_shortname> <en>testing</en> </ev_shortname>
+	    <ev_driverval>-Gtesting.icm</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2oak-ICM-user1">
+	    <ev_longname> <en>File user1.icm</en> </ev_longname>
+	    <ev_shortname> <en>user1</en> </ev_shortname>
+	    <ev_driverval>-Guser1.icm</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2oak-ICM-user2">
+	    <ev_longname> <en>File user2.icm</en> </ev_longname>
+	    <ev_shortname> <en>user2</en> </ev_shortname>
+	    <ev_driverval>-Guser2.icm</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2oak-ICM-user3">
+	    <ev_longname> <en>File user3.icm</en> </ev_longname>
+	    <ev_shortname> <en>user3</en> </ev_shortname>
+	    <ev_driverval>-Guser3.icm</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2oak-ICM-user4">
+	    <ev_longname> <en>File user4.icm</en> </ev_longname>
+	    <ev_shortname> <en>user4</en> </ev_shortname>
+	    <ev_driverval>-Guser4.icm</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

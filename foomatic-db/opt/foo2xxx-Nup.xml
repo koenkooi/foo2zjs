@@ -1,0 +1,136 @@
+<option type="enum" id="opt/foo2xxx-Nup">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>N-up Printing</en> </arg_longname>
+    <arg_shortname> <en>NupPages</en> </arg_shortname>
+    <arg_execution>
+        <arg_group>Miscellaneous</arg_group>
+	<arg_order>200</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z1</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z2</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z3</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2oak</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2oak-z1</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hp</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2xqx</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2lava</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2slx</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hiperc</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hiperc-z1</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2xxx-Nup-1</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2xxx-Nup-1">
+	    <ev_longname> <en>1-up</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>1up</en> </ev_shortname>
+	    <ev_driverval></ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-2">
+	    <ev_longname> <en>2-up</en> </ev_longname>
+	    <ev_shortname> <en>2up</en> </ev_shortname>
+	    <ev_driverval>-2</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-3">
+	    <ev_longname> <en>3-up</en> </ev_longname>
+	    <ev_shortname> <en>3up</en> </ev_shortname>
+	    <ev_driverval>-3</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-4">
+	    <ev_longname> <en>4-up</en> </ev_longname>
+	    <ev_shortname> <en>4up</en> </ev_shortname>
+	    <ev_driverval>-4</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-6">
+	    <ev_longname> <en>6-up</en> </ev_longname>
+	    <ev_shortname> <en>6up</en> </ev_shortname>
+	    <ev_driverval>-6</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-8">
+	    <ev_longname> <en>8-up</en> </ev_longname>
+	    <ev_shortname> <en>8up</en> </ev_shortname>
+	    <ev_driverval>-8</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-10">
+	    <ev_longname> <en>10-up</en> </ev_longname>
+	    <ev_shortname> <en>10up</en> </ev_shortname>
+	    <ev_driverval>-10</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-12">
+	    <ev_longname> <en>12-up</en> </ev_longname>
+	    <ev_shortname> <en>12up</en> </ev_shortname>
+	    <ev_driverval>-12</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-14">
+	    <ev_longname> <en>14-up</en> </ev_longname>
+	    <ev_shortname> <en>14up</en> </ev_shortname>
+	    <ev_driverval>-14</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-15">
+	    <ev_longname> <en>15-up</en> </ev_longname>
+	    <ev_shortname> <en>15up</en> </ev_shortname>
+	    <ev_driverval>-15</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-16">
+	    <ev_longname> <en>16-up</en> </ev_longname>
+	    <ev_shortname> <en>16up</en> </ev_shortname>
+	    <ev_driverval>-16</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2xxx-Nup-18">
+	    <ev_longname> <en>18-up</en> </ev_longname>
+	    <ev_shortname> <en>18up</en> </ev_shortname>
+	    <ev_driverval>-18</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

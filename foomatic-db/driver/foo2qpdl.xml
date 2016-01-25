@@ -1,0 +1,33 @@
+<driver id="driver/foo2qpdl">
+    <name>foo2qpdl</name>
+    <url>http://foo2qpdl.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2qpdl-wrapper %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the Samsung
+	CLP-300/310/315/320/325/360, CLP-600, CLP-610, CLP-620,
+	CLX-2160 (printer only), CLX-3160 (printer only).
+
+	And the Xerox Phaser 6110 or Phaser 6110MFP (printer only).
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/Samsung-CLP-300</id></printer>
+	<printer><id>printer/Samsung-CLP-310</id></printer>
+	<printer><id>printer/Samsung-CLP-315</id></printer>
+	<printer><id>printer/Samsung-CLP-325</id></printer>
+	<printer><id>printer/Samsung-CLP-365</id></printer>
+	<printer><id>printer/Samsung-CLP-600</id></printer>
+	<printer><id>printer/Samsung-CLP-610</id></printer>
+	<printer><id>printer/Samsung-CLP-620</id></printer>
+	<printer><id>printer/Samsung-CLX-2160</id></printer>
+	<printer><id>printer/Samsung-CLX-3160</id></printer>
+	<printer><id>printer/Samsung-CLX-3175</id></printer>
+	<printer><id>printer/Samsung-CLX-3185</id></printer>
+	<printer><id>printer/Xerox-Phaser_6110</id></printer>
+	<printer><id>printer/Generic-GDI_Printer</id></printer>
+    </printers>
+</driver>

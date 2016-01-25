@@ -1,0 +1,67 @@
+<printer id="printer/Oki-C110">
+    <make>Oki</make>
+    <model>C110</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4</top>
+		<bottom>4</bottom>
+		<left>4</left>
+		<right>4</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (4500 prints) - $79
+		Toner Yellow (4500 prints) - $119
+		Toner Magenta (4500 prints) - $119
+		Toner Cyan (4500 prints) - $119
+		Drum Cartridge (45000 prints) - $149
+	    </en> </comments>
+	    <partno>44250716</partno>
+	    <partno>44250713</partno>
+	    <partno>44250714</partno>
+	    <partno>44250715</partno>
+	    <partno>44250801</partno>
+	</consumables>
+    </mechanism>
+    <url>http://my.okidata.com/PP-C110.nsf?opendatabase</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+	<parallel>
+	    <ieee1284>MFG:OKI DATA CORP;CMD:GDI;MDL:C110;CLS:PRINTER;DES:OKI C110;</ieee1284>
+	    <manufacturer>OKI DATA CORP</manufacturer>
+	    <model>C110</model>
+	    <commandset>GDI;MDL</commandset>
+	</parallel>
+	<!--
+	<snmp>
+	    <description>KONICA MINOLTA magicolor 1600W</description>
+	</snmp>
+	-->
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2lava</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Oki C110 is a USB color laser printer with a
+	2009 street price of $150 USD.  This printer is supported
+	by the foo2lava open software printer driver.
+
+	Is it actually a Konica-Minolta magicolor 1600W.
+
+    </en> </comments>
+</printer>

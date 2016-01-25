@@ -1,0 +1,79 @@
+<option type="enum" id="opt/foo2hp-PrinterType">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Printer Type</en> </arg_longname>
+    <arg_shortname> <en>PrinterType</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>110</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="flase">
+	    <driver>foo2hp</driver>
+	    <arg_defval>ev/foo2hp-PrinterType-z0</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>HP</make>
+	    <model>Color LaserJet 1600</model>
+	    <driver>foo2hp</driver>
+	    <arg_defval>ev/foo2hp-PrinterType-z0</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>HP</make>
+	    <model>Color LaserJet 2600n</model>
+	    <driver>foo2hp</driver>
+	    <arg_defval>ev/foo2hp-PrinterType-z0</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>HP</make>
+	    <model>Color LaserJet CP1215</model>
+	    <driver>foo2hp</driver>
+	    <arg_defval>ev/foo2hp-PrinterType-z1</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2hp-PrinterType-z0">
+	    <ev_longname> <en>z0 printer</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>z0</en> </ev_shortname>
+	    <ev_driverval>-z0</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2hp</driver>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2hp</driver>
+		    <make>HP</make>
+		    <model>Color LaserJet 1600</model>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2hp</driver>
+		    <make>HP</make>
+		    <model>Color LaserJet 2600n</model>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2hp-PrinterType-z1">
+	    <ev_longname> <en>z1 printer</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>z1</en> </ev_shortname>
+	    <ev_driverval>-z1</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2hp</driver>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2hp</driver>
+		    <make>HP</make>
+		    <model>Color LaserJet CP1215</model>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+    </enum_vals>
+</option>

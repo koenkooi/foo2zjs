@@ -1,0 +1,63 @@
+<printer id="printer/Minolta-magicolor_2430_DL">
+    <make>Minolta</make>
+    <model>magicolor 2430 DL</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>2400</x>
+		<y>600</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4</top>
+		<bottom>4</bottom>
+		<left>4</left>
+		<right>4</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (4500 prints) - $79
+		Toner Yellow (4500 prints) - $119
+		Toner Magenta (4500 prints) - $119
+		Toner Cyan (4500 prints) - $119
+		Drum Catridge (45000 prints) - $149
+	    </en> </comments>
+	    <partno>1710587-004</partno>
+	    <partno>1710587-005</partno>
+	    <partno>1710587-006</partno>
+	    <partno>1710587-007</partno>
+	    <partno>1710591-001</partno>
+	</consumables>
+    </mechanism>
+    <url>http://www.minolta-qms.com/products/color/mc2430DL/index.asp</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+	<parallel>
+	    <ieee1284>CLASS:PRINTER;MODEL:magicolor 2430 DL;MANUFACTURER:MINOLTA-QMS;COMMAND SET:ZJS,PJL;</ieee1284>
+	    <manufacturer>KONICA MINOLTA</manufacturer>
+	    <model>magicolor 2430 DL</model>
+	    <commandset>ZJS,PJL</commandset>
+	</parallel>
+	<snmp>
+	    <description>MINOLTA-QMS magicolor 2430 DL</description>
+	</snmp>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2zjs</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The magicolor 2430 DL is a network color laser printer with a
+	2005 street price of $500 USD.  This printer is supported
+	by the foo2zjs free software printer driver.
+
+    </en> </comments>
+</printer>

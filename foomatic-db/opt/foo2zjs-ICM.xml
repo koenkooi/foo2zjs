@@ -1,0 +1,442 @@
+<option type="enum" id="opt/foo2zjs-ICM">
+    <comments>
+	<en>
+	This option controls which .ICM file to use for color correction.
+	ICM files are stored in directory /usr/share/foo2zjs/icm/.
+	</en>
+    </comments>
+    <arg_longname> <en>ICM Color Profile</en> </arg_longname>
+    <arg_shortname> <en>ICM</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>Adjustment</arg_group>
+	<arg_order>300</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2zjs-ICM-none</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <driver>foo2zjs-z3</driver>
+	    <arg_defval>ev/foo2zjs-ICM-HP-CP1025</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Minolta</make>
+	    <model>magicolor 2430 DL</model>
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2zjs-ICM-DL2312</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>KONICA MINOLTA</make>
+	    <model>magicolor 2430 DL</model>
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2zjs-ICM-DL2312</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Minolta</make>
+	    <model>magicolor 2300 DL</model>
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2zjs-ICM-DL2312</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Minolta</make>
+	    <model>magicolor 2200 DL</model>
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2zjs-ICM-DL2200RGB</arg_defval>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet 1000</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet 1005</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet 1018</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet 1020</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet 1022</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet Pro P1102</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet Pro P1102w</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet Pro P1566</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet Pro P1606dn</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet P2035</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet M1319 MFP</model>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2zjs-ICM-none">
+	    <ev_longname> <en>No ICM color correction</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>none</en> </ev_shortname>
+	    <ev_driverval>-Gnone.icm</ev_driverval>
+	</enum_val>
+
+	<enum_val id="ev/foo2zjs-ICM-DL2312">
+	    <ev_longname> <en>File DL2312.icm</en> </ev_longname>
+	    <ev_shortname> <en>DL2312</en> </ev_shortname>
+	    <ev_driverval>-GDL2312.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="false">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-magicolor_2430_DL</printer>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>KONICA_MINOLTA-magicolor_2430_DL</printer>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-magicolor_2300_DL</printer>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-DL2324">
+	    <ev_longname> <en>File DL2324.icm</en> </ev_longname>
+	    <ev_shortname> <en>DL2324</en> </ev_shortname>
+	    <ev_driverval>-GDL2324.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="false">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-magicolor_2430_DL</printer>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>KONICA_MINOLTA-magicolor_2430_DL</printer>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-magicolor_2300_DL</printer>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-km2430_2">
+	    <ev_longname> <en>File km2430_2.icm</en> </ev_longname>
+	    <ev_shortname> <en>km2430_2</en> </ev_shortname>
+	    <ev_driverval>-Gkm2430_2.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="false">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-magicolor_2430_DL</printer>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>KONICA_MINOLTA-magicolor_2430_DL</printer>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-magicolor_2300_DL</printer>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+
+	<enum_val id="ev/foo2zjs-ICM-DL2200RGB">
+	    <ev_longname> <en>File DL2200RGB.icm</en> </ev_longname>
+	    <ev_shortname> <en>DL2200RGB</en> </ev_shortname>
+	    <ev_driverval>-GDL2200RGB.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="false">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-magicolor_2200_DL</printer>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+
+	<enum_val id="ev/foo2zjs-ICM-CPWL6W">
+	    <ev_longname> <en>File CPWL6W.icm</en> </ev_longname>
+	    <ev_shortname> <en>CPWL6W</en> </ev_shortname>
+	    <ev_driverval>-GCPWL6W.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="false">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-Color_PageWorks_Pro_L</printer>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-CPWL12W">
+	    <ev_longname> <en>File CPWL12W.icm</en> </ev_longname>
+	    <ev_shortname> <en>CPWL12W</en> </ev_shortname>
+	    <ev_driverval>-GCPWL12W.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="false">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-Color_PageWorks_Pro_L</printer>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-CPWL24W">
+	    <ev_longname> <en>File CPWL24W.icm</en> </ev_longname>
+	    <ev_shortname> <en>CPWL24W</en> </ev_shortname>
+	    <ev_driverval>-GCPWL24W.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="false">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	        <constraint sense="true">
+	    	    <printer>Minolta-Color_PageWorks_Pro_L</printer>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+
+	<enum_val id="ev/foo2zjs-ICM-HP-CP1025">
+	    <ev_longname> <en>ICM file hp-cp1025.icm</en> </ev_longname>
+	    <ev_shortname> <en>cp1025</en> </ev_shortname>
+	    <ev_driverval>-Ghp-cp1025-rgb-392-bpp1.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2zjs-z3</driver>
+	        </constraint>
+	    </constraints>
+	</enum_val>
+
+	<enum_val id="ev/foo2zjs-ICM-testing">
+	    <ev_longname> <en>File testing.icm</en> </ev_longname>
+	    <ev_shortname> <en>testing</en> </ev_shortname>
+	    <ev_driverval>-Gtesting.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1000</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1005</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1018</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1020</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1022</model>
+	        </constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102w</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1566</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1606dn</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet P2035</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet M1319 MFP</model>
+		</constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-user1">
+	    <ev_longname> <en>File user1.icm</en> </ev_longname>
+	    <ev_shortname> <en>user1</en> </ev_shortname>
+	    <ev_driverval>-Guser1.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1000</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1005</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1018</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1020</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1022</model>
+	        </constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102w</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1566</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1606dn</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet P2035</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet M1319 MFP</model>
+		</constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-user2">
+	    <ev_longname> <en>File user2.icm</en> </ev_longname>
+	    <ev_shortname> <en>user2</en> </ev_shortname>
+	    <ev_driverval>-Guser2.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1000</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1005</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1018</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1020</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1022</model>
+	        </constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102w</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1566</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1606dn</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet P2035</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet M1319 MFP</model>
+		</constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-user3">
+	    <ev_longname> <en>File user3.icm</en> </ev_longname>
+	    <ev_shortname> <en>user3</en> </ev_shortname>
+	    <ev_driverval>-Guser3.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1000</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1005</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1018</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1020</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1022</model>
+	        </constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102w</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1566</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1606dn</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet P2035</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet M1319 MFP</model>
+		</constraint>
+	    </constraints>
+	</enum_val>
+	<enum_val id="ev/foo2zjs-ICM-user4">
+	    <ev_longname> <en>File user4.icm</en> </ev_longname>
+	    <ev_shortname> <en>user4</en> </ev_shortname>
+	    <ev_driverval>-Guser4.icm</ev_driverval>
+	    <constraints>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1000</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1005</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1018</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1020</model>
+	        </constraint>
+	        <constraint sense="false">
+	    	    <make>HP</make> <model>LaserJet 1022</model>
+	        </constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1102w</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1566</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro P1606dn</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet P2035</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet M1319 MFP</model>
+		</constraint>
+	    </constraints>
+	</enum_val>
+    </enum_vals>
+</option>

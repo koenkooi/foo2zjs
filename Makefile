@@ -377,7 +377,7 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
 #
 # The usual build rules
 #
-all:	all-test $(PROGS) $(BINPROGS) $(SHELLS) getweb \
+all:	$(PROGS) $(BINPROGS) $(SHELLS) getweb \
 	all-icc2ps all-osx-hotplug man doc \
 	all-done
 

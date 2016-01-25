@@ -23,6 +23,7 @@ PREFIX=$(DESTDIR)/usr
 
 # Pathnames for this package...
 BIN=$(PREFIX)/bin
+DESTBIN=/usr/bin
 SHAREZJS=$(PREFIX)/share/foo2zjs
 SHAREOAK=$(PREFIX)/share/foo2oak
 SHAREHP=$(PREFIX)/share/foo2hp
@@ -1034,7 +1035,7 @@ install-hotplug-osx:
 
 install-filter:
 	if [ "$(CUPS_SERVERBIN)" != "" ]; then \
-	    ln -sf $(BIN)/command2foo2lava-pjl $(CUPS_SERVERBIN)/filter/; \
+	    ln -sf $(DESTBIN)/command2foo2lava-pjl $(CUPS_SERVERBIN)/filter/; \
 	fi
 
 CUPSDCONF=/etc/cups/cupsd.conf

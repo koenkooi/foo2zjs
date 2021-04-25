@@ -1,0 +1,163 @@
+'\" t
+.TH foo2ddst-wrapper 1 "${MODpage}" "foo2ddst-wrapper ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2ddst-wrapper \- Convert Postscript into a DDST printer stream
+.SH SYNOPSIS
+.B foo2ddst-wrapper
+.RI [ options "] [" ps-file ]
+.SH DESCRIPTION
+.B foo2ddst-wrapper
+is a Foomatic compatible printer wrapper for the \fBfoo2ddst\fP printer driver.
+This script reads a Postscript \fIps-file\fP or standard input
+and converts it to DDST printer format
+for driving
+the Ricoh Aficio SP 112,
+the Ricoh Aficio SP 201,
+and other DDST-based printers.
+.P
+This script can be used in a standalone fashion, but is intended to
+be called from a printer spooler system which uses the Foomatic
+printer database.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-m\0 media
+Media code to send to printer [1].
+.TS
+l l l
+l n n.
+_
+Media	Code
+_
+plain&recycled  1
+paper   2
+thin    3
+thick   4
+recycled        5
+.TE
+.TP
+.BI \-p\0 paper
+Paper size code to send to printer [1].
+.TS
+box;
+| n l | n l.
+1	letter	5	A4
+2	legal	6	A5
+3	executive	7	A6
+4	invoice(5.5x8.5)	8	B5 JIS
+		10	16k 197x273
+11	16k 184x260	12	16k 195x270
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [600x600].
+.TP
+.BI \-s\0 source
+Source (Input Slot) code to send to printer [7].
+.TS
+box;
+| n l | n l.
+1	upper	2	manual
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI \-T\0 density
+Print density (1-5).  The default is 3 (medium).
+.TP
+.BI "\-2 \-3 \-4 \-5 \-6 \-8 \-9 \-10 \-12 \-14 \-15 \-16 \-18"
+Print in N-up.  Requires the \fBpsutils\fP package.
+.TP
+.BI \-o\0 orient
+Orientation used for N-up.
+.TS
+l l l.
+Portrait	-op	(normal)
+Landscape	-ol	(rotated 90 degrees anticlockwise)
+Seascape	-os	(rotated 90 degrees clockwise)
+.TE
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2ddst\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [varies with paper size].
+The defaults should work on the 2200DL and 2300DL, and have not
+been tested on any other printers.
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [varies with paper size].
+The defaults should work on the 2200DL and 2300DL, and have not
+been tested on any other printers.
+.TP
+.BI \-L\0 mask
+Send the logical clipping values from -u/-l in the ZjStream.
+\fBfoo2ddst-wrapper\fP always runs Ghostscript with the ideal page dimensions,
+so that the scale of the image is correct,
+regardless whether or not the printer has unprintable regions.
+This option is used to move the position of the clipped image
+back to where it belongs on the page.  The default is to send
+the amount which was clipped by -u and -l, and should be
+good in most cases.
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.SS Debugging Options
+These options are used for debugging \fBfoo2ddst\fP and its wrapper.
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a monochrome ZjStream from a Postscript document,
+examine it, and then print it using a RAW print queue:
+
+.RS
+.nf
+foo2ddst-wrapper testpage.ps > testpage.ddst
+ddstdecode < testpage.ddst
+lpr -P raw testpage.ddst
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2ddst-wrapper
+.SH SEE ALSO
+.BR foo2ddst (1),
+.BR ddstdecode (1)
+.br
+.BR https://github.com/madlynx/ricoh-sp100
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLDDST}/
+'\"
+'\"
+'\"
+.em pdf_outline

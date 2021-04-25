@@ -1,0 +1,388 @@
+'\" t
+'\"
+'\"	DO NOT EDIT! This file is generated from foo2hbpl2.1in
+'\"
+'\" t
+.TH foo2hbpl2 1 "Sun Apr 25 16:22:30 2021" "foo2hbpl2 0.0"
+'\"
+'\"==========================================================================
+'\"	STRINGS and MACROS
+'\"==========================================================================
+'\"
+'\"	Define strings for special characters that nroff doesn't have
+'\"
+'\"	N.B. using .if cua to test for special characters did not work.
+'\"
+.if !'\*[.T]'ps' .ds ua up
+.if  '\*[.T]'ps' .ds ua \(ua
+.if !'\*[.T]'ps' .ds da down
+.if  '\*[.T]'ps' .ds da \(da
+.if !'\*[.T]'ps' .ds <- left
+.if  '\*[.T]'ps' .ds <- \(<-
+.if !'\*[.T]'ps' .ds -> right
+.if  '\*[.T]'ps' .ds -> \(->
+'\"
+'\"     bx - box a Courier string for making keycaps
+'\"
+'\"	N.B. this mess is to make the line drawing come out only
+'\"	if we are really generating postscript
+'\"
+.de bx
+.ie !'\*[.T]'ps' \{\
+.	RB [ \\$1 ]\\$2
+.\}
+.el \{\
+.	ie !r ps4html \{\
+'\" \(br\|\s-1\f(CB\\$1\fP\s+1\|\(br\l'|0\(rn'\l'|0\(ul'
+.		ft CW
+.		nr par*bxw \w'\\$1'+.4m 
+\Z'\v'.25m'\D'l 0 -1m'\D'l \\n[par*bxw]u 0'\D'l 0 1m'\D'l -\\n[par*bxw]u 0''\
+\Z'\h'.2m'\s-1\\$1\s+1'\
+\h'\\n[par*bxw]u'\\$2
+.		ft P
+.	\}
+.	el \{\
+.		RB [ \\$1 ]\\$2
+.	\}
+.\}
+..
+'\"
+'\" strings to set current color (null with old groff)
+'\"
+.if mred .ds red \m[red]
+.if mgreen .ds green \m[green]
+.if mblue .ds blue \m[blue]
+.if mblack .ds black \m[black]
+.if mblack .ds mP \mP
+'\"
+'\" fix for grotty + xterm. We call for orange, grotty outputs yellow,
+'\" but xterm displays yellow as orange.  The cycle is complete.
+'\"
+.if n .defcolor orange rgb #ffff00
+'\"
+'\" color <color> - set the current color (ignores request with old groff)
+'\"
+.de color
+.if mred \m[\\$1]\c
+..
+'\"
+'\" colorword <color> <word> - colorize a word (ignored by old groff)
+'\"
+.de colorword
+.ie m\\$1 \m[\\$1]\\$2\mP\c
+.el \\$2\c
+..
+'\"
+'\" colbox <fg> <bg> <word> - colorize a word in a filled box
+'\"
+.de colbox
+.ie mred \M[\\$2]\
+\v'+.167v'\
+\D'P 0 -0.9v  \w'\\$3'u 0  0 +0.9v   -\w'\\$3'u 0'\
+\v'-.167v'\
+\m[\\$1]\\$3\mP\MP
+.el \\$3\c
+..
+'\"
+'\"	Macros for doing pdfmarks
+'\"
+.de specialps
+.if  '\*[.T]'ps' \\k_\X'ps: \\$*'\h'|\\n_u'\c
+..
+'\"
+'\" pdfmark PDFMARKCODE
+'\"
+.ds pdfmarks
+.if d pdfmarks \{\
+.de pdfmark
+.	specialps exec [\\$1 pdfmark
+..
+'\"
+'\" pdfdest LINKNAME
+'\"
+.de pdfdest
+.pdfmark "/Dest /\\$1 /View [/XYZ -5 PL null] /DEST"
+..
+'\"
+'\" pdfbookmark COUNT LINKNAME STRING
+'\"
+.de pdfbookmark
+.   pdfmark "/View [/XYZ 44 730 1.0] /Count \\$1 /Dest /\\$2 /Title (\\$3) /OUT"
+..
+'\"
+'\"	Define the SH and SS macros to save pdfmark information
+'\"	in "arrays" of numbers and strings.
+'\"
+.if !r rr_n \{\
+.nr rr_n 0 1
+.am SH
+.	nr rr_levels!\\n+[rr_n] 2
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.am SS
+.	nr rr_levels!\\n+[rr_n] 3
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.\}
+'\"
+'\"	Called at the end of the document to generate the pdfmark outline
+'\"
+.de pdf_outline
+.nr rr_levels!\\n+[rr_n] 1
+.nr rr_i 0 1
+.while \\n+[rr_i]<\\n[rr_n] \{\
+.   nr rr_ip1 \\n[rr_i]+1
+.   nr rr_count 0
+.   if \\n[rr_levels!\\n[rr_ip1]]>\\n[rr_levels!\\n[rr_i]] \{\
+.       nr rr_j \\n[rr_i] 1
+.       while \\n+[rr_j]<\\n[rr_n] \{\
+.           if \\n[rr_levels!\\n[rr_j]]<=\\n[rr_levels!\\n[rr_i]] \{\
+.               break
+.           \}
+.           if \\n[rr_levels!\\n[rr_j]]==(\\n[rr_levels!\\n[rr_i]]+1) \{\
+.               nr rr_count \\n[rr_count]+1
+.           \}
+.       \}
+.   \}
+.   ds hhh \\*[rr_labels!\\n[rr_i]]
+.   pdfbookmark -\\n[rr_count] Link\\n[rr_i] "\\*[hhh]"
+.\}
+..
+'\"
+'\" Some postscript to make pdfmarks harmless on old interpreters...
+'\"
+.specialps "def /pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse"
+'\"
+'\" Force display of Bookmarks in Acrobat when document is viewed.
+'\"
+.pdfmark "[/PageMode /UseOutlines /Page 1 /View [/XYZ null null null] /DOCVIEW"
+'\"
+'\" Output the document info in pdfmarks
+'\"
+.pdfmark "\
+	/Title (\*[an-title](\*[an-section])) \
+	/Subject (\*[an-title] Manual Page) \
+	/Author (Rick Richardson) \
+	/Keywords (printing) \
+	/Creator (groff \n(.x.\n(.y.\n(.Y -man) \
+	/CreationDate (\*[an-extra1]) \
+	/ModDate (\*[an-extra1]) \
+	/DOCINFO"
+\}
+'\"
+'\" The manual page name is only 1st level mark
+'\"
+.nr rr_levels!\n+[rr_n] 1
+.ds rr_labels!\n[rr_n] \*[an-title](\*[an-section])
+.pdfdest Link\n[rr_n]
+'\"
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2hbpl2 \- Convert Ghostscript pbmraw or bitcmyk format into a
+ZJS printer stream
+.SH SYNOPSIS
+.B foo2hbpl2
+.RI [ options "] <" pbmraw-file " >" hbpl2-file
+.sp 1
+.B foo2hbpl2
+.RI [ options "] <" bitcmyk-file " >" hbpl2-file
+.sp 1
+.B foo2hbpl2
+.RI [ options "] <" pksmraw-file " >" hbpl2-file
+.SH DESCRIPTION
+.B foo2hbpl2
+converts Ghostscript pbmraw, bitcmyk, or pksmraw output formats to monochrome
+or color HBPL version 2 streams,
+for driving the
+Dell 1355, Dell C1765,
+Epson AcuLaser M1400,
+Epson AcuLaser CX17NF,
+Fuji Xerox DocuPrint CM205,
+Fuji Xerox DocuPrint CM215,
+Fuji Xerox DocuPrint M215,
+Fuji Xerox DocuPrint P205,
+Xerox Phaser 3010,
+Xerox Phaser 3040,
+Xerox WorkCentre 3045 MFP,
+and Xerox WorkCentre 6015 MFP printers.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-c
+Force color mode if autodetect doesn't work.
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-g\0 xpix x ypix
+Set page dimensions in pixels [10200x6600].
+.TP
+.BI \-m\0 media
+Media code to send to printer [1].
+.TS
+l r.
+_
+Media	HBPL
+_
+plain	1
+bond	2
+lwcard	3
+lwgcard	4
+labels	5
+envelope	6
+recycled	7
+plain2	8
+bond2	9
+lwcard2	10
+lwgcard2	11
+recycled2	12
+.TE
+.TP
+.BI \-p\0 paper
+Paper code to send to printer [1].
+.TS
+l r.
+_
+Paper	HBPL
+_
+A4	1
+B5jis	2
+A5	3
+letter	4
+executive	5
+fanfold german legal	6
+folio	6
+legal	7
+env#10	9
+envMonarch	10
+envC5	11
+envDL	12
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [1200x600].
+.TP
+.BI \-s\0 source
+Source (InputSlot) code to send to printer [7].
+.TS
+| n l | n l.
+1	upper	4	manual
+2	lower	7	auto
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI \-J\0 filename
+Filename string to send to printer.
+.TP
+.BI \-U\0 username
+Username string to send to printer.
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2hbpl2\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [0x0].
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [0x0].
+.TP
+.BI \-L\0 mask
+Send logical clipping amounts implied by -u/-l in the ZjStream [3].
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-P
+Do not send START_PLANE codes on monochrome output.  May be
+needed by some black and white only printers, such as the
+HP LaserJet 1000.
+.TP
+.BI \-A
+AllIsBlack: convert C=1,M=1,Y=1 to just K=1.  Works with bitcmyk input only.
+.TP
+.BI \-B
+BlackClears: K=1 forces C,M,Y to 0.  Works with bitcmyk input only.
+.TP
+.BI \-X\0 padlen
+Add extra zero padding to the end of BID segments.  The default is
+16 bytes.  Padding 16 bytes of zeroes
+is needed for older ZjStream printers, such as the Minolta 2200DL
+and HP LaserJet 1000, and seems harmless to newer ones, such as
+the Minolta 2300DL.  So the default should be good for all cases.
+.SS Debugging Options
+These options are used for debugging \fBfoo2hbpl2\fP.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a black and white ZJS stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -r1200x600 -sDEVICE=pbmraw \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2hbpl2 -r1200x600 -g10200x6600 -p1 >testpage.zm
+.fi
+.RE
+.P
+Create a color ZJS stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -g10200x6600 -r1200x600 -sDEVICE=bitcmyk \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2hbpl2 -r1200x600 -g10200x6600 -p1 >testpage.zc
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2hbpl2
+.SH SEE ALSO
+.BR foo2hbpl2-wrapper (1),
+.BR hbpldecode (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+Peter Korf <peter@niendo.de>
+.br
+http://foo2hbpl.rkkda.com/
+'\"
+'\"
+'\"
+.em pdf_outline

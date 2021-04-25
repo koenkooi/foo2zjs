@@ -32,6 +32,16 @@
 	    <arg_defval>ev/foo2hbpl2-Resolution-600x600</arg_defval>
 	</constraint>
 	<constraint sense="true">
+	    <make>Xerox</make> <model>Phaser 3010</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2hbpl2-Resolution-600x600</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Xerox</make> <model>Phaser 3040</model>
+	    <driver>foo2hbpl2</driver>
+	    <arg_defval>ev/foo2hbpl2-Resolution-600x600</arg_defval>
+	</constraint>
+	<constraint sense="true">
 	    <make>Xerox</make> <model>WorkCentre 3045</model>
 	    <driver>foo2hbpl2</driver>
 	    <arg_defval>ev/foo2hbpl2-Resolution-600x600</arg_defval>
@@ -64,6 +74,12 @@
 		    <make>Fuji Xerox</make> <model>DocuPrint P205</model>
 	        </constraint>
 	        <constraint sense="true">
+		    <make>Xerox</make> <model>Phaser 3010</model>
+	        </constraint>
+	        <constraint sense="true">
+		    <make>Xerox</make> <model>Phaser 3040</model>
+	        </constraint>
+	        <constraint sense="true">
 		    <make>Xerox</make> <model>WorkCentre 3045</model>
 	        </constraint>
 	    </constraints>
@@ -83,6 +99,12 @@
 	        </constraint>
 	        <constraint sense="false">
 		    <make>Fuji Xerox</make> <model>DocuPrint P205</model>
+	        </constraint>
+	        <constraint sense="false">
+		    <make>Xerox</make> <model>Phaser 3010</model>
+	        </constraint>
+	        <constraint sense="false">
+		    <make>Xerox</make> <model>Phaser 3040</model>
 	        </constraint>
 	        <constraint sense="false">
 		    <make>Xerox</make> <model>WorkCentre 3045</model>
@@ -113,6 +135,12 @@
 	        </constraint>
 	        <constraint sense="true">
 		    <make>Fuji Xerox</make> <model>DocuPrint P205</model>
+	        </constraint>
+	        <constraint sense="true">
+		    <make>Xerox</make> <model>Phaser 3010</model>
+	        </constraint>
+	        <constraint sense="true">
+		    <make>Xerox</make> <model>Phaser 3040</model>
 	        </constraint>
 	        <constraint sense="true">
 		    <make>Xerox</make> <model>WorkCentre 3045</model>

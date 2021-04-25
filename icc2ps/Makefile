@@ -41,7 +41,7 @@ man:	foo2zjs-icc2ps.1
 	    -e "s@\$${URLSLX}@$(URLSLX)@" \
 	    -e "s@\$${URLHC}@$(URLHC)@" \
 	    -e "s/\$${MODver}/$$MODver/"
-	chmod -w $*.1
+	chmod a-w $*.1
 
 install-man: man
 	$(INSTALL) -d -m 755 $(MANDIR)

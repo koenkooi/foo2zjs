@@ -17,6 +17,9 @@ With this utility, you can print to some HP printers, such as these:
     - Samsung CLX-2160 (printer only)		(like CLP-300)
     - Samsung CLX-3160 (printer only)		(like CLP-300)
     - Samsung CLX-3175 (printer only)		(like CLP-315)
+    - Samsung CLX-3185 (printer only)		(like CLP-315)
+    - Samsung ML-1670	-z2			monochrome printer, white case
+    - Samsung ML-1675	-z2			monochrome printer, black case
     - Xerox Phaser 6110				(like CLP-300)
     - Xerox Phaser 6110MFP (printer only)	(like CLP-300)
 
@@ -60,7 +63,7 @@ yourself.
 
 */
 
-static char Version[] = "$Id: foo2qpdl.c,v 1.54 2014/01/27 02:23:29 rick Exp $";
+static char Version[] = "$Id: foo2qpdl.c,v 1.56 2019/09/06 15:13:36 rick Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>

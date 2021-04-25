@@ -1,0 +1,344 @@
+'\" t
+'\"
+'\"	DO NOT EDIT! This file is generated from hipercdecode.1in
+'\"
+.TH hipercdecode 1 "Sun Apr 25 16:22:30 2021" "hipercdecode 0.0"
+'\"
+'\"==========================================================================
+'\"	STRINGS and MACROS
+'\"==========================================================================
+'\"
+'\"	Define strings for special characters that nroff doesn't have
+'\"
+'\"	N.B. using .if cua to test for special characters did not work.
+'\"
+.if !'\*[.T]'ps' .ds ua up
+.if  '\*[.T]'ps' .ds ua \(ua
+.if !'\*[.T]'ps' .ds da down
+.if  '\*[.T]'ps' .ds da \(da
+.if !'\*[.T]'ps' .ds <- left
+.if  '\*[.T]'ps' .ds <- \(<-
+.if !'\*[.T]'ps' .ds -> right
+.if  '\*[.T]'ps' .ds -> \(->
+'\"
+'\"     bx - box a Courier string for making keycaps
+'\"
+'\"	N.B. this mess is to make the line drawing come out only
+'\"	if we are really generating postscript
+'\"
+.de bx
+.ie !'\*[.T]'ps' \{\
+.	RB [ \\$1 ]\\$2
+.\}
+.el \{\
+.	ie !r ps4html \{\
+'\" \(br\|\s-1\f(CB\\$1\fP\s+1\|\(br\l'|0\(rn'\l'|0\(ul'
+.		ft CW
+.		nr par*bxw \w'\\$1'+.4m 
+\Z'\v'.25m'\D'l 0 -1m'\D'l \\n[par*bxw]u 0'\D'l 0 1m'\D'l -\\n[par*bxw]u 0''\
+\Z'\h'.2m'\s-1\\$1\s+1'\
+\h'\\n[par*bxw]u'\\$2
+.		ft P
+.	\}
+.	el \{\
+.		RB [ \\$1 ]\\$2
+.	\}
+.\}
+..
+'\"
+'\" strings to set current color (null with old groff)
+'\"
+.if mred .ds red \m[red]
+.if mgreen .ds green \m[green]
+.if mblue .ds blue \m[blue]
+.if mblack .ds black \m[black]
+.if mblack .ds mP \mP
+'\"
+'\" fix for grotty + xterm. We call for orange, grotty outputs yellow,
+'\" but xterm displays yellow as orange.  The cycle is complete.
+'\"
+.if n .defcolor orange rgb #ffff00
+'\"
+'\" color <color> - set the current color (ignores request with old groff)
+'\"
+.de color
+.if mred \m[\\$1]\c
+..
+'\"
+'\" colorword <color> <word> - colorize a word (ignored by old groff)
+'\"
+.de colorword
+.ie m\\$1 \m[\\$1]\\$2\mP\c
+.el \\$2\c
+..
+'\"
+'\" colbox <fg> <bg> <word> - colorize a word in a filled box
+'\"
+.de colbox
+.ie mred \M[\\$2]\
+\v'+.167v'\
+\D'P 0 -0.9v  \w'\\$3'u 0  0 +0.9v   -\w'\\$3'u 0'\
+\v'-.167v'\
+\m[\\$1]\\$3\mP\MP
+.el \\$3\c
+..
+'\"
+'\"	Macros for doing pdfmarks
+'\"
+.de specialps
+.if  '\*[.T]'ps' \\k_\X'ps: \\$*'\h'|\\n_u'\c
+..
+'\"
+'\" pdfmark PDFMARKCODE
+'\"
+.ds pdfmarks
+.if d pdfmarks \{\
+.de pdfmark
+.	specialps exec [\\$1 pdfmark
+..
+'\"
+'\" pdfdest LINKNAME
+'\"
+.de pdfdest
+.pdfmark "/Dest /\\$1 /View [/XYZ -5 PL null] /DEST"
+..
+'\"
+'\" pdfbookmark COUNT LINKNAME STRING
+'\"
+.de pdfbookmark
+.   pdfmark "/View [/XYZ 44 730 1.0] /Count \\$1 /Dest /\\$2 /Title (\\$3) /OUT"
+..
+'\"
+'\"	Define the SH and SS macros to save pdfmark information
+'\"	in "arrays" of numbers and strings.
+'\"
+.if !r rr_n \{\
+.nr rr_n 0 1
+.am SH
+.	nr rr_levels!\\n+[rr_n] 2
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.am SS
+.	nr rr_levels!\\n+[rr_n] 3
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.\}
+'\"
+'\"	Called at the end of the document to generate the pdfmark outline
+'\"
+.de pdf_outline
+.nr rr_levels!\\n+[rr_n] 1
+.nr rr_i 0 1
+.while \\n+[rr_i]<\\n[rr_n] \{\
+.   nr rr_ip1 \\n[rr_i]+1
+.   nr rr_count 0
+.   if \\n[rr_levels!\\n[rr_ip1]]>\\n[rr_levels!\\n[rr_i]] \{\
+.       nr rr_j \\n[rr_i] 1
+.       while \\n+[rr_j]<\\n[rr_n] \{\
+.           if \\n[rr_levels!\\n[rr_j]]<=\\n[rr_levels!\\n[rr_i]] \{\
+.               break
+.           \}
+.           if \\n[rr_levels!\\n[rr_j]]==(\\n[rr_levels!\\n[rr_i]]+1) \{\
+.               nr rr_count \\n[rr_count]+1
+.           \}
+.       \}
+.   \}
+.   ds hhh \\*[rr_labels!\\n[rr_i]]
+.   pdfbookmark -\\n[rr_count] Link\\n[rr_i] "\\*[hhh]"
+.\}
+..
+'\"
+'\" Some postscript to make pdfmarks harmless on old interpreters...
+'\"
+.specialps "def /pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse"
+'\"
+'\" Force display of Bookmarks in Acrobat when document is viewed.
+'\"
+.pdfmark "[/PageMode /UseOutlines /Page 1 /View [/XYZ null null null] /DOCVIEW"
+'\"
+'\" Output the document info in pdfmarks
+'\"
+.pdfmark "\
+	/Title (\*[an-title](\*[an-section])) \
+	/Subject (\*[an-title] Manual Page) \
+	/Author (Rick Richardson) \
+	/Keywords (printing) \
+	/Creator (groff \n(.x.\n(.y.\n(.Y -man) \
+	/CreationDate (\*[an-extra1]) \
+	/ModDate (\*[an-extra1]) \
+	/DOCINFO"
+\}
+'\"
+'\" The manual page name is only 1st level mark
+'\"
+.nr rr_levels!\n+[rr_n] 1
+.ds rr_labels!\n[rr_n] \*[an-title](\*[an-section])
+.pdfdest Link\n[rr_n]
+'\"
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+hipercdecode \- Decode a HIPERC stream into human readable form.
+.SH SYNOPSIS
+.B hipercdecode
+.RI [ options "] <" hiperc-file
+.SH DESCRIPTION
+.B hipercdecode
+decodes a HIPERC stream into human readable form.
+Uncompressed and JBIG formats are handled.
+.P
+An HIPERC stream is the printer language used by the
+Oki Data C310dn, C3100, C3200n, C3250n, C3300n, C3400n, C5100n, C5250n, C5500n,
+C5600, and the C5800n
+printers.
+
+.SH COMMAND LINE OPTIONS
+These are the options that can appear on the command line.
+.TP
+.BI \-d\0 basename
+Basename of .pbm file for saving decompressed planes.
+.TP
+.BI \-h
+Print hex file offsets.
+.TP
+.BI \-o
+Print file offsets.
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Decode an HIPERC stream file created by foo2hiperc.
+
+.nf
+.ft CW
+$ foo2hiperc-wrapper testpage.ps | hipercdecode -h
+     0:	\\033%-12345X@PJL
+     f:	@PJL RDYMSG DISPLAY = "Unknown"
+    30:	@PJL SET OKIJOBACCOUNTJOB USERID="Unknown" JOBNAME="Unknown"
+    6e:	@PJL SET OKIAUXJOBINFO DATA="DocumentName=Unknown"
+    a2:	@PJL SET OKIAUXJOBINFO DATA="ComputerName=dual.rkkda.org"
+    dd:	@PJL SET OKIAUXJOBINFO DATA="ReceptionTime=00:00:00 2008/01/30"
+   11e:	@PJL SET OKIAUTOTRAYSWITCH=ON
+   13d:	@PJL SET OKIPAPERSIZECHECK=ENABLE
+   160:	@PJL SET RESOLUTION=600
+   179:	@PJL SET PAPER=LETTER
+   190:	@PJL SET OKITRAYSEQUENCE=PAPERFEEDTRAY
+   1b8:	@PJL SET OKIPAPERFEED=TRAY1
+   1d5:	@PJL SET OKIMEDIATYPE = PLAIN
+   1f4:	@PJL SET LPARM:PCL OKIPRINTMARGIN=INCH1D6
+   21f:	@PJL SET COPIES=1
+   232:	@PJL SET QTY=1
+   242:	@PJL SET HIPERCEFFECTIVEBLOCKSIZE=34799360
+   26e:	@PJL ENTER LANGUAGE=HIPERC
+   289:	RECTYPE 0 (len=52,0x34 cnt=1)
+   291:		BLKNUM 0, nbie=1, pn=3 [black] uc=0,0, wid=4864 ud=0,100
+   2a5:		BLKNUM 1 (len=20), uncompressed=1, bie:
+		DL = 48, D = 48, P = 49, - = 48, XY = 4864 x 6816
+		L0 = 256, MX = 0, MY = 0
+		Order   = 0 
+		Options = 0 
+		1 stripes, 0 layers, 49 planes
+   2bd:	RECTYPE 1 (len=155668,0x26014 cnt=1)
+   2c5:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+   2cd:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+ 262d1:	RECTYPE 1 (len=155668,0x26014 cnt=2)
+ 262d9:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+ 262e1:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+ 4c2e5:	RECTYPE 1 (len=155668,0x26014 cnt=3)
+ 4c2ed:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+ 4c2f5:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+ 722f9:	RECTYPE 1 (len=155668,0x26014 cnt=4)
+ 72301:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+ 72309:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+ 9830d:	RECTYPE 1 (len=155668,0x26014 cnt=5)
+ 98315:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+ 9831d:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+ be321:	RECTYPE 1 (len=155668,0x26014 cnt=6)
+ be329:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+ be331:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+ e4335:	RECTYPE 1 (len=155668,0x26014 cnt=7)
+ e433d:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+ e4345:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+10a349:	RECTYPE 1 (len=155668,0x26014 cnt=8)
+10a351:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+10a359:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+13035d:	RECTYPE 1 (len=155668,0x26014 cnt=9)
+130365:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+13036d:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+156371:	RECTYPE 1 (len=155668,0x26014 cnt=10)
+156379:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+156381:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+17c385:	RECTYPE 1 (len=155668,0x26014 cnt=11)
+17c38d:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+17c395:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+1a2399:	RECTYPE 1 (len=155668,0x26014 cnt=12)
+1a23a1:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+1a23a9:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+1c83ad:	RECTYPE 1 (len=155668,0x26014 cnt=13)
+1c83b5:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+1c83bd:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+1ee3c1:	RECTYPE 1 (len=155668,0x26014 cnt=14)
+1ee3c9:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+1ee3d1:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+2143d5:	RECTYPE 1 (len=155668,0x26014 cnt=15)
+2143dd:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+2143e5:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+23a3e9:	RECTYPE 1 (len=155668,0x26014 cnt=16)
+23a3f1:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+23a3f9:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+2603fd:	RECTYPE 1 (len=155668,0x26014 cnt=17)
+260405:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+26040d:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+286411:	RECTYPE 1 (len=155668,0x26014 cnt=18)
+286419:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+286421:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+2ac425:	RECTYPE 1 (len=155668,0x26014 cnt=19)
+2ac42d:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+2ac435:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+2d2439:	RECTYPE 1 (len=155668,0x26014 cnt=20)
+2d2441:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+2d2449:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+2f844d:	RECTYPE 1 (len=155668,0x26014 cnt=21)
+2f8455:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+2f845d:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+31e461:	RECTYPE 1 (len=155668,0x26014 cnt=22)
+31e469:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+31e471:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+344475:	RECTYPE 1 (len=155668,0x26014 cnt=23)
+34447d:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+344485:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+36a489:	RECTYPE 1 (len=155668,0x26014 cnt=24)
+36a491:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+36a499:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+39049d:	RECTYPE 1 (len=155668,0x26014 cnt=25)
+3904a5:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+3904ad:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+3b64b1:	RECTYPE 1 (len=155668,0x26014 cnt=26)
+3b64b9:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+3b64c1:		BLKNUM 1 (len=155648), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+3dc4c5:	RECTYPE 1 (len=97300,0x17c14 cnt=27)
+3dc4cd:		BLKNUM 0 (len=4), plane=3, uc=0,0,0
+3dc4d5:		BLKNUM 1 (len=97280), Data=00 00 00 00 00 00 00 00 00 00 00 ...
+3f40d9:	RECTYPE 255 (len=8,0x8 cnt=28)
+3f40e1:	\\033%-12345X
+
+.ft P
+.fi
+
+.SH FILES
+.BR /usr/bin/hipercdecode
+.SH SEE ALSO
+.BR foo2hiperc-wrapper (1),
+.BR foo2hiperc (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+http://foo2hiperc.rkkda.com/
+'\"
+'\"
+'\"
+.em pdf_outline

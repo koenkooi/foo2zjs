@@ -1,0 +1,283 @@
+'\" t
+'\"
+'\"	DO NOT EDIT! This file is generated from gipddecode.1in
+'\"
+.TH gipddecode 1 "Sun Apr 25 16:22:30 2021" "gipddecode 0.0"
+'\"
+'\"==========================================================================
+'\"	STRINGS and MACROS
+'\"==========================================================================
+'\"
+'\"	Define strings for special characters that nroff doesn't have
+'\"
+'\"	N.B. using .if cua to test for special characters did not work.
+'\"
+.if !'\*[.T]'ps' .ds ua up
+.if  '\*[.T]'ps' .ds ua \(ua
+.if !'\*[.T]'ps' .ds da down
+.if  '\*[.T]'ps' .ds da \(da
+.if !'\*[.T]'ps' .ds <- left
+.if  '\*[.T]'ps' .ds <- \(<-
+.if !'\*[.T]'ps' .ds -> right
+.if  '\*[.T]'ps' .ds -> \(->
+'\"
+'\"     bx - box a Courier string for making keycaps
+'\"
+'\"	N.B. this mess is to make the line drawing come out only
+'\"	if we are really generating postscript
+'\"
+.de bx
+.ie !'\*[.T]'ps' \{\
+.	RB [ \\$1 ]\\$2
+.\}
+.el \{\
+.	ie !r ps4html \{\
+'\" \(br\|\s-1\f(CB\\$1\fP\s+1\|\(br\l'|0\(rn'\l'|0\(ul'
+.		ft CW
+.		nr par*bxw \w'\\$1'+.4m 
+\Z'\v'.25m'\D'l 0 -1m'\D'l \\n[par*bxw]u 0'\D'l 0 1m'\D'l -\\n[par*bxw]u 0''\
+\Z'\h'.2m'\s-1\\$1\s+1'\
+\h'\\n[par*bxw]u'\\$2
+.		ft P
+.	\}
+.	el \{\
+.		RB [ \\$1 ]\\$2
+.	\}
+.\}
+..
+'\"
+'\" strings to set current color (null with old groff)
+'\"
+.if mred .ds red \m[red]
+.if mgreen .ds green \m[green]
+.if mblue .ds blue \m[blue]
+.if mblack .ds black \m[black]
+.if mblack .ds mP \mP
+'\"
+'\" fix for grotty + xterm. We call for orange, grotty outputs yellow,
+'\" but xterm displays yellow as orange.  The cycle is complete.
+'\"
+.if n .defcolor orange rgb #ffff00
+'\"
+'\" color <color> - set the current color (ignores request with old groff)
+'\"
+.de color
+.if mred \m[\\$1]\c
+..
+'\"
+'\" colorword <color> <word> - colorize a word (ignored by old groff)
+'\"
+.de colorword
+.ie m\\$1 \m[\\$1]\\$2\mP\c
+.el \\$2\c
+..
+'\"
+'\" colbox <fg> <bg> <word> - colorize a word in a filled box
+'\"
+.de colbox
+.ie mred \M[\\$2]\
+\v'+.167v'\
+\D'P 0 -0.9v  \w'\\$3'u 0  0 +0.9v   -\w'\\$3'u 0'\
+\v'-.167v'\
+\m[\\$1]\\$3\mP\MP
+.el \\$3\c
+..
+'\"
+'\"	Macros for doing pdfmarks
+'\"
+.de specialps
+.if  '\*[.T]'ps' \\k_\X'ps: \\$*'\h'|\\n_u'\c
+..
+'\"
+'\" pdfmark PDFMARKCODE
+'\"
+.ds pdfmarks
+.if d pdfmarks \{\
+.de pdfmark
+.	specialps exec [\\$1 pdfmark
+..
+'\"
+'\" pdfdest LINKNAME
+'\"
+.de pdfdest
+.pdfmark "/Dest /\\$1 /View [/XYZ -5 PL null] /DEST"
+..
+'\"
+'\" pdfbookmark COUNT LINKNAME STRING
+'\"
+.de pdfbookmark
+.   pdfmark "/View [/XYZ 44 730 1.0] /Count \\$1 /Dest /\\$2 /Title (\\$3) /OUT"
+..
+'\"
+'\"	Define the SH and SS macros to save pdfmark information
+'\"	in "arrays" of numbers and strings.
+'\"
+.if !r rr_n \{\
+.nr rr_n 0 1
+.am SH
+.	nr rr_levels!\\n+[rr_n] 2
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.am SS
+.	nr rr_levels!\\n+[rr_n] 3
+.	ds rr_labels!\\n[rr_n] \\$*
+.	pdfdest Link\\n[rr_n]
+..
+.\}
+'\"
+'\"	Called at the end of the document to generate the pdfmark outline
+'\"
+.de pdf_outline
+.nr rr_levels!\\n+[rr_n] 1
+.nr rr_i 0 1
+.while \\n+[rr_i]<\\n[rr_n] \{\
+.   nr rr_ip1 \\n[rr_i]+1
+.   nr rr_count 0
+.   if \\n[rr_levels!\\n[rr_ip1]]>\\n[rr_levels!\\n[rr_i]] \{\
+.       nr rr_j \\n[rr_i] 1
+.       while \\n+[rr_j]<\\n[rr_n] \{\
+.           if \\n[rr_levels!\\n[rr_j]]<=\\n[rr_levels!\\n[rr_i]] \{\
+.               break
+.           \}
+.           if \\n[rr_levels!\\n[rr_j]]==(\\n[rr_levels!\\n[rr_i]]+1) \{\
+.               nr rr_count \\n[rr_count]+1
+.           \}
+.       \}
+.   \}
+.   ds hhh \\*[rr_labels!\\n[rr_i]]
+.   pdfbookmark -\\n[rr_count] Link\\n[rr_i] "\\*[hhh]"
+.\}
+..
+'\"
+'\" Some postscript to make pdfmarks harmless on old interpreters...
+'\"
+.specialps "def /pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse"
+'\"
+'\" Force display of Bookmarks in Acrobat when document is viewed.
+'\"
+.pdfmark "[/PageMode /UseOutlines /Page 1 /View [/XYZ null null null] /DOCVIEW"
+'\"
+'\" Output the document info in pdfmarks
+'\"
+.pdfmark "\
+	/Title (\*[an-title](\*[an-section])) \
+	/Subject (\*[an-title] Manual Page) \
+	/Author (Rick Richardson) \
+	/Keywords (printing) \
+	/Creator (groff \n(.x.\n(.y.\n(.Y -man) \
+	/CreationDate (\*[an-extra1]) \
+	/ModDate (\*[an-extra1]) \
+	/DOCINFO"
+\}
+'\"
+'\" The manual page name is only 1st level mark
+'\"
+.nr rr_levels!\n+[rr_n] 1
+.ds rr_labels!\n[rr_n] \*[an-title](\*[an-section])
+.pdfdest Link\n[rr_n]
+'\"
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+gipddecode \- Decode a GIPD stream into human readable form.
+.SH SYNOPSIS
+.B gipddecode
+.RI [ options "] <" gipd-file
+.SH DESCRIPTION
+.B gipddecode
+decodes a Granite Image Printer Driver (GIPD) stream into human readable form.
+Granite Systems was acquired by Monotype Imaging.
+.P
+A GIPD stream is the printer language used by the
+Lexmark X500 and the Dell 1125 MFP
+printers.
+
+.SH COMMAND LINE OPTIONS
+These are the options that can appear on the command line.
+.TP
+.BI \-d\0 basename
+Basename of .pbm file for saving decompressed planes.
+.TP
+.BI \-h
+Print hex file offsets.
+.TP
+.BI \-o
+Print file offsets.
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Decode an GIPD stream file.
+
+.nf
+.ft CW
+$ gipddecode -h x500-mono.prn 
+     0: OFST    0       len=128
+    80: OFST    1       len=128
+   100: OFST    2       len=128
+   180: OFST    3       len=128
+   200: OFST    4       len=128
+        [SNIP]
+ 27d80: OFST    1275    len=128
+ 27e00: \\033%-12345X@PJL SET DISPINFOWHILEPRINT=OFF
+ 27e2a: @PJL SET DISPATPAPERCHANG=OFF
+ 27e49: @PJL SET JAMRECOVERY=ON
+ 27e62: @PJL SET OUTPUTBLANKPAPER=OFF
+ 27e81: @PJL SET PRINTSLOWLY=OFF
+ 27e9b: @PJL SET REVERSEPRINT=OFF
+ 27eb6: \\033%-12345X
+ 27ebf: GDIJ    len=108
+        unk0=0, unk1=0, unk2=0, unk3=0, unk4=0
+        unk5=16777221(0x1000005), unk6=0, unk7=0, unk8=0, paper=0
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 27f37: GDIP    len=52
+        nplane = 1, w254 = 4896, h254 = 6110
+        132018de, 0, 0, 0, 0, 1000000, 0, 0, 0, 0, 0, 0, 0, 
+ 27f77: GDIB     0      len=60 (0x3c)
+ 27fcb: GDIB     1      len=252 (0xfc)
+ 280df: GDIB     2      len=124 (0x7c)
+ 28173: GDIB     3      len=956 (0x3bc)
+ 28547: GDIB     4      len=1692 (0x69c)
+ 28bfb: GDIB     5      len=572 (0x23c)
+ 28e4f: GDIB     6      len=17084 (0x42bc)
+ 2d123: GDIB     7      len=18108 (0x46bc)
+ 317f7: GDIB     8      len=8508 (0x213c)
+ 3394b: GDIB     9      len=1756 (0x6dc)
+ 3403f: GDIB    10      len=1596 (0x63c)
+ 34693: GDIB    11      len=892 (0x37c)
+ 34a27: GDIB    12      len=2332 (0x91c)
+ 3535b: GDIB    13      len=8380 (0x20bc)
+ 3742f: GDIB    14      len=3452 (0xd7c)
+ 381c3: GDIB    15      len=60 (0x3c)
+ 38217: GDIB    16      len=1468 (0x5bc)
+ 387eb: GDIB    17      len=2076 (0x81c)
+ 3901f: GDIB    18      len=284 (0x11c)
+ 39153: GDIB    19      len=1660 (0x67c)
+ 397e7: GDIB    20      len=2908 (0xb5c)
+ 3a35b: GDIB    21      len=156 (0x9c)
+ 3a40f: GDIB    22      len=188 (0xbc)
+ 3a4e3: GDIB    23      len=220 (0xdc)
+ 3a5d7: GDIB    24      len=60 (0x3c)
+ 3a62b: PIDG
+ 3a637: JIDG
+Total Size = 75843 (0x12843)
+
+.ft P
+.fi
+
+.SH FILES
+.BR /usr/bin/gipddecode
+'\" .SH SEE ALSO
+'\" .BR foo2gipd-wrapper (1),
+'\" .BR foo2gipd (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+'\" .br
+'\" http://foo2hiperc.rkkda.com/
+'\"
+'\"
+'\"
+.em pdf_outline

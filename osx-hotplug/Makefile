@@ -21,6 +21,9 @@ osx-hplj-hotplug: osx-hplj-hotplug.o
 	    -framework Foundation \
 	    -framework CoreFoundation
 
+osx-hplj-hotplug.o: osx-hplj-hotplug.m
+	cc -DPREFIX=\"$(PREFIX)\" -c -o osx-hplj-hotplug.o osx-hplj-hotplug.m
+
 man:	osx-hplj-hotplug.1
 
 .1in.1: 
@@ -36,7 +39,7 @@ man:	osx-hplj-hotplug.1
 	    -e "s@\$${URLSLX}@$(URLSLX)@" \
 	    -e "s@\$${URLHC}@$(URLHC)@" \
 	    -e "s/\$${MODver}/$$MODver/"
-	chmod -w $*.1
+	chmod a-w $*.1
 
 install: all
 	$(INSTALL) -c osx-hplj-hotplug $(BIN)/

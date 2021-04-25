@@ -14,6 +14,8 @@ With this utility, you can print to some Xerox and Dell, such as these:
     - Fuji Xerox DocuPrint CM215	B/W and color
     - Fuji Xerox DocuPrint M215		B/W
     - Fuji Xerox DocuPrint P205		B/W
+    - Xerox Phaser 3010			B/W
+    - Xerox Phaser 3040			B/W
     - Xerox WorkCentre 3045		B/W
     - Xerox WorkCentre 6015		B/W and color
 
@@ -57,7 +59,7 @@ yourself.
 
 */
 
-static char Version[] = "$Id: foo2hbpl2.c,v 1.34 2015/10/11 19:24:50 rick Exp $";
+static char Version[] = "$Id: foo2hbpl2.c,v 1.38 2020/05/05 09:45:11 rick Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -835,6 +837,22 @@ cmyk_page(unsigned char *raw, int w, int h, FILE *ofp)
 	    }
 	}
 
+	if (SaveToner)
+	{
+	    int     x, y;
+	    int     bpl, bpl16;
+
+	    bpl = (w + 7) / 8;
+	    bpl16 = (bpl + 15) & ~15;
+
+	    for (y = 0; y < h; y += 2)
+	    	for (x = 0; x < bpl16; ++x)
+		    plane[i][y*bpl16 + x] &= 0x55;
+            for (y = 1; y < h; y += 2)
+            	for (x = 0; x < bpl16; ++x)
+                plane[i][y*bpl16 + x] &= 0xaa;
+	}
+
 	Dots[i] = compute_image_dots(w, h, plane[i]);
 
 	*bitmaps[i] = plane[i];
@@ -875,6 +893,22 @@ pksm_page(unsigned char *plane[4], int w, int h, FILE *ofp)
 
     for (i = 0; i < 4; ++i)
     {
+	if (SaveToner)
+        {
+            int     x, y;
+            int     bpl, bpl16;
+
+            bpl = (w + 7) / 8;
+            bpl16 = (bpl + 15) & ~15;
+
+            for (y = 0; y < h; y += 2)
+                for (x = 0; x < bpl16; ++x)
+                    plane[i][y*bpl16 + x] &= 0x55;
+            for (y = 1; y < h; y += 2)
+                for (x = 0; x < bpl16; ++x)
+                plane[i][y*bpl16 + x] &= 0xaa;
+        }
+
 	Dots[i] = compute_image_dots(w, h, plane[i]);
 
 	*bitmaps[i] = plane[i];
@@ -1549,7 +1583,7 @@ main(int argc, char *argv[])
     // ResX = 600;
     if (SaveToner)
     {
-	SaveToner = 0;
+	SaveToner = 1;	// need to be 1 otherwise Draft printing is not working.
 	EconoMode = 1;
     }
 

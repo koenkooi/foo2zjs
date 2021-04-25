@@ -1,0 +1,107 @@
+#!/bin/sh
+
+#
+# only the file in ~/geo/myftpput is writeable!
+#
+
+PROGNAME="$0"
+
+usage() {
+	cat <<EOF
+NAME
+    `basename $PROGNAME` - Ncftp/lftp put with -f option
+
+SYNOPSIS
+    `basename $PROGNAME` -f login.cfg dir files
+
+DESCRIPTION
+    Put files on to the web. Uses ncftp style configuration file.
+
+OPTIONS
+    -S		Use lftp and sftp://user@host
+    -m		mkdir the directory
+    -f XX	Read the file XX for host, user, and password information:
+		host <hostname>
+		user <username>
+		pass <password>
+    -D lvl	Debug level
+
+EXAMPLE
+    Using ncftp:
+
+	myftpput -f ~/.ncftp-website geo wherigo2jpg wherigo2lua
+
+    Using lftp:
+
+	myftpput -S -f ~/.ncftp-website geo wherigo2jpg wherigo2lua
+
+EOF
+
+	exit 1
+}
+
+#
+#       Report an error and exit
+#
+error() {
+	echo "`basename $PROGNAME`: $1" >&2
+	exit 1
+}
+
+debug() {
+	if [ $DEBUG -ge $1 ]; then
+	    echo "`basename $PROGNAME`: $2" >&2
+	fi
+}
+
+#
+#       Process the options
+#
+DEBUG=0
+SFTP=0
+CFG=
+FTP=
+while getopts "mSf:D:h?" opt
+do
+	case $opt in
+	S)	SFTP=1;;
+	f)	CFG="$OPTARG";;
+	m)	FTP="-m $FTP";;
+	D)	DEBUG="$OPTARG";;
+	h|\?)	usage;;
+	esac
+done
+shift `expr $OPTIND - 1`
+
+#
+#	Main Program
+#
+if [ -r "$CFG" ]; then
+    host=$(grep host "$CFG" | tail -1 | awk '{print $2}')
+    user=$(grep user "$CFG" | tail -1 | awk '{print $2}')
+    pass=$(grep pass "$CFG" | tail -1 | awk '{print $2}')
+else
+    usage
+fi
+
+DIR="$1"; shift
+
+if [ "$SFTP" = 0 ]; then
+    ncftp <<-EOF
+	open -u $user -p $pass $host
+	mkdir $DIR
+	cd $DIR
+	mput -f $*
+	quit
+	EOF
+else
+    lftp <<-EOF
+	set sftp:auto-confirm yes
+	open sftp://$host
+	user $user $pass
+	mkdir -f -p $DIR
+	cd $DIR
+	mput $*
+	quit
+	EOF
+fi

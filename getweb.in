@@ -155,7 +155,7 @@ getone() {
     case "$1" in
     lj1000|1000)
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihp1000.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1000.tar.gz \
 	    ""
 	#echo "provided"
 	#getexe \
@@ -166,7 +166,7 @@ getone() {
 	;;
     lj1005|1005)
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihp1005.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1005.tar.gz \
 	    ""
 	#echo "provided"
 	#getexe \
@@ -175,45 +175,45 @@ getone() {
 	    #sihp1005.img
 	copyright "(c) Copyright Hewlett-Packard 2002"
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihpP1005.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1005.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;
     lj1018|1018)
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihp1018.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1018.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2005"
 	;;
     lj1020|1020)
 	# http://ftp.hp.com/pub/softlib/software8/COL14041/lj-39322-2/hp_LJ_1020-1022_Full_Solution.exe
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihp1020.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1020.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2005"
 	;;
     [pP]100[57])
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihpP1005.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1005.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;
     [pP]100[68])
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihpP1006.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1006.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;
     [pP]1505)
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihpP1505.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1505.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;
     2200dl|2200)
 	if true; then
 	    gettgz \
-		http://foo2zjs.rkkda.com/icm dl2300.tar.gz \
+		http://foo2zjs.linkevich.net/foo2zjs/icm dl2300.tar.gz \
 		""
 	else
 	    getexe \
@@ -225,7 +225,7 @@ getone() {
     2300dl|2300)
 	if true; then
 	    gettgz \
-		http://foo2zjs.rkkda.com/icm dl2300.tar.gz \
+		http://foo2zjs.linkevich.net/foo2zjs/icm dl2300.tar.gz \
 		""
 	else
 	    getexe \
@@ -233,7 +233,7 @@ getone() {
 		"*.icm"
 	fi
 	gettgz \
-	    http://foo2zjs.rkkda.com/icm km2430.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/icm km2430.tar.gz \
 	    ""
 	copyright "(c) Copyright Minolta-QMS 2001"
 	;;
@@ -249,7 +249,7 @@ getone() {
     cpwl|pageworks)
 	if true; then
 	    gettgz \
-		http://foo2zjs.rkkda.com/icm dl2300.tar.gz \
+		http://foo2zjs.linkevich.net/foo2zjs/icm dl2300.tar.gz \
 		""
 	else
 	    getexe \
@@ -267,59 +267,59 @@ getone() {
 	;;
     2430)
 	gettgz \
-	    http://foo2zjs.rkkda.com/icm km2430.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/icm km2430.tar.gz \
 	    ""
 	copyright "(c) Copyright Konica Minolta 2003"
 	;;
     2530|2490|6115|2480|1600w|1680|1690|4690|110|6121)
 	gettgz \
-	    http://foo2lava.rkkda.com/icm km2530.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2lava/icm km2530.tar.gz \
 	    ""
 	copyright "(c) Copyright Konica Minolta 2005"
 	copyright "(c) Copyright Rick Richardson 2007.  All Rights Reserved"
 	gettgz \
-	    http://foo2lava.rkkda.com/icm km-1600.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2lava/icm km-1600.tar.gz \
 	    ""
 	copyright "(c) Copyright Rick Richardson 2009.  All Rights Reserved"
 	;;
     1500)
 	gettgz \
-	    http://foo2hp.rkkda.com/icm hpclj2500.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hp/icm hpclj2500.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2002"
 	gettgz \
-	    http://foo2hp.rkkda.com/icm hpclj2600n.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hp/icm hpclj2600n.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2003"
 	copyright "(c) Copyright Rick Richardson 2006.  All Rights Reserved"
 	;;
     1025)
 	gettgz \
-	    http://foo2zjs.rkkda.com/icm hp-cp1025.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/icm hp-cp1025.tar.gz \
 	    ""
 	copyright "(c) Copyright Rick Richardson 2010.  All Rights Reserved"
 	;;
     1215|1600|2600*)
 	gettgz \
-	    http://foo2hp.rkkda.com/icm hpclj2600n.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hp/icm hpclj2600n.tar.gz \
 	    ""
 	gettgz \
-	    http://foo2zjs.rkkda.com/icm km2430.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2zjs/icm km2430.tar.gz \
 	    "km2430_2.icm"
 	copyright "(c) Copyright Hewlett-Packard 2003"
 	copyright "(c) Copyright Rick Richardson 2006.  All Rights Reserved"
 	gettgz \
-	    http://foo2hp.rkkda.com/icm hp1215.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hp/icm hp1215.tar.gz \
 	    ""
 	copyright "(c) Copyright Rick Richardson 2008.  All Rights Reserved"
 	;;
     300|310|315|325|360|365|2160|3160|3175|3185|6110)
 	gettgz \
-	    http://foo2qpdl.rkkda.com/icm samclp300.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2qpdl/icm samclp300.tar.gz \
 	    ""
 	copyright "(c) Copyright Rick Richardson 2007.  All Rights Reserved"
 	gettgz \
-	    http://foo2qpdl.rkkda.com/icm samclp315.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2qpdl/icm samclp315.tar.gz \
 	    ""
 	copyright "(c) Copyright Rick Richardson 2008.  All Rights Reserved"
 	;;
@@ -328,7 +328,7 @@ getone() {
 
     500)
 	gettgz \
-	    http://foo2slx.rkkda.com/icm lexc500.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2slx/icm lexc500.tar.gz \
 	    ""
 	copyright "(c) Copyright Lexmark 2006"
 	;;
@@ -349,43 +349,43 @@ getone() {
 	;;
     301)
 	gettgz \
-	    http://foo2hiperc.rkkda.com/icm okic301.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hiperc/icm okic301.tar.gz \
 	    ""
 	copyright "(c) Copyright Okidata 2012"
 	;;
     c310)
 	gettgz \
-	    http://foo2hiperc.rkkda.com/icm okic310.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hiperc/icm okic310.tar.gz \
 	    ""
 	copyright "(c) Copyright Okidata 2010"
 	;;
     c511)
 	gettgz \
-	    http://foo2hiperc.rkkda.com/icm okic511.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hiperc/icm okic511.tar.gz \
 	    ""
 	copyright "(c) Copyright Okidata 2012"
 	;;
     c810)
 	gettgz \
-	    http://foo2hiperc.rkkda.com/icm okic810.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hiperc/icm okic810.tar.gz \
 	    ""
 	copyright "(c) Copyright Okidata 2012"
 	;;
     3100|3200|5100|5150|5200|5250)
 	gettgz \
-	    http://foo2hiperc.rkkda.com/icm okic3200.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hiperc/icm okic3200.tar.gz \
 	    ""
 	copyright "(c) Copyright Okidata 2005"
 	;;
     3300|3400|3530)
 	gettgz \
-	    http://foo2hiperc.rkkda.com/icm okic3400.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hiperc/icm okic3400.tar.gz \
 	    ""
 	copyright "(c) Copyright Okidata 2006"
 	;;
     5500|5600|5800|160)
 	gettgz \
-	    http://foo2hiperc.rkkda.com/icm okic5600.tar.gz \
+	    http://foo2zjs.linkevich.net/foo2hiperc/icm okic5600.tar.gz \
 	    ""
 	copyright "(c) Copyright Okidata 2006"
 	;;

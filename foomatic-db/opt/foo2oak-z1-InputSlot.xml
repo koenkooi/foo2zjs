@@ -23,6 +23,11 @@
 	    <ev_shortname> <en>Cassette1</en> </ev_shortname>
 	    <ev_driverval>1</ev_driverval>
 	</enum_val>
+	<enum_val id="ev/foo2oak-z1-InputSlot-2">
+	    <ev_longname> <en>Cassette 2</en> </ev_longname>
+	    <ev_shortname> <en>Cassette2</en> </ev_shortname>
+	    <ev_driverval>2</ev_driverval>
+	</enum_val>
 	<enum_val id="ev/foo2oak-z1-InputSlot-4">
 	    <ev_longname> <en>MP Tray</en> </ev_longname>
 	    <ev_shortname> <en>MPTray</en> </ev_shortname>

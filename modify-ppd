@@ -1,5 +1,61 @@
 #!/bin/sh
 
+PROGNAME="$0"
+
+usage() {
+	cat <<EOF
+NAME
+    `basename $PROGNAME` - modify the PPD for doing marker (toner) levels
+
+SYNOPSIS
+    `basename $PROGNAME` [options]
+
+DESCRIPTION
+    Modify the PPD for doing marker (toner) levels.  It reads from stdin
+    and writes to stdout.
+
+OPTIONS
+    -D lvl	Debug level
+
+EXAMPLE
+    $ modify-ppd < PPD/KONICA_MINOLTA-magicolor_2530_DL.ppd |
+	gzip > /usr/share/cups/model/KONICA_MINOLTA-magicolor_2530_DL.ppd.gz
+EOF
+
+	exit 1
+}
+
+#
+#       Report an error and exit
+#
+error() {
+	echo "`basename $PROGNAME`: $1" >&2
+	exit 1
+}
+
+debug() {
+	if [ $DEBUG -ge $1 ]; then
+	    echo "`basename $PROGNAME`: $2" >&2
+	fi
+}
+
+#
+#       Process the options
+#
+DEBUG=0
+while getopts "D:h?" opt
+do
+	case $opt in
+	D)	DEBUG="$OPTARG";;
+	h|\?)	usage;;
+	esac
+done
+shift `expr $OPTIND - 1`
+
+#
+#	Main Program
+#
+
 #
 # Portable version of 'which'
 #
@@ -51,21 +107,22 @@ BEGIN {
 /"\(mc2530DL\)"/		{ do_cmd = "foo2lava-pjl"; negate = 0 }
 /"\(magicolor 4690MF\)"/	{ do_cmd = "foo2lava-pjl" }
 
-/^\*cupsFilter:/ {
+/^\*cupsFilter:.*pdf/ {
     if (cupsdev && do_cmd)
     {
-	print "*cupsFilter:\t\"application/vnd.cups-command 100 command2" \
+	print "*cupsFilter:\t\"application/vnd.cups-command 200 command2" \
 		do_cmd "\""
 
 	print "*% Specify the list of commands we support"
 	print "*cupsCommands:\t\"PrintSelfTestPage ReportLevels\""
 
-	# SNMP marker levels are WRONG
+	print "*% SNMP marker levels are WRONG..."
 	print "*cupsSNMPSupplies:\tFalse"
 
 	# When cups gets updated for USB bidirectional (v1.5???) ...
 	# print "*cupsBIDI:\tTrue"
 
+	print "*% Negate marker levels..."
 	printf "*foo2zjsNegateMarkerLevels:\t%s\n",
 	    negate ? "True" : "False"
     }

@@ -31,6 +31,7 @@ typedef struct _XQX_HEADER {
 
 typedef enum {
     XQXI_DMDUPLEX	= 0x10000002,	// from DEVMODE (DMBIN?)
+    XQXI_COPIES		= 0x20000005,	// from DEVMODE (DMBIN?)
     XQXI_DMDEFAULTSOURCE= 0x20000006,	// from DEVMODE (DMBIN?)
     XQXI_DMMEDIATYPE	= 0x20000000,	// from DEVMODE
     XQXI_RESOLUTION_X	= 0x20000008,	// dots per inch

@@ -5,13 +5,13 @@
 *%
 *% This file is published under the GNU General Public License
 *%
-*% PPD-O-MATIC (3.0.0 or newer) generated this PPD file. It is for use with 
+*% PPD-O-MATIC (4.0.0 or newer) generated this PPD file. It is for use with 
 *% all programs and environments which use PPD files for dealing with
 *% printer capability information. The printer must be configured with the
-*% "foomatic-rip" backend filter script of Foomatic 3.0.0 or newer. This 
+*% "foomatic-rip" backend filter script of Foomatic 4.0.0 or newer. This 
 *% file and "foomatic-rip" work together to support PPD-controlled printer
-*% driver option access with arbitrary free software printer drivers and
-*% printing spoolers.
+*% driver option access with all supported printer drivers and printing
+*% spoolers.
 *%
 *% To save this file on your disk, wait until the download has completed
 *% (the animation of the browser logo must stop) and then use the
@@ -33,7 +33,8 @@
 *cupsVersion:	1.0
 *cupsManualCopies: True
 *cupsModelNumber:  2
-*cupsFilter:	"application/vnd.cups-postscript 0 foomatic-rip"
+*cupsFilter:	"application/vnd.cups-postscript 100 foomatic-rip"
+*cupsFilter:	"application/vnd.cups-pdf 0 foomatic-rip"
 *%pprRIP:        foomatic-rip other
 *ModelName:     "Oki C3300"
 *ShortNickName: "Oki C3300 foo2hiperc"
@@ -45,6 +46,14 @@
 *PSVersion:	"(3010.000) 704"
 *PSVersion:	"(3010.000) 705"
 *PSVersion:	"(3010.000) 800"
+*PSVersion:	"(3010.000) 815"
+*PSVersion:	"(3010.000) 850"
+*PSVersion:	"(3010.000) 860"
+*PSVersion:	"(3010.000) 861"
+*PSVersion:	"(3010.000) 862"
+*PSVersion:	"(3010.000) 863"
+*PSVersion:	"(3010.000) 864"
+*PSVersion:	"(3010.000) 870"
 *LanguageLevel:	"3"
 *ColorDevice:	True
 *DefaultColorSpace: RGB
@@ -54,7 +63,7 @@
 *TTRasterizer:	Type42
 *1284DeviceID: "DRV:Dfoo2hiperc,R1,M0,TF;"
 
-*driverName foo2hiperc/foo2hiperc: ""
+*driverName foo2hiperc: ""
 *driverType F/Filter: ""
 *driverUrl: "http://foo2hiperc.rkkda.com/"
 *driverObsolete: False
@@ -342,6 +351,10 @@
 *Copies 99/99: "%% FoomaticRIPOptionSetting: Copies=99"
 *Copies 100/100: "%% FoomaticRIPOptionSetting: Copies=100"
 *CloseUI: *Copies
+
+*CustomCopies True: " pop "
+*ParamCustomCopies Copies/Copies: 1 int 1 100
+
 
 *CloseGroup: General
 

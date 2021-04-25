@@ -5,7 +5,7 @@ This program converts pbm (B/W) images and 1-bit-per-pixel cmyk images
 (both produced by ghostscript) to Zenographics ZJ-stream format. There
 is some information about the ZJS format at http://ddk.zeno.com.
 
-With this utility, you can print to some HP printers, such as these:
+With this utility, you can print to some Oki printers, such as these:
     - Oki C310dn, C3100, C3200, C3300n, C3400n, C5100n, C5500n
 
 AUTHORS
@@ -48,7 +48,7 @@ yourself.
 
 */
 
-static char Version[] = "$Id: foo2hiperc.c,v 1.35 2013/12/01 20:13:58 rick Exp $";
+static char Version[] = "$Id: foo2hiperc.c,v 1.37 2019/05/17 21:55:07 rick Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -1645,8 +1645,8 @@ main(int argc, char *argv[])
     if (getenv("DEVICE_URI"))
 	IsCUPS = 1;
 
-if (getenv("ccc"))
-    Compressed = 1;
+    if (getenv("ccc"))
+	Compressed = 1;
 
     Bpp = ResX / 600;
     //ResX = 600;

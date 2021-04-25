@@ -13,8 +13,14 @@
     </arg_execution>
     <constraints>
 	<constraint sense="true">
-	<driver>foo2qpdl</driver>
-	<arg_defval>ev/foo2qpdl-ColorMode-mono</arg_defval>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-ColorMode-mono</arg_defval>
+	</constraint>
+	<constraint sense="false">
+	    <make>Samsung</make> <model>ML-1670</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>Samsung</make> <model>ML-1675</model>
 	</constraint>
     </constraints>
     <enum_vals>
@@ -33,6 +39,14 @@
 	    </en></comments>
 	    <ev_shortname> <en>Color</en> </ev_shortname>
 	    <ev_driverval>-c</ev_driverval>
+	    <constraints>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1670</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1675</model>
+		</constraint>
+	    </constraints>
 	</enum_val>
     </enum_vals>
 </option>

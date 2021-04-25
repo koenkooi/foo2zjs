@@ -44,6 +44,12 @@
 	    <make>Samsung</make> <model>CLX-3185</model>
 	</constraint>
 	<constraint sense="false">
+	    <make>Samsung</make> <model>ML-1670</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>Samsung</make> <model>ML-1675</model>
+	</constraint>
+	<constraint sense="false">
 	    <make>Xerox</make> <model>Phaser 6110</model>
 	</constraint>
     </constraints>

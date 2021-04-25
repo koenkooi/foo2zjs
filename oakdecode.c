@@ -1,5 +1,5 @@
 /*
- * $Id: oakdecode.c,v 1.42 2014/01/24 19:25:47 rick Exp $
+ * $Id: oakdecode.c,v 1.43 2020/02/08 13:36:18 rick Exp $
  *
  * Work in progress decoder for Oak Tech. JBIG streams (HP1500)
  *
@@ -307,6 +307,7 @@ decode(FILE *fp)
     int		height[4][2];
     int		width[4][2];
     char        *strpaper[300+1];
+    char        *strtype[15+1];
     #define STRARY(X, A) \
                             ((X) >= 0 && (X) < sizeof(A)/sizeof(A[0])) \
                             ? A[X] : "UNK"
@@ -335,6 +336,24 @@ decode(FILE *fp)
     strpaper[259] = "B5iso";
     strpaper[260] = "env6";
     strpaper[296] = "CUSTOM";
+
+    for (i = 0; i < sizeof(strtype)/sizeof(strtype[0]); ++i)
+        strtype[i] = "unk";
+    strtype[0] = "AutoSelect";
+    strtype[1] = "Plain";
+    strtype[2] = "Preprinted";
+    strtype[3] = "Letterhead";
+    strtype[4] = "GrayscaleTransparency";
+    strtype[5] = "Prepunched";
+    strtype[6] = "Labels";
+    strtype[7] = "Bond";
+    strtype[8] = "Recycled";
+    strtype[9] = "Color";
+    strtype[10] = "Cardstock";
+    strtype[11] = "Heavy";
+    strtype[12] = "Envelope";
+    strtype[13] = "Light";
+    strtype[14] = "Tough";
 
     for (;;)
     {
@@ -440,13 +459,9 @@ decode(FILE *fp)
 	    rc = fread(bytes, len = 17*4, 1, fp);
 	    if (rc != 1) goto out;
 	    curOff += len;
-	    printf(" PaperType=%d UNK8=%d,%d,%d, str='%s'",
-		    bytes[0],
+	    printf(" PaperType=%s(%d) UNK8=%d,%d,%d, str='%s'",
+		    STRARY(bytes[0], strtype), bytes[0],
 		    bytes[1], bytes[2], bytes[3], &bytes[4]);
-	    // PaperType: 0=AutoSelect, 1=Plain, 2=Preprinted, 3=Letterhead
-	    // 4=GrayscaleTransparency, 5=Prepunched, 6=Labels, 7=Bond
-	    // 8=Recycled, 9=Color, 10=Cardstock, 11=Heavy, 12=Envelope
-	    // 13=Light, 14=Tough
 	    break;
 	case 0x2a:
 	    rc = fread(dwords, len = 5*4, 1, fp);

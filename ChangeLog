@@ -1,3 +1,51 @@
+2020-06-10	Rick Richardson <rick.richardson@comcast.net>
+	* osx-hotplug: Add PREFIX=/usr or PREFIX=/usr/local to cc rules
+
+2020-05-05:	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hbpl2.c: SaveToner implemented for color pages,
+	  thanks to bedi@3mtech.sk .
+
+2020-04-26:	Rick Richardson <rick.richardson@comcast.net>
+	* foo2hbpl2.c: Bug with SaveToner
+
+2020-02-07:	Rick Richardson <rick.richardson@comcast.net>
+	* Add Cassette 2 to foo2oak-z1-InputSlot.xml (KM-1635)
+
+2019-09-09:	Rick Richardson <rick.richardson@comcast.net>
+	* Add SmartInstallDisable-Tool.run since it was gone from
+	      http://hplipopensource.com/hplip-web/smartinstall/
+	  See HP SMART INSTALL NOTES in the INSTALL doc.
+
+2019-04-13:	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: Add install-aa to disable AppArmor on SUSE
+
+2018-09-10:	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: target ppd:	revert the 09-06 change.
+
+2018-09-06:	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: target ppd:
+	    Use the older foomatic-ppdfile which only has postscript,
+	    not postscript and pdf, for making ppd's.
+
+2017-12-02	Rick Richardson <rick.richardson@comcast.net>
+	* New Printers: HP LaserJet Pro M12a, M12w
+
+2017-03-20	Rick Richardson <rick.richardson@comcast.net>
+	* Add ddstdecode, for decoding some Ricoh printers.
+
+2016-10-21	Rick Richardson <rick.richardson@comcast.net>
+	* Makefile: install-hotplug-prog
+	    Add /lib/systemd/systemd-udevd to the list for Ubuntu 16.
+
+2016-09-02	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Xerox Phaser 3040 using the foo2hbpl2 driver.
+
+2016-08-30	Rick Richardson <rick.richardson@comcast.net>
+	* New Printer: Xerox Phaser 3010 using the foo2hbpl2 driver.
+
+2016-03-13	Rick Richardson <rick.richardson@comcast.net>
+	* icc2ps/lcms.h: USE_CUSTOM_SWAB defined.
+
 2015-10-24	Rick Richardson <rick.richardson@comcast.net>
 	* foomatic-db/printer/Epson-AcuLaser_CX17NF.xml:
 		Change margins on Epson AcuLaser CX17NF.

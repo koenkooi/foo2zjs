@@ -21,7 +21,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 */
 
-static char Version[] = "$Id: osx-hplj-hotplug.m,v 1.14 2011/07/22 18:56:58 rick Exp $";
+static char Version[] = "$Id: osx-hplj-hotplug.m,v 1.16 2020/06/10 20:24:09 rick Exp $";
 
 #import <Cocoa/Cocoa.h>
 #include <CoreFoundation/CoreFoundation.h>
@@ -44,16 +44,16 @@ typedef struct
 
 HOTPLUG HotPlug[] =
 {
-    0x03f0,	0x0517,		"/usr/share/foo2zjs/firmware/sihp1000.dl",
-    0x03f0,	0x1317,		"/usr/share/foo2zjs/firmware/sihp1005.dl",
-    0x03f0,	0x4117,		"/usr/share/foo2zjs/firmware/sihp1018.dl",
-    0x03f0,	0x2b17,		"/usr/share/foo2zjs/firmware/sihp1020.dl",
+    0x03f0,	0x0517,		PREFIX "/share/foo2zjs/firmware/sihp1000.dl",
+    0x03f0,	0x1317,		PREFIX "/share/foo2zjs/firmware/sihp1005.dl",
+    0x03f0,	0x4117,		PREFIX "/share/foo2zjs/firmware/sihp1018.dl",
+    0x03f0,	0x2b17,		PREFIX "/share/foo2zjs/firmware/sihp1020.dl",
 
-    0x03f0,	0x3d17,		"/usr/share/foo2xqx/firmware/sihpP1005.dl",
-    0x03f0,	0x3e17,		"/usr/share/foo2xqx/firmware/sihpP1006.dl",
-    0x03f0,	0x4817,		"/usr/share/foo2xqx/firmware/sihpP1005.dl",
-    0x03f0,	0x4917,		"/usr/share/foo2xqx/firmware/sihpP1006.dl",
-    0x03f0,	0x3f17,		"/usr/share/foo2xqx/firmware/sihpP1505.dl",
+    0x03f0,	0x3d17,		PREFIX "/share/foo2xqx/firmware/sihpP1005.dl",
+    0x03f0,	0x3e17,		PREFIX "/share/foo2xqx/firmware/sihpP1006.dl",
+    0x03f0,	0x4817,		PREFIX "/share/foo2xqx/firmware/sihpP1005.dl",
+    0x03f0,	0x4917,		PREFIX "/share/foo2xqx/firmware/sihpP1006.dl",
+    0x03f0,	0x3f17,		PREFIX "/share/foo2xqx/firmware/sihpP1505.dl",
     0,		0,		NULL,	// Must be last
 };
 

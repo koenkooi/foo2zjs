@@ -1,0 +1,87 @@
+<option type="enum" id="opt/foo2ddst-PageSize">
+    <arg_longname> <en>Page Size</en> </arg_longname>
+    <arg_shortname> <en>PageSize</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>135</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>-p%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	<driver>foo2ddst</driver>
+	<arg_defval>ev/foo2ddst-PageSize-1</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2ddst-PageSize-1">
+	    <ev_longname> <en>Letter</en> </ev_longname>
+	    <ev_shortname> <en>Letter</en> </ev_shortname>
+	    <ev_driverval>1</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-2">
+	    <ev_longname> <en>Legal</en> </ev_longname>
+	    <ev_shortname> <en>Legal</en> </ev_shortname>
+	    <ev_driverval>2</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-3">
+	    <ev_longname> <en>Executive</en> </ev_longname>
+	    <ev_shortname> <en>Executive</en> </ev_shortname>
+	    <ev_driverval>3</ev_driverval>
+	</enum_val>
+<!--
+	<enum_val id="ev/foo2ddst-PageSize-4">
+	    <ev_longname> <en>Invoice</en> </ev_longname>
+	    <ev_shortname> <en>Invoice</en> </ev_shortname>
+	    <ev_driverval>4</ev_driverval>
+	</enum_val>
+-->
+	<enum_val id="ev/foo2ddst-PageSize-5">
+	    <ev_longname> <en>A4</en> </ev_longname>
+	    <ev_shortname> <en>A4</en> </ev_shortname>
+	    <ev_driverval>5</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-6">
+	    <ev_longname> <en>A5</en> </ev_longname>
+	    <ev_shortname> <en>A5</en> </ev_shortname>
+	    <ev_driverval>6</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-7">
+	    <ev_longname> <en>A7</en> </ev_longname>
+	    <ev_shortname> <en>A7</en> </ev_shortname>
+	    <ev_driverval>7</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-8">
+	    <ev_longname> <en>B5 (JIS)</en> </ev_longname>
+	    <ev_shortname> <en>B5jis</en> </ev_shortname>
+	    <ev_driverval>8</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-9">
+	    <ev_longname> <en>B6 (JIS)</en> </ev_longname>
+	    <ev_shortname> <en>B6jis</en> </ev_shortname>
+	    <ev_driverval>9</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-10">
+	    <ev_longname> <en>16k 197x273</en> </ev_longname>
+	    <ev_shortname> <en>w558h774</en> </ev_shortname>
+	    <ev_driverval>10</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-11">
+	    <ev_longname> <en>16k 184x260</en> </ev_longname>
+	    <ev_shortname> <en>w522h737</en> </ev_shortname>
+	    <ev_driverval>11</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-12">
+	    <ev_longname> <en>16k 195x270</en> </ev_longname>
+	    <ev_shortname> <en>w553h765</en> </ev_shortname>
+	    <ev_driverval>12</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-PageSize-Custom">
+	    <ev_longname> <en>Custom</en> </ev_longname>
+	    <ev_shortname> <en>Custom</en> </ev_shortname>
+	    <ev_driverval>Custom.%0x%1</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

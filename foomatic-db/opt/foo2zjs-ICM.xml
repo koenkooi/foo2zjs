@@ -64,6 +64,12 @@
 	    <make>HP</make> <model>LaserJet 1022</model>
 	</constraint>
 	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet Pro M12a</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>HP</make> <model>LaserJet Pro M12w</model>
+	</constraint>
+	<constraint sense="false">
 	    <make>HP</make> <model>LaserJet Pro P1102</model>
 	</constraint>
 	<constraint sense="false">
@@ -259,6 +265,12 @@
 	    	    <make>HP</make> <model>LaserJet 1022</model>
 	        </constraint>
 		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12a</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12w</model>
+		</constraint>
+		<constraint sense="false">
 		    <make>HP</make> <model>LaserJet Pro P1102</model>
 		</constraint>
 		<constraint sense="false">
@@ -298,6 +310,12 @@
 	        <constraint sense="false">
 	    	    <make>HP</make> <model>LaserJet 1022</model>
 	        </constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12a</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12w</model>
+		</constraint>
 		<constraint sense="false">
 		    <make>HP</make> <model>LaserJet Pro P1102</model>
 		</constraint>
@@ -339,6 +357,12 @@
 	    	    <make>HP</make> <model>LaserJet 1022</model>
 	        </constraint>
 		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12a</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12w</model>
+		</constraint>
+		<constraint sense="false">
 		    <make>HP</make> <model>LaserJet Pro P1102</model>
 		</constraint>
 		<constraint sense="false">
@@ -379,6 +403,12 @@
 	    	    <make>HP</make> <model>LaserJet 1022</model>
 	        </constraint>
 		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12a</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12w</model>
+		</constraint>
+		<constraint sense="false">
 		    <make>HP</make> <model>LaserJet Pro P1102</model>
 		</constraint>
 		<constraint sense="false">
@@ -418,6 +448,12 @@
 	        <constraint sense="false">
 	    	    <make>HP</make> <model>LaserJet 1022</model>
 	        </constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12a</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>HP</make> <model>LaserJet Pro M12w</model>
+		</constraint>
 		<constraint sense="false">
 		    <make>HP</make> <model>LaserJet Pro P1102</model>
 		</constraint>

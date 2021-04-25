@@ -1,5 +1,5 @@
 /*
- * $Id: xqxdecode.c,v 1.19 2014/01/24 19:25:48 rick Exp $
+ * $Id: xqxdecode.c,v 1.20 2019/02/23 23:46:50 rick Exp $
  */
 
 /*b
@@ -341,6 +341,7 @@ decode(FILE *fp)
 		switch (item.type)
 		{
 		    CODESTR(XQXI_DMDUPLEX)		break;
+		    CODESTR(XQXI_COPIES)		break;
 		    CODESTR(XQXI_DMDEFAULTSOURCE)	break;
 		    CODESTR(XQXI_DMMEDIATYPE)		break;
 		    CODESTR(XQXI_RESOLUTION_X)		break;

@@ -5,13 +5,13 @@
 *%
 *% This file is published under the GNU General Public License
 *%
-*% PPD-O-MATIC (3.0.0 or newer) generated this PPD file. It is for use with 
+*% PPD-O-MATIC (4.0.0 or newer) generated this PPD file. It is for use with 
 *% all programs and environments which use PPD files for dealing with
 *% printer capability information. The printer must be configured with the
-*% "foomatic-rip" backend filter script of Foomatic 3.0.0 or newer. This 
+*% "foomatic-rip" backend filter script of Foomatic 4.0.0 or newer. This 
 *% file and "foomatic-rip" work together to support PPD-controlled printer
-*% driver option access with arbitrary free software printer drivers and
-*% printing spoolers.
+*% driver option access with all supported printer drivers and printing
+*% spoolers.
 *%
 *% To save this file on your disk, wait until the download has completed
 *% (the animation of the browser logo must stop) and then use the
@@ -33,7 +33,8 @@
 *cupsVersion:	1.0
 *cupsManualCopies: True
 *cupsModelNumber:  2
-*cupsFilter:	"application/vnd.cups-postscript 0 foomatic-rip"
+*cupsFilter:	"application/vnd.cups-postscript 100 foomatic-rip"
+*cupsFilter:	"application/vnd.cups-pdf 0 foomatic-rip"
 *%pprRIP:        foomatic-rip other
 *ModelName:     "Samsung CLP-365"
 *ShortNickName: "Samsung CLP-365 foo2qpdl"
@@ -45,6 +46,14 @@
 *PSVersion:	"(3010.000) 704"
 *PSVersion:	"(3010.000) 705"
 *PSVersion:	"(3010.000) 800"
+*PSVersion:	"(3010.000) 815"
+*PSVersion:	"(3010.000) 850"
+*PSVersion:	"(3010.000) 860"
+*PSVersion:	"(3010.000) 861"
+*PSVersion:	"(3010.000) 862"
+*PSVersion:	"(3010.000) 863"
+*PSVersion:	"(3010.000) 864"
+*PSVersion:	"(3010.000) 870"
 *LanguageLevel:	"3"
 *ColorDevice:	True
 *DefaultColorSpace: RGB
@@ -54,7 +63,7 @@
 *TTRasterizer:	Type42
 *1284DeviceID: "MFG:Samsung;MDL:CLP-360 Series;CMD:SPLC;DRV:Dfoo2qpdl,R1,M0,TF;"
 
-*driverName foo2qpdl/foo2qpdl: ""
+*driverName foo2qpdl: ""
 *driverType F/Filter: ""
 *driverUrl: "http://foo2qpdl.rkkda.com/"
 *driverObsolete: False
@@ -359,6 +368,10 @@
 *Copies 100/100: "%% FoomaticRIPOptionSetting: Copies=100"
 *CloseUI: *Copies
 
+*CustomCopies True: " pop "
+*ParamCustomCopies Copies/Copies: 1 int 1 100
+
+
 *CloseGroup: General
 
 *OpenGroup: Color Adjust/Color Adjust
@@ -473,6 +486,10 @@
 *cab 100/100: "%% FoomaticRIPOptionSetting: cab=100"
 *CloseUI: *cab
 
+*Customcab True: " pop "
+*ParamCustomcab cab/Mono or Color Adjust Brightness: 1 int 0 100
+
+
 *OpenUI *cac/Mono or Color Adjust Contrast: PickOne
 *FoomaticRIPOption cac: int CmdLine A
 *FoomaticRIPOptionPrototype cac: "-ac=%s "
@@ -582,6 +599,10 @@
 *cac 99/99: "%% FoomaticRIPOptionSetting: cac=99"
 *cac 100/100: "%% FoomaticRIPOptionSetting: cac=100"
 *CloseUI: *cac
+
+*Customcac True: " pop "
+*ParamCustomcac cac/Mono or Color Adjust Contrast: 1 int 0 100
+
 
 *OpenUI *cas/Color Adjust Saturation: PickOne
 *FoomaticRIPOption cas: int CmdLine A
@@ -693,6 +714,10 @@
 *cas 100/100: "%% FoomaticRIPOptionSetting: cas=100"
 *CloseUI: *cas
 
+*Customcas True: " pop "
+*ParamCustomcas cas/Color Adjust Saturation: 1 int 0 100
+
+
 *OpenUI *cacr/Color Adjust Cyan-Red: PickOne
 *FoomaticRIPOption cacr: int CmdLine A
 *FoomaticRIPOptionPrototype cacr: "-acr=%s "
@@ -802,6 +827,10 @@
 *cacr 99/99: "%% FoomaticRIPOptionSetting: cacr=99"
 *cacr 100/100: "%% FoomaticRIPOptionSetting: cacr=100"
 *CloseUI: *cacr
+
+*Customcacr True: " pop "
+*ParamCustomcacr cacr/Color Adjust Cyan-Red: 1 int 0 100
+
 
 *OpenUI *camg/Color Adjust Magenta-Green: PickOne
 *FoomaticRIPOption camg: int CmdLine A
@@ -913,6 +942,10 @@
 *camg 100/100: "%% FoomaticRIPOptionSetting: camg=100"
 *CloseUI: *camg
 
+*Customcamg True: " pop "
+*ParamCustomcamg camg/Color Adjust Magenta-Green: 1 int 0 100
+
+
 *OpenUI *cayb/Color Adjust Yellow-Blue: PickOne
 *FoomaticRIPOption cayb: int CmdLine A
 *FoomaticRIPOptionPrototype cayb: "-ayb=%s "
@@ -1022,6 +1055,124 @@
 *cayb 99/99: "%% FoomaticRIPOptionSetting: cayb=99"
 *cayb 100/100: "%% FoomaticRIPOptionSetting: cayb=100"
 *CloseUI: *cayb
+
+*Customcayb True: " pop "
+*ParamCustomcayb cayb/Color Adjust Yellow-Blue: 1 int 0 100
+
+
+*OpenUI *cayb/Color Adjust Yellow-Blue: PickOne
+*FoomaticRIPOption cayb: int CmdLine A
+*FoomaticRIPOptionPrototype cayb: "-ayb=%s "
+*FoomaticRIPOptionRange cayb: 0 100
+*OrderDependency: 220 AnySetup *cayb
+*Defaultcayb: 50
+*FoomaticRIPDefaultcayb: 50
+*cayb 0/0: "%% FoomaticRIPOptionSetting: cayb=0"
+*cayb 1/1: "%% FoomaticRIPOptionSetting: cayb=1"
+*cayb 2/2: "%% FoomaticRIPOptionSetting: cayb=2"
+*cayb 3/3: "%% FoomaticRIPOptionSetting: cayb=3"
+*cayb 4/4: "%% FoomaticRIPOptionSetting: cayb=4"
+*cayb 5/5: "%% FoomaticRIPOptionSetting: cayb=5"
+*cayb 6/6: "%% FoomaticRIPOptionSetting: cayb=6"
+*cayb 7/7: "%% FoomaticRIPOptionSetting: cayb=7"
+*cayb 8/8: "%% FoomaticRIPOptionSetting: cayb=8"
+*cayb 9/9: "%% FoomaticRIPOptionSetting: cayb=9"
+*cayb 10/10: "%% FoomaticRIPOptionSetting: cayb=10"
+*cayb 11/11: "%% FoomaticRIPOptionSetting: cayb=11"
+*cayb 12/12: "%% FoomaticRIPOptionSetting: cayb=12"
+*cayb 13/13: "%% FoomaticRIPOptionSetting: cayb=13"
+*cayb 14/14: "%% FoomaticRIPOptionSetting: cayb=14"
+*cayb 15/15: "%% FoomaticRIPOptionSetting: cayb=15"
+*cayb 16/16: "%% FoomaticRIPOptionSetting: cayb=16"
+*cayb 17/17: "%% FoomaticRIPOptionSetting: cayb=17"
+*cayb 18/18: "%% FoomaticRIPOptionSetting: cayb=18"
+*cayb 19/19: "%% FoomaticRIPOptionSetting: cayb=19"
+*cayb 20/20: "%% FoomaticRIPOptionSetting: cayb=20"
+*cayb 21/21: "%% FoomaticRIPOptionSetting: cayb=21"
+*cayb 22/22: "%% FoomaticRIPOptionSetting: cayb=22"
+*cayb 23/23: "%% FoomaticRIPOptionSetting: cayb=23"
+*cayb 24/24: "%% FoomaticRIPOptionSetting: cayb=24"
+*cayb 25/25: "%% FoomaticRIPOptionSetting: cayb=25"
+*cayb 26/26: "%% FoomaticRIPOptionSetting: cayb=26"
+*cayb 27/27: "%% FoomaticRIPOptionSetting: cayb=27"
+*cayb 28/28: "%% FoomaticRIPOptionSetting: cayb=28"
+*cayb 29/29: "%% FoomaticRIPOptionSetting: cayb=29"
+*cayb 30/30: "%% FoomaticRIPOptionSetting: cayb=30"
+*cayb 31/31: "%% FoomaticRIPOptionSetting: cayb=31"
+*cayb 32/32: "%% FoomaticRIPOptionSetting: cayb=32"
+*cayb 33/33: "%% FoomaticRIPOptionSetting: cayb=33"
+*cayb 34/34: "%% FoomaticRIPOptionSetting: cayb=34"
+*cayb 35/35: "%% FoomaticRIPOptionSetting: cayb=35"
+*cayb 36/36: "%% FoomaticRIPOptionSetting: cayb=36"
+*cayb 37/37: "%% FoomaticRIPOptionSetting: cayb=37"
+*cayb 38/38: "%% FoomaticRIPOptionSetting: cayb=38"
+*cayb 39/39: "%% FoomaticRIPOptionSetting: cayb=39"
+*cayb 40/40: "%% FoomaticRIPOptionSetting: cayb=40"
+*cayb 41/41: "%% FoomaticRIPOptionSetting: cayb=41"
+*cayb 42/42: "%% FoomaticRIPOptionSetting: cayb=42"
+*cayb 43/43: "%% FoomaticRIPOptionSetting: cayb=43"
+*cayb 44/44: "%% FoomaticRIPOptionSetting: cayb=44"
+*cayb 45/45: "%% FoomaticRIPOptionSetting: cayb=45"
+*cayb 46/46: "%% FoomaticRIPOptionSetting: cayb=46"
+*cayb 47/47: "%% FoomaticRIPOptionSetting: cayb=47"
+*cayb 48/48: "%% FoomaticRIPOptionSetting: cayb=48"
+*cayb 49/49: "%% FoomaticRIPOptionSetting: cayb=49"
+*cayb 50/50: "%% FoomaticRIPOptionSetting: cayb=50"
+*cayb 51/51: "%% FoomaticRIPOptionSetting: cayb=51"
+*cayb 52/52: "%% FoomaticRIPOptionSetting: cayb=52"
+*cayb 53/53: "%% FoomaticRIPOptionSetting: cayb=53"
+*cayb 54/54: "%% FoomaticRIPOptionSetting: cayb=54"
+*cayb 55/55: "%% FoomaticRIPOptionSetting: cayb=55"
+*cayb 56/56: "%% FoomaticRIPOptionSetting: cayb=56"
+*cayb 57/57: "%% FoomaticRIPOptionSetting: cayb=57"
+*cayb 58/58: "%% FoomaticRIPOptionSetting: cayb=58"
+*cayb 59/59: "%% FoomaticRIPOptionSetting: cayb=59"
+*cayb 60/60: "%% FoomaticRIPOptionSetting: cayb=60"
+*cayb 61/61: "%% FoomaticRIPOptionSetting: cayb=61"
+*cayb 62/62: "%% FoomaticRIPOptionSetting: cayb=62"
+*cayb 63/63: "%% FoomaticRIPOptionSetting: cayb=63"
+*cayb 64/64: "%% FoomaticRIPOptionSetting: cayb=64"
+*cayb 65/65: "%% FoomaticRIPOptionSetting: cayb=65"
+*cayb 66/66: "%% FoomaticRIPOptionSetting: cayb=66"
+*cayb 67/67: "%% FoomaticRIPOptionSetting: cayb=67"
+*cayb 68/68: "%% FoomaticRIPOptionSetting: cayb=68"
+*cayb 69/69: "%% FoomaticRIPOptionSetting: cayb=69"
+*cayb 70/70: "%% FoomaticRIPOptionSetting: cayb=70"
+*cayb 71/71: "%% FoomaticRIPOptionSetting: cayb=71"
+*cayb 72/72: "%% FoomaticRIPOptionSetting: cayb=72"
+*cayb 73/73: "%% FoomaticRIPOptionSetting: cayb=73"
+*cayb 74/74: "%% FoomaticRIPOptionSetting: cayb=74"
+*cayb 75/75: "%% FoomaticRIPOptionSetting: cayb=75"
+*cayb 76/76: "%% FoomaticRIPOptionSetting: cayb=76"
+*cayb 77/77: "%% FoomaticRIPOptionSetting: cayb=77"
+*cayb 78/78: "%% FoomaticRIPOptionSetting: cayb=78"
+*cayb 79/79: "%% FoomaticRIPOptionSetting: cayb=79"
+*cayb 80/80: "%% FoomaticRIPOptionSetting: cayb=80"
+*cayb 81/81: "%% FoomaticRIPOptionSetting: cayb=81"
+*cayb 82/82: "%% FoomaticRIPOptionSetting: cayb=82"
+*cayb 83/83: "%% FoomaticRIPOptionSetting: cayb=83"
+*cayb 84/84: "%% FoomaticRIPOptionSetting: cayb=84"
+*cayb 85/85: "%% FoomaticRIPOptionSetting: cayb=85"
+*cayb 86/86: "%% FoomaticRIPOptionSetting: cayb=86"
+*cayb 87/87: "%% FoomaticRIPOptionSetting: cayb=87"
+*cayb 88/88: "%% FoomaticRIPOptionSetting: cayb=88"
+*cayb 89/89: "%% FoomaticRIPOptionSetting: cayb=89"
+*cayb 90/90: "%% FoomaticRIPOptionSetting: cayb=90"
+*cayb 91/91: "%% FoomaticRIPOptionSetting: cayb=91"
+*cayb 92/92: "%% FoomaticRIPOptionSetting: cayb=92"
+*cayb 93/93: "%% FoomaticRIPOptionSetting: cayb=93"
+*cayb 94/94: "%% FoomaticRIPOptionSetting: cayb=94"
+*cayb 95/95: "%% FoomaticRIPOptionSetting: cayb=95"
+*cayb 96/96: "%% FoomaticRIPOptionSetting: cayb=96"
+*cayb 97/97: "%% FoomaticRIPOptionSetting: cayb=97"
+*cayb 98/98: "%% FoomaticRIPOptionSetting: cayb=98"
+*cayb 99/99: "%% FoomaticRIPOptionSetting: cayb=99"
+*cayb 100/100: "%% FoomaticRIPOptionSetting: cayb=100"
+*CloseUI: *cayb
+
+*Customcayb True: " pop "
+*ParamCustomcayb cayb/Color Adjust Yellow-Blue: 1 int 0 100
+
 
 *CloseGroup: Color Adjust
 

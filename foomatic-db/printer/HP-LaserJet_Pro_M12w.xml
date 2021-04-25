@@ -1,0 +1,55 @@
+<printer id="printer/HP-LaserJet_Pro_M12w">
+  <make>HP</make>
+  <model>LaserJet Pro M12w</model>
+  <mechanism>
+    <laser/><!--not "color"-->
+    <resolution>
+      <dpi>
+        <x>600</x>
+        <y>600</y>
+      </dpi>
+    </resolution>
+    <margins>
+	<general>
+	    <unit>mm</unit>
+	    <top>4</top>
+	    <bottom>4</bottom>
+	    <left>4</left>
+	    <right>4</right>
+	</general>
+    </margins>
+    <consumables>
+      <comments> <en>
+	Print cartridge (1600 prints) - $55
+      </en></comments>
+      <partno>CF279A</partno>
+    </consumables>
+  </mechanism>
+  <url>https://support.hp.com/us-en/document/c05228704</url>
+  <lang>
+    <proprietary/>
+    <!--no pjl--><!--No "text"?-->
+  </lang>
+  <autodetect>
+	<parallel>
+	    <ieee1284>MFG:Hewlett-Packard;MDL:HP LaserJet Professional M12w;CMD:ZJS,PJL,ACL,HTTP;CLS:PRINTER;DES:HP LaserJet Professional M12w;FWVER:20091029;</ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>HP LaserJet Professional M12w</model>
+	    <commandset>ZJS,PJL,ACL,HTTP</commandset>
+	</parallel>
+  </autodetect>
+  <functionality>B</functionality>
+  <driver>foo2zjs-z2</driver>
+  <!--no "contrib_url"-->
+  <comments>
+    <en>
+
+    This printer is supported by the foo2zjs free software printer driver.
+    &lt;p&gt;
+
+    The printer is faster than the LaserJet 1000 and has a USB and a wireless
+    connection.&lt;p&gt;
+
+    </en>
+  </comments>
+</printer>

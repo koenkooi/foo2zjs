@@ -1,0 +1,71 @@
+<printer id="printer/Xerox-Phaser_3010">
+    <make>Xerox</make>
+    <model>Phaser 3010</model>
+    <mechanism>
+	<laser/>
+	<color/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+<!--
+	<consumables>
+	    <comments> <en>
+		Toner Cyan (1000 prints) - $45
+		Toner Magenta (1000 prints) - $45
+		Toner Yellow (1000 prints) - $45
+		Toner Black (2000 prints) - $54
+		Waste Toner (5000 prints) - $10
+		Drum Kit (20000 prints) - $159
+	    </en> </comments>
+	    <partno>106R01271</partno>
+	    <partno>106R01272</partno>
+	    <partno>106R01273</partno>
+	    <partno>106R01274</partno>
+	    <partno>108R00722</partno>
+	    <partno>108R00744</partno>
+	</consumables>
+-->
+    </mechanism>
+    <url>http://www.office.xerox.com/printers/laser-printers/phaser-3010/enin.html</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+<!--
+        <parallel>
+            <ieee1284>MFG:Xerox;CMD:SPLC;MDL:Phaser 6110;CLS:PRINTER;STATUS:BUSY;</ieee1284>
+            <manufacturer>Xerox</manufacturer>
+            <model>Phaser 6110</model>
+            <commandset>SPLC</commandset>
+        </parallel>
+-->
+	<snmp>
+	    <description>Xerox Phaser 3010</description>
+	</snmp>
+    </autodetect>
+    <functionality>C</functionality>
+    <driver>foo2hbpl2</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Xerox Phaser 3010
+	is a monochrome printer with a 2016 street price of $90.
+
+	These printers are supported by the foo2hbpl2 open software printer
+	driver.
+
+    </en> </comments>
+</printer>

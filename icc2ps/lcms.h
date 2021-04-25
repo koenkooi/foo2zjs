@@ -55,7 +55,7 @@
 
 // Some machines does not have a reliable 'swab' function. Usually
 // leave commented unless the testbed diagnoses the contrary.
-// #define USE_CUSTOM_SWAB   1
+#define USE_CUSTOM_SWAB   1
 
 // Uncomment this if your compiler supports inline
 #define USE_INLINE  1

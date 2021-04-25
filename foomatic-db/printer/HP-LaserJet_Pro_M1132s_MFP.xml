@@ -1,0 +1,50 @@
+<printer id="printer/HP-LaserJet_Pro_M1132s_MFP">
+  <make>HP</make>
+  <model>LaserJet Pro M1132s MFP</model>
+  <mechanism>
+    <laser/><!--not "color"-->
+    <resolution>
+      <dpi>
+        <x>600</x>
+        <y>600</y>
+      </dpi>
+    </resolution>
+    <margins>
+	<general>
+	    <unit>mm</unit>
+	    <top>4</top>
+	    <bottom>4</bottom>
+	    <left>4</left>
+	    <right>4</right>
+	</general>
+    </margins>
+    <consumables>
+      <comments>
+        <en>Cartridge containing toner and imaging drum</en>
+      </comments>
+    <!--one or more "partno" elements.--></consumables>
+  </mechanism>
+  <url>https://support.hp.com/us-en/product/hp-laserjet-pro-m1132s-multifunction-printer-series/5094777</url>
+  <lang>
+    <proprietary/>
+  <!--no pjl--><!--No "text"?--></lang>
+  <autodetect>
+	<parallel>
+	    <ieee1284>MFG:Hewlett-Packard;MDL:HP LaserJet M1132;CMD:ACL;CLS:PRINTER;DES:HP LaserJet M1132;FWVER:20060721;</ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>HP LaserJet Pro M1132s</model>
+	    <commandset>XQX</commandset>
+	</parallel>
+  </autodetect>
+  <functionality>B</functionality>
+  <driver>foo2xqx</driver>
+  <!--no "contrib_url"-->
+  <comments>
+    <en>
+
+    This printer is supported by the foo2xqx free software printer driver.
+    &lt;p&gt;
+
+    </en>
+  </comments>
+</printer>

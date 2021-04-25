@@ -70,6 +70,18 @@
 	    <driver>foo2qpdl</driver>
 	    <arg_defval>ev/foo2qpdl-PrinterType-z2</arg_defval>
 	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>ML-1670</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-PrinterType-z2</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>Samsung</make>
+	    <model>ML-1675</model>
+	    <driver>foo2qpdl</driver>
+	    <arg_defval>ev/foo2qpdl-PrinterType-z2</arg_defval>
+	</constraint>
     </constraints>
     <enum_vals>
 	<enum_val id="ev/foo2qpdl-PrinterType-z0">
@@ -79,53 +91,28 @@
 	    <ev_shortname> <en>z0</en> </ev_shortname>
 	    <ev_driverval>-z0</ev_driverval>
 	    <constraints>
+	        <constraint sense="false">
+		    <driver>foo2qpdl</driver>
+	        </constraint>
 	        <constraint sense="true">
 		    <driver>foo2qpdl</driver>
+		    <make>Samsung</make>
+		    <model>CLP-300</model>
 	        </constraint>
-	        <constraint sense="false">
+	        <constraint sense="true">
 		    <driver>foo2qpdl</driver>
 		    <make>Samsung</make>
-		    <model>CLP-310</model>
+		    <model>CLX-2160</model>
 	        </constraint>
-	        <constraint sense="false">
+	        <constraint sense="true">
 		    <driver>foo2qpdl</driver>
 		    <make>Samsung</make>
-		    <model>CLP-315</model>
+		    <model>CLX-3160</model>
 	        </constraint>
-	        <constraint sense="false">
+	        <constraint sense="true">
 		    <driver>foo2qpdl</driver>
-		    <make>Samsung</make>
-		    <model>CLP-325</model>
-	        </constraint>
-	        <constraint sense="false">
-		    <driver>foo2qpdl</driver>
-		    <make>Samsung</make>
-		    <model>CLP-365</model>
-	        </constraint>
-	        <constraint sense="false">
-		    <driver>foo2qpdl</driver>
-		    <make>Samsung</make>
-		    <model>CLP-600</model>
-	        </constraint>
-	        <constraint sense="false">
-		    <driver>foo2qpdl</driver>
-		    <make>Samsung</make>
-		    <model>CLP-610</model>
-	        </constraint>
-	        <constraint sense="false">
-		    <driver>foo2qpdl</driver>
-		    <make>Samsung</make>
-		    <model>CLP-620</model>
-	        </constraint>
-	        <constraint sense="false">
-		    <driver>foo2qpdl</driver>
-		    <make>Samsung</make>
-		    <model>CLX-3175</model>
-	        </constraint>
-	        <constraint sense="false">
-		    <driver>foo2qpdl</driver>
-		    <make>Samsung</make>
-		    <model>CLX-3185</model>
+		    <make>Xerox</make>
+		    <model>Phaser 6110</model>
 	        </constraint>
 	    </constraints>
 	</enum_val>
@@ -185,6 +172,16 @@
 		    <driver>foo2qpdl</driver>
 		    <make>Samsung</make>
 		    <model>CLX-3185</model>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2qpdl</driver>
+		    <make>Samsung</make>
+		    <model>ML-1670</model>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2qpdl</driver>
+		    <make>Samsung</make>
+		    <model>ML-1675</model>
 	        </constraint>
 	    </constraints>
 	</enum_val>

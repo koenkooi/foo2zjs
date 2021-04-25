@@ -98,6 +98,12 @@
 	    <driver>foo2qpdl</driver>
 	    <arg_defval>ev/foo2qpdl-ICM-620</arg_defval>
 	</constraint>
+	<constraint sense="false">
+	    <make>Samsung</make> <model>ML-1670</model>
+	</constraint>
+	<constraint sense="false">
+	    <make>Samsung</make> <model>ML-1675</model>
+	</constraint>
     </constraints>
     <enum_vals>
 	<enum_val id="ev/foo2qpdl-ICM-none">
@@ -184,18 +190,42 @@
             <ev_longname> <en>File testing.icm</en> </ev_longname>
             <ev_shortname> <en>testing</en> </ev_shortname>
             <ev_driverval>-C10 -Gtesting.icm</ev_driverval>
+	    <constraints>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1670</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1675</model>
+		</constraint>
+	    </constraints>
         </enum_val>
 
         <enum_val id="ev/foo2qpdl-ICM-testing2">
             <ev_longname> <en>File testing2.icm</en> </ev_longname>
             <ev_shortname> <en>testing2</en> </ev_shortname>
             <ev_driverval>-C10 -Gtesting2.icm</ev_driverval>
+	    <constraints>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1670</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1675</model>
+		</constraint>
+	    </constraints>
         </enum_val>
 
         <enum_val id="ev/foo2qpdl-ICM-testing3">
             <ev_longname> <en>File testing3.icm</en> </ev_longname>
             <ev_shortname> <en>testing3</en> </ev_shortname>
             <ev_driverval>-C10 -Gtesting3.icm</ev_driverval>
+	    <constraints>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1670</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>Samsung</make> <model>ML-1675</model>
+		</constraint>
+	    </constraints>
         </enum_val>
 
     </enum_vals>

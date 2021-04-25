@@ -20,6 +20,8 @@ such as these:
      - HP LaserJet P2035	B/W		-P -z1 -L0
      - HP LaserJet P2035n	B/W		-P -z1 -L0
 
+     - HP LaserJet Pro M12a	B/W		-P -z2 -L0
+     - HP LaserJet Pro M12w	B/W		-P -z2 -L0
      - HP LaserJet Pro P1102	B/W		-P -z2 -L0
      - HP LaserJet Pro P1102w	B/W		-P -z2 -L0
      - HP LaserJet Pro P1566	B/W		-P -z2 -L0
@@ -67,7 +69,7 @@ yourself.
 
 */
 
-static char Version[] = "$Id: foo2zjs.c,v 1.109 2011/11/12 16:39:53 rick Exp $";
+static char Version[] = "$Id: foo2zjs.c,v 1.110 2017/12/02 19:41:57 rick Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>

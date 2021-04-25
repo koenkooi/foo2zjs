@@ -1,0 +1,53 @@
+<printer id="printer/Ricoh-SP_201Nw">
+  <make>Ricoh</make>
+  <model>SP 201Nw</model>
+  <mechanism>
+    <laser/><!--not "color"-->
+    <resolution>
+      <dpi>
+        <x>600</x>
+        <y>600</y>
+      </dpi>
+    </resolution>
+    <margins>
+	<general>
+	    <unit>inch</unit>
+	    <top>0.2</top>
+	    <bottom>0.2</bottom>
+	    <left>0.2</left>
+	    <right>0.2</right>
+	</general>
+    </margins>
+    <consumables>
+      <comments>
+        <en>Print cartridge (1500 prints) - $75</en>
+      </comments>
+      <partno>SP 201LA</partno>
+    </consumables>
+  </mechanism>
+  <url>https://www.ricoh-usa.com/en/products/pd/sp-201nw-black-and-white-laser-printer/_/R-407203</url>
+  <lang>
+    <proprietary/>
+  <!--no pjl--><!--No "text"?--></lang>
+<!--
+  <autodetect>
+	<parallel>
+	    <ieee1284>MFG:Hewlett-Packard;MDL:HP LaserJet P1005;CMD:ACL;CLS:PRINTER;DES:HP LaserJet P1005;FWVER:20080415;</ieee1284>
+            <manufacturer>Hewlett-Packard</manufacturer>
+	    <model>HP LaserJet P1005</model>
+	    <commandset>XQX</commandset>
+	</parallel>
+  </autodetect>
+-->
+  <functionality>B</functionality>
+  <driver>foo2ddst</driver>
+  <!--no "contrib_url"-->
+  <comments>
+    <en>
+
+    This printer is supported by the foo2ddst free software printer driver.
+    &lt;p&gt;
+
+    </en>
+  </comments>
+</printer>

@@ -1,0 +1,36 @@
+<option type="enum" id="opt/foo2ddst-Resolution">
+    <!-- A multilingual <comments> block can appear here, too;
+       it should be treated as documentation for the user. -->
+    <arg_longname> <en>Resolution</en> </arg_longname>
+    <arg_shortname> <en>Resolution</en> </arg_shortname>
+    <arg_execution>
+	<arg_group>General</arg_group>
+	<arg_order>130</arg_order>
+	<arg_spot>A</arg_spot>
+	<arg_required />
+	<arg_substitution />
+	<arg_proto>-r%s </arg_proto>
+    </arg_execution>
+    <constraints>
+	<constraint sense="true">
+	    <driver>foo2ddst</driver>
+	    <arg_defval>ev/foo2ddst-Resolution-600x600</arg_defval>
+	</constraint>
+    </constraints>
+    <enum_vals>
+	<enum_val id="ev/foo2ddst-Resolution-600x600">
+	    <ev_longname> <en>600x600 dpi</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>600x600dpi</en> </ev_shortname>
+	    <ev_driverval>600x600</ev_driverval>
+	</enum_val>
+	<enum_val id="ev/foo2ddst-Resolution-1200x600">
+	    <ev_longname> <en>1200x600 dpi</en> </ev_longname>
+		<!-- A multilingual <comments> block can appear here, too;
+		 it should be treated as documentation for the user. -->
+	    <ev_shortname> <en>1200x600dpi</en> </ev_shortname>
+	    <ev_driverval>1200x600</ev_driverval>
+	</enum_val>
+    </enum_vals>
+</option>

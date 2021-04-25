@@ -1,0 +1,683 @@
+#!/bin/sh
+
+#* Copyright (C) 2003-2006  Rick Richardson
+#*
+#* This program is free software; you can redistribute it and/or modify
+#* it under the terms of the GNU General Public License as published by
+#* the Free Software Foundation; either version 2 of the License, or
+#* (at your option) any later version.
+#*
+#* This program is distributed in the hope that it will be useful,
+#* but WITHOUT ANY WARRANTY; without even the implied warranty of
+#* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#* GNU General Public License for more details.
+#*
+#* You should have received a copy of the GNU General Public License
+#* along with this program; if not, write to the Free Software
+#* Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#*
+#* Authors: Rick Richardson <rick.richardson@comcast.net>
+
+VERSION='$Id: foo2ddst-wrapper.in,v 1.3 2017/03/26 19:46:23 rick Exp $'
+
+#
+# Printer Notes:
+#
+# Ricoh Aficio SP 112              B/W
+# Ricoh Aficio SP 201              B/W
+#
+
+PROGNAME="$0"
+BASENAME=`basename $PROGNAME`
+PREFIX=/usr
+SHARE=$PREFIX/share/foo2ddst
+PATH=$PATH:/sw/bin:/opt/local/bin
+
+#
+#	Log the command line, for debugging and problem reports
+#
+if [ -x /usr/bin/logger -o -x /bin/logger ]; then
+    logger -t "$BASENAME" -p lpr.info -- "$BASENAME $@" </dev/null
+fi
+
+usage() {
+	cat <<EOF
+Usage:
+	$BASENAME [options] [ps-file]
+
+	Foomatic printer wrapper for the foo2ddst printer driver.
+	This script reads a Postscript ps-file or standard input
+	and converts it to Ricoh DDST printer format.
+
+Normal Options:
+-c                Print in color (else monochrome)
+-d duplex         Duplex code to send to printer [$DUPLEX]
+                    1=off, 2=longedge, 3=shortedge
+-m media          Media code to send to printer [$MEDIA]
+                    1=plain&recycled 2=paper 3=thin 4=thick1 5=recycled
+-p paper          Paper code [$PAPER]
+                    1=letter 2=legal 3=executive 4=invoice(5.5x8.5)
+                    5=A4 6=A5 7=A6 8=B5JIS 9=B6JIS
+                    10=16k197x273, 11=16k184x260, 12=16k195x270
+-n copies         Number of copies [$COPIES]
+-r <xres>x<yres>  Set device resolution in pixels/inch [$RES]
+-s source         Source code to send to printer [$SOURCE]
+                    1=tray1 2=manual
+		    Code numbers may vary with printer model.
+-t                Draft mode.  Every other pixel is white.
+-T density        Print density (1-5) [$DENSITY]
+-2/-3/-4/-6/-8/-10/-12/-14/-15/-16/-18
+                  Print with N-up (requires psutils)
+-o orient         For N-up: -op is portrait, -ol is landscape, -os is seascape.
+
+Printer Tweaking Options:
+-u <xoff>x<yoff>  Set offset of upper left printable in pixels [varies]
+-l <xoff>x<yoff>  Set offset of lower right printable in pixels [varies]
+-L mask           Send logical clipping values from -u/-l in ZjStream [3]
+                  0=no, 1=Y, 2=X, 3=XY
+-P                Do not output START_PLANE codes.  May be needed by some
+                  monochrome-only printers.
+-X padlen         Add extra zero padding to the end of BID segments [16]
+
+Color Tweaking Options:
+-g gsopts         Additional options to pass to Ghostscript, such as
+                  -dDITHERPPI=nnn, etc.  May appear more than once. []
+-G profile.icm    Convert profile.icm to a Postscript CRD using icc2ps and
+                  adjust colors using the setcolorrendering PS operator.
+                  $SHARE/icm/ will be searched for profile.icm.
+-I intent         Select profile intent from ICM file [$INTENT]
+                  0=Perceptual, 1=Colorimetric, 2=Saturation, 3=Absolute
+-G gamma-file.ps  Prepend gamma-file to the Postscript input to perform
+                  color correction using the setcolortransfer PS operator.
+
+Debugging Options:
+-S plane          Output just a single color plane from a color print [all]
+                  1=Cyan, 2=Magenta, 3=Yellow, 4=Black
+-D lvl            Set Debug level [$DEBUG]
+-V                $VERSION
+EOF
+
+	exit 1
+}
+
+#
+#       Report an error and exit
+#
+error() {
+	echo "$BASENAME: $1" >&2
+	exit 1
+}
+
+dbgcmd() {
+	if [ $DEBUG -ge 1 ]; then
+	    echo "$@" >&2
+	fi
+	"$@"
+}
+
+#
+#	N-up-ify the job.  Requires psnup from psutils package
+#
+nup() {
+    case "$NUP" in
+    [2368]|1[0458])
+	tr '\r' '\n' | psnup $NUP_ORIENT -d2 -$NUP -m.3in -p$paper -q
+	;;
+    [49]|1[26])
+	tr '\r' '\n' | psnup $NUP_ORIENT -d2 -$NUP -m.5in -p$paper -q
+	;;
+    *)
+	error "Illegal call to nup()."
+	;;
+    esac
+}
+
+#
+#       Process the options
+#
+
+# Try to use a local copy of GhostScript 8.54, if available.  Otherwise,
+# fallback to whatever the Linux distro has installed (usually 7.07)
+#
+# N.B. := operator used here, when :- would be better, because "ash"
+# doesn't have :-
+if eval gs.foo -v >/dev/null 2>&1; then
+        GSBIN=${GSBIN:-gs.foo}
+else
+        GSBIN=${GSBIN:-gs}
+fi
+
+CMDLINE="$*"
+DEBUG=0
+DUPLEX=1
+COLOR=
+COLORMODE=0
+# What mode to use if the user wants us to pick the "best" mode
+case `$GSBIN --version` in
+7*)	DEFAULTCOLORMODE=10
+	DEFAULTCOLORMODE=2
+	;;
+*)	DEFAULTCOLORMODE=2
+	;;
+esac
+QUALITY=1
+QUALITY=wts
+MEDIA=1
+COPIES=1
+PAPER=1
+RES=600x600
+SOURCE=1
+NUP=
+CLIP_UL=
+CLIP_LR=
+CLIP_LOG=
+BC=
+AIB=
+NOPLANES=
+COLOR2MONO=
+GAMMAFILE=
+INTENT=0
+GSOPTS=
+EXTRAPAD=
+SAVETONER=
+DENSITY=3	#Medium
+NUP_ORIENT=
+GSDEV=-sDEVICE=pbmraw
+# What mode to use if the user wants us to pick the "best" mode
+case `$GSBIN --version` in
+8.1*)
+    QUALITY=1
+    ;;
+esac
+while getopts "1:23456789o:b:cC:d:g:l:u:L:m:n:p:q:r:s:tT:ABS:D:G:I:PX:Vh?" opt
+do
+	case $opt in
+	b)	GSBIN="$OPTARG";;
+	c)	COLOR=-c;;
+	d)	DUPLEX="$OPTARG";;
+	g)	GSOPTS="$GSOPTS $OPTARG";;
+	m)	MEDIA="$OPTARG";;
+	n)	COPIES="$OPTARG";;
+	p)	PAPER="$OPTARG";;
+	q)	QUALITY="$OPTARG";;
+	r)	RES="$OPTARG";;
+	s)	SOURCE="$OPTARG";;
+	t)	SAVETONER="-t";;
+	T)	DENSITY="$OPTARG";;
+	l)	CLIP_LR="-l $OPTARG";;
+	u)	CLIP_UL="-u $OPTARG";;
+	L)	CLIP_LOG="-L $OPTARG";;
+	A)	AIB=-A;;
+	B)	BC=-B;;
+	C)	COLORMODE="$OPTARG";;
+	S)	COLOR2MONO="-S$OPTARG";;
+	D)	DEBUG="$OPTARG";;
+	G)	GAMMAFILE="$OPTARG";;
+	I)	INTENT="$OPTARG";;
+	P)	NOPLANES=-P;;
+	X)	EXTRAPAD="-X $OPTARG";;
+	[234689])	NUP="$opt";;
+	[57])	error "Can't find acceptable layout for $opt-up";;
+	1)	case "$OPTARG" in
+		[024568])	NUP="1$OPTARG";;
+		*)	error "Can't find acceptable layout for 1$OPTARG-up";;
+		esac
+		;;
+	o)	case "$OPTARG" in
+		l*)	NUP_ORIENT=-l;;
+		s*)	NUP_ORIENT=-r;;
+		p*|*)	NUP_ORIENT=;;
+		esac;;
+	V)	echo "$VERSION"; foo2ddst -V; foo2zjs-pstops -V; exit 0;;
+	h|\?)
+		if [ "$CMDLINE" != "-?" -a "$CMDLINE" != -h ]; then
+		    echo "Illegal command:"
+		    echo "	$0 $CMDLINE"
+		    echo
+		fi
+		usage;;
+	esac
+done
+shift `expr $OPTIND - 1`
+
+#
+# If there is an argument left, take it as the file to print.
+# Else, the input comes from stdin.
+#
+if [ $# -ge 1 ]; then
+    if [ "$LPJOB" = "" ]; then
+	: # LPJOB="$1"
+    fi
+    exec < $1
+fi
+
+#
+case "$QUALITY" in
+0)
+    GSOPTS="-dCOLORSCREEN $GSOPTS"
+    ;;
+1)
+    GSOPTS="-dCOLORSCREEN $GSOPTS"
+    ;;
+2)
+    GSOPTS="-dMaxBitmap=500000000 $GSOPTS"
+    ;;
+as)
+    GSOPTS="-dCOLORSCREEN -dMaxBitmap=500000000 $GSOPTS"
+    ;;
+wts)
+    GSOPTS="-dCOLORSCREEN -dMaxBitmap=500000000 $GSOPTS"
+    ;;
+esac
+
+#
+#	Validate media code
+#
+case "$MEDIA" in
+1|standard)	MEDIA=1;;
+2|transparency)	MEDIA=2;;
+3|glossy)	MEDIA=3;;
+257|envelope)	MEDIA=257;;
+259|letterhead)	MEDIA=259;;
+261|thickstock)	MEDIA=261;;
+262|postcard)	MEDIA=262;;
+263|labels)	MEDIA=263;;
+[0-9]*)		;;
+*)		error "Unknown media code $MEDIA";;
+esac
+
+#
+#	Validate source (InputSlot) code
+#
+case "$SOURCE" in
+1|upper)	SOURCE=1;;
+4|manual)	SOURCE=4;;
+7|auto)		SOURCE=7;;
+[0-9]*)		;;
+*)		error "Unknown source code $SOURCE";;
+esac
+
+#
+#	Validate Duplex code
+#
+case "$DUPLEX" in
+1|off|none)	DUPLEX=1;;
+2|long*)	DUPLEX=2;;
+3|short*)	DUPLEX=3;;
+[0-9]*)		;;
+*)		error "Unknown duplex code $DUPLEX";;
+esac
+
+#
+#	Validate Resolution
+#
+case "$RES" in
+600x600)	;;
+1200x600)	;;
+*)		error "Illegal resolution $RES";;
+esac
+
+#
+#	Validate Print Density
+#
+case "$DENSITY" in
+1|2|3|4|5)	;;
+*)		error "Illegal print density (-T) $DENSITY";;
+esac
+
+#
+#	Figure out the paper dimensions in pixels/inch, and set the
+#	default clipping region.  Unfortunately, this is a trouble
+#	area for ZjStream printers.  Various versions of ZjS print
+#	engines react differently when asked to print into their
+#	unprintable regions.
+#
+#	The Minolta 2200 DL is sensitive to its unprintable regions,
+#	and will pixel skew if you try to print there.
+#
+#	The HP1000 will print blank pages when asked to print into its
+#	unprintable region.
+#
+#	The Minolta 2300 DL doesn't care if print into the unprintable
+#	region.  It will do the clipping itself.  This is as it should be.
+#	But it won't hurt it if we do the clipping here.
+#
+set_clipping() {
+    ulx=$1; uly=$2
+    lrx=$3; lry=$4
+
+    # Set clipping region if it isn't already set
+    if [ "$CLIP_UL" = "" ]; then
+	case "$RES" in
+	600x600)	ulx=`expr $ulx / 2`;;
+	2400x600)	ulx=`expr $ulx \* 2`;;
+	esac
+	CLIP_UL="-u ${ulx}x${uly}"
+    fi
+    if [ "$CLIP_LR" = "" ]; then
+	case "$RES" in
+	600x600)	lrx=`expr $lrx / 2`;;
+	2400x600)	lrx=`expr $lrx \* 2`;;
+	esac
+	CLIP_LR="-l ${lrx}x${lry}"
+    fi
+}
+
+case "$PAPER" in
+Custom*x*)
+		# Command line only
+		XDIM=`echo "$PAPER" | sed -e "s/Custom.//" -e "s/x.*//" `
+		YDIM=`echo "$PAPER" | sed -e "s/.*x//" `
+		if [ "$XDIM" = "" -o "$YDIM" = "" ]; then
+		    error "Custom page size '$PAPER' != 1-99999"
+		fi
+		if [ "$XDIM" -eq 0 -o "$YDIM" -eq 0 ]; then
+		    error "Custom page size '$PAPER' != 1-99999"
+		fi
+		XDIM=`dc -e "$XDIM 1200* 72/p"`
+		YDIM=`dc -e "$YDIM 600* 72/p"`
+		PAPER=359;        paper=letter;
+                #set_clipping 2 84     2 84
+		;;
+Custom*)
+		# PS job
+		#%%BeginFeature: *CustomPageSize True
+		#216
+		#360
+		#0
+		#0
+		#0
+		#pop pop pop pop pop
+
+		#%%BeginFeature: *CustomPageSize True
+		#792.000000 612.000000 1 0.000000 0.000000
+		#pop pop pop pop pop
+
+		if [ $DEBUG = 0 ]; then
+		    TMPFILE=/tmp/cus$$
+		else
+		    TMPFILE=/tmp/custom.ps
+		fi
+		cat >$TMPFILE
+		exec <$TMPFILE
+
+		tmp=`head -n 10000 $TMPFILE \
+		    | sed -n '/CustomPageSize/{n;p;n;p;}' \
+		    | tr '\n' ' '`
+		case "$tmp" in
+		[0-9]*\ [0-9]*)
+		    XDIM=`echo "$tmp" | sed 's/ .*//'`
+		    YDIM=`echo "$tmp" | sed -e 's/^[^ ]* //' -e 's/ .*//'`
+		    ;;
+		*)
+		    if [ $DEBUG = 0 ]; then rm -f $TMPFILE; fi
+		    error "Custom page size [XY]DIM != 1-99999"
+		    ;;
+		esac
+		XDIM=`dc -e "$XDIM 1200* 72/p"`
+		YDIM=`dc -e "$YDIM 600* 72/p"`
+		PAPER=359;        paper=letter;
+                #set_clipping 2 84     2 84
+		;;
+1|letter)	PAPER=1;	paper=letter;    XDIM="10200"; YDIM="6600"
+		#set_clipping 177 84	177 84
+		;;
+2|legal)	PAPER=2;	paper=legal;     XDIM="10200"; YDIM="8400"
+		#set_clipping 177 96	177 96
+		;;
+3|executive)	PAPER=3;	paper=executive; XDIM="8700";  YDIM="6300"
+		#set_clipping 192 96	192 96
+		;;
+5|a4|A4)	PAPER=5;	paper=a4;        XDIM="9920";  YDIM="7016"
+		#set_clipping 176 84	176 84
+		;;
+6|a5|A5)	PAPER=6;	paper=a5;        XDIM="6992";  YDIM="4960"
+		#set_clipping 192 96	192 96
+		;;
+8|b5|B5)	PAPER=8;	paper=b5;        XDIM="8598";  YDIM="6070"
+		#set_clipping 192 96	192 96
+		;;
+10|16k197x273) PAPER=10;      paper=executive;XDIM="9306";  YDIM="6448"
+                #set_clipping 173 84     173 84
+                ;;
+11|16k184x260) PAPER=11;      paper=executive;XDIM="8692";  YDIM="6142"
+                #set_clipping 122 87     122 87
+                ;;
+12|16k195x270) PAPER=12;      paper=executive;XDIM="9212";  YDIM="6378"
+                #set_clipping 126 87     126 87
+                ;;
+20|"env#10")	PAPER=20;	paper=env10;     XDIM="4950";  YDIM="5700"
+		#set_clipping 171 78	171 78
+		;;
+27|envDL)	PAPER=27;	paper=envDL;     XDIM="5200";  YDIM="5200"
+		#set_clipping 176 84	176 84
+		;;
+28|envC5)	PAPER=28;	paper=envC5;     XDIM="7650";  YDIM="5408"
+		#set_clipping 170 80	169 80
+		;;
+34|envB5)	PAPER=34;	paper=envB5;     XDIM="8316";  YDIM="5892"
+		#set_clipping 174 74	174 74
+		;;
+37|envMonarch)	PAPER=37;	paper=envMonarch;XDIM="4650";  YDIM="4500"
+		#set_clipping 174 78	173 78
+		;;
+*)		error "Unimplemented paper code $PAPER";;
+esac
+PAPERSIZE="-sPAPERSIZE=$paper";
+
+case "$RES" in
+600x600)	XDIM=`expr $XDIM / 2`;;
+1200x600)	;;
+2400x600)	XDIM=`expr $XDIM \* 2`;;
+esac
+DIM="${XDIM}x${YDIM}"
+
+#
+# Filter thru psnup if N-up printing has been requested
+#
+case $NUP in
+[234689]|1[024568])	PREFILTER="nup";;
+*)			PREFILTER=cat;;
+esac
+if [ "$DEBUG" -ge 9 ]; then
+    PREFILTER="tee /tmp/$BASENAME.ps"
+fi
+
+#
+#	Overload -G.  If the file name ends with ".icm" or ".ICM"
+#	then convert the ICC color profile to a Postscript CRD,
+#	then prepend it to the users job.  Select the intent
+#	using the -I option.
+#
+
+create_crd() {
+    #
+    # Create a Postscript CRD
+    #
+    ICC2PS=$PREFIX/bin/foo2zjs-icc2ps
+    if [ -x $ICC2PS ]; then
+	if [ -x /usr/bin/logger ]; then
+	    logger -t "$BASENAME" -p lpr.info -- \
+	    "`basename $ICC2PS` -o $GAMMAFILE -t$INTENT > $ICCTMP.crd.ps"
+	fi
+	$ICC2PS -o $GAMMAFILE -t$INTENT > $ICCTMP.crd.ps 2>$ICCTMP.log \
+	    || error "Problem converting .ICM file to Postscript"
+
+	PSTOPS_OPTS="$PSTOPS_OPTS -c"
+	cat > $ICCTMP.usecie.ps <<-EOF
+		%!PS-Adobe-3.0
+		<</UseCIEColor true>>setpagedevice
+	EOF
+	cat > $ICCTMP.selcrd.ps <<-EOF
+		/Current /ColorRendering findresource setcolorrendering
+	EOF
+	GAMMAFILE="$ICCTMP.usecie.ps $ICCTMP.crd.ps $ICCTMP.selcrd.ps"
+    else
+	GAMMAFILE=
+    fi
+}
+
+if [ $DEBUG -gt 0 ]; then
+    ICCTMP=/tmp/icc
+else
+    ICCTMP=/tmp/icc$$
+fi
+
+if [ "" = "$COLOR" ]; then
+    COLORMODE=
+    GAMMAFILE=
+else
+    case "$COLORMODE" in
+    0)	COLORMODE=$DEFAULTCOLORMODE;;
+    esac
+fi
+
+CRDBASE="$PREFIX/share/foo2zjs/crd"
+case "$RES" in
+    600x600)	SCREEN=screen1200.ps;;
+    1200x600)	SCREEN=screen1200.ps;;
+    2400x600)	SCREEN=screen2400.ps;;
+esac
+
+PSTOPS_OPTS="-n"
+
+case "$COLORMODE" in
+"")
+    # Monochrome
+    ;;
+10|icm)
+    # Use old ICM method
+    AIB=-A
+    BC=-B
+    case "$GAMMAFILE" in
+    *.icm|*.ICM|*.icc|*.ICC)
+	#
+	# Its really an .ICM file, not a gamma file.
+	#
+	# The file can be a full path name, or the name of a file in $SHARE/icm/
+	#
+	if [ -r "$GAMMAFILE" ]; then
+	    create_crd
+	elif [ -r "$SHARE/icm/$GAMMAFILE" ]; then
+	    GAMMAFILE="$SHARE/icm/$GAMMAFILE"
+	    create_crd
+	else
+	    GAMMAFILE=
+	fi
+	;;
+    none)
+	GAMMAFILE=
+	;;
+    esac
+    ;;
+1|photo)
+    # Photo
+    GAMMAFILE="$CRDBASE/prolog.ps"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/2300w-1200@150-l250-kx,ucr125,75-per.crd"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/$SCREEN"
+    ;;
+2|graphics)
+    # Photo and Text
+    GAMMAFILE="$CRDBASE/prolog.ps"
+    #GAMMAFILE="$GAMMAFILE $CRDBASE/2300w-1200@150-l250-kx,ucr100,75-per.crd"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/kh.crd"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/$SCREEN"
+    ;;
+3|text)
+    # Graphic and Text
+    GAMMAFILE="$CRDBASE/prolog.ps"
+    #GAMMAFILE="$GAMMAFILE $CRDBASE/2300w-1200@150-l250-kx,ucr100,50-per.crd"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/kx.crd"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/$SCREEN"
+    ;;
+4|tonersave)
+    # Reduced toner
+    GAMMAFILE="$CRDBASE/prolog.ps"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/2300w-1200@150-l250-kx,ucr100,0-per.crd"
+    GAMMAFILE="$GAMMAFILE $CRDBASE/$SCREEN"
+    ;;
+*.crd)
+    GAMMAFILE="$CRDBASE/prolog.ps"
+    if [ -f $COLORMODE ]; then
+	GAMMAFILE="$GAMMAFILE $COLORMODE"
+    elif [ -f $CRDBASE/$COLORMODE ]; then
+	GAMMAFILE="$GAMMAFILE $CRDBASE/$COLORMODE"
+    else
+	error "Can't find CRD '$COLORMODE' in . or in $CRDBASE"
+    fi
+    GAMMAFILE="$GAMMAFILE $CRDBASE/$SCREEN"
+    ;;
+*)
+    error "Unknown color method '$COLORMODE'"
+    ;;
+esac
+
+if [ "$COLOR" != "" -a "$QUALITY" = wts ]; then
+    PSTOPS_OPTS="$PSTOPS_OPTS -w"
+elif [ "$COLOR" != "" -a "$QUALITY" = as ]; then
+    PSTOPS_OPTS="$PSTOPS_OPTS -a"
+fi
+
+if [ "" != "$COLOR" ]; then
+    if [ "" = "$AIB" -a "" = "$BC" ]; then
+	# Faster, but can't handle AllIsBlack or BlackClears
+	GSDEV=-sDEVICE=pksmraw
+    else
+	# Can't handle different size pages
+	GSDEV=-sDEVICE=bitcmyk
+    fi
+fi
+
+#
+#	Figure out USERNAME
+#
+if [ "$LPUSER" != "" ]; then
+    USER="$LPUSER@$LPHOST"
+else
+    USER=""
+fi
+
+#
+#	Main Program, just cobble together the pipeline and run it
+#
+#	The malarky with file descriptors 1 and 3 is to avoid a bug in
+#	(some versions?) of Ghostscript where Postscript's stdout gets
+#	intermingled with the printer drivers output, resulting in
+#	corrupted image data.
+#
+GS="$GSBIN -q -dBATCH -dSAFER -dQUIET -dNOPAUSE"
+
+foo2zjs-pstops $PSTOPS_OPTS | \
+$PREFILTER \
+| ($GS $PAPERSIZE -g$DIM -r$RES $GSDEV $GSOPTS \
+    -sOutputFile="|cat 1>&3" $GAMMAFILE -_ >/dev/null) 3>&1 \
+| foo2ddst -r$RES -g$DIM -p$PAPER -m$MEDIA -n$COPIES -d$DUPLEX -s$SOURCE \
+	    $COLOR $CLIP_UL $CLIP_LR $CLIP_LOG $SAVETONER -T$DENSITY \
+	    -J "$LPJOB" -U "$USER" \
+	    $BC $AIB $COLOR2MONO $NOPLANES $EXTRAPAD -D$DEBUG
+
+#
+#	Log the command line, for debugging and problem reports
+#
+if [ -x /usr/bin/logger ]; then
+    logger -t "$BASENAME" -p lpr.info -- \
+	"$GSBIN $PAPERSIZE -g$DIM -r$RES $GSDEV $GSOPTS $GAMMAFILE"
+    logger -t "$BASENAME" -p lpr.info -- \
+	"foo2ddst -r$RES -g$DIM -p$PAPER -m$MEDIA \
+-n$COPIES -d$DUPLEX -s$SOURCE $COLOR $CLIP_UL $CLIP_LR $CLIP_LOG \
+$SAVETONER -T$DENSITY $BC $AIB $COLOR2MONO $NOPLANES $EXTRAPAD"
+fi
+
+#
+#	Remove cruft
+#
+if [ $DEBUG -eq 0 ]; then
+    for i in crd.ps log usecie.ps selcrd.ps
+    do
+	file="$ICCTMP.$i"
+	[ -f $file ] && rm -f $file
+    done
+    [ -f "$TMPFILE" ] && rm -f $TMPFILE
+fi
+
+exit 0

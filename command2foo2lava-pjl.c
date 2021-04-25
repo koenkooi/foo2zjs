@@ -410,7 +410,7 @@ report_levels(int negate)
 	// Marker types:
 	strcpy(buffer, supplies[0].type);
 	for (k = 1; k < num_supplies; ++k)
-	    sprintf(buffer, "%s,%s", buffer, supplies[k].type);
+	    sprintf(buffer+strlen(buffer), ",%s", supplies[k].type);
 	fprintf(stderr, "ATTR: marker-types=%s\n", buffer);
 
 	// Marker names
@@ -420,23 +420,23 @@ report_levels(int negate)
 	    if (k > 0)
 		strcat(buffer, ",");
 	    if (supplies[k].capacity > 0)
-		sprintf(buffer, "%s\"%s (Max %d)\"", buffer, supplies[k].name,
-			supplies[k].capacity);
+		sprintf(buffer+strlen(buffer), "\"%s (Max %d)\"",
+			supplies[k].name, supplies[k].capacity);
 	    else
-		sprintf(buffer, "%s\"%s\"", buffer, supplies[k].name);
+		sprintf(buffer+strlen(buffer), "\"%s\"", supplies[k].name);
 	}
 	fprintf(stderr, "ATTR: marker-names=%s\n", buffer);
 
 	// Marker colors
 	strcpy(buffer, supplies[0].color);
 	for (k = 1; k < num_supplies; ++k)
-	    sprintf(buffer, "%s,%s", buffer, supplies[k].color);
+	    sprintf(buffer+strlen(buffer), ",%s", supplies[k].color);
 	fprintf(stderr, "ATTR: marker-colors=%s\n", buffer);
 
 	// Marker levels
 	sprintf(buffer, "%d", supplies[0].level);
 	for (k = 1; k < num_supplies; ++k)
-	    sprintf(buffer, "%s,%d", buffer, supplies[k].level);
+	    sprintf(buffer+strlen(buffer), ",%d", supplies[k].level);
 	fprintf(stderr, "ATTR: marker-levels=%s\n", buffer);
 
     }

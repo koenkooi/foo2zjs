@@ -65,7 +65,7 @@ Status: 0x18
  * TODO: Handle 2 bit mono and color output
  */
 
-static char Version[] = "$Id: foo2oak.c,v 1.69 2011/11/08 20:25:27 rick Exp $";
+static char Version[] = "$Id: foo2oak.c,v 1.70 2018/05/04 18:16:50 rick Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -487,7 +487,8 @@ start_doc(FILE *fp)
     if (Model == MODEL_KM1635)
     {
 	memset(&recdriver, 0, sizeof(recdriver));
-	strncpy(recdriver.string, Version+5, 36);
+	strncpy(recdriver.string, Version+5, sizeof(recdriver.string) - 1);
+	recdriver.string[sizeof(recdriver.string) - 1] = 0;
 	oak_record(fp, OAK_TYPE_DRIVER, &recdriver, sizeof(recdriver));
     }
     memset(&recother, 0, sizeof(recother));

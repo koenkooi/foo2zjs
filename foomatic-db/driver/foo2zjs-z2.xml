@@ -10,11 +10,14 @@
     </execution>
     <comments> <en>
 	This driver will also work for the HP LaserJet
-	Pro P1102, Pro P1566, Pro P1606dn, P2035, and other
+	Pro M12, Pro P1102, Pro P1566, Pro P1606dn, P2035, and other
 	Zenographics-based printers.
 
     </en> </comments>
     <printers>
+	<printer><id>printer/HP-LaserJet_Pro_M12a</id></printer>
+	<printer><id>printer/HP-LaserJet_Pro_M12w</id></printer>
+	<printer><id>printer/HP-LaserJet_Pro_P1102w</id></printer>
 	<printer><id>printer/HP-LaserJet_Pro_P1102</id></printer>
 	<printer><id>printer/HP-LaserJet_Pro_P1102w</id></printer>
 	<printer><id>printer/HP-LaserJet_Pro_P1566</id></printer>

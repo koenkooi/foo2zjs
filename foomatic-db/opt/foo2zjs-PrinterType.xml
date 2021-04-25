@@ -52,6 +52,16 @@
 	    <arg_defval>ev/foo2zjs-PrinterType-BW-z1</arg_defval>
 	</constraint>
 	<constraint sense="true">
+	    <make>HP</make> <model>LaserJet Pro M12a</model>
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2zjs-PrinterType-BW-z2</arg_defval>
+	</constraint>
+	<constraint sense="true">
+	    <make>HP</make> <model>LaserJet Pro M12w</model>
+	    <driver>foo2zjs</driver>
+	    <arg_defval>ev/foo2zjs-PrinterType-BW-z2</arg_defval>
+	</constraint>
+	<constraint sense="true">
 	    <make>HP</make> <model>LaserJet Pro P1102</model>
 	    <driver>foo2zjs</driver>
 	    <arg_defval>ev/foo2zjs-PrinterType-BW-z2</arg_defval>
@@ -142,6 +152,14 @@
 	    <constraints>
 	        <constraint sense="false">
 		    <driver>foo2zjs</driver>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2zjs</driver>
+	    	    <make>HP</make> <model>LaserJet Pro M12a</model>
+	        </constraint>
+	        <constraint sense="true">
+		    <driver>foo2zjs</driver>
+	    	    <make>HP</make> <model>LaserJet Pro M12w</model>
 	        </constraint>
 	        <constraint sense="true">
 		    <driver>foo2zjs</driver>

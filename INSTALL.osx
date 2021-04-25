@@ -7,6 +7,18 @@ these instructions:
 
     http://osxdaily.com/2015/10/05/disable-rootless-system-integrity-protection-mac-os-x/
 
+    $ csrutil status
+    System Integrity Protection status: disabled
+
+OR
+
+    Doing a make install in foo2zjs directory:
+
+	$ cd foo2zjs
+	$ make install PREFIX=/usr/local
+
+    also works.
+
 ==============================================================================
 MAC OSX INSTALLATION NOTES -
 

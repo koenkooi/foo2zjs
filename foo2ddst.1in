@@ -1,0 +1,162 @@
+'\" t
+.TH foo2ddst 1 "${MODpage}" "foo2ddst ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+foo2ddst \- Convert Ghostscript pbmraw into a
+DDST printer stream
+.SH SYNOPSIS
+.B foo2ddst
+.RI [ options "] <" pbmraw-file " >" ddst-file
+.SH DESCRIPTION
+.B foo2ddst
+converts Ghostscript pbmraw to monochrome
+DDST streams,
+for driving
+the Ricoh Aficio SP 112,
+the Ricoh Aficio SP 201,
+and other DDST-based printers.
+
+.SH COMMAND LINE OPTIONS
+.SS Normal Options
+These are the options used to select the parameters of a
+print job that are usually controlled on a per job basis.
+.TP
+.BI \-d\0 duplex
+Duplex code to send to printer [1].
+.TS
+| n l | n l | n l .
+1	off	2	long edge	3	short edge
+.TE
+.TP
+.BI \-g\0 xpix x ypix
+Set page dimensions in pixels [5100x6600].
+.TP
+.BI \-m\0 media
+Media code to send to printer [1].
+.TS
+l l l
+l n n.
+_
+Media	Code
+_
+plain&recycled	1
+paper	2
+thin	3
+thick	4
+recycled	5
+.TE
+.TP
+.BI \-p\0 paper
+Paper code to send to printer [1].
+.TS
+box;
+| n l | n l.
+1	letter	5	A4
+2	legal	6	A5
+3	executive	7	A6
+4	invoice(5.5x8.5)	8	B5 JIS
+		10	16k 197x273
+11	16k 184x260	12	16k 195x270
+.TE
+.TP
+.BI \-n\0 copies
+Number of copies [1].
+.TP
+.BI \-r\0 xres x yres
+Set device resolution in pixels/inch [600x600].
+.TP
+.BI \-s\0 source
+Source (InputSlot) code to send to printer [7].
+.TS
+box;
+| n l | n l.
+1	tray 1	2	manual
+.TE
+.TP
+.BI \-t
+Draft mode.  Every other pixel is white.
+.TP
+.BI \-T\0 density
+Print density (1-5).  The default is 3 (medium).
+.TP
+.BI \-J\0 filename
+Filename string to send to printer.
+.TP
+.BI \-U\0 username
+Username string to send to printer.
+.SS Printer Tweaking Options
+These are the options used to customize the operation of \fBfoo2ddst\fP
+for a particular printer.
+.TP
+.BI \-u\0 xoff x yoff
+Set the offset of the start of the printable region from the
+upper left corner, in pixels [0x0].
+.TP
+.BI \-l\0 xoff x yoff
+Set the offset of the end of the printable region from the
+lower right corner, in pixels [0x0].
+.TP
+.BI \-L\0 mask
+Send logical clipping amounts implied by -u/-l in the ZjStream [3].
+.TS
+l l.
+0	don't send any logical clipping amounts
+1	only send Y clipping amount
+2	only send X clipping amount
+3	send both X and Y clipping amounts
+.TE
+.TP
+.BI \-A
+AllIsBlack: convert C=1,M=1,Y=1 to just K=1.  Works with bitcmyk input only.
+.TP
+.BI \-B
+BlackClears: K=1 forces C,M,Y to 0.  Works with bitcmyk input only.
+.SS Debugging Options
+These options are used for debugging \fBfoo2ddst\fP.
+.TP
+.BI \-S\0 plane
+Output just a single color plane from a color print and print it
+on the black plane.  The default is to output all color planes.
+.TS
+l l.
+1	Cyan
+2	Magenta
+3	Yellow
+4	Black
+.TE
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Create a black and white DDST stream:
+
+.RS
+.nf
+gs -q -dBATCH -dSAFER -dQUIET -dNOPAUSE \ 
+    -sPAPERSIZE=letter -r1200x600 -sDEVICE=pbmraw \ 
+    -sOutputFile=- - < testpage.ps \ 
+| foo2ddst -r1200x600 -g10200x6600 -p1 >testpage.zm
+.fi
+.RE
+
+.SH FILES
+.BR /usr/bin/foo2ddst
+.SH SEE ALSO
+.BR foo2ddst-wrapper (1),
+.BR ddstdecode (1)
+.br
+.BR https://github.com/madlynx/ricoh-sp100
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLDDST}/
+'\"
+'\"
+'\"
+.em pdf_outline

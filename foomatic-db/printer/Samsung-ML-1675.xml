@@ -1,0 +1,54 @@
+<printer id="printer/Samsung-ML-1675">
+    <make>Samsung</make>
+    <model>ML-1675</model>
+    <mechanism>
+	<laser/>
+	<resolution>
+	    <dpi>
+		<x>1200</x>
+		<y>1200</y>
+	    </dpi>
+	</resolution>
+	<margins>
+	    <general>
+		<unit>mm</unit>
+		<top>4.23164</top>
+		<bottom>4.23164</bottom>
+		<left>3.175</left>
+		<right>3.175</right>
+	    </general>
+	</margins>
+	<consumables>
+	    <comments> <en>
+		Toner Black (1500 prints) - $37
+	    </en> </comments>
+	    <partno>MLT-D104S</partno>
+	</consumables>
+    </mechanism>
+    <url>https://www.cnet.com/products/samsung-ml-1675-printer-monochrome-laser/</url>
+    <lang>
+	<proprietary/>
+	<!--no pjl--><!--No "text"?-->
+    </lang>
+    <autodetect>
+        <parallel>
+            <ieee1284>MFG:Samsung;CMD:SPLC;MDL:ML-1670 Series;CLS:PRINTER;</ieee1284>
+            <manufacturer>Samsung</manufacturer>
+            <model>ML-1670 Series</model>
+            <commandset>SPLC</commandset>
+        </parallel>
+    </autodetect>
+    <functionality>B</functionality>
+    <driver>foo2qpdl</driver>
+    <!--not "unverified"--><!--no "contrib_url"-->
+    <comments> <en>
+
+	The Samsung ML-1670 and ML-1675 (USB) are monchrome laser printers
+	with a 2011 street price of $125 USD.
+	The case is white for the ML-1670 and black for the ML-1675. Other than
+	that, there is no difference.
+
+	This printer is supported by the foo2qpdl open software printer driver.
+
+    </en> </comments>
+</printer>

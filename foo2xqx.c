@@ -6,7 +6,13 @@ This program converts pbm (B/W) images and 1-bit-per-pixel cmyk images
 is some information about the ZJS format at http://ddk.zeno.com.
 
 With this utility, you can print to some HP printers, such as these:
-     - HP LaserJet M1005 MFP		B/W
+    - HP LaserJet P1005/P1006/P1007/P1008	B/W
+    - HP LaserJet P1505				B/W
+    - HP LaserJet P2014				B/W
+    - HP LaserJet M1005 MFP			B/W
+    - HP LaserJet M1120 MFP			B/W
+    - HP LaserJet Pro M1132s MFP		B/W
+    - HP LaserJet Pro M1212nf MFP		B/W
 
 AUTHORS
 This program began life as Robert Szalai's 'pbmtozjs' program.  It
@@ -48,7 +54,7 @@ yourself.
 
 */
 
-static char Version[] = "$Id: foo2xqx.c,v 1.25 2011/06/09 13:50:09 rick Exp $";
+static char Version[] = "$Id: foo2xqx.c,v 1.28 2019/02/24 02:17:25 rick Exp $";
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -481,10 +487,10 @@ start_page(BIE_CHAIN **root, int nbie, FILE *ofp)
 
     chunk_write(XQX_START_PAGE, nitems, ofp);
     item_uint32_write(0x80000000, (Duplex == DMDUPLEX_OFF) ? 180 : 192, ofp);
-    item_uint32_write(0x20000005,              1,              ofp);
+    item_uint32_write(XQXI_COPIES,              Copies,         ofp);
     item_uint32_write(XQXI_DMDEFAULTSOURCE,     SourceCode,     ofp);
     item_uint32_write(XQXI_DMMEDIATYPE,         MediaCode,      ofp);
-    item_uint32_write(0x20000007,              1,              ofp);
+    item_uint32_write(0x20000007,              1,               ofp);
 
     item_uint32_write(XQXI_RESOLUTION_X,        ResX,           ofp);
     item_uint32_write(XQXI_RESOLUTION_Y,        ResY,           ofp);

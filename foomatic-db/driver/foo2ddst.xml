@@ -1,0 +1,20 @@
+<driver id="driver/foo2ddst">
+    <name>foo2ddst</name>
+    <url>http://foo2ddst.rkkda.com/</url>
+    <execution>
+	<filter />
+	<prototype>foo2ddst-wrapper %A</prototype>
+    </execution>
+    <comments> <en>
+
+	This is a driver developed for the Ricoh Aficio SP 112 and SP 201.
+
+	&lt;p&gt;
+
+    </en> </comments>
+    <printers>
+	<printer><id>printer/Ricoh-SP_112</id></printer>
+	<printer><id>printer/Ricoh-SP_201Nw</id></printer>
+	<printer><id>printer/Generic-DDST_Printer</id></printer>
+    </printers>
+</driver>

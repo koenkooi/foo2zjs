@@ -68,6 +68,10 @@
 	    <driver>foo2hbpl2</driver>
 	    <arg_defval>1</arg_defval>
 	</constraint>
+	<constraint sense="true">
+	    <driver>foo2ddst</driver>
+	    <arg_defval>1</arg_defval>
+	</constraint>
     </constraints>
     <arg_max>100</arg_max>
     <arg_min>1</arg_min>

@@ -23,6 +23,7 @@
 	<printer><id>printer/HP-LaserJet_P1505n</id></printer>
 	<printer><id>printer/HP-LaserJet_P2014</id></printer>
 	<printer><id>printer/HP-LaserJet_P2014n</id></printer>
+	<printer><id>printer/HP-LaserJet_Pro_M1132s_MFP</id></printer>
 	<printer><id>printer/HP-LaserJet_Pro_M1212nf_MFP</id></printer>
 	<printer><id>printer/Generic-GDI_Printer</id></printer>
     </printers>

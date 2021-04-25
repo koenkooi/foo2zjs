@@ -27,6 +27,8 @@
 	<printer><id>printer/Samsung-CLX-3160</id></printer>
 	<printer><id>printer/Samsung-CLX-3175</id></printer>
 	<printer><id>printer/Samsung-CLX-3185</id></printer>
+	<printer><id>printer/Samsung-ML-1670</id></printer>
+	<printer><id>printer/Samsung-ML-1675</id></printer>
 	<printer><id>printer/Xerox-Phaser_6110</id></printer>
 	<printer><id>printer/Generic-GDI_Printer</id></printer>
     </printers>

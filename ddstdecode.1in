@@ -1,0 +1,84 @@
+.TH ddstdecode 1 "${MODpage}" "ddstdecode ${MODver}"
+#ifndef OLDGROFF
+#include "macros.man"
+#endif
+'\"==========================================================================
+'\"	MANUAL PAGE SOURCE
+'\"==========================================================================
+.SH NAME
+ddstdecode \- Decode a Ricoh DDST stream into human readable form.
+.SH SYNOPSIS
+.B ddstdecode
+.RI [ options "] <" ddst-file
+.SH DESCRIPTION
+.B ddstdecode
+decodes a Ricoh DDST stream into human readable form.
+.P
+A Ricoh DDST stream is the printer language used by some Ricoh
+printers. From what I can tell, it is pbmtojbg(1) wrapped with some PJL.
+
+.SH COMMAND LINE OPTIONS
+These are the options that can appear on the command line.
+.TP
+.BI \-d\0 basename
+Basename of .pbm file for saving decompressed planes.
+.TP
+.BI \-h
+Print hex file offsets.
+.TP
+.BI \-o
+Print file offsets.
+.TP
+.BI \-D\0 level
+Set Debug level [0].
+
+.SH EXAMPLES
+Decode an Ricoh DDST stream file created by a Ricoh SP112.
+
+.nf
+.ft CW
+$ ddstdecode -h ~/testpage-ricoh-sp112.prn
+     0: \033%-12345X@PJL
+     f: @PJL SET TIMESTAMP=2017/03/16 16:53:16
+    37: @PJL SET FILENAME=testpage.pdf
+    57: @PJL SET COMPRESS=JBIG
+    6f: @PJL SET USERNAME=rick
+    87: @PJL SET COVER=OFF
+    9b: @PJL SET HOLD=OFF
+    ae: @PJL SET PAGESTATUS=START
+    c9: @PJL SET COPIES=1
+    dc: @PJL SET MEDIASOURCE=TRAY1
+    f8: @PJL SET MEDIATYPE=PLAINRECYCLE
+   119: @PJL SET PAPER=LETTER
+   130: @PJL SET PAPERWIDTH=5100
+   14a: @PJL SET PAPERLENGTH=6600
+   165: @PJL SET RESOLUTION=600
+   17e: @PJL SET IMAGELEN=60604
+   197: DDST_JBIG_DATA_BEGIN 60604 bytes
+                DL = 0, D = 0, P = 1, - = 0, XY = 5100 x 6600
+                L0 = 128, MX = 0, MY = 0
+                Order   = 3  ILEAVE SMID
+                Options = 72  LRLTWO TPBON
+                52 stripes, 0 layers, 1 planes
+  ee53: DDST_JBIG_DATA_END
+  ee53: @PJL SET DOTCOUNT=1765571
+  ee6e: @PJL SET PAGESTATUS=END
+  ee87: @PJL EOJ
+  ee91: \033%-12345X
+.ft P
+.fi
+
+.SH FILES
+.BR /usr/bin/ddstdecode
+.SH SEE ALSO
+.BR foo2ddst-wrapper (1),
+.BR foo2ddst (1),
+.BR pbmtojbg (1)
+.SH "AUTHOR"
+Rick Richardson <rick.richardson@comcast.net>
+.br
+${URLXQX}/
+'\"
+'\"
+'\"
+.em pdf_outline

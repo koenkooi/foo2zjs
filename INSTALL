@@ -127,7 +127,7 @@ it will not pass since different versions of Ghostscript generate different
 raster images:
     # make test
 
-Create printers (Fedora 6/7/8/.../16 and Ubuntu 7.10/8.x/9.x/10.x/11.x):
+Create printers (Fedora 6/7/.../31 and Ubuntu 7.10/8.x/.../19.x):
     # system-config-printer
 
 Create printers (Redhat 7.2/7.3/8.0/9.0, Fedora Core 1-5):
@@ -136,7 +136,7 @@ Create printers (Redhat 7.2/7.3/8.0/9.0, Fedora Core 1-5):
 Create printers (Mandrake/Manrivia)
     # printerdrake
 
-Create printers (openSUSE 10.x/11.x)
+Create printers (openSUSE 10.x/11.x/.../Leap 15.x)
     # yast2 printer
 
 Create printers (Ubuntu 5.10/6.06/6.10/7.04)
@@ -178,18 +178,20 @@ of the printer, and the "Port" to "9100".
 
 GHOSTSCRIPT BUGS
 ----------------
-    * ghostscript 8.64 is broken w.r.t. color.  Don't use!
+    * Ghostscript 8.64 is broken w.r.t. color.  Don't use!
 
-    * ghostscript 9.00 is broken w.r.t. fonts in landscape mode.
+    * Ghostscript 9.00 is broken w.r.t. fonts in landscape mode.
 
-    * ghostscript 9.+ is broken w.r.t. color. Don't use
+    * Ghostscript 9.+ is broken w.r.t. color. Don't use
+
+    * Ghostscript 9.22, 9.23, and 9.24 is broken, period!
 
     * Well Tempered Screening (WTS) works with ghostscript 8.54 thru 8.70+.
       So if you want BEST COLORS, you'll have to install gs 8.54 or better
       if you don't have it.
 
 	OPTIONAL: 
-	    # yum install cups-devel
+	    # dnf install cups-devel
 		-OR-
 	    $ sudo apt-get install cups-dev
 
@@ -215,6 +217,11 @@ GHOSTSCRIPT BUGS
 	$ ./configure  --without-jbig2dec
 	$ make CFLAGS+="-DHAVE_SYS_TIME_H=1"
 
+      If that doesn't compile (e.g. Fedora 26), try this:
+	$ cd ghostscript-8.71
+	$ ./configure  --without-jbig2dec --with-system-libtiff 
+	$ make CFLAGS+="-DHAVE_SYS_TIME_H=1"
+
     * Halftoning Bug:
         "The problems with WTS are primarily that it seems to fall down
 	on the halftone generation for some angles when the lpi is high for
@@ -229,7 +236,7 @@ GHOSTSCRIPT BUGS
 FEDORA NOTES 
 ------------
     Install tix, foomatic\*, and system-config-printer FIRST:
-	# yum install tix foomatic\* system-config-printer
+	# dnf install tix foomatic\* system-config-printer
 
     If you are using a USB printer AND Fedora 12+, do this:
 
@@ -529,6 +536,9 @@ CUPS USB NOTES
 	usb://HP/LaserJet%20P1007
 	usb://HP/LaserJet%20P1008
 	usb://HP/LaserJet%20P1505
+	usb://HP/LaserJet%20Professional%20M12a
+	usb://HP/LaserJet%20Professional%20M12w
+	usb://HP/LaserJet%20Professional%20P1102
 	usb://HP/LaserJet%20Professional%20P1102w
 
     Don't use hp://<whatever> because that is for hplip (a closed source,
@@ -621,7 +631,7 @@ HP LASERJET 1000/1005/1018/1020, P1005/P1006/P1007/P1008/P1505 NOTES
 	Applications -> System Tools -> HPLJ 10xx Replaced Paper
 
     It requires tcl, tk, and tix.  Fedora 5 and later:
-	# yum install tcl tk tix
+	# dnf install tcl tk tix
 
     or, you can simulate this by reloading the paper and doing:
 
@@ -631,9 +641,9 @@ HP LASERJET 1000/1005/1018/1020, P1005/P1006/P1007/P1008/P1505 NOTES
 
 HP SMART INSTALL NOTES
 ----------------------
-    The printers HP LaserJet Pro P1102, HP LaserJet Pro CP1025, and simliar
-    models have a virtual CD-ROM (a fake USB CD drive) in USB mode.  You can
-    disable this three ways:
+    The printers HP LaserJet Pro M12a, HP LaserJet Pro P1102,
+    HP LaserJet Pro CP1025, and simliar models have a virtual CD-ROM
+    (a fake USB CD drive) in USB mode.  You can disable this three ways:
 
     Method 1:
 	NOTE: this is a non-open-source method!
@@ -646,7 +656,7 @@ HP SMART INSTALL NOTES
     Method 2:
 	- Install usb_modeswitch and usb_modeswitch-data from your distro's
 	  repository. I.E.:
-	    # yum install usb_modeswitch usb_modeswitch-data
+	    # dnf install usb_modeswitch usb_modeswitch-data
 	  OR
 	    $ sudo apt-get install usb-modeswitch-data
 	  OR
@@ -658,6 +668,10 @@ HP SMART INSTALL NOTES
 	- Execute:
 	    $ wget http://hplipopensource.com/hplip-web/smartinstall/\
 		SmartInstallDisable-Tool.run
+	    $ sh SmartInstallDisable-Tool.run
+	OR (2016 and later):
+	- Execute:
+	    https://web.archive.org/web/20160316030640/http://hplipopensource.com/hplip-web/smartinstall/SmartInstallDisable-Tool.run
 	    $ sh SmartInstallDisable-Tool.run
 
 PSUTILS AND 2/4-UP CAPABILITY
@@ -731,6 +745,18 @@ MANUAL DUPLEX
 		    [logout][login]
 	    2)      Print -> GnomeManualDuplex (Virtual Printer) -> Print
 
+	    If gnome-session-properties does not exist (Gnome 3.12+), you can
+	    install it with:
+		    $ gmd-autostart-3
+		    [logout][login]
+
+	    If you are using Gnome 3 Shell (instead of, say, Cinnamon),
+	    you probably want
+		https://extensions.gnome.org/extension/495/topicons/
+	    or
+		https://extensions.gnome.org/extension/1674/topiconsfix/
+	    so you can click on it in top panel.
+
 	    Works with *.ps and *.pdf files.
 	    Works with Gnome-2 or Gnome-3.
 
@@ -746,7 +772,7 @@ MANUAL DUPLEX
 	$ psmandup [options] file.ps
 	
 	Ref:
-	    Fedora: # yum install a2ps
+	    Fedora: # dnf install a2ps
 	    Ubuntu: $ sudo apt-get install a2ps
 
     -OR- (Gnome)

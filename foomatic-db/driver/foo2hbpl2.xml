@@ -20,6 +20,8 @@
 	<printer><id>printer/Dell-C1765</id></printer>
 	<printer><id>printer/Epson-AcuLaser_M1400</id></printer>
 	<printer><id>printer/Epson-AcuLaser_CX17NF</id></printer>
+	<printer><id>printer/Xerox-Phaser_3010</id></printer>
+	<printer><id>printer/Xerox-Phaser_3040</id></printer>
 	<printer><id>printer/Xerox-WorkCentre_3045</id></printer>
 	<printer><id>printer/Xerox-WorkCentre_6015</id></printer>
 	<printer><id>printer/Fuji_Xerox-DocuPrint_CM205</id></printer>

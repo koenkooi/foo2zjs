@@ -167,6 +167,8 @@ proc main {w} {
 	    "HP LaserJet P1006" { set replace 1 }
 	    "HP LaserJet P1007" { set replace 1 }
 	    "HP LaserJet P1008" { set replace 1 }
+	    "HP LaserJet Professional M12a" { set replace 0 }
+	    "HP LaserJet Professional M12w" { set replace 0 }
 	    "HP LaserJet Professional P1102" { set replace 0 }
 	    "HP LaserJet Professional P1102w" { set replace 0 }
 	    "CLP-310 Series" { set product [concat "Samsung" $product]

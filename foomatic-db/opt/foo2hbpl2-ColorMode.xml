@@ -44,6 +44,12 @@
 		    <make>Fuji Xerox</make> <model>DocuPrint P205</model>
 		</constraint>
 		<constraint sense="false">
+		    <make>Xerox</make> <model>Phaser 3010</model>
+		</constraint>
+		<constraint sense="false">
+		    <make>Xerox</make> <model>Phaser 3040</model>
+		</constraint>
+		<constraint sense="false">
 		    <make>Xerox</make> <model>WorkCentre 3045</model>
 		</constraint>
 	    </constraints>

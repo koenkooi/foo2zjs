@@ -8,6 +8,7 @@ DEBUGGING USB SUBSYSTEM
 2. Prepare the kernel
 
     Taken from: /usr/src/linux/Documentation/usb/usbmon.txt
+    https://www.kernel.org/doc/html/latest/usb/usbmon.html
 
     # mount -t debugfs none_debugs /sys/kernel/debug
     # modprobe usbmon				(if kernel loads a module)

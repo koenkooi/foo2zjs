@@ -155,7 +155,7 @@ getone() {
     case "$1" in
     lj1000|1000)
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1000.tar.gz \
+	    https://www.quirinux.org/printers/sihp1000.tar.gz \
 	    ""
 	#echo "provided"
 	#getexe \
@@ -166,7 +166,7 @@ getone() {
 	;;
     lj1005|1005)
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1005.tar.gz \
+	    https://www.quirinux.org/printers/sihp1005.tar.gz \
 	    ""
 	#echo "provided"
 	#getexe \
@@ -175,38 +175,38 @@ getone() {
 	    #sihp1005.img
 	copyright "(c) Copyright Hewlett-Packard 2002"
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1005.tar.gz \
+	    https://www.quirinux.org/printers/sihpP1005.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;
     lj1018|1018)
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1018.tar.gz \
+	    https://www.quirinux.org/printers/sihp1018.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2005"
 	;;
     lj1020|1020)
 	# http://ftp.hp.com/pub/softlib/software8/COL14041/lj-39322-2/hp_LJ_1020-1022_Full_Solution.exe
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihp1020.tar.gz \
+	    https://www.quirinux.org/printers/sihp1020.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2005"
 	;;
     [pP]100[57])
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1005.tar.gz \
+	    https://www.quirinux.org/printers/sihpP1005.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;
     [pP]100[68])
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1006.tar.gz \
+	    https://www.quirinux.org/printers/sihpP1006.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;
     [pP]1505)
 	gettgz \
-	    http://foo2zjs.linkevich.net/foo2zjs/firmware sihpP1505.tar.gz \
+	    https://www.quirinux.org/printers/sihpP1505.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2009"
 	;;

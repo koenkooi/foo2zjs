@@ -184,8 +184,8 @@ getone() {
 	;;
     lj1018|1018)
 	gettgz \
-	    http://foo2zjs.rkkda.com/firmware sihp1018.tar.gz \
-		# https://www.quirinux.org/printers sihp1018.tar.gz \
+	  #  http://foo2zjs.rkkda.com/firmware sihp1018.tar.gz \
+		 https://www.quirinux.org/printers sihp1018.tar.gz \
 	    ""
 	copyright "(c) Copyright Hewlett-Packard 2005"
 	;;
@@ -293,7 +293,7 @@ getone() {
 	copyright "(c) Copyright Rick Richardson 2007.  All Rights Reserved"
 	gettgz \
 	  #  http://foo2lava.rkkda.com/icm km-1600.tar.gz \
-		https://www.quirinux.org/printers km2530.tar.gz \
+		https://www.quirinux.org/printers km-1600.tar.gz \
 	    ""
 	copyright "(c) Copyright Rick Richardson 2009.  All Rights Reserved"
 	;;

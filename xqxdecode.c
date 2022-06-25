@@ -142,6 +142,27 @@ proff(int curOff)
 	printf("%6x:	", curOff);
 }
 
+char*
+fgetsn(char* str, int n, FILE* stream)
+{
+  register int c;
+  register char ch;
+  register char* cs;
+  cs = str;
+
+  while (--n > 0 && (c = getc(stream)) != EOF) {
+    ch = (*cs++ = c);
+    if (ch == '\n') {
+      *cs = '\0';
+      break;
+    }
+    else if (ch == '\0')
+      break;
+  }
+
+  return (c == EOF && cs == str) ? NULL : str;
+}
+
 void
 decode(FILE *fp)
 {
@@ -178,7 +199,7 @@ decode(FILE *fp)
     {
 	char	buf[1024];
 
-	while (fgets(buf, sizeof(buf), fp))
+	while (fgetsn(buf, sizeof(buf), fp))
 	{
 	    proff(curOff);
 	    if (buf[0] == '\033')
